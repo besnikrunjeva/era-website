@@ -462,35 +462,41 @@
 <div id="site-whatsapp"></div>
 
 <script type="module">
-import * as THREE from './js/vendor/three.module.js';
-import { GLTFLoader }    from './js/vendor/addons/loaders/GLTFLoader.js';
-import { OrbitControls } from './js/vendor/addons/controls/OrbitControls.js';
-
 const MODELS = {
   gota:     { path: 'assets/models/gota-7oz.glb',      href: 'gota-letre.html#preview3d',     size: 1.5 },
   mbajtese: { path: 'assets/models/mbajtese-luge.glb', href: 'mbajtese-luge.html#preview3d',  size: 2.2 }
 };
-
-let renderer, scene, camera, controls, currentModel = null;
-let activeKey = 'gota', autoRotate = true, rotTimer = null;
 
 const canvas    = document.getElementById('stageCanvas');
 const loading   = document.getElementById('stageLoading');
 const editorBtn = document.getElementById('stageEditorBtn');
 const tabs      = document.querySelectorAll('.stage-tab');
 
-function init() {
+let activeKey = 'gota', autoRotate = true, rotTimer = null;
+let switchModel = null; // set after init so tab clicks work
+
+async function initStage() {
+  // Dynamic imports — Three.js only downloads when this section is visible
+  const [THREE, { GLTFLoader }, { OrbitControls }] = await Promise.all([
+    import('./js/vendor/three.module.js'),
+    import('./js/vendor/addons/loaders/GLTFLoader.js'),
+    import('./js/vendor/addons/controls/OrbitControls.js')
+  ]);
+
+  const loader = new GLTFLoader();
+  let currentModel = null;
+
   const wrap = canvas.parentElement;
   const w = wrap.clientWidth;
 
-  renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+  const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.setClearColor(0x000000, 0);
   renderer.setSize(w, w, false);
 
-  scene  = new THREE.Scene();
-  camera = new THREE.PerspectiveCamera(38, 1, 0.1, 100);
+  const scene  = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 100);
   camera.position.set(0, 0.4, 3.6);
 
   scene.add(new THREE.AmbientLight(0xffffff, 1.4));
@@ -504,11 +510,11 @@ function init() {
   fill2.position.set(-3, -1, -3);
   scene.add(fill2);
 
-  controls = new OrbitControls(camera, canvas);
-  controls.enableDamping  = true;
-  controls.dampingFactor  = 0.06;
-  controls.enablePan      = false;
-  controls.enableZoom     = false;
+  const controls = new OrbitControls(camera, canvas);
+  controls.enableDamping = true;
+  controls.dampingFactor = 0.06;
+  controls.enablePan     = false;
+  controls.enableZoom    = false;
   controls.addEventListener('start', () => { autoRotate = false; clearTimeout(rotTimer); });
   controls.addEventListener('end',   () => { rotTimer = setTimeout(() => autoRotate = true, 2200); });
 
@@ -517,7 +523,34 @@ function init() {
     renderer.setSize(nw, nw, false);
   });
 
+  function loadModel(key) {
+    activeKey = key;
+    editorBtn.href = MODELS[key].href;
+    loading.style.display = 'flex';
+    canvas.style.opacity  = '0';
+    if (currentModel) { scene.remove(currentModel); currentModel = null; }
+
+    loader.load(MODELS[key].path, gltf => {
+      const model = gltf.scene;
+      const box1  = new THREE.Box3().setFromObject(model);
+      const size  = box1.getSize(new THREE.Vector3());
+      const scale = MODELS[key].size / Math.max(size.x, size.y, size.z);
+      model.scale.setScalar(scale);
+      const pivot  = new THREE.Group();
+      const box2   = new THREE.Box3().setFromObject(model);
+      const center = box2.getCenter(new THREE.Vector3());
+      model.position.sub(center);
+      pivot.add(model);
+      scene.add(pivot);
+      currentModel = pivot;
+      loading.style.display = 'none';
+      canvas.style.opacity  = '1';
+    });
+  }
+
+  switchModel = loadModel;
   loadModel('gota');
+
   (function tick() {
     requestAnimationFrame(tick);
     if (autoRotate && currentModel) currentModel.rotation.y += 0.006;
@@ -526,40 +559,12 @@ function init() {
   })();
 }
 
-const loader = new GLTFLoader();
-
-function loadModel(key) {
-  activeKey = key;
-  editorBtn.href = MODELS[key].href;
-  loading.style.display = 'flex';
-  canvas.style.opacity  = '0';
-  if (currentModel) { scene.remove(currentModel); currentModel = null; }
-
-  loader.load(MODELS[key].path, gltf => {
-    const model = gltf.scene;
-
-    // Scale to fit
-    const box1  = new THREE.Box3().setFromObject(model);
-    const size  = box1.getSize(new THREE.Vector3());
-    const scale = MODELS[key].size / Math.max(size.x, size.y, size.z);
-    model.scale.setScalar(scale);
-
-    // Center model inside a pivot so rotation.y spins around its visual center
-    const pivot  = new THREE.Group();
-    const box2   = new THREE.Box3().setFromObject(model);
-    const center = box2.getCenter(new THREE.Vector3());
-    model.position.sub(center);
-    pivot.add(model);
-    scene.add(pivot);
-    currentModel = pivot;
-
-    loading.style.display = 'none';
-    canvas.style.opacity  = '1';
-  });
-}
-
-// Lazy-init when section scrolls into view
-const obs = new IntersectionObserver(e => { if (e[0].isIntersecting) { init(); obs.disconnect(); } }, { threshold: 0.15 });
+// Three.js loads only when the 3D section scrolls into view
+const obs = new IntersectionObserver(async e => {
+  if (!e[0].isIntersecting) return;
+  obs.disconnect();
+  await initStage();
+}, { threshold: 0.15 });
 obs.observe(document.querySelector('.design-stage'));
 
 tabs.forEach(tab => tab.addEventListener('click', () => {
@@ -567,7 +572,7 @@ tabs.forEach(tab => tab.addEventListener('click', () => {
   tabs.forEach(t => t.classList.remove('active'));
   tab.classList.add('active');
   editorBtn.href = MODELS[tab.dataset.model].href;
-  loadModel(tab.dataset.model);
+  if (switchModel) switchModel(tab.dataset.model);
 }));
 </script>
 
