@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kupa Letre – ERA Print Pack</title>
+  <meta name="description" content="Kupa letre me printim të personalizuar në 3 madhësi: 3.5oz, 7oz dhe 12oz. Ideal për kafene, restorante, festivale dhe evente." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" type="image/svg+xml" href="assets/era-logo.svg" />
+  <style>
+    /* ── Page-specific styles ── */
+    .size-selector {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+    .size-btn {
+      padding: 10px 24px;
+      border-radius: 100px;
+      border: 2px solid var(--gray-mid);
+      font-size: .9rem;
+      font-weight: 600;
+      color: var(--text-mid);
+      transition: var(--transition);
+      cursor: pointer;
+      background: var(--white);
+    }
+    .size-btn:hover, .size-btn.active {
+      border-color: var(--green);
+      background: var(--green);
+      color: var(--white);
+    }
+
+    .cup-showcase {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+    .cup-image-wrap {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: linear-gradient(135deg, #f5f5f0, #e8e8e0);
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .cup-image-wrap img {
+      width: 85%;
+      height: 85%;
+      object-fit: contain;
+      transition: transform .5s ease;
+    }
+    .cup-image-wrap:hover img { transform: scale(1.04); }
+    .cup-badge-size {
+      position: absolute;
+      top: 20px; right: 20px;
+      background: var(--green);
+      color: var(--white);
+      font-size: .85rem;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 100px;
+    }
+
+    .cup-info h1 { margin-bottom: 14px; }
+    .cup-info .lead {
+      font-size: 1.1rem;
+      color: var(--text-mid);
+      margin-bottom: 28px;
+      line-height: 1.75;
+    }
+
+    .cup-specs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 32px;
+    }
+    .spec-item {
+      background: var(--gray-light);
+      border-radius: var(--radius);
+      padding: 16px;
+    }
+    .spec-label {
+      font-size: .75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      color: var(--gray);
+      margin-bottom: 4px;
+    }
+    .spec-value {
+      font-size: .95rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .cup-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    /* Three sizes comparison */
+    .sizes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .size-card {
+      border: 2px solid var(--gray-mid);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: var(--transition);
+      cursor: pointer;
+      background: var(--white);
+      text-decoration: none;
+    }
+    .size-card:hover, .size-card.featured {
+      border-color: var(--green);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-6px);
+    }
+    .size-card.featured { transform: translateY(-10px); }
+    .size-card-img {
+      padding: 32px 24px 20px;
+      background: linear-gradient(135deg, #f5f5f0, #ebebeb);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      aspect-ratio: 1;
+      position: relative;
+    }
+    .size-card-img img {
+      width: 80%;
+      height: 80%;
+      object-fit: contain;
+      transition: transform .4s ease;
+    }
+    .size-card:hover .size-card-img img { transform: scale(1.06); }
+    .popular-tag {
+      position: absolute;
+      top: 14px; right: 14px;
+      background: var(--green);
+      color: var(--white);
+      font-size: .72rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 100px;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+    .size-card-body { padding: 22px; }
+    .size-oz {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--green);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .size-ml {
+      font-size: .8rem;
+      color: var(--gray);
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+    .size-card-body h3 { margin-bottom: 8px; font-size: 1rem; }
+    .size-card-body p  { font-size: .85rem; margin-bottom: 16px; }
+    .size-uses {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 18px;
+    }
+    .use-tag {
+      font-size: .75rem;
+      padding: 4px 10px;
+      border-radius: 100px;
+      background: var(--green-light);
+      color: var(--green-darker);
+      font-weight: 500;
+    }
+
+    /* Customization section */
+    .custom-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    .custom-step {
+      text-align: center;
+      padding: 28px 20px;
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--gray-mid);
+      transition: var(--transition);
+    }
+    .custom-step:hover {
+      border-color: var(--green);
+      box-shadow: var(--shadow-sm);
+    }
+    .custom-step-icon {
+      width: 64px;
+      height: 64px;
+      background: var(--green);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 18px;
+      box-shadow: 0 4px 16px rgba(76,167,6,.25);
+      flex-shrink: 0;
+    }
+    .custom-step h4 { margin-bottom: 8px; }
+    .custom-step p  { font-size: .85rem; }
+
+    /* Minimum order table */
+    .order-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+    .order-table th {
+      background: var(--green);
+      color: var(--white);
+      padding: 16px 20px;
+      text-align: left;
+      font-size: .85rem;
+      font-weight: 600;
+      letter-spacing: .04em;
+    }
+    .order-table td {
+      padding: 15px 20px;
+      border-bottom: 1px solid var(--gray-mid);
+      font-size: .9rem;
+    }
+    .order-table tr:last-child td { border-bottom: none; }
+    .order-table tr:hover td { background: var(--green-light); }
+    .order-table .highlight { font-weight: 700; color: var(--green); }
+
+    @media (max-width: 768px) {
+      .cup-showcase   { grid-template-columns: 1fr; gap: 32px; }
+      .sizes-grid     { grid-template-columns: 1fr; }
+      .size-card.featured { transform: none; }
+      .custom-steps   { grid-template-columns: 1fr 1fr; }
+      .cup-specs      { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .custom-steps { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAVBAR ─────────────────────────────────────────────── -->
+<div id="site-nav"></div>
+
+
+<!-- ── BREADCRUMB ─────────────────────────────────────────── -->
+<div style="background:var(--gray-light);border-bottom:1px solid var(--gray-mid);padding:14px 0;margin-top:72px;">
+  <div class="container">
+    <div style="display:flex;align-items:center;gap:8px;font-size:.85rem;color:var(--text-soft);">
+      <a href="index.html" style="color:var(--text-soft);transition:color .2s;" onmouseover="this.style.color='#4ca706'" onmouseout="this.style.color=''">Kryefaqja</a>
+      <span>›</span>
+      <a href="products.html" style="color:var(--text-soft);transition:color .2s;" onmouseover="this.style.color='#4ca706'" onmouseout="this.style.color=''">Produktet</a>
+      <span>›</span>
+      <span style="color:var(--text);font-weight:500;">Kupa Letre</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ── HERO SHOWCASE ──────────────────────────────────────── -->
+<section class="section" style="padding-top:56px;">
+  <div class="container">
+    <div class="cup-showcase">
+
+      <!-- Image -->
+      <div class="cup-image-wrap fade-in" id="mainCupImg">
+        <img src="assets/cup-7oz.jpg" alt="Kupa Letre ERA Print Pack" id="cupHeroImg" />
+        <span class="cup-badge-size" id="cupBadge">7oz</span>
+      </div>
+
+      <!-- Info -->
+      <div class="cup-info fade-in">
+        <span class="badge">Kupa Letre</span>
+        <h1>Kupa me Dizajn<br/><span class="text-green">të Personalizuar</span></h1>
+        <p class="lead">Kupa letre cilësore me printim të plotë — logoja, ngjyrat dhe stili juaj, në çdo madhësi. Ideale për kafene, restorante, bare dhe evente.</p>
+
+        <!-- Size selector -->
+        <div class="size-selector">
+          <button class="size-btn" data-size="35" onclick="switchCup(this, 'assets/cup-35oz.jpg', '3.5oz')">3.5 oz</button>
+          <button class="size-btn active" data-size="7" onclick="switchCup(this, 'assets/cup-7oz.jpg', '7oz')">7 oz</button>
+          <button class="size-btn" data-size="12" onclick="switchCup(this, 'assets/cup-12oz.jpg', '12oz')">12 oz</button>
+        </div>
+
+        <!-- Specs -->
+        <div class="cup-specs" id="cupSpecs">
+          <div class="spec-item">
+            <div class="spec-label">Kapaciteti</div>
+            <div class="spec-value" id="specCap">7oz / 200ml</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Ideal për</div>
+            <div class="spec-value" id="specUse">Kafe, Cappuccino, Çaj</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Materiali</div>
+            <div class="spec-value">Letër e dyfishtë</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Porosia Minimale</div>
+            <div class="spec-value">10,000 copë</div>
+          </div>
+        </div>
+
+        <div class="cup-ctas">
+          <a href="contact.html" class="btn btn-primary btn-lg">Kërko Ofertë</a>
+          <a href="contact.html" class="btn btn-outline-green btn-lg">Na Kontakto</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ── 3 SIZES COMPARISON ─────────────────────────────────── -->
+<section class="section" style="background:var(--gray-light);padding-top:72px;">
+  <div class="container">
+    <div class="section-header text-center fade-in">
+      <span class="badge">3 Madhësi</span>
+      <h2>Zgjidhni Madhësinë e Duhur</h2>
+      <p>Çdo madhësi e projektuar për nevoja specifike — nga espresso i fortë tek pijet e mëdha në evente.</p>
+    </div>
+
+    <div class="sizes-grid">
+
+      <!-- 3.5oz -->
+      <div class="size-card fade-in">
+        <div class="size-card-img">
+          <img src="assets/cup-35oz.jpg" alt="Kupa 3.5oz" />
+        </div>
+        <div class="size-card-body">
+          <div class="size-oz">3.5oz</div>
+          <div class="size-ml">≈ 100ml</div>
+          <h3>Kupa Espresso</h3>
+          <p>E vogël, kompakte dhe elegante. Perfekte për espresso dhe kafenë shqiptare tradicionale.</p>
+          <div class="size-uses">
+            <span class="use-tag">☕ Espresso</span>
+            <span class="use-tag">Kafene</span>
+            <span class="use-tag">Bare</span>
+          </div>
+          <a href="contact.html" class="btn btn-outline-green btn-sm" style="width:100%;justify-content:center;">Kërko Ofertë</a>
+        </div>
+      </div>
+
+      <!-- 7oz – featured -->
+      <div class="size-card featured fade-in">
+        <div class="size-card-img">
+          <span class="popular-tag">Më e Popullarizuar</span>
+          <img src="assets/cup-7oz.jpg" alt="Kupa 7oz" />
+        </div>
+        <div class="size-card-body">
+          <div class="size-oz">7oz</div>
+          <div class="size-ml">≈ 200ml</div>
+          <h3>Kupa Universale</h3>
+          <p>Madhësia më e kërkuar. Përdoret për pothuajse çdo lloj pije — kafe, cappuccino, çaj dhe më shumë.</p>
+          <div class="size-uses">
+            <span class="use-tag">☕ Kafe</span>
+            <span class="use-tag">Cappuccino</span>
+            <span class="use-tag">Çaj</span>
+            <span class="use-tag">Restorante</span>
+          </div>
+          <a href="contact.html" class="btn btn-primary btn-sm" style="width:100%;justify-content:center;">Kërko Ofertë</a>
+        </div>
+      </div>
+
+      <!-- 12oz -->
+      <div class="size-card fade-in">
+        <div class="size-card-img">
+          <img src="assets/cup-12oz.jpg" alt="Kupa 12oz" />
+        </div>
+        <div class="size-card-body">
+          <div class="size-oz">12oz</div>
+          <div class="size-ml">≈ 350ml</div>
+          <h3>Kupa Evente</h3>
+          <p>E madhe dhe e fortë, ideale për festivale, koncerte dhe evente ku nevojitet kapacitet i lartë.</p>
+          <div class="size-uses">
+            <span class="use-tag">🎵 Festivale</span>
+            <span class="use-tag">Koncerte</span>
+            <span class="use-tag">Evente</span>
+            <span class="use-tag">Latte</span>
+          </div>
+          <a href="contact.html" class="btn btn-outline-green btn-sm" style="width:100%;justify-content:center;">Kërko Ofertë</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ── CUSTOMIZATION ──────────────────────────────────────── -->
+<section class="section">
+  <div class="container">
+    <div class="section-header text-center fade-in">
+      <span class="badge">Personalizimi</span>
+      <h2>Kupa me Markën Tuaj</h2>
+      <p>Çdo kupë printohet me dizajnin tuaj unik. Procesi është i thjeshtë dhe i shpejtë.</p>
+    </div>
+
+    <div class="custom-steps">
+      <div class="custom-step fade-in">
+        <div class="custom-step-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></div>
+        <h4>Zgjidhni Madhësinë</h4>
+        <p>3.5oz, 7oz ose 12oz — varësisht nga lloji i biznesit dhe nevojave tuaja.</p>
+      </div>
+      <div class="custom-step fade-in">
+        <div class="custom-step-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div>
+        <h4>Dërgoni Dizajnin</h4>
+        <p>Logoja dhe dizajni juaj në AI, PDF ose PSD. Ekipi ynë e përgatit për printim.</p>
+      </div>
+      <div class="custom-step fade-in">
+        <div class="custom-step-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg></div>
+        <h4>Printimi</h4>
+        <p>Printim offset me ngjyra të qëndrueshme dhe cilësi të lartë në çdo kupë.</p>
+      </div>
+      <div class="custom-step fade-in">
+        <div class="custom-step-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+        <h4>Dorëzimi</h4>
+        <p>Dorëzim direkt te biznesi juaj brenda afatit të rënë dakord.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── ORDER INFO TABLE ───────────────────────────────────── -->
+<section class="section-sm" style="background:var(--gray-light);">
+  <div class="container" style="max-width:800px;">
+    <div class="section-header text-center fade-in">
+      <span class="badge">Porositja</span>
+      <h2>Informacion Porosie</h2>
+    </div>
+
+    <div class="fade-in">
+      <div class="table-wrap">
+
+      <table class="order-table">
+        <thead>
+          <tr>
+            <th>Madhësia</th>
+            <th>Kapaciteti</th>
+            <th>Porosia Minimale</th>
+            <th>Ideal për</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="highlight">3.5oz</td>
+            <td>≈ 100ml</td>
+            <td>10,000 copë</td>
+            <td>Espresso, Kafene</td>
+          </tr>
+          <tr>
+            <td class="highlight">7oz</td>
+            <td>≈ 200ml</td>
+            <td>10,000 copë</td>
+            <td>Kafe, Cappuccino, Çaj, Restorante</td>
+          </tr>
+          <tr>
+            <td class="highlight">12oz</td>
+            <td>≈ 350ml</td>
+            <td>10,000 copë</td>
+            <td>Festivale, Koncerte, Evente, Latte</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+
+      <div style="margin-top:20px;padding:18px 22px;background:var(--green-light);border-radius:var(--radius);border-left:4px solid var(--green);">
+        <p style="font-size:.9rem;color:var(--green-darker);margin:0;">
+          <strong>💡 Shënim:</strong> Çmimet ndryshojnë sipas sasisë, numrit të ngjyrave dhe kompleksitetit të dizajnit. Kontaktoni për ofertë të personalizuar pa asnjë detyrim.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── FAQ ────────────────────────────────────────────────── -->
+<section class="section">
+  <div class="container" style="max-width:760px;">
+    <div class="section-header text-center fade-in">
+      <span class="badge">FAQ</span>
+      <h2>Pyetje të Shpeshta</h2>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <details style="background:var(--gray-light);border:1px solid var(--gray-mid);border-radius:var(--radius);overflow:hidden;" class="fade-in">
+        <summary style="padding:18px 22px;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;">
+          A mund të porosis madhësi të ndryshme në të njëjtën porosi?
+          <span style="color:var(--green);font-size:1.2rem;">+</span>
+        </summary>
+        <p style="padding:0 22px 18px;color:var(--text-mid);font-size:.92rem;">Po, mund të kombinoni madhësi të ndryshme në një porosi. Minimumi për secilën madhësi mbetet 1,000 copë.</p>
+      </details>
+
+      <details style="background:var(--gray-light);border:1px solid var(--gray-mid);border-radius:var(--radius);overflow:hidden;" class="fade-in">
+        <summary style="padding:18px 22px;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;">
+          Sa kohë zgjat prodhimi?
+          <span style="color:var(--green);font-size:1.2rem;">+</span>
+        </summary>
+        <p style="padding:0 22px 18px;color:var(--text-mid);font-size:.92rem;">Koha standarde e prodhimit është 7–10 ditë pune pas aprovimit të dizajnit. Ofrojmë shërbim express për porosite urgjente.</p>
+      </details>
+
+      <details style="background:var(--gray-light);border:1px solid var(--gray-mid);border-radius:var(--radius);overflow:hidden;" class="fade-in">
+        <summary style="padding:18px 22px;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;">
+          A janë kupat të sigurta për pije të nxehta?
+          <span style="color:var(--green);font-size:1.2rem;">+</span>
+        </summary>
+        <p style="padding:0 22px 18px;color:var(--text-mid);font-size:.92rem;">Po, të gjitha kupat tona janë të mbuluara me shtresë mbrojtëse dhe janë të sigurta për pije të nxehta deri në 95°C.</p>
+      </details>
+
+      <details style="background:var(--gray-light);border:1px solid var(--gray-mid);border-radius:var(--radius);overflow:hidden;" class="fade-in">
+        <summary style="padding:18px 22px;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;">
+          A ofron ERA kapakë për kupat?
+          <span style="color:var(--green);font-size:1.2rem;">+</span>
+        </summary>
+        <p style="padding:0 22px 18px;color:var(--text-mid);font-size:.92rem;">Po, ofrojmë kapakë plastikë dhe me bulë (dome lids) të kompatibël me të tri madhësitë. Pyetni për çmimet.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── CTA BANNER ─────────────────────────────────────────── -->
+<section class="cta-banner">
+  <div class="container">
+    <h2>Gati të Personalizoni Kupat Tuaja?</h2>
+    <p>Kontaktoni ekipin tonë sot dhe merrni një ofertë falas brenda 24 orëve.</p>
+    <div class="cta-btns">
+      <a href="contact.html" class="btn btn-outline btn-lg">Kërko Ofertë Falas</a>
+      <a href="https://wa.me/38344113533" target="_blank" class="btn btn-lg" style="background:#25d366;color:#fff;border:none;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── FOOTER ─────────────────────────────────────────────── -->
+<div id="site-footer"></div>
+
+<div id="site-whatsapp"></div>
+
+<script src="js/main.js?v=13"></script>
+<script>
+  /* Size switcher for hero section */
+  const cupData = {
+    '35': { cap: '3.5oz / 100ml', use: 'Espresso' },
+    '7':  { cap: '7oz / 200ml',   use: 'Kafe, Cappuccino, Çaj' },
+    '12': { cap: '12oz / 350ml',  use: 'Festivale, Koncerte, Evente' }
+  };
+
+  function switchCup(btn, imgSrc, badgeText) {
+    document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('cupHeroImg').src = imgSrc;
+    document.getElementById('cupBadge').textContent = badgeText;
+    const key = btn.dataset.size;
+    document.getElementById('specCap').textContent = cupData[key].cap;
+    document.getElementById('specUse').textContent = cupData[key].use;
+  }
+</script>
+</body>
+</html>

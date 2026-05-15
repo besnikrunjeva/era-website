@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ngarko Dizajnin – ERA Print Pack</title>
+  <meta name="description" content="Shkarko shabllonin e dizajnit, ngarko artin tënd dhe dërgo porosinë. Ekipi i ERA do të kontaktojë brenda 24 orëve." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css?v=5" />
+  <link rel="icon" type="image/svg+xml" href="assets/era-logo.svg" />
+
+  <!-- EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+  <style>
+    /* ── Page hero ───────────────────────────────────────── */
+    .order-hero {
+      background: linear-gradient(135deg, #0d1f06 0%, #142d08 55%, #1a3a0a 100%);
+      padding: 100px 0 72px;
+      text-align: center;
+    }
+    .order-hero h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 16px;
+      line-height: 1.15;
+    }
+    .order-hero h1 span { color: var(--green); }
+    .order-hero p {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,.88);
+      max-width: 540px;
+      margin: 0 auto;
+      line-height: 1.75;
+    }
+
+    /* ── Steps bar ───────────────────────────────────────── */
+    .order-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--gray-mid);
+      border-bottom: 1px solid var(--gray-mid);
+    }
+    .order-step {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 28px 32px;
+      background: var(--white);
+    }
+    .order-step-num {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--green-light);
+      color: var(--green-darker);
+      font-size: .9rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .order-step.active .order-step-num {
+      background: var(--green);
+      color: #fff;
+    }
+    .order-step-label { font-size: .8rem; color: var(--text-soft); font-weight: 500; }
+    .order-step-title { font-size: .95rem; font-weight: 700; color: var(--text); }
+
+    /* ── Main layout ─────────────────────────────────────── */
+    .order-layout {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 40px;
+      align-items: start;
+      padding: 56px 0 80px;
+    }
+
+    /* ── Template card ───────────────────────────────────── */
+    .template-section { margin-bottom: 40px; }
+    .template-section h2 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+    .template-section > p {
+      color: var(--text-mid);
+      font-size: .9rem;
+      margin-bottom: 24px;
+    }
+    .template-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+    }
+    .template-card {
+      border: 1px solid var(--gray-mid);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      background: var(--white);
+      transition: var(--transition);
+    }
+    .template-card:hover {
+      border-color: var(--green);
+      box-shadow: var(--shadow-sm);
+    }
+    .template-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--green-light);
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .template-info { flex: 1; min-width: 0; }
+    .template-name { font-weight: 700; font-size: .9rem; margin-bottom: 2px; }
+    .template-meta { font-size: .75rem; color: var(--gray); }
+    .template-download {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: .78rem;
+      font-weight: 700;
+      color: var(--green-darker);
+      background: var(--green-light);
+      border: none;
+      padding: 7px 14px;
+      border-radius: 100px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: var(--transition);
+      flex-shrink: 0;
+    }
+    .template-download:hover {
+      background: var(--green);
+      color: #fff;
+    }
+    .template-coming {
+      display: inline-flex;
+      align-items: center;
+      font-size: .78rem;
+      font-weight: 600;
+      color: var(--gray);
+      background: var(--gray-light);
+      padding: 7px 14px;
+      border-radius: 100px;
+      flex-shrink: 0;
+    }
+
+    /* ── Form ────────────────────────────────────────────── */
+    .order-form-section h2 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+    .order-form-section > p {
+      color: var(--text-mid);
+      font-size: .9rem;
+      margin-bottom: 28px;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--text);
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .form-group label span { color: var(--green); }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 11px 14px;
+      border: 1.5px solid var(--gray-mid);
+      border-radius: var(--radius);
+      font-family: inherit;
+      font-size: .9rem;
+      color: var(--text);
+      background: var(--white);
+      transition: border-color .2s;
+      outline: none;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--green);
+    }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+
+    /* Upload zone */
+    .upload-zone {
+      border: 2px dashed var(--gray-mid);
+      border-radius: var(--radius-lg);
+      padding: 32px 24px;
+      text-align: center;
+      background: var(--gray-light);
+      transition: border-color .2s, background .2s;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .upload-zone.has-file {
+      border-color: var(--green);
+      background: var(--green-light);
+    }
+    .upload-zone-icon {
+      width: 52px;
+      height: 52px;
+      background: var(--white);
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 14px;
+      box-shadow: var(--shadow-sm);
+    }
+    .upload-zone h4 { font-size: .95rem; font-weight: 700; margin-bottom: 6px; }
+    .upload-zone p  { font-size: .8rem; color: var(--text-soft); margin-bottom: 16px; }
+    .upload-zone .formats {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+    .format-badge {
+      font-size: .68rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 100px;
+      background: var(--white);
+      color: var(--text-mid);
+      border: 1px solid var(--gray-mid);
+    }
+    /* Hide default uploadcare button text, show custom */
+    .uploadcare--widget__button {
+      background: var(--green) !important;
+      color: #fff !important;
+      border: none !important;
+      padding: 10px 24px !important;
+      border-radius: 100px !important;
+      font-family: inherit !important;
+      font-weight: 700 !important;
+      font-size: .875rem !important;
+      cursor: pointer !important;
+    }
+    .uploadcare--widget__button:hover {
+      background: var(--green-darker) !important;
+    }
+    .file-uploaded-info {
+      display: none;
+      align-items: center;
+      gap: 10px;
+      background: var(--white);
+      border: 1px solid rgba(76,167,6,.3);
+      border-radius: var(--radius);
+      padding: 12px 16px;
+      margin-top: 12px;
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--green-darker);
+    }
+    .file-uploaded-info.show { display: flex; }
+
+    .generated-preview-card {
+      display: none;
+      align-items: center;
+      gap: 18px;
+      padding: 18px;
+      margin-bottom: 22px;
+      background: linear-gradient(180deg, #ffffff 0%, #f8fceb 100%);
+      border: 1px solid rgba(76,167,6,.22);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+    }
+    .generated-preview-card.show { display: flex; }
+    .generated-preview-card.priority {
+      margin-bottom: 28px;
+      box-shadow: 0 18px 34px rgba(76,167,6,.14);
+    }
+    .generated-preview-thumb {
+      width: 132px;
+      height: 132px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(76,167,6,.18);
+      background:
+        linear-gradient(45deg, #f4f4f4 25%, transparent 25%),
+        linear-gradient(-45deg, #f4f4f4 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #f4f4f4 75%),
+        linear-gradient(-45deg, transparent 75%, #f4f4f4 75%);
+      background-size: 18px 18px;
+      background-position: 0 0, 0 9px, 9px -9px, -9px 0;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .generated-preview-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      background: rgba(255,255,255,.82);
+    }
+    .generated-preview-body {
+      flex: 1;
+      min-width: 0;
+    }
+    .generated-preview-body h3 {
+      font-size: 1rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+    .generated-preview-body p {
+      margin: 0 0 12px;
+      font-size: .85rem;
+      line-height: 1.6;
+      color: var(--text-soft);
+    }
+    .generated-preview-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .generated-preview-download {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .82rem;
+      font-weight: 700;
+      color: var(--green-darker);
+      text-decoration: none;
+      background: var(--green-light);
+      border-radius: 999px;
+      padding: 9px 14px;
+      transition: var(--transition);
+    }
+    .generated-preview-download:hover {
+      background: var(--green);
+      color: #fff;
+    }
+    .generated-preview-meta {
+      font-size: .76rem;
+      color: var(--gray);
+      font-weight: 600;
+    }
+    .preview-arrival-note {
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 14px 16px;
+      margin-bottom: 18px;
+      background: var(--green-light);
+      border: 1px solid rgba(76,167,6,.2);
+      border-radius: var(--radius);
+    }
+    .preview-arrival-note.show { display: flex; }
+    .preview-arrival-copy {
+      min-width: 0;
+    }
+    .preview-arrival-copy strong {
+      display: block;
+      font-size: .9rem;
+      color: var(--green-darker);
+      margin-bottom: 3px;
+    }
+    .preview-arrival-copy span {
+      display: block;
+      font-size: .8rem;
+      line-height: 1.55;
+      color: var(--text-soft);
+    }
+    .preview-arrival-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+      text-decoration: none;
+      font-size: .78rem;
+      font-weight: 700;
+      color: var(--green-darker);
+    }
+    .preview-priority-title {
+      display: none;
+      margin-bottom: 16px;
+      padding: 16px 18px;
+      background: linear-gradient(180deg, #ffffff 0%, #f8fcf3 100%);
+      border: 1px solid rgba(76,167,6,.18);
+      border-radius: var(--radius-lg);
+    }
+    .preview-priority-title.show { display: block; }
+    .preview-priority-title strong {
+      display: block;
+      font-size: 1rem;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .preview-priority-title span {
+      display: block;
+      font-size: .84rem;
+      color: var(--text-soft);
+      line-height: 1.55;
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 15px;
+      background: var(--green);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius);
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .btn-submit:hover:not(:disabled) {
+      background: var(--green-darker);
+      transform: translateY(-1px);
+    }
+    .btn-submit:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+
+    /* ── Sidebar ─────────────────────────────────────────── */
+    .order-sidebar { position: sticky; top: 100px; }
+    .sidebar-card {
+      background: var(--white);
+      border: 1px solid var(--gray-mid);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      margin-bottom: 20px;
+    }
+    .sidebar-card h3 {
+      font-size: 1rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--gray-mid);
+    }
+    .sidebar-item {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+    .sidebar-item:last-child { margin-bottom: 0; }
+    .sidebar-item-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--green-light);
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .sidebar-item-title { font-size: .85rem; font-weight: 700; margin-bottom: 2px; }
+    .sidebar-item-desc  { font-size: .78rem; color: var(--text-soft); line-height: 1.5; }
+    .sidebar-contact-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 12px;
+      border-radius: var(--radius);
+      font-weight: 700;
+      font-size: .875rem;
+      text-decoration: none;
+      transition: var(--transition);
+      margin-bottom: 10px;
+    }
+    .sidebar-contact-btn.wa {
+      background: #25D366;
+      color: #fff;
+    }
+    .sidebar-contact-btn.wa:hover { background: #1ebe5d; }
+    .sidebar-contact-btn.ph {
+      background: var(--gray-light);
+      color: var(--text);
+      border: 1px solid var(--gray-mid);
+    }
+    .sidebar-contact-btn.ph:hover { background: var(--gray-mid); }
+
+    /* ── Success state ───────────────────────────────────── */
+    .success-screen {
+      display: none;
+      text-align: center;
+      padding: 80px 24px;
+    }
+    .success-screen.show { display: block; }
+    .success-icon {
+      width: 80px;
+      height: 80px;
+      background: var(--green-light);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+    }
+    .success-screen h2 { font-size: 1.8rem; margin-bottom: 12px; }
+    .success-screen p  { color: var(--text-mid); max-width: 420px; margin: 0 auto 32px; line-height: 1.75; }
+
+    /* ── Responsive ──────────────────────────────────────── */
+    @media (max-width: 960px) {
+      .order-layout { grid-template-columns: 1fr; }
+      .order-sidebar { position: static; }
+      .order-steps { grid-template-columns: 1fr; gap: 0; }
+    }
+    @media (max-width: 600px) {
+      .form-row { grid-template-columns: 1fr; }
+      .order-hero { padding: 80px 0 56px; }
+      .generated-preview-card {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .preview-arrival-note {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .generated-preview-thumb {
+        width: 100%;
+        height: 180px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div id="site-nav"></div>
+
+
+<!-- ── HERO ───────────────────────────────────────────────── -->
+<section class="order-hero">
+  <div class="container">
+    <span class="badge" style="background:rgba(255,255,255,.15);color:rgba(255,255,255,.9);margin-bottom:20px;display:inline-block;">Porosia Juaj</span>
+    <h1>Ngarko <span>Dizajnin Tënd</span><br/>Porosit Online</h1>
+    <p>Shkarkoni shabllonin, përgatitni dizajnin dhe dërgoni porosinë. Ekipi ynë ju kontakton brenda 24 orëve për konfirmim.</p>
+  </div>
+</section>
+
+
+<!-- ── STEPS BAR ──────────────────────────────────────────── -->
+<div class="order-steps">
+  <div class="order-step active">
+    <div class="order-step-num">1</div>
+    <div>
+      <div class="order-step-label">Hapi i parë</div>
+      <div class="order-step-title">Shkarko Shabllonin</div>
+    </div>
+  </div>
+  <div class="order-step" id="step2bar">
+    <div class="order-step-num">2</div>
+    <div>
+      <div class="order-step-label">Hapi i dytë</div>
+      <div class="order-step-title">Ngarko Dizajnin</div>
+    </div>
+  </div>
+  <div class="order-step" id="step3bar">
+    <div class="order-step-num">3</div>
+    <div>
+      <div class="order-step-label">Hapi i tretë</div>
+      <div class="order-step-title">Dërgo Porosinë</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ── MAIN CONTENT ───────────────────────────────────────── -->
+<section class="section" style="background:var(--gray-light);padding-top:0;">
+  <div class="container">
+    <div class="order-layout">
+
+      <!-- Left: Templates + Form -->
+      <div>
+
+        <!-- STEP 1: Download template -->
+        <div class="template-section fade-in" id="templateSection" style="padding-top:56px;">
+          <span class="badge" style="margin-bottom:14px;display:inline-block;">Hapi 1</span>
+          <h2>Shkarko Shabllonin e Dizajnit</h2>
+          <p>Çdo produkt ka dimensionet e tij specifike. Shkarko shabllonin PDF, hap në Illustrator ose Photoshop dhe vendos dizajnin mbi shtresën e duhur.</p>
+          <div style="display:inline-flex;align-items:center;gap:8px;background:var(--green-light);border:1px solid rgba(76,167,6,.25);border-radius:var(--radius);padding:8px 14px;margin-bottom:20px;font-size:.82rem;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--green-darker)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span style="color:var(--green-darker);font-weight:600;">Mungon vetëm: <strong>Kupa Pasta</strong> &nbsp;·&nbsp; Të gjitha shablllonet e tjera janë gati</span>
+          </div>
+
+          <div class="template-cards">
+
+            <!-- 1. Gota Letre — template ready ✅ -->
+            <div class="template-card">
+              <div class="template-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green-darker)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+              </div>
+              <div class="template-info">
+                <div class="template-name">Gota Letre (3.5oz – 12oz)</div>
+                <div class="template-meta">PDF · Shabllon dizajni</div>
+              </div>
+              <a href="assets/templates/gota-dizajn-template.pdf" download class="template-download">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Shkarko
+              </a>
+            </div>
+
+            <!-- 2. Kupa Pasta -->
+            <div class="template-card">
+              <div class="template-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green-darker)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              </div>
+              <div class="template-info">
+                <div class="template-name">Kupa Pasta</div>
+                <div class="template-meta">PDF · Shabllon dizajni</div>
+              </div>
+              <span class="template-coming">Së shpejti</span>
+            </div>
+
+            <!-- 3. Kupa Supe -->
+            <div class="template-card">
+              <div class="template-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green-darker)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+              </div>
+              <div class="template-info">
+                <div class="template-name">Kupa Supe</div>
+                <div class="template-meta">PDF · Shabllon dizajni</div>
+              </div>
+              <a href="assets/templates/supa-template.pdf" download class="template-download">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Shkarko
+              </a>
+            </div>
+
+            <!-- 4. Kupa Akullore -->
+            <div class="template-card">
+              <div class="template-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green-darker)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+              </div>
+              <div class="template-info">
+                <div class="template-name">Kupa Akullore (S & M)</div>
+                <div class="template-meta">PDF · Shabllon dizajni</div>
+              </div>
+              <a href="assets/templates/akullore-template.pdf" download class="template-download">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Shkarko
+              </a>
+            </div>
+
+            <!-- 5. Letër Tavoline -->
+            <div class="template-card">
+              <div class="template-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green-darker)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+              </div>
+              <div class="template-info">
+                <div class="template-name">Letër Tavoline</div>
+                <div class="template-meta">PDF · Shabllon dizajni</div>
+              </div>
+              <a href="assets/templates/leter-tavoline-template.pdf" download class="template-download">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Shkarko
+              </a>
+            </div>
+
+            <!-- 6. Letër Mbështjellëse -->
+            <div class="template-card">
+              <div class="template-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green-darker)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+              </div>
+              <div class="template-info">
+                <div class="template-name">Letër Mbështjellëse</div>
+                <div class="template-meta">PDF · Shabllon dizajni</div>
+              </div>
+              <a href="assets/templates/leter-mbeshtjellese-template.pdf" download class="template-download">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Shkarko
+              </a>
+            </div>
+
+            <!-- 7. Mbajtëse Lugë -->
+            <div class="template-card">
+              <div class="template-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green-darker)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+              </div>
+              <div class="template-info">
+                <div class="template-name">Mbajtëse Lugë</div>
+                <div class="template-meta">PDF · Shabllon dizajni</div>
+              </div>
+              <a href="assets/templates/mbajtese-luge-template.pdf" download class="template-download">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Shkarko
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- STEP 2 & 3: Form -->
+        <div class="order-form-section fade-in" id="order-form-wrap">
+          <span class="badge" style="margin-bottom:14px;display:inline-block;">Hapi 2</span>
+          <h2>Ngarko Dizajnin & Dërgo Porosinë</h2>
+          <p>Plotëso të dhënat e porosisë dhe ngarko skedarin e dizajnit. Ekipi ynë do të konfirmojë detajet para fillimit të prodhimit.</p>
+
+          <div class="preview-priority-title" id="previewPriorityTitle">
+            <strong>Dizajni juaj është gati për dërgim</strong>
+            <span>E sollëm preview-n e gotës më sipër, që klienti të vazhdojë direkt me porosinë pa kaluar fillimisht te shabllonet.</span>
+          </div>
+
+          <div class="generated-preview-card" id="generatedPreviewCard">
+            <div class="generated-preview-thumb">
+              <img id="generatedPreviewImage" alt="Preview i dizajnit të gjeneruar" />
+            </div>
+            <div class="generated-preview-body">
+              <span class="badge" style="margin-bottom:10px;display:inline-block;">Nga Preview i Gotës</span>
+              <h3>Dizajni juaj u shtua automatikisht</h3>
+              <p>Preview i sheshtë nga gota u ngarkua si skedar dizajni. Mund ta dërgoni direkt ose të shtoni skedarë të tjerë nëse keni version final nga dizajneri.</p>
+              <div class="generated-preview-actions">
+                <a href="#" class="generated-preview-download" id="generatedPreviewDownload">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  Shkarko preview
+                </a>
+                <span class="generated-preview-meta" id="generatedPreviewMeta"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="preview-arrival-note" id="previewArrivalNote">
+            <div class="preview-arrival-copy">
+              <strong>Keni nevojë edhe për shabllonet?</strong>
+              <span>Mund t'i gjeni më poshtë pa dalë nga kjo faqe.</span>
+            </div>
+            <a href="#templateSection" class="preview-arrival-link">
+              Shiko shabllonet
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+            </a>
+          </div>
+
+          <form id="orderForm" novalidate enctype="multipart/form-data">
+            <input type="hidden" name="product" id="productSummaryInput" value="" />
+            <input type="hidden" name="file_name" id="fileSummaryInput" value="" />
+
+            <!-- Contact info -->
+            <div class="form-row">
+              <div class="form-group">
+                <label>Emri & Mbiemri <span>*</span></label>
+                <input type="text" name="client_name" placeholder="p.sh. Ardian Krasniqi" required />
+              </div>
+              <div class="form-group">
+                <label>Emri i Biznesit <span>*</span></label>
+                <input type="text" name="business_name" placeholder="p.sh. Restoranti Shqiponja" required />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label>Numri i Telefonit <span>*</span></label>
+                <input type="tel" name="phone" placeholder="+383 44 xxx xxx" required />
+              </div>
+              <div class="form-group">
+                <label>Email Adresa <span>*</span></label>
+                <input type="email" name="email" placeholder="emri@biznesi.com" required />
+              </div>
+            </div>
+
+            <!-- Product rows -->
+            <div id="productRowsWrap">
+              <div class="product-order-row" style="position:relative;">
+                <div class="form-row">
+                  <div class="form-group">
+                    <label>Produkti i Dëshiruar <span>*</span></label>
+                    <select name="product[]" id="productSelect" class="product-select" required>
+                      <option value="">Zgjidhni produktin...</option>
+                      <optgroup label="Gota Letre">
+                        <option value="gota-3.5oz">Gota Letre 3.5oz</option>
+                        <option value="gota-7oz">Gota Letre 7oz</option>
+                        <option value="gota-12oz">Gota Letre 12oz</option>
+                      </optgroup>
+                      <optgroup label="Kupa Pasta & Supe">
+                        <option value="kupa-pasta">Kupa Pasta</option>
+                        <option value="kupa-supe">Kupa Supe</option>
+                      </optgroup>
+                      <optgroup label="Kupa Akullore">
+                        <option value="akullore-s">Kupa Akullore S</option>
+                        <option value="akullore-m">Kupa Akullore M</option>
+                      </optgroup>
+                      <option value="leter-tavoline">Letër Tavoline</option>
+                      <option value="leter-mbeshtjellese">Letër Mbështjellëse</option>
+                      <option value="mbajtese-luge">Mbajtëse Lugë</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Sasia e Dëshiruar <span>*</span></label>
+                    <select name="quantity[]" class="quantity-select" required>
+                      <option value="">Zgjidhni sasinë...</option>
+                      <option>1,000 – 5,000 copë</option>
+                      <option>5,000 – 10,000 copë</option>
+                      <option>10,000 – 25,000 copë</option>
+                      <option>25,000 – 50,000 copë</option>
+                      <option>50,000+ copë</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Add product button -->
+            <button type="button" id="addProductBtn" style="display:flex;align-items:center;gap:8px;background:none;border:1.5px dashed var(--gray-mid);border-radius:var(--radius);padding:12px 18px;font-size:.85rem;font-weight:600;color:var(--text-mid);cursor:pointer;width:100%;justify-content:center;margin-top:4px;margin-bottom:28px;transition:var(--transition);"
+              onmouseover="this.style.borderColor='var(--green)';this.style.color='var(--green)'"
+              onmouseout="this.style.borderColor='var(--gray-mid)';this.style.color='var(--text-mid)'">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              Shto produkt tjetër
+            </button>
+
+            <div class="form-group">
+              <label>Shënime / Kërkesa Speciale</label>
+              <textarea name="notes" placeholder="p.sh. Logo në të dyja anët, ngjyra specifike Pantone, afat urgjent..."></textarea>
+            </div>
+
+            <!-- File upload -->
+            <div class="form-group">
+              <label>Ngarko Skedarët e Dizajnit</label>
+
+              <!-- Drop zone -->
+              <div class="upload-zone" id="uploadZone" onclick="document.getElementById('designFileInput').click()" style="cursor:pointer;">
+                <div class="upload-zone-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/></svg>
+                </div>
+                <h4>Tërhiq skedarët këtu ose kliko për të zgjedhur</h4>
+                <p id="uploadZoneSub">Mund të ngarkoni disa skedarë njëherësh</p>
+                <input
+                  type="file"
+                  id="designFileInput"
+                  name="design_file"
+                  accept=".pdf,.ai,.psd,.png,.jpg,.jpeg,.zip"
+                  multiple
+                  style="display:none;"
+                />
+                <div class="formats">
+                  <span class="format-badge">PDF</span>
+                  <span class="format-badge">AI</span>
+                  <span class="format-badge">PSD</span>
+                  <span class="format-badge">PNG</span>
+                  <span class="format-badge">JPG</span>
+                  <span class="format-badge">ZIP</span>
+                </div>
+              </div>
+
+              <!-- File list -->
+              <div id="fileList" style="display:none;margin-top:10px;display:flex;flex-direction:column;gap:8px;"></div>
+
+              <p style="font-size:.75rem;color:var(--text-soft);margin-top:8px;line-height:1.5;">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle;margin-right:4px;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                Nëse skedarët janë shumë të mëdhenj, mund t'i dërgoni nëpërmjet <strong>WhatsApp</strong> pasi të konfirmoni porosinë.
+              </p>
+            </div>
+
+            <div style="border-top:1px solid var(--gray-mid);margin:8px 0 24px;padding-top:24px;">
+              <span class="badge" style="margin-bottom:14px;display:inline-block;">Hapi 3</span>
+              <p style="font-size:.9rem;color:var(--text-mid);margin-bottom:20px;">Kontrolloni të dhënat dhe dërgoni porosinë. Ekipi ynë ju kontakton brenda 24 orëve.</p>
+            </div>
+
+            <button type="submit" class="btn-submit" id="submitBtn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              Dërgo Porosinë
+            </button>
+
+            <p style="font-size:.75rem;color:var(--gray);text-align:center;margin-top:14px;">
+              Duke dërguar, pranoni që ekipi i ERA do t'ju kontaktojë brenda 24 orëve për konfirmim.
+            </p>
+
+          </form>
+
+          <!-- Success message -->
+          <div class="success-screen" id="successScreen">
+            <div class="success-icon">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <h2>Porosia u Dërgua! 🎉</h2>
+            <p>Faleminderit! Ekipi i ERA Print Pack do t'ju kontaktojë brenda <strong>24 orëve</strong> për të konfirmuar dizajnin dhe detajet e porosisë.</p>
+            <a href="index.html" class="btn btn-primary">Kthehu në Faqe Kryesore</a>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Right: Sidebar -->
+      <div class="order-sidebar">
+
+        <div class="sidebar-card fade-in">
+          <h3>Si Funksionon?</h3>
+          <div class="sidebar-item">
+            <div class="sidebar-item-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--green-darker)" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            </div>
+            <div>
+              <div class="sidebar-item-title">1. Shkarko shabllonin</div>
+              <div class="sidebar-item-desc">Hap skedarin PDF në Illustrator ose Photoshop dhe vendos logon dhe dizajnin sipas udhëzimeve.</div>
+            </div>
+          </div>
+          <div class="sidebar-item">
+            <div class="sidebar-item-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--green-darker)" stroke-width="2"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/></svg>
+            </div>
+            <div>
+              <div class="sidebar-item-title">2. Ngarko dizajnin</div>
+              <div class="sidebar-item-desc">Ngarko skedarin final (PDF, AI, PSD) dhe plotëso formularin me detajet e porosisë.</div>
+            </div>
+          </div>
+          <div class="sidebar-item">
+            <div class="sidebar-item-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--green-darker)" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6.29 6.29l.98-.98a2 2 0 0 1 2.1-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div>
+              <div class="sidebar-item-title">3. Ekipi ju kontakton</div>
+              <div class="sidebar-item-desc">Brenda 24 orëve konfirmojmë dizajnin, çmimin dhe afatin e dorëzimit.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar-card fade-in">
+          <h3>Keni Pyetje?</h3>
+          <a href="https://wa.me/38344113533?text=Përshëndetje%2C%20dua%20të%20bëj%20një%20porosi%20dhe%20kam%20disa%20pyetje." target="_blank" class="sidebar-contact-btn wa">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Na shkruaj në WhatsApp
+          </a>
+          <a href="tel:+38344113533" class="sidebar-contact-btn ph">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6.29 6.29l.98-.98a2 2 0 0 1 2.1-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            +383 44 113 533
+          </a>
+        </div>
+
+        <div class="sidebar-card fade-in" style="background:var(--green-light);border-color:rgba(76,167,6,.2);">
+          <h3 style="border-color:rgba(76,167,6,.2);display:flex;align-items:center;gap:8px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green-darker)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><polyline points="9 12 11 14 15 10"/></svg>
+            Kërkesat e Skedarit
+          </h3>
+          <div class="sidebar-item">
+            <div style="width:28px;height:28px;background:linear-gradient(135deg,#00b4d8,#e63946);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+            </div>
+            <div>
+              <div class="sidebar-item-title">Ngjyrat — CMYK</div>
+              <div class="sidebar-item-desc">Konvertoni nga RGB në CMYK para eksportit. Ngjyrat RGB mund të duken ndryshe pas printimit.</div>
+            </div>
+          </div>
+          <div class="sidebar-item">
+            <div style="width:28px;height:28px;background:var(--green);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+            </div>
+            <div>
+              <div class="sidebar-item-title">Tekstet — Outline</div>
+              <div class="sidebar-item-desc">Konverto fontet në kurba (Type → Create Outlines) për të shmangur zëvendësimin gjatë printimit.</div>
+            </div>
+          </div>
+          <div class="sidebar-item">
+            <div style="width:28px;height:28px;background:var(--green);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            </div>
+            <div>
+              <div class="sidebar-item-title">Fotografitë — Embedded</div>
+              <div class="sidebar-item-desc">Sigurohuni që imazhet janë "Embed" e jo "Link" para ruajtjes.</div>
+            </div>
+          </div>
+          <div class="sidebar-item">
+            <div style="width:28px;height:28px;background:var(--green);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </div>
+            <div>
+              <div class="sidebar-item-title">Rezolucioni — 300 DPI</div>
+              <div class="sidebar-item-desc">Minimum 300 DPI dhe 3mm bleed nga të katër anët sipas shabllonit.</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<div id="site-footer"></div>
+<div id="site-whatsapp"></div>
+
+<script src="js/main.js?v=13"></script>
+<script>
+(function() {
+  // ── Pre-select product from URL param (?p=gota-7oz) ─────
+  const urlParam = new URLSearchParams(window.location.search).get('p');
+  if (urlParam) {
+    const sel = document.getElementById('productSelect');
+    if (sel) {
+      const match = [...sel.options].find(o => o.value === urlParam);
+      if (match) match.selected = true;
+    }
+  }
+
+  // ── Step bar progression ─────────────────────────────────
+  const step2bar = document.getElementById('step2bar');
+  const step3bar = document.getElementById('step3bar');
+  const formWrap = document.getElementById('order-form-wrap');
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) { step2bar.classList.add('active'); }
+    });
+  }, { threshold: 0.1 });
+  if (formWrap) observer.observe(formWrap);
+
+  // ── Dynamic product rows ──────────────────────────────────
+  const PRODUCT_OPTIONS = `
+    <option value="">Zgjidhni produktin...</option>
+    <optgroup label="Gota Letre">
+      <option value="gota-3.5oz">Gota Letre 3.5oz</option>
+      <option value="gota-7oz">Gota Letre 7oz</option>
+      <option value="gota-12oz">Gota Letre 12oz</option>
+    </optgroup>
+    <optgroup label="Kupa Pasta & Supe">
+      <option value="kupa-pasta">Kupa Pasta</option>
+      <option value="kupa-supe">Kupa Supe</option>
+    </optgroup>
+    <optgroup label="Kupa Akullore">
+      <option value="akullore-s">Kupa Akullore S</option>
+      <option value="akullore-m">Kupa Akullore M</option>
+    </optgroup>
+    <option value="leter-tavoline">Letër Tavoline</option>
+    <option value="leter-mbeshtjellese">Letër Mbështjellëse</option>
+    <option value="mbajtese-luge">Mbajtëse Lugë</option>
+  `;
+  const QUANTITY_OPTIONS = `
+    <option value="">Zgjidhni sasinë...</option>
+    <option>1,000 – 5,000 copë</option>
+    <option>5,000 – 10,000 copë</option>
+    <option>10,000 – 25,000 copë</option>
+    <option>25,000 – 50,000 copë</option>
+    <option>50,000+ copë</option>
+  `;
+
+  document.getElementById('addProductBtn').addEventListener('click', function() {
+    const wrap = document.getElementById('productRowsWrap');
+    const rowCount = wrap.querySelectorAll('.product-order-row').length + 1;
+    const row = document.createElement('div');
+    row.className = 'product-order-row';
+    row.style.position = 'relative';
+    row.style.marginTop = '12px';
+    row.innerHTML = `
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+        <span style="font-size:.75rem;font-weight:700;color:var(--text-soft);text-transform:uppercase;letter-spacing:.05em;">Produkti ${rowCount}</span>
+        <button type="button" onclick="this.closest('.product-order-row').remove()" style="background:none;border:none;cursor:pointer;color:var(--gray);font-size:.8rem;font-weight:600;display:flex;align-items:center;gap:4px;padding:8px 12px;border-radius:6px;transition:var(--transition);"
+          onmouseover="this.style.color='#e53e3e'" onmouseout="this.style.color='var(--gray)'">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          Largo
+        </button>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <select name="product[]" class="product-select" required>
+            ${PRODUCT_OPTIONS}
+          </select>
+        </div>
+        <div class="form-group">
+          <select name="quantity[]" class="quantity-select" required>
+            ${QUANTITY_OPTIONS}
+          </select>
+        </div>
+      </div>
+    `;
+    wrap.appendChild(row);
+    // Focus the new product select
+    row.querySelector('.product-select').focus();
+  });
+
+  // ── EmailJS init ─────────────────────────────────────────
+  // Replace with your actual EmailJS public key
+  emailjs.init('fdp5WHrseE6lVPoff');
+
+  // ── Multi-file upload ─────────────────────────────────────
+  const orderSearchParams = new URLSearchParams(window.location.search);
+  const generatedPreviewCard = document.getElementById('generatedPreviewCard');
+  const generatedPreviewImage = document.getElementById('generatedPreviewImage');
+  const generatedPreviewDownload = document.getElementById('generatedPreviewDownload');
+  const generatedPreviewMeta = document.getElementById('generatedPreviewMeta');
+  const previewPriorityTitle = document.getElementById('previewPriorityTitle');
+  const previewArrivalNote = document.getElementById('previewArrivalNote');
+  const uploadedFiles = []; // array of File objects
+  const productSummaryInput = document.getElementById('productSummaryInput');
+  const fileSummaryInput = document.getElementById('fileSummaryInput');
+  const fileInput  = document.getElementById('designFileInput');
+  const uploadZone = document.getElementById('uploadZone');
+  const fileList   = document.getElementById('fileList');
+
+  function formatBytes(bytes) {
+    if (bytes < 1024) return bytes + ' B';
+    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+    return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+  }
+
+  function syncFileInputFiles() {
+    if (typeof DataTransfer === 'undefined') return;
+    const transfer = new DataTransfer();
+    uploadedFiles.forEach(function(file) {
+      transfer.items.add(file);
+    });
+    fileInput.files = transfer.files;
+  }
+
+  function dataURLToFile(dataUrl, filename) {
+    const parts = dataUrl.split(',');
+    if (parts.length < 2) return null;
+    const header = parts[0];
+    const mimeMatch = header.match(/data:(.*?);base64/);
+    const mime = mimeMatch ? mimeMatch[1] : 'image/png';
+    const binary = atob(parts[1]);
+    const len = binary.length;
+    const bytes = new Uint8Array(len);
+    for (let i = 0; i < len; i += 1) bytes[i] = binary.charCodeAt(i);
+    return new File([bytes], filename, { type: mime });
+  }
+
+  function stringToFile(content, filename, mimeType) {
+    return new File([content], filename, { type: mimeType });
+  }
+
+  function preselectProductFromQuery() {
+    const productValue = orderSearchParams.get('p');
+    if (!productValue) return;
+    const firstSelect = document.getElementById('productSelect');
+    if (!firstSelect) return;
+    const hasOption = Array.from(firstSelect.options).some(function(option) {
+      return option.value === productValue;
+    });
+    if (hasOption) firstSelect.value = productValue;
+  }
+
+  function activatePreviewFirstLayout() {
+    if (orderSearchParams.get('source') !== 'preview') return;
+    const leftColumn = document.querySelector('.order-layout > div');
+    const templateSection = document.getElementById('templateSection');
+    const formSection = document.getElementById('order-form-wrap');
+    if (!leftColumn || !templateSection || !formSection) return;
+
+    if (leftColumn.firstElementChild !== formSection) {
+      leftColumn.insertBefore(formSection, templateSection);
+    }
+
+    if (previewPriorityTitle) previewPriorityTitle.classList.add('show');
+    if (previewArrivalNote) previewArrivalNote.classList.add('show');
+
+    requestAnimationFrame(function() {
+      formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+
+  function hydratePreviewDesignFromSession() {
+    let stored = null;
+    try {
+      stored = JSON.parse(sessionStorage.getItem('era-cup-order-preview') || 'null');
+    } catch (error) {
+      stored = null;
+    }
+
+    if (!stored || !stored.designImage) return;
+
+    const generatedFiles = [];
+    const generatedFile = dataURLToFile(stored.designImage, 'preview-gote-era.png');
+    if (generatedFile) generatedFiles.push(generatedFile);
+    if (stored.layeredSvg) {
+      generatedFiles.push(stringToFile(stored.layeredSvg, 'preview-gote-era-layered.svg', 'image/svg+xml'));
+    }
+    if (stored.designJson) {
+      generatedFiles.push(stringToFile(stored.designJson, 'preview-gote-era-data.json', 'application/json'));
+    }
+    if (generatedFiles.length) uploadedFiles.unshift.apply(uploadedFiles, generatedFiles);
+    syncFileInputFiles();
+
+    generatedPreviewImage.src = stored.designImage;
+    generatedPreviewDownload.href = stored.designImage;
+    generatedPreviewDownload.download = generatedFile ? generatedFile.name : 'preview-gote-era.png';
+    generatedPreviewMeta.textContent = stored.layeredSvg
+      ? 'Preview + layered SVG + design JSON'
+      : (stored.product ? 'Preview për ' + stored.product : 'Preview i gatshëm për dërgim');
+    generatedPreviewCard.classList.add('show');
+    generatedPreviewCard.classList.add('priority');
+
+    renderFileList();
+
+    if (orderSearchParams.get('source') === 'preview') {
+      const notesField = document.querySelector('textarea[name="notes"]');
+      if (notesField && !notesField.value.trim()) {
+        notesField.value = 'Dizajni u gjenerua nga preview i gotës dhe u shtua automatikisht si preview, layered SVG dhe design JSON.';
+      }
+    }
+
+    sessionStorage.removeItem('era-cup-order-preview');
+  }
+
+  function renderFileList() {
+    fileList.innerHTML = '';
+    if (uploadedFiles.length === 0) {
+      fileList.style.display = 'none';
+      uploadZone.classList.remove('has-file');
+      fileSummaryInput.value = '—';
+      return;
+    }
+    fileList.style.display = 'flex';
+    uploadZone.classList.add('has-file');
+    fileSummaryInput.value = uploadedFiles.map(function(file, index) {
+      return (index + 1) + '. ' + file.name;
+    }).join('\n');
+    uploadedFiles.forEach(function(file, index) {
+      const item = document.createElement('div');
+      item.style.cssText = 'display:flex;align-items:center;gap:10px;background:var(--white);border:1px solid rgba(76,167,6,.25);border-radius:var(--radius);padding:10px 14px;';
+      item.innerHTML = `
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5" style="flex-shrink:0;"><polyline points="20 6 9 17 4 12"/></svg>
+        <span style="flex:1;font-size:.83rem;font-weight:600;color:var(--green-darker);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${file.name}</span>
+        <span style="font-size:.75rem;color:var(--gray);flex-shrink:0;">${formatBytes(file.size)}</span>
+        <button type="button" data-index="${index}" style="background:none;border:none;cursor:pointer;color:var(--gray);padding:4px;border-radius:4px;display:flex;align-items:center;flex-shrink:0;transition:color .15s;"
+          onmouseover="this.style.color='#e53e3e'" onmouseout="this.style.color='var(--gray)'">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      `;
+      item.querySelector('button').addEventListener('click', function() {
+        uploadedFiles.splice(index, 1);
+        syncFileInputFiles();
+        renderFileList();
+      });
+      fileList.appendChild(item);
+    });
+
+    // "+ Shto skedar tjetër" button at the bottom of list
+    const addMore = document.createElement('button');
+    addMore.type = 'button';
+    addMore.style.cssText = 'display:flex;align-items:center;gap:6px;background:none;border:1.5px dashed var(--gray-mid);border-radius:var(--radius);padding:8px 14px;font-size:.82rem;font-weight:600;color:var(--text-mid);cursor:pointer;width:100%;justify-content:center;transition:var(--transition);';
+    addMore.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Shto skedar tjetër`;
+    addMore.onmouseover = function() { this.style.borderColor='var(--green)'; this.style.color='var(--green)'; };
+    addMore.onmouseout  = function() { this.style.borderColor='var(--gray-mid)'; this.style.color='var(--text-mid)'; };
+    addMore.addEventListener('click', function() { fileInput.value = ''; fileInput.click(); });
+    fileList.appendChild(addMore);
+  }
+
+  function addFiles(newFiles) {
+    Array.from(newFiles).forEach(function(f) {
+      // avoid exact duplicates (same name + size)
+      const exists = uploadedFiles.some(function(e) { return e.name === f.name && e.size === f.size; });
+      if (!exists) uploadedFiles.push(f);
+    });
+    syncFileInputFiles();
+    renderFileList();
+  }
+
+  fileInput.addEventListener('change', function() {
+    if (fileInput.files && fileInput.files.length > 0) addFiles(fileInput.files);
+  });
+
+  // Drag & drop
+  uploadZone.addEventListener('dragover', function(e) { e.preventDefault(); uploadZone.style.borderColor = 'var(--green)'; });
+  uploadZone.addEventListener('dragleave', function() { uploadZone.style.borderColor = ''; });
+  uploadZone.addEventListener('drop', function(e) {
+    e.preventDefault();
+    uploadZone.style.borderColor = '';
+    if (e.dataTransfer.files.length > 0) addFiles(e.dataTransfer.files);
+  });
+
+  preselectProductFromQuery();
+  activatePreviewFirstLayout();
+  hydratePreviewDesignFromSession();
+
+  // ── Form submit ──────────────────────────────────────────
+  document.getElementById('orderForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const form     = e.target;
+    const btn      = document.getElementById('submitBtn');
+    const required = form.querySelectorAll('[required]');
+    let valid = true;
+
+    required.forEach(function(field) {
+      if (!field.value.trim()) {
+        field.style.borderColor = '#e53e3e';
+        valid = false;
+      } else {
+        field.style.borderColor = '';
+      }
+    });
+
+    // Validate all product rows have both product + quantity selected
+    document.querySelectorAll('.product-order-row').forEach(function(row) {
+      const ps = row.querySelector('.product-select');
+      const qs = row.querySelector('.quantity-select');
+      if (ps && !ps.value) { ps.style.borderColor = '#e53e3e'; valid = false; } else if (ps) ps.style.borderColor = '';
+      if (qs && !qs.value) { qs.style.borderColor = '#e53e3e'; valid = false; } else if (qs) qs.style.borderColor = '';
+    });
+
+    if (!valid) {
+      btn.textContent = 'Plotëso të gjitha fushat e detyrueshme';
+      setTimeout(function() {
+        btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Dërgo Porosinë';
+      }, 2500);
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = 'Duke dërguar...';
+    step3bar.classList.add('active');
+
+    // Collect all product rows
+    const productSelects  = document.querySelectorAll('.product-select');
+    const quantitySelects = document.querySelectorAll('.quantity-select');
+    const productLines = [];
+    productSelects.forEach(function(sel, i) {
+      const p = sel.options[sel.selectedIndex].text;
+      const q = quantitySelects[i] ? quantitySelects[i].options[quantitySelects[i].selectedIndex].text : '—';
+      if (sel.value) productLines.push((productSelects.length > 1 ? (i + 1) + '. ' : '') + p + ' — ' + q);
+    });
+
+    productSummaryInput.value = productLines.join('\n') || '—';
+    fileSummaryInput.value = uploadedFiles.length > 0
+      ? uploadedFiles.map(function(f, i) { return (i + 1) + '. ' + f.name; }).join('\n')
+      : '—';
+
+    emailjs.sendForm('eraprintpack_smtp', 'template_o7il47p', form)
+      .then(function() {
+        document.getElementById('order-form-wrap').style.display = 'none';
+        document.getElementById('successScreen').classList.add('show');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      })
+      .catch(function(err) {
+        console.error('EmailJS error:', err);
+        btn.disabled = false;
+        btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Provo Përsëri';
+      });
+  });
+})();
+</script>
+</body>
+</html>

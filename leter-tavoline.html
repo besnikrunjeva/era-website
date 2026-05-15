@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Letër Tavoline – ERA Print Pack</title>
+  <meta name="description" content="Letër tavoline me printim të personalizuar në formatin 230x160mm. Ideale për restorante, kafene dhe biznese horeca." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css?v=2" />
+  <link rel="icon" type="image/svg+xml" href="assets/era-logo.svg" />
+  <style>
+    .cup-showcase {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+    .cup-image-wrap {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      aspect-ratio: 1;
+    }
+    .cup-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .5s ease;
+    }
+    .cup-image-wrap:hover img { transform: scale(1.04); }
+    .cup-badge-size {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: var(--green);
+      color: var(--white);
+      font-size: .85rem;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 100px;
+    }
+
+    .cup-info h1 { margin-bottom: 14px; }
+    .cup-info .lead {
+      font-size: 1.1rem;
+      color: var(--text-mid);
+      margin-bottom: 28px;
+      line-height: 1.75;
+    }
+
+    .cup-specs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      margin-bottom: 28px;
+      border: 1px solid var(--gray-mid);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .spec-item {
+      background: var(--gray-light);
+      padding: 10px 14px;
+    }
+    .spec-item + .spec-item {
+      border-left: 1px solid var(--gray-mid);
+    }
+    .spec-label {
+      font-size: .68rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      color: var(--gray);
+      margin-bottom: 3px;
+    }
+    .spec-value {
+      font-size: .88rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .cup-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .sizes-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 28px;
+      max-width: 460px;
+      margin: 0 auto;
+    }
+    .size-card {
+      border: 2px solid var(--gray-mid);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: var(--transition);
+      cursor: pointer;
+      background: var(--white);
+      text-decoration: none;
+    }
+    .size-card:hover, .size-card.featured {
+      border-color: var(--green);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-6px);
+    }
+    .size-card.featured { transform: translateY(-10px); }
+    .size-card-img {
+      aspect-ratio: 1;
+      position: relative;
+      overflow: hidden;
+    }
+    .size-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .4s ease;
+    }
+    .size-card:hover .size-card-img img { transform: scale(1.06); }
+    .size-card-body { padding: 22px; }
+    .size-oz {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--green);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .size-ml {
+      font-size: .8rem;
+      color: var(--gray);
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+    .size-card-body h3 { margin-bottom: 8px; font-size: 1rem; }
+    .size-card-body p { font-size: .85rem; margin-bottom: 16px; }
+    .size-uses {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 18px;
+    }
+    .use-tag {
+      font-size: .75rem;
+      padding: 4px 10px;
+      border-radius: 100px;
+      background: var(--green-light);
+      color: var(--green-darker);
+      font-weight: 500;
+    }
+
+    .custom-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    .custom-step {
+      text-align: center;
+      padding: 28px 20px;
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--gray-mid);
+      transition: var(--transition);
+    }
+    .custom-step:hover {
+      border-color: var(--green);
+      box-shadow: var(--shadow-sm);
+    }
+    .custom-step-icon {
+      width: 64px;
+      height: 64px;
+      background: var(--green);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 18px;
+      box-shadow: 0 4px 16px rgba(76,167,6,.25);
+      flex-shrink: 0;
+    }
+    .custom-step h4 { margin-bottom: 8px; }
+    .custom-step p { font-size: .85rem; }
+
+    .order-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+    .order-table th {
+      background: var(--green);
+      color: var(--white);
+      padding: 16px 20px;
+      text-align: left;
+      font-size: .85rem;
+      font-weight: 600;
+      letter-spacing: .04em;
+    }
+    .order-table td {
+      padding: 15px 20px;
+      border-bottom: 1px solid var(--gray-mid);
+      font-size: .9rem;
+    }
+    .order-table tr:last-child td { border-bottom: none; }
+    .order-table tr:hover td { background: var(--green-light); }
+    .order-table .highlight { font-weight: 700; color: var(--green); }
+
+    @media (max-width: 768px) {
+      .cup-showcase { grid-template-columns: 1fr; gap: 20px; }
+      .sizes-grid { grid-template-columns: 1fr; }
+      .size-card.featured { transform: none; }
+      .custom-steps { grid-template-columns: 1fr 1fr; }
+      .cup-image-wrap { aspect-ratio: 1; border-radius: 20px; }
+      .cup-image-wrap img { object-fit: contain; height: 100%; }
+      .cup-specs { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .custom-steps { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="site-nav"></div>
+
+<div style="background:var(--gray-light);border-bottom:1px solid var(--gray-mid);padding:14px 0;margin-top:72px;">
+  <div class="container">
+    <div style="display:flex;align-items:center;gap:8px;font-size:.85rem;color:var(--text-soft);">
+      <a href="index.html" style="color:var(--text-soft);transition:color .2s;" onmouseover="this.style.color='#4ca706'" onmouseout="this.style.color=''">Kryefaqja</a>
+      <span>›</span>
+      <a href="products.html" style="color:var(--text-soft);transition:color .2s;" onmouseover="this.style.color='#4ca706'" onmouseout="this.style.color=''">Produktet</a>
+      <span>›</span>
+      <span id="breadcrumbCurrent" style="color:var(--text);font-weight:500;">Letër Tavoline</span>
+    </div>
+  </div>
+</div>
+
+<section class="section" style="padding-top:56px;">
+  <div class="container">
+    <div class="cup-showcase">
+      <div class="cup-image-wrap fade-in">
+        <img src="assets/leter-tavoline.png" alt="Letër Tavoline ERA Print Pack" id="heroImg" />
+        <span class="cup-badge-size" id="heroBadgeSize">230×160mm</span>
+      </div>
+
+      <div class="cup-info fade-in">
+        <span class="badge" id="heroBadge">Letër Tavoline</span>
+        <h1 id="heroTitle">Letër Tavoline me<br/><span class="text-green">Printim të Personalizuar</span></h1>
+        <p class="lead" id="heroLead">Letër tavoline cilësore për restorante dhe kafene. Praktike, elegante dhe e personalizuar me identitetin e markës suaj – për një tryezë më profesionale e të mbajtur mirë.</p>
+
+        <div class="cup-specs">
+          <div class="spec-item">
+            <div class="spec-label" id="specLabelFormat">Formati</div>
+            <div class="spec-value" id="specFormat">230 × 160mm</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label" id="specLabelUse">Ideale për</div>
+            <div class="spec-value" id="specUse">Restorante & kafene</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label" id="specLabelMin">Porosia Minimale</div>
+            <div class="spec-value" id="specMin">5,000 copë</div>
+          </div>
+        </div>
+
+        <div class="cup-ctas">
+          <a href="order.html?p=leter-tavoline&source=preview" class="btn btn-primary btn-lg" id="heroCta1">Porosit Tani</a>
+          <a href="contact.html" class="btn btn-outline-green btn-lg" id="heroCta2">Kërko Ofertë</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── LETER TAVOLINE 3D DESIGN PREVIEW ──────────────────── -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<section class="section" id="preview3d" style="background:var(--gray-light);">
+  <div class="container">
+    <div class="editor-intro-simple fade-in">
+      <div class="editor-intro-badge" id="editorIntroBadge">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        <span id="editorIntroBadgeText">Preview i drejtpërdrejtë — pa regjistrim</span>
+      </div>
+      <h2 id="editorIntroTitle">Shiko logon tënde<br>në letër — <span>në 3D</span></h2>
+      <p id="editorIntroBody">Ngarko logon dhe shihe menjëherë. Pa angazhim — vetëm një parashikim, jo porosi.</p>
+      <p class="editor-intro-alt" id="editorIntroAlt">
+        Ose <a href="https://wa.me/38344113533?text=P%C3%ABrsh%C3%ABndetje%21%20M%C3%AB%20intereson%20Letra%20Tavoline.%20Ja%20logoja%20ime%3A" target="_blank">na shkruaj në WhatsApp →</a> nëse preferon ta bëjmë ne dizajnin për ty.
+      </p>
+    </div>
+
+    <div class="lt-full fade-in is-empty mode-logo" id="ltEditorFull">
+
+      <!-- ── MOBILE TOOLS ── -->
+      <div class="lt-mobile-tools" id="ltMobileTools">
+
+        <!-- Primary tabs: always 2 visible -->
+        <div class="lt-tool-tabs" role="tablist">
+          <button class="lt-tool-tab active" type="button" data-lt-panel="logo">Logo</button>
+          <button class="lt-tool-tab" type="button" data-lt-panel="full">Dizajn i Plotë</button>
+        </div>
+
+        <!-- Advanced tools: collapsed by default -->
+        <details class="lt-advanced-wrap" id="ltAdvancedWrap">
+          <summary class="lt-advanced-toggle">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+            Mjete shtesë
+          </summary>
+          <div class="lt-advanced-tabs" role="tablist">
+            <button class="lt-tool-tab" type="button" data-lt-panel="text">Tekst</button>
+            <button class="lt-tool-tab" type="button" data-lt-panel="qr">QR</button>
+          </div>
+        </details>
+
+        <!-- Size slider (shown only: logo tab + has-logo-upload) -->
+        <div class="lt-size-control" id="ltSizeControl" style="display:none">
+          <div class="lt-size-head"><span>Madhësia e logos</span><strong id="ltSizeValue">100%</strong></div>
+          <input type="range" id="ltSizeSlider" min="40" max="200" step="1" value="100" disabled>
+        </div>
+
+        <!-- Description card (hidden when is-empty) -->
+        <div class="lt-quick-copy" id="ltQuickCopy">
+          <h3 id="ltQuickTitle">Ngarko logon tënde</h3>
+          <p id="ltQuickBody">Ngarko logon dhe shiko menjëherë si duket.</p>
+          <small class="lt-note" id="ltQuickNote">PNG me sfond transparent jep rezultatin më të mirë.</small>
+        </div>
+
+        <!-- LOGO panel (hidden when is-empty) -->
+        <div class="lt-tool-panel active" data-lt-panel="logo">
+          <div class="lt-logo-actions">
+            <button class="btn btn-outline-green btn-sm" id="ltUploadBtn">Ngarko Logon</button>
+          </div>
+          <p class="lt-upload-status" id="ltUploadStatus"></p>
+          <button type="button" id="ltClearBtn" style="display:none;margin-top:4px;background:none;border:none;font-size:.74rem;color:var(--text-soft);cursor:pointer;text-decoration:underline;padding:0;">Pastro</button>
+        </div>
+
+        <!-- FULL DESIGN panel (hidden when is-empty) -->
+        <div class="lt-tool-panel" data-lt-panel="full">
+          <div class="lt-full-actions">
+            <a class="btn btn-outline-green btn-sm" href="assets/templates/leter-tavoline-template.pdf" download>
+              Shkarko Shabllonin
+            </a>
+            <button class="btn btn-primary btn-sm" id="ltFullDesignBtn">Ngarko Dizajnin</button>
+          </div>
+          <button class="btn btn-danger btn-sm" id="ltRemoveFullDesignBtn" style="display:none;margin-top:10px;width:100%;">Hiq Dizajnin</button>
+          <p class="lt-upload-status" id="ltFullDesignStatus"></p>
+        </div>
+
+        <!-- TEXT panel (hidden when is-empty) -->
+        <div class="lt-tool-panel" data-lt-panel="text">
+          <!-- SHARED POSITION CONTROL -->
+          <div class="lt-position-control" id="ltPositionControl">
+            <div class="lt-corner-label">Pozicioni</div>
+            <div class="lt-corner-grid" id="ltCornerGrid">
+              <button class="lt-corner-btn active" data-pos="tl" title="Majtas lart">
+                <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="5,14 5,5 14,5"/></svg>
+              </button>
+              <button class="lt-corner-btn" data-pos="tc" title="Qendër lart">
+                <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="10" y1="14" x2="10" y2="5"/><polyline points="6,9 10,5 14,9"/></svg>
+              </button>
+              <button class="lt-corner-btn" data-pos="tr" title="Djathtas lart">
+                <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6,5 15,5 15,14"/></svg>
+              </button>
+              <button class="lt-corner-btn" data-pos="ml" title="Majtas mes">
+                <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="14" y1="10" x2="5" y2="10"/><polyline points="9,6 5,10 9,14"/></svg>
+              </button>
+              <button class="lt-corner-btn" data-pos="cc" title="Qendër">
+                <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="10" cy="10" r="3"/><line x1="10" y1="4" x2="10" y2="6"/><line x1="10" y1="14" x2="10" y2="16"/><line x1="4" y1="10" x2="6" y2="10"/><line x1="14" y1="10" x2="16" y2="10"/></svg>
+              </button>
+              <button class="lt-corner-btn" data-pos="mr" title="Djathtas mes">
+                <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="10" x2="15" y2="10"/><polyline points="11,6 15,10 11,14"/></svg>
+              </button>
+              <button class="lt-corner-btn" data-pos="bl" title="Majtas poshtë">
+                <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="5,6 5,15 14,15"/></svg>
+              </button>
+              <button class="lt-corner-btn" data-pos="bc" title="Qendër poshtë">
+                <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="10" y1="6" x2="10" y2="15"/><polyline points="6,11 10,15 14,11"/></svg>
+              </button>
+              <button class="lt-corner-btn" data-pos="br" title="Djathtas poshtë">
+                <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6,15 15,15 15,6"/></svg>
+              </button>
+            </div>
+            <div class="lt-margin-control">
+              <div class="lt-size-head"><span>Hapësira nga skajet</span><strong id="ltMarginValue">8mm</strong></div>
+              <input type="range" id="ltMarginSlider" min="0" max="300" step="10" value="80">
+            </div>
+          </div>
+          <div class="lt-templates">
+            <span class="lt-tpl-label">Zgjidhni shabllon:</span>
+            <button class="lt-tpl-btn" data-tpl="+383 ">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.06 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              Numri i Telefonit
+            </button>
+            <button class="lt-tpl-btn" data-tpl="@">Instagram / Facebook</button>
+            <button class="lt-tpl-btn" data-tpl="">Tekst i lirë</button>
+          </div>
+          <div class="lt-text-inputs">
+            <input type="text" id="ltTextInput" placeholder="Shkruaj tekstin këtu…" maxlength="60">
+            <label class="lt-text-opt"><input type="color" id="ltTextColor" value="#000000"> Ngjyra</label>
+            <button class="btn btn-primary btn-sm" id="ltAddTextBtn" style="width:100%;justify-content:center;margin-top:10px;">Vendos Tekstin në Letër</button>
+          </div>
+        </div>
+
+        <!-- QR panel (hidden when is-empty) -->
+        <div class="lt-tool-panel" data-lt-panel="qr">
+          <small class="lt-note" style="display:block;margin-bottom:10px;">Gjenero QR kodin dhe vendoseni ku dëshironi.</small>
+          <div class="lt-text-inputs">
+            <input type="url" id="ltQrInput" placeholder="Ngjit linkun këtu (p.sh. https://era.al)">
+            <button class="btn btn-primary btn-sm" id="ltAddQrBtn" style="width:100%;justify-content:center;margin-top:10px;">Gjenero QR Kodin</button>
+          </div>
+        </div>
+
+      </div><!-- /lt-mobile-tools -->
+
+      <!-- ── DESKTOP TOOLBAR ── -->
+      <div class="lt-toolbar" id="ltToolbar">
+        <label class="lt-tb-btn lt-primary" title="Shto Imazh">
+          <input type="file" id="ltDesignUpload" accept="image/png,image/jpeg,image/jpg,image/webp" multiple style="display:none">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          Shto Imazh
+        </label>
+        <button class="lt-tb-btn lt-teal" id="ltBtnAddText">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+          Shto Tekst
+        </button>
+        <button class="lt-tb-btn lt-teal" id="ltBtnQR">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="3" height="3"/></svg>
+          QR Kod
+        </button>
+        <div class="lt-tb-sep"></div>
+        <span class="lt-tb-label">Pozicion:</span>
+        <div class="lt-tb-corner-grid" id="ltTbCornerGrid">
+          <button class="lt-tb-corner active" data-pos="tl" title="Majtas lart"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><polyline points="2,9 2,2 9,2"/></svg></button>
+          <button class="lt-tb-corner" data-pos="tc" title="Qendër lart"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="6" y1="9" x2="6" y2="2"/><polyline points="3,5 6,2 9,5"/></svg></button>
+          <button class="lt-tb-corner" data-pos="tr" title="Djathtas lart"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><polyline points="3,2 10,2 10,9"/></svg></button>
+          <button class="lt-tb-corner" data-pos="ml" title="Majtas mes"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="9" y1="6" x2="2" y2="6"/><polyline points="5,3 2,6 5,9"/></svg></button>
+          <button class="lt-tb-corner" data-pos="cc" title="Qendër"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="6" cy="6" r="2"/></svg></button>
+          <button class="lt-tb-corner" data-pos="mr" title="Djathtas mes"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="3" y1="6" x2="10" y2="6"/><polyline points="7,3 10,6 7,9"/></svg></button>
+          <button class="lt-tb-corner" data-pos="bl" title="Majtas poshtë"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><polyline points="2,3 2,10 9,10"/></svg></button>
+          <button class="lt-tb-corner" data-pos="bc" title="Qendër poshtë"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="6" y1="3" x2="6" y2="10"/><polyline points="3,7 6,10 9,7"/></svg></button>
+          <button class="lt-tb-corner" data-pos="br" title="Djathtas poshtë"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><polyline points="3,10 10,10 10,3"/></svg></button>
+        </div>
+        <div class="lt-tb-sep"></div>
+        <div class="lt-tb-margin">
+          <span>Hapësira</span>
+          <input type="range" id="ltTbMarginSlider" min="0" max="300" step="10" value="80">
+          <span id="ltTbMarginVal">8mm</span>
+        </div>
+        <div class="lt-tb-sep"></div>
+        <div class="lt-tb-color-wrap" title="Ngjyra e sfondit">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
+          <input type="color" id="ltBgColorPicker" value="#ffffff">
+        </div>
+        <div class="lt-tb-sep"></div>
+        <button class="lt-tb-btn" id="ltBtnFlipH" disabled>Flip H</button>
+        <button class="lt-tb-btn" id="ltBtnFlipV" disabled>Flip V</button>
+        <button class="lt-tb-btn lt-danger" id="ltBtnDelete" disabled>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg>
+          Fshi
+        </button>
+        <div class="lt-tb-sep"></div>
+        <div class="lt-tb-opacity">
+          <span>Transparenca</span>
+          <input type="range" id="ltOpacitySlider" min="10" max="100" value="100" step="1" disabled>
+          <span id="ltOpacityVal">100%</span>
+        </div>
+        <div style="flex:1;min-width:8px;"></div>
+        <button class="lt-tb-btn lt-ghost" id="ltBtnClearAll">Pastro Gjithçka</button>
+      </div>
+
+      <!-- QR + Text toggle panels (desktop) -->
+      <div class="lt-input-panel" id="ltQrPanel">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="3" height="3"/></svg>
+        <span>Ngjit linkun:</span>
+        <input type="url" id="ltQrUrlInput" placeholder="https://era.al" style="flex:1;min-width:180px;">
+        <button class="lt-tb-btn lt-primary" id="ltQrGenBtn">Gjenero</button>
+        <button class="lt-tb-btn lt-ghost" id="ltQrCancelBtn">Anulo</button>
+      </div>
+      <div class="lt-input-panel" id="ltTextPanel">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+        <span>Teksti:</span>
+        <input type="text" id="ltDeskTextInput" placeholder="Shkruaj tekstin…" maxlength="80" style="flex:1;min-width:160px;">
+        <input type="color" id="ltDeskTextColor" value="#000000" style="width:34px;height:30px;border-radius:6px;border:1px solid #ddd;cursor:pointer;padding:2px;">
+        <button class="lt-tb-btn lt-primary" id="ltDeskTextAddBtn">Shto</button>
+        <button class="lt-tb-btn lt-ghost" id="ltDeskTextCancelBtn">Anulo</button>
+      </div>
+
+      <!-- ── MAIN AREA ── -->
+      <div class="lt-editor-main">
+        <!-- 2D canvas (desktop) -->
+        <div class="lt-editor-side">
+          <div class="lt-canvas-wrap">
+            <canvas id="ltEditorCanvas"></canvas>
+            <canvas id="ltGuideCanvas"></canvas>
+            <div class="lt-editor-empty" id="ltEditorEmpty">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--gray)" stroke-width="1.5" stroke-linecap="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              <span>Kliko "Shto Imazh" për të filluar</span>
+            </div>
+          </div>
+        </div>
+        <!-- Layers (desktop) -->
+        <div class="lt-layers-panel">
+          <div class="lt-layers-header">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+            Shtresat
+          </div>
+          <div class="lt-layers-list" id="ltLayersList"><div class="lt-layers-empty">Asnjë shtresë</div></div>
+        </div>
+        <!-- 3D viewer -->
+        <div class="lt-3d-wrap">
+          <div class="lt-3d-loading" id="ltCupLoading">
+            <div class="lt-spinner"></div>
+            <span>Duke ngarkuar modelin 3D…</span>
+          </div>
+          <canvas id="ltCupCanvas"></canvas>
+          <div class="lt-3d-hint">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
+            Rrotulloje me gisht
+          </div>
+
+          <!-- EMPTY STATE OVERLAY (mobile only, hidden after upload) -->
+          <div class="cup-empty-overlay" id="lt3dEmptyState">
+            <div class="cup-empty-card">
+              <div class="cup-empty-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              </div>
+              <h3 class="cup-empty-title" id="ltEmptyTitle">Ngarko logon tënde</h3>
+              <p class="cup-empty-sub" id="ltEmptySub">Shihe direkt në 3D — pa regjistrim, pa angazhim.</p>
+
+              <!-- Logo mode buttons (default) -->
+              <div class="cup-empty-actions cup-empty-logo-actions">
+                <button type="button" id="lt3dLogoUpload" class="btn btn-primary cup-empty-btn">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                  Ngarko logon
+                </button>
+              </div>
+
+              <!-- Design mode buttons (shown when mode-design) -->
+              <div class="cup-empty-actions cup-empty-design-actions">
+                <a class="btn btn-outline-green cup-empty-template-btn" href="assets/templates/leter-tavoline-template.pdf" download>Shkarko shabllonin</a>
+                <button type="button" id="lt3dDesignUpload" class="btn btn-primary cup-empty-btn">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                  Ngarko dizajnin
+                </button>
+              </div>
+
+              <div class="cup-empty-rotate-hint">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3"/></svg>
+                <span id="ltEmptyRotateHint">Rrotulloje me gisht</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ── CTA ── -->
+      <div class="lt-order-cta">
+        <a href="order.html?p=leter-tavoline&source=preview" class="lt-order-btn" id="ltOrderBtn">
+          <span class="lt-order-copy">
+            <strong>Vazhdo me Porosinë</strong>
+            <small>Dërgo këtë preview si dizajn të gatshëm</small>
+          </span>
+          <span class="lt-order-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </a>
+      </div>
+
+    </div><!-- /lt-full -->
+  </div>
+</section>
+
+<style>
+  /* ── CONTAINER ── */
+  .lt-full {
+    background: #fff;
+    border-radius: 20px;
+    border: 1px solid var(--gray-mid);
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0,0,0,.06);
+  }
+
+  /* ── DESKTOP TOOLBAR ── */
+  .lt-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 12px;
+    background: #fafafa;
+    border-bottom: 1px solid var(--gray-mid);
+    overflow-x: auto;
+    scrollbar-width: none;
+    flex-wrap: nowrap;
+  }
+  .lt-toolbar::-webkit-scrollbar { display: none; }
+  .lt-tb-btn {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: .75rem; font-weight: 600;
+    border: 1px solid transparent;
+    background: #f0f0f0; color: var(--text);
+    cursor: pointer; white-space: nowrap; flex-shrink: 0;
+    transition: background .12s;
+  }
+  .lt-tb-btn:hover:not(:disabled) { background: #e4e4e4; }
+  .lt-tb-btn:disabled { opacity: .35; cursor: default; }
+  .lt-primary { background: var(--green); color: #fff; border-color: var(--green); }
+  .lt-primary:hover:not(:disabled) { background: #3a9a0e !important; }
+  .lt-teal { background: #e8f5e9; color: #2e7d32; }
+  .lt-teal:hover:not(:disabled) { background: #c8e6c9 !important; }
+  .lt-danger:hover:not(:disabled) { background: #fdecea !important; color: #c0392b !important; }
+  .lt-ghost { color: var(--text-soft); }
+  .lt-ghost:hover:not(:disabled) { background: #e6e6e6 !important; }
+  .lt-tb-sep { width: 1px; height: 22px; background: #ddd; margin: 0 3px; flex-shrink: 0; }
+  .lt-tb-label { font-size: .72rem; font-weight: 700; color: var(--text-soft); white-space: nowrap; flex-shrink: 0; }
+  .lt-tb-opacity { display: inline-flex; align-items: center; gap: 6px; font-size: .75rem; color: var(--text-soft); font-weight: 600; flex-shrink: 0; }
+  .lt-tb-opacity input[type=range] { width: 70px; accent-color: var(--green); }
+  .lt-tb-opacity input[type=range]:disabled { opacity: .35; }
+  .lt-tb-margin { display: inline-flex; align-items: center; gap: 6px; font-size: .75rem; color: var(--text-soft); font-weight: 600; flex-shrink: 0; }
+  .lt-tb-margin input[type=range] { width: 80px; accent-color: var(--green); }
+  .lt-tb-color-wrap { display: inline-flex; align-items: center; gap: 5px; padding: 4px 8px; border-radius: 6px; border: 1px solid #ddd; background: #fff; font-size: .75rem; font-weight: 600; color: var(--text-soft); flex-shrink: 0; cursor: pointer; }
+  .lt-tb-color-wrap input[type=color] { width: 22px; height: 22px; border: none; background: none; cursor: pointer; padding: 0; border-radius: 3px; }
+
+  /* ── CORNER GRID (toolbar) ── */
+  .lt-tb-corner-grid { display: grid; grid-template-columns: repeat(3, 22px); gap: 2px; flex-shrink: 0; }
+  .lt-tb-corner {
+    width: 22px; height: 22px;
+    border: 1px solid #ddd; border-radius: 4px;
+    background: #fff; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    padding: 3px;
+    transition: background .1s, border-color .1s;
+    color: var(--text);
+  }
+  .lt-tb-corner:hover { background: #f0f0f0; }
+  .lt-tb-corner.active { border-color: var(--green); background: #eaf5e0; color: var(--green); }
+
+  /* ── INPUT PANELS ── */
+  .lt-input-panel {
+    display: none;
+    align-items: center; gap: 8px;
+    padding: 10px 14px;
+    background: #f0f8e8; border-bottom: 1px solid #c8e6c9;
+    flex-wrap: wrap;
+  }
+  .lt-input-panel.open { display: flex; }
+  .lt-input-panel span { font-size: .8rem; font-weight: 700; color: var(--text); white-space: nowrap; }
+  .lt-input-panel input[type=url],
+  .lt-input-panel input[type=text] { padding: 6px 10px; border: 1px solid #ccc; border-radius: 6px; font-size: .82rem; }
+
+  /* ── MAIN GRID ── */
+  .lt-editor-main {
+    display: grid;
+    grid-template-columns: 3fr 148px 2fr;
+    min-height: 340px;
+  }
+  .lt-editor-side { display: flex; flex-direction: column; border-right: 1px solid var(--gray-mid); }
+  .lt-canvas-wrap {
+    position: relative;
+    aspect-ratio: 2300 / 1600;
+    background: #ebebeb;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  #ltEditorCanvas, #ltGuideCanvas {
+    position: absolute; inset: 0; width: 100%; height: 100%; display: block;
+  }
+  #ltEditorCanvas { cursor: default; }
+  #ltGuideCanvas { pointer-events: none; z-index: 2; }
+  .lt-editor-empty {
+    position: absolute; inset: 0; z-index: 3;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
+    pointer-events: none;
+  }
+  .lt-editor-empty span { font-size: .88rem; font-weight: 600; color: var(--text-soft); }
+
+  /* ── LAYERS ── */
+  .lt-layers-panel { display: flex; flex-direction: column; border-right: 1px solid var(--gray-mid); background: #fafafa; }
+  .lt-layers-header { display: flex; align-items: center; gap: 6px; padding: 10px 10px 8px; font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--text-soft); border-bottom: 1px solid var(--gray-mid); }
+  .lt-layers-list { flex: 1; overflow-y: auto; }
+  .lt-layers-empty { font-size: .75rem; color: var(--gray); text-align: center; padding: 20px 8px; }
+  .lt-layer-item { display: flex; align-items: center; gap: 6px; padding: 6px 8px; cursor: pointer; border-bottom: 1px solid #f0f0f0; font-size: .72rem; font-weight: 600; color: var(--text); transition: background .1s; }
+  .lt-layer-item:hover { background: #f5f5f5; }
+  .lt-layer-item.selected { background: #eaf5e0; }
+  .lt-layer-thumb { flex-shrink: 0; width: 40px; height: 24px; border-radius: 3px; border: 1px solid #ddd; background: #fff; display: block; }
+  .lt-layer-name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .lt-layer-arrows { display: flex; flex-direction: column; }
+  .lt-layer-arrow { background: none; border: none; cursor: pointer; font-size: .6rem; color: var(--text-soft); line-height: 1; padding: 1px 3px; border-radius: 3px; }
+  .lt-layer-arrow:hover { background: #e0e0e0; color: var(--text); }
+
+  /* ── 3D VIEW ── */
+  .lt-3d-wrap { position: relative; background: linear-gradient(135deg, #eaf4e1 0%, #f4faf0 100%); }
+  .lt-3d-loading { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; z-index: 2; background: linear-gradient(135deg, #eaf4e1 0%, #f4faf0 100%); }
+  .lt-3d-loading span { font-size: .85rem; font-weight: 600; color: var(--text-soft); }
+  #ltCupCanvas { width: 100%; height: 100%; display: block; position: absolute; inset: 0; }
+  .lt-3d-hint { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 5px; font-size: .72rem; color: rgba(0,0,0,.4); white-space: nowrap; pointer-events: none; z-index: 3; }
+  .lt-spinner { width: 28px; height: 28px; border: 3px solid #c8e6c9; border-top-color: var(--green); border-radius: 50%; animation: lt-spin .7s linear infinite; }
+  @keyframes lt-spin { to { transform: rotate(360deg); } }
+
+  /* ── CTA ── */
+  .lt-order-cta { padding: 18px 20px 22px; border-top: 1px solid var(--gray-mid); background: #fff; }
+  .lt-order-btn { display: flex; align-items: center; justify-content: space-between; gap: 16px; width: 100%; padding: 16px 18px; text-decoration: none; color: #fff; border-radius: 18px; background: linear-gradient(135deg, var(--green) 0%, #2f8f12 100%); box-shadow: 0 16px 30px rgba(76,167,6,.24); transition: transform .22s ease, box-shadow .22s ease; }
+  .lt-order-btn:hover { transform: translateY(-2px); box-shadow: 0 20px 36px rgba(76,167,6,.28); }
+  .lt-order-copy { display: flex; flex-direction: column; gap: 3px; }
+  .lt-order-copy strong { font-size: 1rem; }
+  .lt-order-copy small { font-size: .78rem; color: rgba(255,255,255,.84); }
+  .lt-order-icon { width: 42px; height: 42px; border-radius: 999px; background: rgba(255,255,255,.14); display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
+
+  /* ── EMPTY STATE OVERLAY ── */
+  .cup-empty-overlay {
+    position: absolute; inset: 0; z-index: 4;
+    display: none;
+    align-items: center; justify-content: center;
+    pointer-events: none;
+  }
+  .cup-empty-overlay.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+  @media (max-width: 900px) { .cup-empty-overlay { display: flex; } }
+  .cup-empty-card {
+    pointer-events: auto;
+    background: rgba(255,255,255,.35);
+    border: 1.5px dashed rgba(76,167,6,.7);
+    border-radius: 16px; padding: 24px 28px;
+    max-width: 280px; width: calc(100% - 48px);
+    text-align: center; box-shadow: 0 8px 24px rgba(0,0,0,.08);
+  }
+  .cup-empty-icon { color: var(--green); margin-bottom: 12px; display: flex; justify-content: center; }
+  .cup-empty-title { font-size: 1.05rem; font-weight: 700; color: #1a2e10; margin: 0 0 6px; }
+  .cup-empty-sub { font-size: .875rem; color: #2d4a1e; margin: 0 0 16px; line-height: 1.4; }
+  .cup-empty-actions { display: flex; flex-direction: column; gap: 10px; align-items: stretch; margin-bottom: 12px; }
+  .cup-empty-btn { width: 100%; justify-content: center; display: inline-flex; align-items: center; gap: 8px; }
+  .cup-empty-rotate-hint { display: inline-flex; align-items: center; gap: 6px; font-size: .75rem; color: #2d4a1e; opacity: .8; }
+  /* Overlay mode switching */
+  .cup-empty-design-actions { display: none; }
+  .lt-full.mode-design .cup-empty-logo-actions { display: none; }
+  .lt-full.mode-design .cup-empty-design-actions { display: flex; }
+  .cup-empty-template-btn {
+    width: 100%; justify-content: center; border-radius: 12px;
+    padding: 11px 18px; font-size: .88rem;
+    background: rgba(255,255,255,.74); box-shadow: none;
+  }
+
+  /* ── MOBILE TOOLS ── */
+  .lt-mobile-tools {
+    display: none;
+    padding: 14px 16px 12px;
+    border-bottom: 1px solid var(--gray-mid);
+    background: linear-gradient(180deg, #f9fcf6 0%, #ffffff 100%);
+  }
+  /* ── TAB PILLS ── */
+  .lt-tool-tabs { display: flex; gap: 8px; margin-top: 10px; }
+  .lt-tool-tab {
+    flex: 1; min-width: 0;
+    padding: 10px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--gray-mid);
+    background: #fff;
+    font-size: .8rem; font-weight: 700; color: var(--text-soft);
+    cursor: pointer; transition: var(--transition);
+  }
+  .lt-tool-tab.active {
+    background: var(--green); border-color: var(--green);
+    color: #fff; box-shadow: 0 10px 20px rgba(76,167,6,.18);
+  }
+  /* ── ADVANCED TOOLS COLLAPSIBLE ── */
+  .lt-advanced-wrap { margin-top: 10px; }
+  .lt-advanced-toggle {
+    display: flex; align-items: center; gap: 7px;
+    padding: 9px 12px; font-size: .82rem; font-weight: 600; color: var(--text-mid);
+    cursor: pointer; list-style: none;
+    background: var(--gray-light); border-radius: var(--radius); user-select: none;
+  }
+  .lt-advanced-tabs { margin-top: 10px; display: flex; gap: 8px; }
+  .lt-advanced-tabs .lt-tool-tab { border-radius: 999px; border: 1px solid var(--gray-mid); background: #fff; border-bottom: none; }
+  .lt-advanced-tabs .lt-tool-tab.active { background: var(--green); border-color: var(--green); color: #fff; box-shadow: 0 10px 20px rgba(76,167,6,.18); }
+
+  .lt-tool-panel { display: none; margin-top: 10px; }
+  .lt-tool-panel.active { display: block; }
+  .lt-quick-copy {
+    margin-top: 10px; padding: 12px 14px 10px;
+    border-radius: 14px;
+    border: 1px solid rgba(76,167,6,.12);
+    background: linear-gradient(135deg, rgba(232,245,224,.95) 0%, rgba(255,255,255,.98) 100%);
+  }
+  .lt-quick-copy h3 { margin-bottom: 4px; font-size: .95rem; }
+  .lt-quick-copy p { font-size: .82rem; color: var(--text-mid); margin: 0; line-height: 1.5; }
+  .lt-note { display: block; margin-top: 6px; font-size: .72rem; line-height: 1.4; color: var(--text-soft); }
+
+  /* Buttons inside panels */
+  .lt-logo-actions { display: flex; gap: 8px; margin-top: 8px; }
+  .lt-logo-actions .btn { flex: 1; justify-content: center; }
+  .lt-full-actions { display: flex; gap: 10px; margin-bottom: 8px; }
+  .lt-full-actions .btn { flex: 1; justify-content: center; }
+  .lt-upload-status { min-height: 20px; margin: 12px 0 0; font-size: .78rem; font-weight: 600; color: var(--green-darker); }
+
+  /* ── STATE-BASED VISIBILITY ── */
+  .lt-full.is-empty .lt-quick-copy,
+  .lt-full.is-empty .lt-tool-panel,
+  .lt-full.is-empty .lt-advanced-wrap { display: none; }
+
+  /* Size / margin control */
+  .lt-size-control { margin-top: 8px; margin-bottom: 8px; }
+  .lt-size-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 8px; font-size: .85rem; font-weight: 700; color: var(--text); }
+  .lt-size-head strong { color: var(--green-darker); font-variant-numeric: tabular-nums; }
+  .lt-size-control input[type=range],
+  .lt-margin-control input[type=range] { width: 100%; accent-color: var(--green); cursor: pointer; }
+  .lt-size-control input[type=range]:disabled { opacity: .4; cursor: default; }
+  .lt-margin-control { margin-top: 10px; }
+
+  /* Corner grid (mobile) */
+  .lt-corner-label { font-size: .78rem; font-weight: 700; color: var(--text-soft); margin-bottom: 8px; }
+  .lt-position-control { padding: 12px 14px 4px; border-bottom: 1px solid var(--gray-mid); }
+  .lt-corner-grid { display: grid; grid-template-columns: repeat(3, 44px); gap: 6px; margin-bottom: 12px; width: fit-content; }
+  .lt-corner-btn { width: 44px; height: 44px; border: 1.5px solid var(--gray-mid); border-radius: 8px; background: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 6px; transition: background .1s, border-color .1s; color: var(--text); flex-shrink: 0; }
+  .lt-corner-btn:hover { background: #f0f0f0; }
+  .lt-corner-btn.active { border-color: var(--green); background: #eaf5e0; color: var(--green); }
+  .lt-corner-btn svg { width: 100%; height: 100%; }
+  .lt-logo-actions { display: flex; gap: 10px; margin-top: 14px; }
+  .lt-logo-actions .btn { flex: 1; justify-content: center; }
+  .lt-upload-status { font-size: .78rem; color: var(--text-soft); margin: 8px 0 0; min-height: 18px; }
+
+  /* Text inputs */
+  .lt-templates { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+  .lt-tpl-label { font-size: .75rem; font-weight: 700; color: var(--text-soft); width: 100%; }
+  .lt-tpl-btn { display: inline-flex; align-items: center; gap: 5px; padding: 6px 12px; border-radius: 20px; border: 1.5px solid var(--gray-mid); background: #fff; font-size: .78rem; font-weight: 600; color: var(--text); cursor: pointer; transition: background .1s, border-color .1s; }
+  .lt-tpl-btn:hover { background: #f0f0f0; }
+  .lt-tpl-btn.active { border-color: var(--green); background: #eaf5e0; color: var(--green); }
+  .lt-text-inputs input[type=text],
+  .lt-text-inputs input[type=url] { width: 100%; padding: 10px 12px; border: 1px solid #ccc; border-radius: 8px; font-size: .88rem; box-sizing: border-box; }
+  .lt-text-opts { display: flex; align-items: center; gap: 10px; margin-top: 10px; flex-wrap: wrap; }
+  .lt-text-opt { display: inline-flex; align-items: center; gap: 6px; font-size: .78rem; font-weight: 600; color: var(--text-soft); }
+  .lt-text-opt input[type=color] { width: 28px; height: 28px; border-radius: 5px; border: 1px solid #ddd; cursor: pointer; padding: 2px; }
+  .lt-text-opts select { flex: 1; padding: 8px 10px; border: 1px solid #ccc; border-radius: 8px; font-size: .82rem; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .lt-full { display: flex; flex-direction: column; }
+    .lt-editor-main { display: block; order: 1; min-height: 0; }
+    .lt-3d-wrap { min-height: 380px; }
+    .lt-mobile-tools { display: block; order: 2; }
+    .lt-toolbar, #ltQrPanel, #ltTextPanel, .lt-editor-side, .lt-layers-panel, .lt-3d-hint { display: none !important; }
+    .lt-order-cta { order: 3; }
+  }
+  @media (max-width: 480px) {
+    .lt-tool-tab { font-size: .76rem; padding: 9px 10px; }
+    .lt-3d-wrap { min-height: 340px; }
+    .lt-full.mode-design .cup-empty-card { max-width: 218px; width: calc(100% - 96px); padding: 15px 18px; border-radius: 14px; }
+    .lt-full.mode-design .cup-empty-title { font-size: .9rem; margin-bottom: 5px; }
+    .lt-full.mode-design .cup-empty-sub { font-size: .76rem; line-height: 1.32; margin-bottom: 10px; }
+    .lt-full.mode-design .cup-empty-actions { gap: 7px; margin-bottom: 8px; }
+    .lt-full.mode-design .cup-empty-btn,
+    .lt-full.mode-design .cup-empty-template-btn { padding: 9px 12px; min-height: 40px; font-size: .8rem; border-radius: 11px; }
+  }
+</style>
+
+<script type="module" async src="js/lt-editor.js?v=1"></script>
+
+<section class="section" style="background:var(--gray-light);padding-top:72px;">
+  <div class="container">
+    <div class="section-header text-center fade-in">
+      <span class="badge" id="sizesBadge">Përdorimi</span>
+      <h2 id="sizesTitle">Formati 230×160mm në Përdorim</h2>
+      <p id="sizesSub">Dimensionet ideale për çdo tryezë – mjaftueshëm e madhe për logo dhe dizajn, kompakte për t'u vendosur me lehtësi nën pjatë ose gotë.</p>
+    </div>
+
+    <div class="sizes-grid">
+      <div class="size-card featured fade-in">
+        <div class="size-card-img">
+          <img src="assets/leter-tavoline.png" alt="Letër Tavoline 230x160mm" />
+        </div>
+        <div class="size-card-body">
+          <div class="size-oz">230×160mm</div>
+          <div class="size-ml" id="card1Meta">Format standard tavoline</div>
+          <h3 id="card1Title">Për Restorante & Kafene</h3>
+          <p id="card1Desc">Zgjedhja e preferuar nga bizneset horeca që dëshirojnë të lënë një përshtypje të qëndrueshme nëpërmjet paketimit dhe prezantimit të tryezës.</p>
+          <div class="size-uses">
+            <span class="use-tag" id="card1Tag1">Restorant</span>
+            <span class="use-tag" id="card1Tag2">Kafene</span>
+            <span class="use-tag" id="card1Tag3">Horeca</span>
+          </div>
+          <a href="order.html?p=leter-tavoline&source=preview" class="btn btn-outline-green btn-sm" style="width:100%;justify-content:center;" id="card1Cta">Porosit Tani</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-header text-center fade-in">
+      <span class="badge" id="customBadge">Personalizimi</span>
+      <h2 id="customTitle">Letër Tavoline me Identitetin e Markës Suaj</h2>
+      <p id="customSub">Çdo letër mund të printohet me logon, ngjyrat dhe elementet grafike të biznesit tuaj për një prezantim profesional e të qëndrueshëm.</p>
+    </div>
+
+    <div class="custom-steps">
+      <div class="custom-step fade-in">
+        <div class="custom-step-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 3 21 3 21 9"/>
+            <polyline points="9 21 3 21 3 15"/>
+            <line x1="21" y1="3" x2="14" y2="10"/>
+            <line x1="3" y1="21" x2="10" y2="14"/>
+          </svg>
+        </div>
+        <h4 id="step1Title">Zgjidhni Formatin</h4>
+        <p id="step1Desc">Formati 230×160mm është i kalibruar për tryezat e restoranteve dhe kafeneve – i balancuar dhe elegant.</p>
+      </div>
+      <div class="custom-step fade-in">
+        <div class="custom-step-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+          </svg>
+        </div>
+        <h4 id="step2Title">Dërgoni Dizajnin</h4>
+        <p id="step2Desc">Na dërgoni logon ose dizajnin tuaj dhe ne e përshtatim për printim të saktë në letër tavoline.</p>
+      </div>
+      <div class="custom-step fade-in">
+        <div class="custom-step-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 6 2 18 2 18 9"/>
+            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+            <rect x="6" y="14" width="12" height="8"/>
+          </svg>
+        </div>
+        <h4 id="step3Title">Printimi</h4>
+        <p id="step3Desc">Printim me ngjyra të qëndrueshme dhe detaje të sakta, të përshtatshme për horeca dhe restorante.</p>
+      </div>
+      <div class="custom-step fade-in">
+        <div class="custom-step-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="1" y="3" width="15" height="13"/>
+            <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+            <circle cx="5.5" cy="18.5" r="2.5"/>
+            <circle cx="18.5" cy="18.5" r="2.5"/>
+          </svg>
+        </div>
+        <h4 id="step4Title">Dorëzimi</h4>
+        <p id="step4Desc">I paketojmë sipas sasisë së porositur dhe i dorëzojmë gati për përdorim të menjëhershëm në biznesin tuaj.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-sm" style="background:var(--gray-light);">
+  <div class="container" style="max-width:860px;">
+    <div class="section-header text-center fade-in">
+      <span class="badge" id="orderBadge">Porositja</span>
+      <h2 id="orderTitle">Informacion Porosie</h2>
+    </div>
+
+    <div class="fade-in">
+      <div class="table-wrap">
+        <table class="order-table">
+          <thead>
+            <tr>
+              <th id="tableHead1">Formati</th>
+              <th id="tableHead2">Përdorimi Kryesor</th>
+              <th id="tableHead3">Porosia Minimale</th>
+              <th id="tableHead4">Përfitimi</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="highlight">230×160mm</td>
+              <td id="row1Use">Restorante, kafene, horeca</td>
+              <td>5,000 copë</td>
+              <td id="row1Benefit">Prezantim elegant i tryezës</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div style="margin-top:20px;padding:18px 22px;background:var(--green-light);border-radius:var(--radius);border-left:4px solid var(--green);">
+        <p style="font-size:.9rem;color:var(--green-darker);margin:0;" id="orderNote">
+          <strong>💡 Shënim:</strong> Çmimi ndryshon sipas sasisë, numrit të ngjyrave dhe kompleksitetit të dizajnit. Na kontaktoni për një ofertë të personalizuar pa detyrim.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container" style="max-width:760px;">
+    <div class="section-header text-center fade-in">
+      <span class="badge" id="faqBadge">FAQ</span>
+      <h2 id="faqTitle">Pyetje të Shpeshta</h2>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <details style="background:var(--gray-light);border:1px solid var(--gray-mid);border-radius:var(--radius);overflow:hidden;" class="fade-in">
+        <summary style="padding:18px 22px;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;">
+          <span id="faqQ1">A është e përshtatshme për kontakt me ushqim dhe pije?</span>
+          <span style="color:var(--green);font-size:1.2rem;">+</span>
+        </summary>
+        <p style="padding:0 22px 18px;color:var(--text-mid);font-size:.92rem;" id="faqA1">Po, letra është e certifikuar për kontakt me ushqim dhe pije, duke e bërë të sigurt për çdo tryezë restoranti ose kafeje.</p>
+      </details>
+
+      <details style="background:var(--gray-light);border:1px solid var(--gray-mid);border-radius:var(--radius);overflow:hidden;" class="fade-in">
+        <summary style="padding:18px 22px;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;">
+          <span id="faqQ2">A mund të printohet me logon dhe ngjyrat e biznesit tim?</span>
+          <span style="color:var(--green);font-size:1.2rem;">+</span>
+        </summary>
+        <p style="padding:0 22px 18px;color:var(--text-mid);font-size:.92rem;" id="faqA2">Po, ofrojmë printim të plotë të personalizuar – logon, slloganin, ngjyrat dhe çdo element grafik që dëshironi të shfaqni.</p>
+      </details>
+
+      <details style="background:var(--gray-light);border:1px solid var(--gray-mid);border-radius:var(--radius);overflow:hidden;" class="fade-in">
+        <summary style="padding:18px 22px;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;">
+          <span id="faqQ3">A është 230×160mm madhësia e duhur për tryezën time?</span>
+          <span style="color:var(--green);font-size:1.2rem;">+</span>
+        </summary>
+        <p style="padding:0 22px 18px;color:var(--text-mid);font-size:.92rem;" id="faqA3">Ky format është zgjedhja standarde për shumicën e restoranteve dhe kafeneve – mjaftueshëm e madhe për të mbajtur logon dhe dizajnin, por kompakte për t'u vendosur me lehtësi nën pjatë ose gotë.</p>
+      </details>
+
+      <details style="background:var(--gray-light);border:1px solid var(--gray-mid);border-radius:var(--radius);overflow:hidden;" class="fade-in">
+        <summary style="padding:18px 22px;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;">
+          <span id="faqQ4">Sa zgjat prodhimi?</span>
+          <span style="color:var(--green);font-size:1.2rem;">+</span>
+        </summary>
+        <p style="padding:0 22px 18px;color:var(--text-mid);font-size:.92rem;" id="faqA4">Afati standard i prodhimit është 7 deri në 10 ditë pune pas aprovimit të dizajnit. Për porosi urgjente mund të ofrojmë edhe shërbim express.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="cta-banner">
+  <div class="container">
+    <h2 id="ctaTitle">Gati ta Brendoni Tryezën tuaj?</h2>
+    <p id="ctaSub">Kontaktoni ekipin tonë sot dhe merrni një ofertë falas për letrën tavoline brenda 24 orëve.</p>
+    <div class="cta-btns">
+      <a href="order.html?p=leter-tavoline&source=preview" class="btn btn-outline btn-lg" id="ctaBtn1">Porosit Tani</a>
+      <a href="https://wa.me/38344113533" target="_blank" rel="noopener noreferrer" class="btn btn-lg" style="background:#25d366;color:#fff;border:none;" id="ctaBtn2">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<div id="site-whatsapp"></div>
+
+<script src="js/main.js?v=13"></script>
+<script>
+  const pageCopy = {
+    al: {
+      title: 'Letër Tavoline – ERA Print Pack',
+      description: 'Letër tavoline me printim të personalizuar në formatin 230x160mm. Ideale për restorante, kafene dhe biznese horeca.',
+      breadcrumbCurrent: 'Letër Tavoline',
+      heroBadge: 'Letër Tavoline',
+      heroTitle: 'Letër Tavoline me<br/><span class="text-green">Printim të Personalizuar</span>',
+      heroLead: 'Letër tavoline cilësore për restorante dhe kafene. Praktike, elegante dhe e personalizuar me identitetin e markës suaj – për një tryezë më profesionale e të mbajtur mirë.',
+      specLabelFormat: 'Formati',
+      specLabelUse: 'Ideale për',
+      specLabelMaterial: 'Materiali',
+      specLabelMin: 'Porosia Minimale',
+      specMaterial: 'Letër e printueshme',
+      specMin: '5,000 copë',
+      heroCta1: 'Porosit Tani',
+      heroCta2: 'Kërko Ofertë',
+      editorIntroBadge: 'Preview i drejtpërdrejtë — pa regjistrim',
+      editorIntroTitle: 'Shiko logon tënde<br>në letër — <span>në 3D</span>',
+      editorIntroBody: 'Ngarko logon dhe shihe menjëherë. Pa angazhim — vetëm një parashikim, jo porosi.',
+      editorIntroAlt: 'Ose <a href="https://wa.me/38344113533?text=P%C3%ABrsh%C3%ABndetje%21%20M%C3%AB%20intereson%20Letra%20Tavoline.%20Ja%20logoja%20ime%3A" target="_blank">na shkruaj në WhatsApp →</a> nëse preferon ta bëjmë ne dizajnin për ty.',
+      sizesBadge: 'Përdorimi',
+      sizesTitle: 'Formati 230×160mm në Përdorim',
+      sizesSub: 'Dimensionet ideale për çdo tryezë – mjaftueshëm e madhe për logo dhe dizajn, kompakte për t\'u vendosur me lehtësi nën pjatë ose gotë.',
+      card1Meta: 'Format standard tavoline',
+      card1Title: 'Për Restorante & Kafene',
+      card1Desc: 'Zgjedhja e preferuar nga bizneset horeca që dëshirojnë të lënë një përshtypje të qëndrueshme nëpërmjet paketimit dhe prezantimit të tryezës.',
+      card1Tag1: 'Restorant',
+      card1Tag2: 'Kafene',
+      card1Tag3: 'Horeca',
+      card1Cta: 'Porosit Tani',
+      customBadge: 'Personalizimi',
+      customTitle: 'Letër Tavoline me Identitetin e Markës Suaj',
+      customSub: 'Çdo letër mund të printohet me logon, ngjyrat dhe elementet grafike të biznesit tuaj për një prezantim profesional e të qëndrueshëm.',
+      step1Title: 'Zgjidhni Formatin',
+      step1Desc: 'Formati 230×160mm është i kalibruar për tryezat e restoranteve dhe kafeneve – i balancuar dhe elegant.',
+      step2Title: 'Dërgoni Dizajnin',
+      step2Desc: 'Na dërgoni logon ose dizajnin tuaj dhe ne e përshtatim për printim të saktë në letër tavoline.',
+      step3Title: 'Printimi',
+      step3Desc: 'Printim me ngjyra të qëndrueshme dhe detaje të sakta, të përshtatshme për horeca dhe restorante.',
+      step4Title: 'Dorëzimi',
+      step4Desc: 'I paketojmë sipas sasisë së porositur dhe i dorëzojmë gati për përdorim të menjëhershëm në biznesin tuaj.',
+      orderBadge: 'Porositja',
+      orderTitle: 'Informacion Porosie',
+      tableHead1: 'Formati',
+      tableHead2: 'Përdorimi Kryesor',
+      tableHead3: 'Porosia Minimale',
+      tableHead4: 'Përfitimi',
+      row1Use: 'Restorante, kafene, horeca',
+      row1Benefit: 'Prezantim elegant i tryezës',
+      orderNote: '<strong>💡 Shënim:</strong> Çmimi ndryshon sipas sasisë, numrit të ngjyrave dhe kompleksitetit të dizajnit. Na kontaktoni për një ofertë të personalizuar pa detyrim.',
+      faqBadge: 'FAQ',
+      faqTitle: 'Pyetje të Shpeshta',
+      faqQ1: 'A është e përshtatshme për kontakt me ushqim dhe pije?',
+      faqA1: 'Po, letra është e certifikuar për kontakt me ushqim dhe pije, duke e bërë të sigurt për çdo tryezë restoranti ose kafeje.',
+      faqQ2: 'A mund të printohet me logon dhe ngjyrat e biznesit tim?',
+      faqA2: 'Po, ofrojmë printim të plotë të personalizuar – logon, slloganin, ngjyrat dhe çdo element grafik që dëshironi të shfaqni.',
+      faqQ3: 'A është 230×160mm madhësia e duhur për tryezën time?',
+      faqA3: 'Ky format është zgjedhja standarde për shumicën e restoranteve dhe kafeneve – mjaftueshëm e madhe për të mbajtur logon dhe dizajnin, por kompakte për t\'u vendosur me lehtësi nën pjatë ose gotë.',
+      faqQ4: 'Sa zgjat prodhimi?',
+      faqA4: 'Afati standard i prodhimit është 7 deri në 10 ditë pune pas aprovimit të dizajnit. Për porosi urgjente mund të ofrojmë edhe shërbim express.',
+      ctaTitle: 'Gati ta Brendoni Tryezën tuaj?',
+      ctaSub: 'Kontaktoni ekipin tonë sot dhe merrni një ofertë falas për letrën tavoline brenda 24 orëve.',
+      ctaBtn1: 'Porosit Tani'
+    },
+    en: {
+      title: 'Table Paper – ERA Print Pack',
+      description: 'Custom-printed table paper in a 230x160mm format. Ideal for restaurants, cafes, and horeca businesses.',
+      breadcrumbCurrent: 'Table Paper',
+      heroBadge: 'Table Paper',
+      heroTitle: 'Table Paper with<br/><span class="text-green">Custom Printing</span>',
+      heroLead: 'Quality table paper for restaurants and cafes. Practical, elegant, and branded with your visual identity — for a more professional and well-kept table.',
+      specLabelFormat: 'Format',
+      specLabelUse: 'Best for',
+      specLabelMaterial: 'Material',
+      specLabelMin: 'Minimum Order',
+      specMaterial: 'Printable paper',
+      specMin: '5,000 pieces',
+      heroCta1: 'Order Now',
+      heroCta2: 'Request a Quote',
+      editorIntroBadge: 'Live preview — no sign-up needed',
+      editorIntroTitle: 'See your logo<br>on the paper — <span>in 3D</span>',
+      editorIntroBody: 'Upload your logo and see it instantly. No commitment — just a preview, not an order.',
+      editorIntroAlt: 'Or <a href="https://wa.me/38344113533?text=Hello%21%20I%27m%20interested%20in%20Table%20Paper.%20Here%20is%20my%20logo%3A" target="_blank">message us on WhatsApp →</a> if you\'d prefer us to handle the design for you.',
+      sizesBadge: 'Usage',
+      sizesTitle: 'The 230×160mm Format in Use',
+      sizesSub: 'Ideal dimensions for any table — large enough to carry your logo and design, compact enough to sit neatly under a plate or glass.',
+      card1Meta: 'Standard table format',
+      card1Title: 'For Restaurants & Cafes',
+      card1Desc: 'The preferred choice for horeca businesses that want to leave a lasting impression through packaging and table presentation.',
+      card1Tag1: 'Restaurant',
+      card1Tag2: 'Cafe',
+      card1Tag3: 'Horeca',
+      card1Cta: 'Order Now',
+      customBadge: 'Customization',
+      customTitle: 'Table Paper That Carries Your Brand',
+      customSub: 'Each sheet can be printed with your logo, colors, and graphic elements for a polished and consistent presentation.',
+      step1Title: 'Choose the Format',
+      step1Desc: 'The 230×160mm format is calibrated for restaurant and cafe tables — balanced and elegant.',
+      step2Title: 'Send the Design',
+      step2Desc: 'Send us your logo or artwork and we will adapt it for accurate printing on table paper.',
+      step3Title: 'Printing',
+      step3Desc: 'Consistent color printing with precise detail output, suited for horeca and restaurant environments.',
+      step4Title: 'Delivery',
+      step4Desc: 'We pack the order by quantity and deliver it ready for immediate use in your business.',
+      orderBadge: 'Ordering',
+      orderTitle: 'Order Information',
+      tableHead1: 'Format',
+      tableHead2: 'Primary Use',
+      tableHead3: 'Minimum Order',
+      tableHead4: 'Advantage',
+      row1Use: 'Restaurants, cafes, horeca',
+      row1Benefit: 'Elegant table presentation',
+      orderNote: '<strong>💡 Note:</strong> Pricing depends on quantity, number of colors, and design complexity. Contact us for a tailored quote with no obligation.',
+      faqBadge: 'FAQ',
+      faqTitle: 'Frequently Asked Questions',
+      faqQ1: 'Is it suitable for contact with food and drinks?',
+      faqA1: 'Yes. The paper is certified for food and drink contact, making it safe for any restaurant or cafe table.',
+      faqQ2: 'Can it be printed with my logo and brand colors?',
+      faqA2: 'Yes, we offer full custom printing — your logo, slogan, colors, and any graphic elements you want to display.',
+      faqQ3: 'Is 230×160mm the right size for my table?',
+      faqA3: 'This format is the standard choice for most restaurants and cafes — large enough to carry your logo and design, but compact enough to sit neatly under a plate or glass.',
+      faqQ4: 'How long does production take?',
+      faqA4: 'Standard production time is 7 to 10 business days after the design is approved. We can also offer express service for urgent orders.',
+      ctaTitle: 'Ready to Brand Your Table?',
+      ctaSub: 'Contact our team today and get a free quote for your table paper within 24 hours.',
+      ctaBtn1: 'Order Now'
+    }
+  };
+
+  window.applyPageTranslations = function applyTablePaperPageTranslations(lang) {
+    const copy = pageCopy[lang] || pageCopy.al;
+    // Safe setter — silently skips elements that no longer exist in the HTML
+    const s = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
+    const h = (id, val) => { const el = document.getElementById(id); if (el) el.innerHTML   = val; };
+    s('breadcrumbCurrent', copy.breadcrumbCurrent);
+    s('heroBadge',         copy.heroBadge);
+    h('heroTitle',         copy.heroTitle);
+    s('heroLead',          copy.heroLead);
+    s('specLabelFormat',   copy.specLabelFormat);
+    s('specLabelUse',      copy.specLabelUse);
+    // specLabelMaterial / specMaterial removed from HTML — skipped safely
+    s('specLabelMin',      copy.specLabelMin);
+    s('specMin',           copy.specMin);
+    s('heroCta1',     copy.heroCta1);
+    s('heroCta2',     copy.heroCta2);
+    // editor intro
+    const eib = document.getElementById('editorIntroBadgeText');
+    if (eib) eib.textContent = copy.editorIntroBadge;
+    h('editorIntroTitle', copy.editorIntroTitle);
+    s('editorIntroBody',  copy.editorIntroBody);
+    h('editorIntroAlt',   copy.editorIntroAlt);
+    s('sizesBadge',   copy.sizesBadge);
+    s('sizesTitle',   copy.sizesTitle);
+    s('sizesSub',     copy.sizesSub);
+    s('card1Meta',    copy.card1Meta);
+    s('card1Title',   copy.card1Title);
+    s('card1Desc',    copy.card1Desc);
+    s('card1Tag1',    copy.card1Tag1);
+    s('card1Tag2',    copy.card1Tag2);
+    s('card1Tag3',    copy.card1Tag3);
+    s('card1Cta',     copy.card1Cta);
+    s('customBadge',  copy.customBadge);
+    s('customTitle',  copy.customTitle);
+    s('customSub',    copy.customSub);
+    s('step1Title',   copy.step1Title);
+    s('step1Desc',    copy.step1Desc);
+    s('step2Title',   copy.step2Title);
+    s('step2Desc',    copy.step2Desc);
+    s('step3Title',   copy.step3Title);
+    s('step3Desc',    copy.step3Desc);
+    s('step4Title',   copy.step4Title);
+    s('step4Desc',    copy.step4Desc);
+    s('orderBadge',   copy.orderBadge);
+    s('orderTitle',   copy.orderTitle);
+    s('tableHead1',   copy.tableHead1);
+    s('tableHead2',   copy.tableHead2);
+    s('tableHead3',   copy.tableHead3);
+    s('tableHead4',   copy.tableHead4);
+    s('row1Use',      copy.row1Use);
+    s('row1Benefit',  copy.row1Benefit);
+    h('orderNote',    copy.orderNote);
+    s('faqBadge',     copy.faqBadge);
+    s('faqTitle',     copy.faqTitle);
+    s('faqQ1',        copy.faqQ1);
+    s('faqA1',        copy.faqA1);
+    s('faqQ2',        copy.faqQ2);
+    s('faqA2',        copy.faqA2);
+    s('faqQ3',        copy.faqQ3);
+    s('faqA3',        copy.faqA3);
+    s('faqQ4',        copy.faqQ4);
+    s('faqA4',        copy.faqA4);
+    s('ctaTitle',     copy.ctaTitle);
+    s('ctaSub',       copy.ctaSub);
+    s('ctaBtn1',      copy.ctaBtn1);
+
+    document.title = copy.title;
+    const meta = document.querySelector('meta[name="description"]');
+    if (meta) meta.setAttribute('content', copy.description);
+  };
+</script>
+</body>
+</html>

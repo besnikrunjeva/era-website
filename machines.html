@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Makinat – ERA Print Pack</title>
+  <meta name="description" content="13 makina prodhimi të nivelit industrial — nga shtypja offset Heidelberg deri tek formueset e gotave letre. Kapacitetet e plota të ERA Print Pack." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" type="image/svg+xml" href="assets/era-logo.svg" />
+  <style>
+
+    /* ── Stats bar ─────────────────────────────────────── */
+    .m-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(76,167,6,.25);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-top: 32px;
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .m-stat {
+      background: rgba(20,45,8,.55);
+      padding: 20px 24px;
+      text-align: center;
+      backdrop-filter: blur(10px);
+    }
+    .m-stat-num {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--green);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .m-stat-label {
+      font-size: .78rem;
+      color: rgba(255,255,255,.75);
+      font-weight: 500;
+    }
+
+    /* ── Process flow ──────────────────────────────────── */
+    .process-flow {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      position: relative;
+      gap: 8px;
+    }
+    .process-flow::before {
+      content: '';
+      position: absolute;
+      top: 35px;
+      left: 8%;
+      right: 8%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--green-light), var(--green), var(--green-light));
+      z-index: 0;
+    }
+    .process-step {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      padding: 0 8px;
+    }
+    .process-icon {
+      width: 70px;
+      height: 70px;
+      background: var(--green);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+      position: relative;
+      box-shadow: 0 4px 16px rgba(76,167,6,.3);
+      flex-shrink: 0;
+    }
+    .process-icon svg { display: block; }
+    .process-num {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      width: 22px;
+      height: 22px;
+      background: var(--green-darker);
+      color: white;
+      font-size: .65rem;
+      font-weight: 800;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid white;
+    }
+    .process-step h4 {
+      font-size: .9rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+    .process-step p {
+      font-size: .85rem;
+      color: var(--text-soft);
+      line-height: 1.6;
+    }
+
+    /* ── Category header ───────────────────────────────── */
+    .cat-header {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 36px;
+      padding-bottom: 24px;
+      border-bottom: 2px solid var(--gray-mid);
+    }
+    .cat-icon {
+      width: 52px;
+      height: 52px;
+      background: var(--green);
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+    .cat-header h2 { font-size: 1.5rem; margin: 0 0 4px; }
+    .cat-header p  { font-size: .9rem; color: var(--text-soft); margin: 0; }
+
+    /* ── Machine cards ─────────────────────────────────── */
+    .machines-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+    .machine-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--gray-mid);
+      transition: var(--transition);
+    }
+    .machine-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-4px);
+      border-color: rgba(76,167,6,.4);
+    }
+    .machine-card.ingenuity {
+      border-color: rgba(76,167,6,.35);
+    }
+
+    /* Card header strip (replaces photo) */
+    .machine-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 20px 24px;
+      background: linear-gradient(135deg, #0c1f05 0%, #173507 55%, #1c3e09 100%);
+      border-bottom: 1px solid rgba(76,167,6,.2);
+      position: relative;
+      overflow: hidden;
+    }
+    .machine-header::after {
+      content: '';
+      position: absolute;
+      right: -20px;
+      top: -20px;
+      width: 110px;
+      height: 110px;
+      background: radial-gradient(circle, rgba(76,167,6,.18) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .machine-card.ingenuity .machine-header {
+      background: linear-gradient(135deg, #0c1f05 0%, #1c3e09 55%, #254c0a 100%);
+    }
+    .mh-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: rgba(76,167,6,.15);
+      border: 1px solid rgba(76,167,6,.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      z-index: 1;
+    }
+    .mh-label {
+      font-size: .7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--green);
+      z-index: 1;
+    }
+
+    /* Card body */
+    .machine-body { padding: 24px; }
+    .machine-type {
+      display: inline-block;
+      font-size: .7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--green);
+      background: var(--green-light);
+      padding: 4px 10px;
+      border-radius: 100px;
+      margin-bottom: 10px;
+    }
+    .ingenuity-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: .7rem;
+      font-weight: 700;
+      color: var(--green-darker);
+      background: var(--green-light);
+      border: 1px solid rgba(76,167,6,.3);
+      padding: 4px 10px;
+      border-radius: 100px;
+      margin-bottom: 10px;
+    }
+    .machine-name {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+    .machine-desc {
+      font-size: .875rem;
+      color: var(--text-mid);
+      line-height: 1.65;
+      margin-bottom: 18px;
+    }
+    .machine-specs {
+      border-top: 1px solid var(--gray-mid);
+      padding-top: 16px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .mspec { display: flex; flex-direction: column; gap: 2px; }
+    .mspec-label {
+      font-size: .68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      color: var(--gray);
+    }
+    .mspec-value {
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    /* ── Responsive ────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .machines-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 900px) {
+      .machines-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .m-stats { grid-template-columns: repeat(3, 1fr); max-width: 100%; }
+      .machines-grid { grid-template-columns: 1fr; }
+
+      /* ── Horizontal scroll carousel on mobile ── */
+      .process-scroll-wrap {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        margin: 0 -24px;
+        padding: 0 24px 16px;
+        scrollbar-width: none;
+      }
+      .process-scroll-wrap::-webkit-scrollbar { display: none; }
+      .process-flow {
+        display: flex;
+        flex-direction: row;
+        gap: 0;
+        width: max-content;
+        position: relative;
+      }
+      /* Horizontal connector line */
+      .process-flow::before {
+        content: '';
+        position: absolute;
+        top: 35px;
+        left: 35px;
+        right: 35px;
+        width: auto;
+        height: 2px;
+        background: linear-gradient(90deg, var(--green-light), var(--green), var(--green-light));
+      }
+      .process-step {
+        width: 200px;
+        text-align: center;
+        padding: 0 16px;
+        flex-shrink: 0;
+      }
+      .process-icon { margin: 0 auto 16px; }
+      .process-step h4 { font-size: .88rem; }
+      .process-step p  { font-size: .82rem; }
+    }
+    @media (max-width: 480px) {
+      .machine-specs { grid-template-columns: 1fr; }
+      .process-step { width: 180px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAVBAR ─────────────────────────────────────────────── -->
+<div id="site-nav"></div>
+
+
+<!-- ── PAGE HERO ──────────────────────────────────────────── -->
+<section class="page-hero">
+  <div class="container">
+    <span class="badge hero-anim-badge" style="--delay:0ms" data-i18n="mach.badge"></span>
+    <h1 class="hero-anim-title" style="--delay:180ms" data-i18n="mach.title"></h1>
+    <p class="hero-anim-text" style="--delay:360ms" data-i18n="mach.sub"></p>
+    <div class="hero-stats" style="max-width:560px;margin:32px auto 0;">
+      <div class="hero-stat hero-anim-stat" style="--delay:300ms">
+        <div class="hero-stat-number" data-target="13" data-suffix=""></div>
+        <div class="hero-stat-label" data-i18n="mach.s1"></div>
+      </div>
+      <div class="hero-stat hero-anim-stat" style="--delay:460ms">
+        <div class="hero-stat-number" data-target="4" data-suffix=""></div>
+        <div class="hero-stat-label" data-i18n="mach.s2"></div>
+      </div>
+      <div class="hero-stat hero-anim-stat" style="--delay:620ms">
+        <div class="hero-stat-number" data-target="3.9" data-suffix="M+" data-decimals="1"></div>
+        <div class="hero-stat-label" data-i18n="mach.s3"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── PROCESI I PRINTIMIT ────────────────────────────────── -->
+<section class="section" style="background:var(--gray-light);">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="badge" data-i18n="proc.badge"></span>
+      <h2 data-i18n="proc.title"></h2>
+      <p data-i18n="proc.sub"></p>
+    </div>
+
+    <div class="process-scroll-wrap">
+    <div class="process-flow fade-in">
+
+      <div class="process-step">
+        <div class="process-icon">
+          <span class="process-num">1</span>
+          <!-- Pencil / Design -->
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        </div>
+        <h4 data-i18n="proc.s1.t"></h4>
+        <p data-i18n="proc.s1.d"></p>
+      </div>
+
+      <div class="process-step">
+        <div class="process-icon">
+          <span class="process-num">2</span>
+          <!-- Layers / Pre-press -->
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+        </div>
+        <h4 data-i18n="proc.s2.t"></h4>
+        <p data-i18n="proc.s2.d"></p>
+      </div>
+
+      <div class="process-step">
+        <div class="process-icon">
+          <span class="process-num">3</span>
+          <!-- Printer -->
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        </div>
+        <h4 data-i18n="proc.s3.t"></h4>
+        <p data-i18n="proc.s3.d"></p>
+      </div>
+
+      <div class="process-step">
+        <div class="process-icon">
+          <span class="process-num">4</span>
+          <!-- Scissors / Cut -->
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>
+        </div>
+        <h4 data-i18n="proc.s4.t"></h4>
+        <p data-i18n="proc.s4.d"></p>
+      </div>
+
+      <div class="process-step">
+        <div class="process-icon">
+          <span class="process-num">5</span>
+          <!-- Box / Delivery -->
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+        </div>
+        <h4 data-i18n="proc.s5.t"></h4>
+        <p data-i18n="proc.s5.d"></p>
+      </div>
+
+    </div><!-- end process-flow -->
+    </div><!-- end process-scroll-wrap -->
+  </div>
+</section>
+
+
+<!-- ── CAT 1: PRINTIMI ────────────────────────────────────── -->
+<section class="section">
+  <div class="container">
+
+    <div class="cat-header fade-in">
+      <div class="cat-icon">🖨️</div>
+      <div>
+        <h2 data-i18n="mcat.print"></h2>
+        <p data-i18n="mcat.print.d"></p>
+      </div>
+    </div>
+
+    <div class="machines-grid">
+
+      <!-- Heidelberg -->
+      <div class="machine-card fade-in">
+        <div class="machine-header">
+          <div class="mh-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 6V4h12v2"/><circle cx="7" cy="12" r="1.5" fill="white"/><path d="M11 10h6M11 12h6M11 14h4"/></svg>
+          </div>
+          <span class="mh-label" data-i18n="mcat.print"></span>
+        </div>
+        <div class="machine-body">
+          <span class="machine-type" data-i18n="mcat.print"></span>
+          <div class="machine-name">Shtypëse Offset 4-Ngjyrësh</div>
+          <p class="machine-desc" data-i18n="m.heidelberg.d"></p>
+          <div class="machine-specs">
+            <div class="mspec">
+              <span class="mspec-label" data-i18n="ms.type"></span>
+              <span class="mspec-value">Sheet-fed Offset</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ── CAT 2: PRERJA & STAMPIMI ───────────────────────────── -->
+<section class="section" style="background:var(--gray-light);">
+  <div class="container">
+
+    <div class="cat-header fade-in">
+      <div class="cat-icon">✂️</div>
+      <div>
+        <h2 data-i18n="mcat.die"></h2>
+        <p data-i18n="mcat.die.d"></p>
+      </div>
+    </div>
+
+    <div class="machines-grid">
+
+      <!-- Lukes LKS-1060H -->
+      <div class="machine-card fade-in">
+        <div class="machine-header">
+          <div class="mh-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>
+          </div>
+          <span class="mh-label" data-i18n="mcat.die"></span>
+        </div>
+        <div class="machine-body">
+          <span class="machine-type" data-i18n="mcat.die"></span>
+          <div class="machine-name">Makinë Prerëse & Stampuese — Kryesore</div>
+          <p class="machine-desc" data-i18n="m.lukes.d"></p>
+          <div class="machine-specs">
+            <div class="mspec">
+              <span class="mspec-label" data-i18n="ms.type"></span>
+              <span class="mspec-value">Flatbed Die-cutter</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TMZ Zaragoza CX-92 -->
+      <div class="machine-card fade-in">
+        <div class="machine-header">
+          <div class="mh-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>
+          </div>
+          <span class="mh-label" data-i18n="mcat.die"></span>
+        </div>
+        <div class="machine-body">
+          <span class="machine-type" data-i18n="mcat.die"></span>
+          <div class="machine-name">Makinë Prerëse & Stampuese — Dytësore</div>
+          <p class="machine-desc" data-i18n="m.tmz.d"></p>
+          <div class="machine-specs">
+            <div class="mspec">
+              <span class="mspec-label" data-i18n="ms.type"></span>
+              <span class="mspec-value">Flatbed Die-cutter</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ── CAT 3: FORMIMI I KUTIVE ────────────────────────────── -->
+<section class="section">
+  <div class="container">
+
+    <div class="cat-header fade-in">
+      <div class="cat-icon">📦</div>
+      <div>
+        <h2 data-i18n="mcat.box"></h2>
+        <p data-i18n="mcat.box.d"></p>
+      </div>
+    </div>
+
+    <div class="machines-grid">
+
+      <!-- GS Series Folder Gluer -->
+      <div class="machine-card fade-in">
+        <div class="machine-header">
+          <div class="mh-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+          </div>
+          <span class="mh-label" data-i18n="mcat.box"></span>
+        </div>
+        <div class="machine-body">
+          <span class="machine-type" data-i18n="mcat.box"></span>
+          <div class="machine-name">Makinë Palosëse-Ngjitëse (4 & 6 Kënde)</div>
+          <p class="machine-desc" data-i18n="m.gs.d"></p>
+          <div class="machine-specs">
+            <div class="mspec">
+              <span class="mspec-label" data-i18n="ms.type"></span>
+              <span class="mspec-value">Folder Gluer</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Straight-Line Folder Gluer -->
+      <div class="machine-card fade-in">
+        <div class="machine-header">
+          <div class="mh-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+          </div>
+          <span class="mh-label" data-i18n="mcat.box"></span>
+        </div>
+        <div class="machine-body">
+          <span class="machine-type" data-i18n="mcat.box"></span>
+          <div class="machine-name">Makinë Palosëse-Ngjitëse Lineare</div>
+          <p class="machine-desc" data-i18n="m.zhejiang.d"></p>
+          <div class="machine-specs">
+            <div class="mspec">
+              <span class="mspec-label" data-i18n="ms.type"></span>
+              <span class="mspec-value">Straight-Line Folder Gluer</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ── CAT 4: PAKETIME USHQIMORE ─────────────────────────── -->
+<section class="section" style="background:var(--gray-light);">
+  <div class="container">
+
+    <div class="cat-header fade-in">
+      <div class="cat-icon">☕</div>
+      <div>
+        <h2 data-i18n="mcat.food"></h2>
+        <p data-i18n="mcat.food.d"></p>
+      </div>
+    </div>
+
+    <div class="machines-grid">
+
+      <!-- Paper Cup Machines × 3 -->
+      <div class="machine-card fade-in">
+        <div class="machine-header">
+          <div class="mh-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+          </div>
+          <span class="mh-label" data-i18n="mcat.food"></span>
+        </div>
+        <div class="machine-body">
+          <span class="machine-type" data-i18n="mcat.food"></span>
+          <div class="machine-name">3 × Makinë Formimi Gotash Letre</div>
+          <p class="machine-desc" data-i18n="m.cups.d"></p>
+          <div class="machine-specs">
+            <div class="mspec">
+              <span class="mspec-label" data-i18n="ms.type"></span>
+              <span class="mspec-value">Cup Forming Machine</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Paper Bowl Machines MB-C12 + MB-C35 -->
+      <div class="machine-card fade-in">
+        <div class="machine-header">
+          <div class="mh-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6.48 2 12h20c0-5.52-4.48-10-10-10z"/><path d="M2 12c0 5.52 4.48 10 10 10s10-4.48 10-10"/><line x1="2" y1="12" x2="22" y2="12"/></svg>
+          </div>
+          <span class="mh-label" data-i18n="mcat.food"></span>
+        </div>
+        <div class="machine-body">
+          <span class="machine-type" data-i18n="mcat.food"></span>
+          <div class="machine-name">Makinë Formimi Kupash & Akullore</div>
+          <p class="machine-desc" data-i18n="m.bowls.d"></p>
+          <div class="machine-specs">
+            <div class="mspec">
+              <span class="mspec-label" data-i18n="ms.type"></span>
+              <span class="mspec-value">Bowl Forming Machine</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cutlery Pocket Machine -->
+      <div class="machine-card ingenuity fade-in">
+        <div class="machine-header">
+          <div class="mh-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 002-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 00-5 5v6h5zm0 0v7"/></svg>
+          </div>
+          <span class="mh-label" data-i18n="mcat.food"></span>
+        </div>
+        <div class="machine-body">
+          <span class="ingenuity-badge">⚙️ <span data-i18n="m.cutlery.badge"></span></span>
+          <div class="machine-name" data-i18n="m.cutlery.name"></div>
+          <p class="machine-desc" data-i18n="m.cutlery.d"></p>
+          <div class="machine-specs">
+            <div class="mspec">
+              <span class="mspec-label" data-i18n="ms.type"></span>
+              <span class="mspec-value" data-i18n="m.cutlery.type"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ── CTA BANNER ─────────────────────────────────────────── -->
+<section class="cta-banner">
+  <div class="container">
+    <h2 data-i18n="cta.title"></h2>
+    <p data-i18n="cta.sub"></p>
+    <div class="cta-btns">
+      <a href="contact.html" class="btn btn-outline btn-lg" data-i18n="cta.btn1"></a>
+      <a href="tel:+38344113533" class="btn btn-lg" style="background:rgba(255,255,255,.15);color:#fff;border:2px solid rgba(255,255,255,.3);" data-i18n="cta.btn2"></a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── FOOTER ─────────────────────────────────────────────── -->
+<div id="site-footer"></div>
+
+<div id="site-whatsapp"></div>
+
+<script src="js/main.js?v=13"></script>
+</body>
+</html>

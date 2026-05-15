@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kuti Ushqimore – ERA Print Pack</title>
+  <meta name="description" content="Kuti ushqimore clam-shell në 3 madhësi S, M, L. Me printim të personalizuar për hamburger, fast food, ëmbëlsira dhe delivery." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" type="image/svg+xml" href="assets/era-logo.svg" />
+  <style>
+    .size-selector {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+    .size-btn {
+      padding: 10px 24px;
+      border-radius: 100px;
+      border: 2px solid var(--gray-mid);
+      font-size: .9rem;
+      font-weight: 600;
+      color: var(--text-mid);
+      transition: var(--transition);
+      cursor: pointer;
+      background: var(--white);
+    }
+    .size-btn:hover, .size-btn.active {
+      border-color: var(--green);
+      background: var(--green);
+      color: var(--white);
+    }
+    .box-showcase {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+    .box-image-wrap {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      aspect-ratio: 1;
+    }
+    .box-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .5s ease;
+    }
+    .box-image-wrap:hover img { transform: scale(1.04); }
+    .box-badge-size {
+      position: absolute;
+      top: 20px; right: 20px;
+      background: var(--green);
+      color: var(--white);
+      font-size: .85rem;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 100px;
+    }
+    .box-info h1 { margin-bottom: 14px; }
+    .box-info .lead {
+      font-size: 1.1rem;
+      color: var(--text-mid);
+      margin-bottom: 28px;
+      line-height: 1.75;
+    }
+    .box-specs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 32px;
+    }
+    .spec-item {
+      background: var(--gray-light);
+      border-radius: var(--radius);
+      padding: 16px;
+    }
+    .spec-label {
+      font-size: .75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      color: var(--gray);
+      margin-bottom: 4px;
+    }
+    .spec-value {
+      font-size: .95rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .box-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .sizes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .size-card {
+      border: 2px solid var(--gray-mid);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: var(--transition);
+      background: var(--white);
+    }
+    .size-card:hover, .size-card.featured {
+      border-color: var(--green);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-6px);
+    }
+    .size-card.featured { transform: translateY(-10px); }
+    .size-card-img {
+      position: relative;
+      aspect-ratio: 1;
+      overflow: hidden;
+    }
+    .size-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .4s ease;
+    }
+    .size-card:hover .size-card-img img { transform: scale(1.06); }
+    .popular-tag {
+      position: absolute;
+      top: 14px; right: 14px;
+      background: var(--green);
+      color: var(--white);
+      font-size: .72rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 100px;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+    .size-card-body { padding: 22px; }
+    .size-label {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--green);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .size-dim {
+      font-size: .8rem;
+      color: var(--gray);
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+    .size-card-body h3 { margin-bottom: 8px; font-size: 1rem; }
+    .size-card-body p  { font-size: .85rem; margin-bottom: 16px; }
+    .size-uses {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 18px;
+    }
+    .use-tag {
+      font-size: .75rem;
+      padding: 4px 10px;
+      border-radius: 100px;
+      background: var(--green-light);
+      color: var(--green-darker);
+      font-weight: 500;
+    }
+    .custom-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    .custom-step {
+      text-align: center;
+      padding: 28px 20px;
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--gray-mid);
+      transition: var(--transition);
+    }
+    .custom-step:hover { border-color: var(--green); box-shadow: var(--shadow-sm); }
+    .custom-step-icon {
+      width: 64px;
+      height: 64px;
+      background: var(--green);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 18px;
+      box-shadow: 0 4px 16px rgba(76,167,6,.25);
+      flex-shrink: 0;
+    }
+    .custom-step h4 { margin-bottom: 8px; }
+    .custom-step p  { font-size: .85rem; }
+    .order-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+    .order-table th {
+      background: var(--green);
+      color: var(--white);
+      padding: 16px 20px;
+      text-align: left;
+      font-size: .85rem;
+      font-weight: 600;
+      letter-spacing: .04em;
+    }
+    .order-table td {
+      padding: 15px 20px;
+      border-bottom: 1px solid var(--gray-mid);
+      font-size: .9rem;
+    }
+    .order-table tr:last-child td { border-bottom: none; }
+    .order-table tr:hover td { background: var(--green-light); }
+    .order-table .highlight { font-weight: 700; color: var(--green); }
+
+    @media (max-width: 768px) {
+      .box-showcase   { grid-template-columns: 1fr; gap: 32px; }
+      .sizes-grid     { grid-template-columns: 1fr; }
+      .size-card.featured { transform: none; }
+      .custom-steps   { grid-template-columns: 1fr 1fr; }
+      .box-specs      { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .custom-steps { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAVBAR ─────────────────────────────────────────────── -->
+<div id="site-nav"></div>
+
+
+<!-- ── BREADCRUMB ─────────────────────────────────────────── -->
+<div style="background:var(--gray-light);border-bottom:1px solid var(--gray-mid);padding:14px 0;margin-top:72px;">
+  <div class="container">
+    <div style="display:flex;align-items:center;gap:8px;font-size:.85rem;color:var(--text-soft);">
+      <a href="index.html" style="color:var(--text-soft);transition:color .2s;" onmouseover="this.style.color='#4ca706'" onmouseout="this.style.color=''">Kryefaqja</a>
+      <span>›</span>
+      <a href="products.html" style="color:var(--text-soft);transition:color .2s;" onmouseover="this.style.color='#4ca706'" onmouseout="this.style.color=''">Produktet</a>
+      <span>›</span>
+      <span style="color:var(--text);font-weight:500;">Kuti Ushqimore</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ── HERO SHOWCASE ──────────────────────────────────────── -->
+<section class="section" style="padding-top:56px;">
+  <div class="container">
+    <div class="box-showcase">
+
+      <div class="box-image-wrap fade-in">
+        <img src="assets/kuti-ushqimore-l.jpg" alt="Kuti Ushqimore ERA Print Pack" id="boxHeroImg" />
+        <span class="box-badge-size" id="boxBadge">L</span>
+      </div>
+
+      <div class="box-info fade-in">
+        <span class="badge">Kuti Ushqimore</span>
+        <h1>Kuti me Dizajn<br/><span class="text-green">të Personalizuar</span></h1>
+        <p class="lead">Kuti clam-shell letre me printim të plotë — logoja, ngjyrat dhe stili juaj, në çdo madhësi. Rezistente ndaj nxehtësisë dhe vajit. Ideale për fast food, restorante dhe delivery.</p>
+
+        <div class="size-selector">
+          <button class="size-btn" data-size="S" onclick="switchBox(this, 'assets/kuti-ushqimore-s.jpg', 'S')">S</button>
+          <button class="size-btn" data-size="M" onclick="switchBox(this, 'assets/kuti-ushqimore-m.jpg', 'M')">M</button>
+          <button class="size-btn active" data-size="L" onclick="switchBox(this, 'assets/kuti-ushqimore-l.jpg', 'L')">L</button>
+        </div>
+
+        <div class="box-specs" id="boxSpecs">
+          <div class="spec-item">
+            <div class="spec-label">Madhësia</div>
+            <div class="spec-value" id="specSize">L – e madhe</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Ideal për</div>
+            <div class="spec-value" id="specUse">Hamburger, Porcione të Plota</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Materiali</div>
+            <div class="spec-value">Letër e dyfishtë</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Porosia Minimale</div>
+            <div class="spec-value">10,000 copë</div>
+          </div>
+        </div>
+
+        <div class="box-ctas">
+          <a href="contact.html" class="btn btn-primary btn-lg">Kërko Ofertë</a>
+          <a href="contact.html" class="btn btn-outline-green btn-lg">Na Kontakto</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ── 3 SIZES COMPARISON ─────────────────────────────────── -->
+<section class="section" style="background:var(--gray-light);padding-top:72px;">
+  <div class="container">
+    <div class="section-header text-center fade-in">
+      <span class="badge">3 Madhësi</span>
+      <h2>Zgjidhni Madhësinë e Duhur</h2>
+      <p>Çdo madhësi e projektuar për nevoja specifike — nga porcionet e vogla tek kutitë e mëdha për delivery.</p>
+    </div>
+
+    <div class="sizes-grid">
+
+      <div class="size-card fade-in">
+        <div class="size-card-img">
+          <img src="assets/kuti-ushqimore-s.jpg" alt="Kuti S" />
+        </div>
+        <div class="size-card-body">
+          <div class="size-label">S</div>
+          <div class="size-dim">E vogël</div>
+          <h3>Kuti Snack</h3>
+          <p>Perfekte për ushqime anësore, fingerfoods, ëmbëlsira dhe porcione të vogla.</p>
+          <div class="size-uses">
+            <span class="use-tag">🍟 Fingerfoods</span>
+            <span class="use-tag">Ëmbëlsira</span>
+            <span class="use-tag">Snack</span>
+          </div>
+          <a href="contact.html" class="btn btn-outline-green btn-sm" style="width:100%;justify-content:center;">Kërko Ofertë</a>
+        </div>
+      </div>
+
+      <div class="size-card featured fade-in">
+        <div class="size-card-img">
+          <span class="popular-tag">Më e Popullarizuar</span>
+          <img src="assets/kuti-ushqimore-m.jpg" alt="Kuti M" />
+        </div>
+        <div class="size-card-body">
+          <div class="size-label">M</div>
+          <div class="size-dim">E mesme</div>
+          <h3>Kuti Universale</h3>
+          <p>Madhësia standarde për hamburger, sandviçe dhe porcione të mesme. Zgjedhja nr.1 e fast food-ve.</p>
+          <div class="size-uses">
+            <span class="use-tag">🍔 Hamburger</span>
+            <span class="use-tag">Sandviçe</span>
+            <span class="use-tag">Fast Food</span>
+          </div>
+          <a href="contact.html" class="btn btn-primary btn-sm" style="width:100%;justify-content:center;">Kërko Ofertë</a>
+        </div>
+      </div>
+
+      <div class="size-card fade-in">
+        <div class="size-card-img">
+          <img src="assets/kuti-ushqimore-l.jpg" alt="Kuti L" />
+        </div>
+        <div class="size-card-body">
+          <div class="size-label">L</div>
+          <div class="size-dim">E madhe</div>
+          <h3>Kuti Delivery</h3>
+          <p>E madhe dhe e fortë, ideale për porcione të plota dhe delivery. Mban nxehtësinë gjatë transportit.</p>
+          <div class="size-uses">
+            <span class="use-tag">🚴 Delivery</span>
+            <span class="use-tag">Porcione të Plota</span>
+            <span class="use-tag">Restorante</span>
+          </div>
+          <a href="contact.html" class="btn btn-outline-green btn-sm" style="width:100%;justify-content:center;">Kërko Ofertë</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ── CUSTOMIZATION ──────────────────────────────────────── -->
+<section class="section">
+  <div class="container">
+    <div class="section-header text-center fade-in">
+      <span class="badge">Personalizimi</span>
+      <h2>Kutia me Markën Tuaj</h2>
+      <p>Çdo kuti printohet me dizajnin tuaj unik. Procesi është i thjeshtë dhe i shpejtë.</p>
+    </div>
+
+    <div class="custom-steps">
+      <div class="custom-step fade-in">
+        <div class="custom-step-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></div>
+        <h4>Zgjidhni Madhësinë</h4>
+        <p>S, M ose L — varësisht nga lloji i ushqimit dhe nevojave tuaja specifike.</p>
+      </div>
+      <div class="custom-step fade-in">
+        <div class="custom-step-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div>
+        <h4>Dërgoni Dizajnin</h4>
+        <p>Logoja dhe dizajni juaj në AI, PDF ose PSD. Ekipi ynë e përgatit për printim.</p>
+      </div>
+      <div class="custom-step fade-in">
+        <div class="custom-step-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg></div>
+        <h4>Printimi</h4>
+        <p>Printim offset me ngjyra të qëndrueshme dhe cilësi të lartë në çdo kuti.</p>
+      </div>
+      <div class="custom-step fade-in">
+        <div class="custom-step-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+        <h4>Dorëzimi</h4>
+        <p>Dorëzim direkt te biznesi juaj brenda afatit të rënë dakord.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── ORDER INFO TABLE ───────────────────────────────────── -->
+<section class="section-sm" style="background:var(--gray-light);">
+  <div class="container" style="max-width:800px;">
+    <div class="section-header text-center fade-in">
+      <span class="badge">Porositja</span>
+      <h2>Informacion Porosie</h2>
+    </div>
+
+    <div class="fade-in">
+      <div class="table-wrap">
+
+      <table class="order-table">
+        <thead>
+          <tr>
+            <th>Madhësia</th>
+            <th>Tipi</th>
+            <th>Porosia Minimale</th>
+            <th>Ideal për</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="highlight">S</td>
+            <td>Clam-shell e vogël</td>
+            <td>10,000 copë</td>
+            <td>Snack, Fingerfoods, Ëmbëlsira</td>
+          </tr>
+          <tr>
+            <td class="highlight">M</td>
+            <td>Clam-shell e mesme</td>
+            <td>10,000 copë</td>
+            <td>Hamburger, Sandviçe, Fast Food</td>
+          </tr>
+          <tr>
+            <td class="highlight">L</td>
+            <td>Clam-shell e madhe</td>
+            <td>10,000 copë</td>
+            <td>Porcione të Plota, Delivery, Restorante</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+
+      <div style="margin-top:20px;padding:18px 22px;background:var(--green-light);border-radius:var(--radius);border-left:4px solid var(--green);">
+        <p style="font-size:.9rem;color:var(--green-darker);margin:0;">
+          <strong>💡 Shënim:</strong> Çmimet ndryshojnë sipas sasisë, numrit të ngjyrave dhe kompleksitetit të dizajnit. Kontaktoni për ofertë të personalizuar pa asnjë detyrim.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── FAQ ────────────────────────────────────────────────── -->
+<section class="section">
+  <div class="container" style="max-width:760px;">
+    <div class="section-header text-center fade-in">
+      <span class="badge">FAQ</span>
+      <h2>Pyetje të Shpeshta</h2>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <details style="background:var(--gray-light);border:1px solid var(--gray-mid);border-radius:var(--radius);overflow:hidden;" class="fade-in">
+        <summary style="padding:18px 22px;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;">
+          A mund të porosis madhësi të ndryshme në të njëjtën porosi?
+          <span style="color:var(--green);font-size:1.2rem;">+</span>
+        </summary>
+        <p style="padding:0 22px 18px;color:var(--text-mid);font-size:.92rem;">Po, mund të kombinoni madhësi të ndryshme. Minimumi për secilën madhësi mbetet 10,000 copë.</p>
+      </details>
+
+      <details style="background:var(--gray-light);border:1px solid var(--gray-mid);border-radius:var(--radius);overflow:hidden;" class="fade-in">
+        <summary style="padding:18px 22px;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;">
+          Sa kohë zgjat prodhimi?
+          <span style="color:var(--green);font-size:1.2rem;">+</span>
+        </summary>
+        <p style="padding:0 22px 18px;color:var(--text-mid);font-size:.92rem;">Koha standarde e prodhimit është 7–10 ditë pune pas aprovimit të dizajnit. Ofrojmë shërbim express për porosite urgjente.</p>
+      </details>
+
+      <details style="background:var(--gray-light);border:1px solid var(--gray-mid);border-radius:var(--radius);overflow:hidden;" class="fade-in">
+        <summary style="padding:18px 22px;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;">
+          A janë kutitë rezistente ndaj vajit dhe nxehtësisë?
+          <span style="color:var(--green);font-size:1.2rem;">+</span>
+        </summary>
+        <p style="padding:0 22px 18px;color:var(--text-mid);font-size:.92rem;">Po, kutitë tona janë të trajtuara me shtresë mbrojtëse grease-proof dhe rezistojnë ndaj vajit dhe lagështirës.</p>
+      </details>
+
+      <details style="background:var(--gray-light);border:1px solid var(--gray-mid);border-radius:var(--radius);overflow:hidden;" class="fade-in">
+        <summary style="padding:18px 22px;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;">
+          A janë kutitë të riciklueshme?
+          <span style="color:var(--green);font-size:1.2rem;">+</span>
+        </summary>
+        <p style="padding:0 22px 18px;color:var(--text-mid);font-size:.92rem;">Po, të gjitha kutitë tona janë bërë nga letër e certifikuar dhe janë 100% të riciklueshme.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── CTA BANNER ─────────────────────────────────────────── -->
+<section class="cta-banner">
+  <div class="container">
+    <h2>Gati të Personalizoni Kutitë Tuaja?</h2>
+    <p>Kontaktoni ekipin tonë sot dhe merrni një ofertë falas brenda 24 orëve.</p>
+    <div class="cta-btns">
+      <a href="contact.html" class="btn btn-outline btn-lg">Kërko Ofertë Falas</a>
+      <a href="https://wa.me/38344113533" target="_blank" class="btn btn-lg" style="background:#25d366;color:#fff;border:none;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── FOOTER ─────────────────────────────────────────────── -->
+<div id="site-footer"></div>
+
+<div id="site-whatsapp"></div>
+
+<script src="js/main.js?v=13"></script>
+<script>
+  const boxData = {
+    'S': { size: 'S – e vogël',   use: 'Snack, Fingerfoods, Ëmbëlsira' },
+    'M': { size: 'M – e mesme',   use: 'Hamburger, Sandviçe, Fast Food' },
+    'L': { size: 'L – e madhe',   use: 'Hamburger, Porcione të Plota' }
+  };
+
+  function switchBox(btn, imgSrc, badge) {
+    document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('boxHeroImg').src = imgSrc;
+    document.getElementById('boxBadge').textContent = badge;
+    document.getElementById('specSize').textContent = boxData[badge].size;
+    document.getElementById('specUse').textContent  = boxData[badge].use;
+  }
+</script>
+</body>
+</html>

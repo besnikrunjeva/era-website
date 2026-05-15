@@ -1,0 +1,1646 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mbajtëse Luge – ERA Print Pack</title>
+  <meta name="description" content="Mbajtëse luge letre me printim të personalizuar. Ideale për kafene, restorante dhe fast food. Porosi minimale 10,000 copë." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css?v=2" />
+  <link rel="icon" type="image/svg+xml" href="assets/era-logo.svg" />
+  <style>
+    .cup-showcase { display:grid; grid-template-columns:1fr 1fr; gap:72px; align-items:center; }
+    .cup-image-wrap {
+      position:relative; border-radius:var(--radius-lg); overflow:hidden;
+      aspect-ratio:1;
+    }
+    .cup-image-wrap img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .5s ease; }
+    .cup-image-wrap:hover img { transform:scale(1.04); }
+
+    .cup-info h1 { margin-bottom:14px; }
+    .cup-info .lead { font-size:1.1rem; color:var(--text-mid); margin-bottom:28px; line-height:1.75; }
+
+    .cup-specs { display:grid; grid-template-columns:repeat(3,1fr); gap:0; margin-bottom:28px; border:1px solid var(--gray-mid); border-radius:var(--radius); overflow:hidden; }
+    .spec-item { padding:10px 14px; background:var(--gray-light); }
+    .spec-item + .spec-item { border-left:1px solid var(--gray-mid); }
+    .spec-label { font-size:.68rem; font-weight:600; text-transform:uppercase; letter-spacing:.07em; color:var(--gray); margin-bottom:3px; }
+    .spec-value { font-size:.88rem; font-weight:700; color:var(--text); }
+    .cup-ctas { display:flex; gap:12px; flex-wrap:wrap; }
+
+    /* Use cases grid */
+    .use-cases-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+    .use-case-card {
+      text-align:center; padding:32px 20px;
+      background:var(--white); border:1px solid var(--gray-mid);
+      border-radius:var(--radius-lg); transition:var(--transition);
+    }
+    .use-case-card:hover { border-color:var(--green); box-shadow:var(--shadow-sm); transform:translateY(-4px); }
+    .use-case-icon { font-size:2.4rem; margin-bottom:14px; }
+    .use-case-card h3 { margin-bottom:8px; font-size:1rem; }
+    .use-case-card p  { font-size:.85rem; }
+
+    /* Why section */
+    .why-list { display:flex; flex-direction:column; gap:16px; }
+    .why-item {
+      display:flex; gap:16px; align-items:flex-start;
+      padding:20px 24px; background:var(--white);
+      border:1px solid var(--gray-mid); border-radius:var(--radius-lg);
+      transition:var(--transition);
+    }
+    .why-item:hover { border-color:var(--green); box-shadow:var(--shadow-sm); }
+    .why-item-icon {
+      width:44px; height:44px; min-width:44px;
+      border-radius:12px; background:var(--green-light);
+      display:flex; align-items:center; justify-content:center;
+      font-size:1.2rem;
+    }
+    .why-item h4 { margin-bottom:4px; }
+    .why-item p  { font-size:.88rem; margin:0; }
+
+    .custom-steps { display:grid; grid-template-columns:repeat(4,1fr); gap:24px; }
+    .custom-step { text-align:center; padding:28px 20px; background:var(--white); border-radius:var(--radius-lg); border:1px solid var(--gray-mid); transition:var(--transition); }
+    .custom-step:hover { border-color:var(--green); box-shadow:var(--shadow-sm); }
+    .custom-step-icon {
+      width: 64px;
+      height: 64px;
+      background: var(--green);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 18px;
+      box-shadow: 0 4px 16px rgba(76,167,6,.25);
+      flex-shrink: 0;
+    }
+    .custom-step h4 { margin-bottom:8px; }
+    .custom-step p  { font-size:.85rem; }
+
+    .order-table { width:100%; border-collapse:collapse; background:var(--white); border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow-sm); }
+    .order-table th { background:var(--green); color:var(--white); padding:16px 20px; text-align:left; font-size:.85rem; font-weight:600; }
+    .order-table td { padding:15px 20px; border-bottom:1px solid var(--gray-mid); font-size:.9rem; }
+    .order-table tr:last-child td { border-bottom:none; }
+    .order-table tr:hover td { background:var(--green-light); }
+    .order-table .highlight { font-weight:700; color:var(--green); }
+
+    @media (max-width:768px) {
+      .cup-showcase    { grid-template-columns:1fr; gap:20px; }
+      .cup-image-wrap  { aspect-ratio:unset; max-height:42vh; border-radius:20px; }
+      .cup-image-wrap img { object-fit:contain; height:42vh; max-height:42vh; }
+      .use-cases-grid  { grid-template-columns:1fr 1fr; }
+      .custom-steps    { grid-template-columns:1fr 1fr; }
+      .cup-specs       { grid-template-columns:repeat(3,1fr); }
+    }
+    @media (max-width:480px) {
+      .use-cases-grid { grid-template-columns:1fr; }
+      .custom-steps   { grid-template-columns:1fr; }
+    }
+
+    /* ── EDITOR INTRO ── */
+    .editor-intro-simple { text-align:center; max-width:580px; margin:0 auto; padding:32px 20px 20px; }
+    .editor-intro-simple h2 { font-size:clamp(1.3rem,3vw,1.8rem); font-weight:800; margin:0 0 12px; color:var(--text); letter-spacing:-.02em; line-height:1.2; }
+    .editor-intro-simple h2 span { color:var(--green); }
+    .editor-intro-simple p { color:var(--text-mid); margin:0 0 8px; line-height:1.6; font-size:.95rem; }
+    .editor-intro-badge { display:inline-flex; align-items:center; gap:6px; background:rgba(76,167,6,.1); color:var(--green); font-size:.72rem; font-weight:700; letter-spacing:.07em; text-transform:uppercase; padding:5px 12px; border-radius:20px; margin-bottom:18px; }
+    .editor-intro-alt { font-size:.85rem; color:var(--text-soft,#6a7a6a); margin-top:16px !important; }
+    .editor-intro-alt a { color:var(--green); text-decoration:underline; text-underline-offset:3px; font-weight:600; }
+
+    /* ── HOW IT WORKS MINI ── */
+    .how-it-works-mini { display:flex; align-items:center; justify-content:center; gap:0; padding:14px 20px; background:var(--white); border-radius:var(--radius); border:1px solid var(--gray-mid); margin-bottom:24px; overflow:hidden; }
+    .hiw-step { display:flex; align-items:center; gap:8px; padding:0 14px; flex:1; min-width:0; }
+    .hiw-num { display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px; border-radius:50%; background:var(--green); color:#fff; font-weight:700; font-size:.72rem; flex-shrink:0; }
+    .hiw-step-text { min-width:0; }
+    .hiw-step h4 { font-size:.78rem; font-weight:700; color:var(--text); margin:0; white-space:nowrap; }
+    .hiw-step p { font-size:.7rem; color:var(--text-mid); margin:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .hiw-arrow { font-size:.9rem; color:var(--gray-mid); flex-shrink:0; }
+    @media (max-width:560px) { .how-it-works-mini { display:none; } }
+
+    /* ── EDITOR FINAL CTA ── */
+    .editor-final-cta { padding:18px 20px 20px; text-align:center; border-top:1px solid var(--gray-mid); background:linear-gradient(180deg,#f9fcf6 0%,#fff 100%); }
+    .editor-final-cta h3 { font-size:1.05rem; font-weight:700; color:var(--text); margin:0 0 4px; }
+    .editor-final-cta p { font-size:.85rem; color:var(--text-mid); margin:0 0 14px; }
+    .editor-final-cta-buttons { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+    .btn-lg { padding:12px 24px; font-size:.95rem; font-weight:600; border-radius:var(--radius); }
+  </style>
+</head>
+<body>
+
+<!-- ── NAVBAR ─────────────────────────────────────────────── -->
+<div id="site-nav"></div>
+
+
+<!-- ── BREADCRUMB ─────────────────────────────────────────── -->
+<div style="background:var(--gray-light);border-bottom:1px solid var(--gray-mid);padding:14px 0;margin-top:72px;">
+  <div class="container">
+    <div style="display:flex;align-items:center;gap:8px;font-size:.85rem;color:var(--text-soft);">
+      <a href="index.html" style="color:var(--text-soft);transition:color .2s;" onmouseover="this.style.color='#4ca706'" onmouseout="this.style.color=''">Kryefaqja</a>
+      <span>›</span>
+      <a href="products.html" style="color:var(--text-soft);transition:color .2s;" onmouseover="this.style.color='#4ca706'" onmouseout="this.style.color=''">Produktet</a>
+      <span>›</span>
+      <span id="breadcrumbCurrent" style="color:var(--text);font-weight:500;">Mbajtëse Luge</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ── HERO SHOWCASE ──────────────────────────────────────── -->
+<section class="section" style="padding-top:56px;">
+  <div class="container">
+    <div class="cup-showcase">
+
+      <div class="cup-image-wrap fade-in">
+        <img src="assets/mbajtese-luge.jpg" alt="Mbajtëse Luge ERA Print Pack" />
+      </div>
+
+      <div class="cup-info fade-in">
+        <span class="badge" id="heroBadge">Mbajtëse Luge</span>
+        <h1 id="heroTitle">Mbajtëse Luge me<br/><span class="text-green">Logo Tuaj</span></h1>
+        <p class="lead" id="heroLead">Mbajtëse luge letre me printim të personalizuar — logoja dhe ngjyrat tuaja në çdo copë. Produkti ynë i dytë më i kërkuar, me mbi 110,000 copë të prodhuara çdo vit. Ideale për kafene, restorante dhe hotele.</p>
+
+        <div class="cup-specs">
+          <div class="spec-item">
+            <div class="spec-label" id="specLabelMat">Materiali</div>
+            <div class="spec-value" id="specMat">Letër e Laminuar</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label" id="specLabelUse">Ideal për</div>
+            <div class="spec-value" id="specUse">Kafene, Restorante, Hotele</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label" id="specLabelMin">Porosia Minimale</div>
+            <div class="spec-value" id="specMin">10,000 copë</div>
+          </div>
+        </div>
+
+        <div class="cup-ctas">
+          <a href="#preview3d" class="btn btn-primary btn-lg" id="heroCta1">Provo Dizajnin 3D</a>
+          <a href="order.html?p=mbajtese-luge&source=preview" class="btn btn-outline-green btn-lg" id="heroCta2">Porosit Tani</a>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── MBAJTËSE LUGE 3D DESIGN PREVIEW ─────────────────── -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<section class="section" id="preview3d" style="background:var(--gray-light);">
+  <div class="container">
+    <div class="editor-intro-simple fade-in">
+      <div class="editor-intro-badge" id="editorIntroBadge">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        Preview i drejtpërdrejtë — pa regjistrim
+      </div>
+      <h2 id="editorIntroTitle">Shiko logon tënde<br>në mbajtëse — <span>në 3D</span></h2>
+      <p id="editorIntroBody">Ngarko logon dhe shihe menjëherë. Pa angazhim — vetëm një parashikim, jo porosi.</p>
+      <p class="editor-intro-alt" id="editorIntroAlt">
+        Ose <a href="https://wa.me/38344113533?text=P%C3%ABrsh%C3%ABndetje%21%20M%C3%AB%20intereson%20Mbajtëse%20Luge.%20Ja%20logoja%20ime%3A" target="_blank">na shkruaj në WhatsApp →</a> nëse preferon ta bëjmë ne dizajnin për ty.
+      </p>
+    </div>
+
+    <div class="how-it-works-mini fade-in">
+      <div class="hiw-step">
+        <span class="hiw-num">1</span>
+        <div class="hiw-step-text"><h4 id="hiwStep1Title">Na trego</h4><p id="hiwStep1Body">Dërgo logon ose idenë</p></div>
+      </div>
+      <div class="hiw-arrow">›</div>
+      <div class="hiw-step">
+        <span class="hiw-num">2</span>
+        <div class="hiw-step-text"><h4 id="hiwStep2Title">Ne dizajnojmë</h4><p id="hiwStep2Body">Përgatitje profesionale</p></div>
+      </div>
+      <div class="hiw-arrow">›</div>
+      <div class="hiw-step">
+        <span class="hiw-num">3</span>
+        <div class="hiw-step-text"><h4 id="hiwStep3Title">Ti merr</h4><p id="hiwStep3Body">7–14 ditë pune</p></div>
+      </div>
+    </div>
+
+    <div class="ml-full fade-in is-empty mode-logo" id="mlEditorFull">
+
+      <!-- ── MOBILE TOOLS ── -->
+      <div class="ml-mobile-tools" id="mlMobileTools">
+
+        <div class="ml-tool-tabs" role="tablist">
+          <button class="ml-tool-tab active" type="button" data-ml-panel="logo">Logo</button>
+          <button class="ml-tool-tab" type="button" data-ml-panel="full">Dizajn i Plotë</button>
+        </div>
+        <details class="ml-advanced-wrap" id="mlAdvancedWrap">
+          <summary class="ml-advanced-toggle">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+            Mjete shtesë
+          </summary>
+          <div class="ml-advanced-tabs" role="tablist" aria-label="Mjetet shtesë">
+            <button class="ml-tool-tab" type="button" data-ml-panel="text">Tekst</button>
+            <button class="ml-tool-tab" type="button" data-ml-panel="qr">QR</button>
+          </div>
+        </details>
+
+        <!-- Size slider (logo tab only) -->
+        <div class="ml-size-control" id="mlSizeControl">
+          <div class="ml-size-head"><span>Madhësia e logos</span><strong id="mlSizeValue">100%</strong></div>
+          <input type="range" id="mlSizeSlider" min="40" max="200" step="1" value="100" disabled>
+        </div>
+
+        <!-- Description card -->
+        <div class="ml-quick-copy" id="mlQuickCopy">
+          <h3 id="mlQuickTitle">Ngarko logon tënde</h3>
+          <p id="mlQuickBody">Ngarko logon dhe shiko menjëherë si duket në mbajtësen e lugës.</p>
+          <small class="ml-note" id="mlQuickNote">PNG me sfond transparent jep rezultatin më të mirë.</small>
+        </div>
+
+        <!-- LOGO panel -->
+        <div class="ml-tool-panel active" data-ml-panel="logo">
+          <div class="ml-logo-actions">
+            <button class="btn btn-outline-green btn-sm" id="mlUploadBtn">Ngarko Logon</button>
+          </div>
+          <p class="ml-upload-status" id="mlUploadStatus"></p>
+          <button type="button" id="mlClearBtn" style="display:none;margin-top:4px;background:none;border:none;font-size:.74rem;color:var(--text-soft);cursor:pointer;text-decoration:underline;padding:0;">Pastro</button>
+          <div class="ml-pos-row" id="mlLogoPosRow" style="display:none;">
+            <span class="ml-pos-label">Pozicioni</span>
+            <div class="ml-pos-btns">
+              <button class="ml-pos-btn" data-logo-pos="top" title="Lart">▲</button>
+              <button class="ml-pos-btn active" data-logo-pos="center" title="Qendër">●</button>
+              <button class="ml-pos-btn" data-logo-pos="bottom" title="Poshtë">▼</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- FULL DESIGN panel -->
+        <div class="ml-tool-panel" data-ml-panel="full">
+          <div class="ml-full-actions">
+            <a class="btn btn-outline-green btn-sm" href="assets/templates/mbajtese-luge-template.pdf" download>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Shkarko Shabllonin
+            </a>
+            <button class="btn btn-primary btn-sm" id="mlFullDesignBtn">Ngarko Dizajnin</button>
+          </div>
+          <button class="btn btn-danger btn-sm" id="mlRemoveFullDesignBtn" style="display:none;margin-top:10px;width:100%;">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:5px;"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4h6v2"/></svg>
+            Hiq Dizajnin
+          </button>
+          <p class="ml-upload-status" id="mlFullDesignStatus"></p>
+        </div>
+
+        <!-- TEXT panel -->
+        <div class="ml-tool-panel" data-ml-panel="text">
+          <div class="ml-templates">
+            <span class="ml-tpl-label">Zgjidhni shabllon:</span>
+            <button class="ml-tpl-btn" data-tpl="+383 ">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.06 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              Numri i Telefonit
+            </button>
+            <button class="ml-tpl-btn" data-tpl="@">Instagram / Facebook</button>
+            <button class="ml-tpl-btn" data-tpl="">Tekst i lirë</button>
+          </div>
+          <div class="ml-text-inputs">
+            <input type="text" id="mlTextInput" placeholder="Shkruaj tekstin këtu…" maxlength="60">
+            <label class="ml-text-opt"><input type="color" id="mlTextColor" value="#000000"> Ngjyra</label>
+            <button class="btn btn-primary btn-sm" id="mlAddTextBtn" style="width:100%;justify-content:center;margin-top:8px;">Vendos Tekstin</button>
+          </div>
+          <div class="ml-qr-controls" id="mlTextControls" style="display:none;margin-top:12px;">
+            <div class="ml-size-head"><span>Madhësia Tekstit</span><strong id="mlTextSizeValue">100%</strong></div>
+            <input type="range" id="mlTextSizeSlider" min="40" max="180" step="5" value="100" style="width:100%;accent-color:var(--green);margin-bottom:10px;">
+            <div class="ml-pos-row">
+              <span class="ml-pos-label">Pozicioni</span>
+              <div class="ml-pos-btns">
+                <button class="ml-pos-btn" data-text-pos="top" title="Lart">▲</button>
+                <button class="ml-pos-btn active" data-text-pos="center" title="Qendër">●</button>
+                <button class="ml-pos-btn" data-text-pos="bottom" title="Poshtë">▼</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- QR panel -->
+        <div class="ml-tool-panel" data-ml-panel="qr">
+          <div class="ml-text-inputs">
+            <input type="url" id="mlQrInput" placeholder="Ngjit linkun këtu (p.sh. https://era.al)">
+            <button class="btn btn-primary btn-sm" id="mlAddQrBtn" style="width:100%;justify-content:center;margin-top:8px;">Gjenero QR Kodin</button>
+          </div>
+          <div class="ml-qr-controls" id="mlQrControls" style="display:none;margin-top:12px;">
+            <div class="ml-size-head"><span>Madhësia QR</span><strong id="mlQrSizeValue">100%</strong></div>
+            <input type="range" id="mlQrSizeSlider" min="40" max="160" step="5" value="100" style="width:100%;accent-color:var(--green);margin-bottom:10px;">
+            <div class="ml-pos-row">
+              <span class="ml-pos-label">Pozicioni</span>
+              <div class="ml-pos-btns">
+                <button class="ml-pos-btn" data-qr-pos="top" title="Lart">▲</button>
+                <button class="ml-pos-btn" data-qr-pos="center" title="Qendër">●</button>
+                <button class="ml-pos-btn active" data-qr-pos="bottom" title="Poshtë (parazgjedhje)">▼</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /ml-mobile-tools -->
+
+      <!-- ── DESKTOP TOOLBAR ── -->
+      <div class="ml-toolbar" id="mlToolbar">
+        <label class="ml-tb-btn ml-primary" title="Shto Imazh">
+          <input type="file" id="mlDesignUpload" accept="image/png,image/jpeg,image/jpg,image/webp" multiple style="display:none">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          Shto Imazh
+        </label>
+        <button class="ml-tb-btn ml-teal" id="mlBtnAddText">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+          Shto Tekst
+        </button>
+        <button class="ml-tb-btn ml-teal" id="mlBtnQR">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="3" height="3"/></svg>
+          QR Kod
+        </button>
+        <div class="ml-tb-sep"></div>
+        <button class="ml-tb-btn" id="mlBtnFlipH" disabled>Flip H</button>
+        <button class="ml-tb-btn" id="mlBtnFlipV" disabled>Flip V</button>
+        <button class="ml-tb-btn ml-danger" id="mlBtnDelete" disabled>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg>
+          Fshi
+        </button>
+        <div class="ml-tb-sep"></div>
+        <div class="ml-tb-opacity">
+          <span>Transparenca</span>
+          <input type="range" id="mlOpacitySlider" min="10" max="100" value="100" step="1" disabled>
+          <span id="mlOpacityVal">100%</span>
+        </div>
+        <div style="flex:1;min-width:8px;"></div>
+        <button class="ml-tb-btn ml-ghost" id="mlBtnClearAll">Pastro Gjithçka</button>
+      </div>
+
+      <!-- QR + Text toggle panels (desktop) -->
+      <div class="ml-input-panel" id="mlQrPanel">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="3" height="3"/></svg>
+        <span>Ngjit linkun:</span>
+        <input type="url" id="mlQrUrlInput" placeholder="https://era.al" style="flex:1;min-width:180px;">
+        <button class="ml-tb-btn ml-primary" id="mlQrGenBtn">Gjenero</button>
+        <button class="ml-tb-btn ml-ghost" id="mlQrCancelBtn">Anulo</button>
+      </div>
+      <div class="ml-input-panel" id="mlTextPanel">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+        <span>Teksti:</span>
+        <input type="text" id="mlDeskTextInput" placeholder="Shkruaj tekstin…" maxlength="80" style="flex:1;min-width:160px;">
+        <input type="color" id="mlDeskTextColor" value="#000000" style="width:34px;height:30px;border-radius:6px;border:1px solid #ddd;cursor:pointer;padding:2px;">
+        <button class="ml-tb-btn ml-primary" id="mlDeskTextAddBtn">Shto</button>
+        <button class="ml-tb-btn ml-ghost" id="mlDeskTextCancelBtn">Anulo</button>
+      </div>
+
+      <!-- ── MAIN AREA ── -->
+      <div class="ml-editor-main">
+        <div class="ml-editor-side">
+          <div class="ml-canvas-wrap">
+            <canvas id="mlEditorCanvas"></canvas>
+            <canvas id="mlGuideCanvas"></canvas>
+            <div class="ml-editor-empty" id="mlEditorEmpty">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--gray)" stroke-width="1.5" stroke-linecap="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              <span>Kliko "Shto Imazh" për të filluar</span>
+            </div>
+          </div>
+        </div>
+        <div class="ml-layers-panel">
+          <div class="ml-layers-header">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+            Shtresat
+          </div>
+          <div class="ml-layers-list" id="mlLayersList"><div class="ml-layers-empty">Asnjë shtresë</div></div>
+        </div>
+        <div class="ml-3d-wrap">
+          <div class="ml-3d-loading" id="mlCupLoading">
+            <div class="ml-spinner"></div>
+            <span>Duke ngarkuar modelin 3D…</span>
+          </div>
+          <canvas id="mlCupCanvas"></canvas>
+          <div class="ml-3d-hint">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
+            Rrotulloje me gisht për ta parë nga të gjitha anët
+          </div>
+          <!-- Empty state overlay -->
+          <div class="cup-empty-overlay" id="ml3dEmptyState">
+            <div class="cup-empty-card">
+              <div class="cup-empty-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              </div>
+              <h3 class="cup-empty-title" id="mlEmptyTitle">Ngarko logon tënde</h3>
+              <p class="cup-empty-sub" id="mlEmptySub">Shihe direkt në 3D — pa regjistrim, pa angazhim.</p>
+              <!-- Logo mode actions -->
+              <div class="cup-empty-actions cup-empty-logo-actions">
+                <button type="button" id="ml3dLogoUpload" class="btn btn-primary cup-empty-btn">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                  <span id="mlEmptyBtn">Ngarko logon</span>
+                </button>
+              </div>
+              <!-- Design mode actions -->
+              <div class="cup-empty-actions cup-empty-design-actions">
+                <a class="btn btn-outline-green cup-empty-template-btn" href="assets/templates/mbajtese-luge-template.pdf" download>Shkarko shabllonin</a>
+                <button type="button" id="ml3dDesignUpload" class="btn btn-primary cup-empty-btn">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                  Ngarko dizajnin
+                </button>
+              </div>
+              <div class="cup-empty-rotate-hint">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+                <span id="mlEmptyRotateHint">Rrotulloje me gisht</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── FINAL CTA ── -->
+      <div class="editor-final-cta">
+        <h3 id="finalCtaTitle">Të pëlqen ajo që sheh?</h3>
+        <p id="finalCtaBody">Na shkruaj — ofertë në të njëjtën ditë.</p>
+        <div class="editor-final-cta-buttons">
+          <a href="order.html?p=mbajtese-luge&source=preview" class="btn btn-primary btn-lg" id="mlOrderBtn">
+            <span id="finalCtaBtn1">Vazhdo me porosi</span>
+          </a>
+          <a href="https://wa.me/38344113533?text=P%C3%ABrsh%C3%ABndetje%21%20M%C3%AB%20intereson%20Mbajtëse%20Luge.%20Mund%20t%C3%AB%20m%C3%AB%20d%C3%ABrgoni%20nj%C3%AB%20ofert%C3%AB%3F"
+             target="_blank" class="btn btn-outline-green btn-lg">
+            <span id="finalCtaBtn2">Pyet në WhatsApp</span>
+          </a>
+        </div>
+      </div>
+
+    </div><!-- /ml-full -->
+  </div>
+</section>
+
+<style>
+  .ml-full { background:#fff; border-radius:20px; border:1px solid var(--gray-mid); overflow:hidden; box-shadow:0 8px 32px rgba(0,0,0,.06); }
+  .ml-toolbar { display:flex; align-items:center; gap:4px; padding:8px 12px; background:#fafafa; border-bottom:1px solid var(--gray-mid); overflow-x:auto; scrollbar-width:none; flex-wrap:nowrap; }
+  .ml-toolbar::-webkit-scrollbar { display:none; }
+  .ml-tb-btn { display:inline-flex; align-items:center; gap:5px; padding:5px 10px; border-radius:6px; font-size:.75rem; font-weight:600; border:1px solid transparent; background:#f0f0f0; color:var(--text); cursor:pointer; white-space:nowrap; flex-shrink:0; transition:background .12s; }
+  .ml-tb-btn:hover:not(:disabled) { background:#e4e4e4; }
+  .ml-tb-btn:disabled { opacity:.35; cursor:default; }
+  .ml-primary { background:var(--green); color:#fff; border-color:var(--green); }
+  .ml-primary:hover:not(:disabled) { background:#3a9a0e !important; }
+  .ml-teal { background:#e8f5e9; color:#2e7d32; }
+  .ml-teal:hover:not(:disabled) { background:#c8e6c9 !important; }
+  .ml-danger:hover:not(:disabled) { background:#fdecea !important; color:#c0392b !important; }
+  .ml-ghost { color:var(--text-soft); }
+  .ml-ghost:hover:not(:disabled) { background:#e6e6e6 !important; }
+  .ml-tb-sep { width:1px; height:22px; background:#ddd; margin:0 3px; flex-shrink:0; }
+  .ml-tb-opacity { display:inline-flex; align-items:center; gap:6px; font-size:.75rem; color:var(--text-soft); font-weight:600; flex-shrink:0; }
+  .ml-tb-opacity input[type=range] { width:70px; accent-color:var(--green); }
+  .ml-tb-opacity input[type=range]:disabled { opacity:.35; }
+  .ml-input-panel { display:none; align-items:center; gap:8px; padding:10px 14px; background:#f0f8e8; border-bottom:1px solid #c8e6c9; flex-wrap:wrap; }
+  .ml-input-panel.open { display:flex; }
+  .ml-input-panel span { font-size:.8rem; font-weight:700; color:var(--text); white-space:nowrap; }
+  .ml-input-panel input[type=url], .ml-input-panel input[type=text] { padding:6px 10px; border:1px solid #ccc; border-radius:6px; font-size:.82rem; }
+  .ml-editor-main { display:grid; grid-template-columns:1.5fr 120px 3fr; min-height:280px; }
+  .ml-editor-side { display:flex; flex-direction:column; border-right:1px solid var(--gray-mid); }
+  .ml-canvas-wrap { position:relative; background:#ebebeb; overflow-y:auto; overflow-x:hidden; max-height:460px; flex-shrink:0; }
+  #mlEditorCanvas { display:block; width:100%; height:auto; cursor:default; }
+  #mlGuideCanvas { position:absolute; top:0; left:0; width:100%; pointer-events:none; z-index:2; display:none; }
+  .ml-editor-empty { position:absolute; inset:0; z-index:3; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; pointer-events:none; }
+  .ml-editor-empty span { font-size:.88rem; font-weight:600; color:var(--text-soft); }
+  .ml-layers-panel { display:flex; flex-direction:column; border-right:1px solid var(--gray-mid); background:#fafafa; }
+  .ml-layers-header { display:flex; align-items:center; gap:6px; padding:10px 10px 8px; font-size:.72rem; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--text-soft); border-bottom:1px solid var(--gray-mid); }
+  .ml-layers-list { flex:1; overflow-y:auto; }
+  .ml-layers-empty { font-size:.75rem; color:var(--gray); text-align:center; padding:20px 8px; }
+  .ml-layer-item { display:flex; align-items:center; gap:6px; padding:6px 8px; cursor:pointer; border-bottom:1px solid #f0f0f0; font-size:.72rem; font-weight:600; color:var(--text); transition:background .1s; }
+  .ml-layer-item:hover { background:#f5f5f5; }
+  .ml-layer-item.selected { background:#eaf5e0; }
+  .ml-layer-thumb { flex-shrink:0; width:40px; height:24px; border-radius:3px; border:1px solid #ddd; background:#fff; display:block; }
+  .ml-3d-wrap { position:relative; background:linear-gradient(135deg,#eaf4e1 0%,#f4faf0 100%); display:flex; align-items:center; justify-content:center; min-height:500px; }
+  .ml-3d-loading { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; background:linear-gradient(135deg,#eaf4e1 0%,#f4faf0 100%); z-index:5; }
+  .ml-spinner { width:28px; height:28px; border:3px solid #ddd; border-top-color:var(--green); border-radius:50%; animation:mlSpin .7s linear infinite; }
+  @keyframes mlSpin { to { transform:rotate(360deg); } }
+  .ml-3d-loading span { font-size:.8rem; color:var(--text-soft); font-weight:600; }
+  #mlCupCanvas { position:absolute; inset:0; width:100%; height:100%; display:block; }
+  .ml-3d-hint { position:absolute; bottom:10px; left:50%; transform:translateX(-50%); display:flex; align-items:center; gap:5px; font-size:.72rem; color:var(--text-soft); background:rgba(255,255,255,.85); padding:5px 10px; border-radius:20px; pointer-events:none; white-space:nowrap; }
+  /* ── Empty state overlay ── */
+  .cup-empty-overlay { position:absolute; inset:0; display:none; align-items:center; justify-content:center; pointer-events:none; z-index:5; transition:opacity 0.3s ease; }
+  .cup-empty-overlay.hidden { opacity:0; visibility:hidden; pointer-events:none; }
+  .cup-empty-overlay.hidden .cup-empty-card { pointer-events:none; }
+  @media (max-width:900px) {
+    .cup-empty-overlay { display:flex; }
+  }
+  .cup-empty-card { pointer-events:auto; background:rgba(255,255,255,.35); border:1.5px dashed rgba(76,167,6,.7); border-radius:16px; padding:24px 28px; max-width:280px; width:calc(100% - 48px); text-align:center; box-shadow:0 8px 24px rgba(0,0,0,.08); }
+  .cup-empty-icon { color:var(--green); margin-bottom:12px; display:flex; justify-content:center; }
+  .cup-empty-title { font-size:1.05rem; font-weight:700; color:#1a2e10; margin:0 0 6px; text-shadow:0 1px 2px rgba(255,255,255,.4); }
+  .cup-empty-sub { font-size:.875rem; color:#2d4a1e; margin:0 0 16px; line-height:1.4; }
+  .cup-empty-actions { display:flex; flex-direction:column; gap:10px; align-items:stretch; margin-bottom:12px; }
+  .cup-empty-btn { width:100%; justify-content:center; display:inline-flex; align-items:center; gap:8px; }
+  .cup-empty-rotate-hint { display:inline-flex; align-items:center; gap:6px; font-size:.75rem; color:#2d4a1e; opacity:.8; }
+  .cup-empty-design-actions { display:none; }
+  .ml-full.mode-design .cup-empty-logo-actions { display:none; }
+  .ml-full.mode-design .cup-empty-design-actions { display:flex; }
+  .cup-empty-template-btn { width:100%; justify-content:center; border-radius:12px; padding:11px 18px; font-size:.88rem; background:rgba(255,255,255,.74); box-shadow:none; }
+  @media (max-width:480px) {
+    .ml-full.mode-design .cup-empty-card { max-width:218px; width:calc(100% - 96px); padding:15px 18px; border-radius:14px; }
+    .ml-full.mode-design .cup-empty-icon { margin-bottom:7px; }
+    .ml-full.mode-design .cup-empty-icon svg { width:24px; height:24px; }
+    .ml-full.mode-design .cup-empty-title { font-size:.9rem; margin-bottom:5px; }
+    .ml-full.mode-design .cup-empty-sub { font-size:.76rem; line-height:1.32; margin-bottom:10px; }
+    .ml-full.mode-design .cup-empty-actions { gap:7px; margin-bottom:8px; }
+    .ml-full.mode-design .cup-empty-btn,
+    .ml-full.mode-design .cup-empty-template-btn { padding:9px 12px; min-height:40px; font-size:.8rem; border-radius:11px; }
+    .ml-full.mode-design .cup-empty-rotate-hint { font-size:.68rem; }
+  }
+  /* ── MOBILE TOOLS (matches gota-letre exactly) ── */
+  .ml-mobile-tools {
+    display: none;
+    padding: 14px 16px 12px;
+    border-bottom: 1px solid var(--gray-mid);
+    background: linear-gradient(180deg, #f9fcf6 0%, #ffffff 100%);
+  }
+  .ml-tool-tabs { display:flex; gap:8px; margin-top:10px; }
+  .ml-tool-tab {
+    flex: 1; min-width: 0;
+    padding: 10px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--gray-mid);
+    background: #fff;
+    font-size: .8rem; font-weight: 700;
+    color: var(--text-soft);
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  .ml-tool-tab.active {
+    background: var(--green);
+    border-color: var(--green);
+    color: #fff;
+    box-shadow: 0 10px 20px rgba(76,167,6,.18);
+  }
+  .ml-advanced-wrap { margin-top:10px; }
+  .ml-advanced-toggle { display:flex; align-items:center; gap:7px; padding:9px 12px; font-size:.82rem; font-weight:600; color:var(--text-mid); cursor:pointer; list-style:none; background:var(--gray-light); border-radius:var(--radius); user-select:none; }
+  .ml-advanced-tabs { margin-top:10px; display:flex; gap:8px; }
+  .ml-advanced-tabs .ml-tool-tab { border-radius:999px; border:1px solid var(--gray-mid); background:#fff; border-bottom:none; }
+  .ml-advanced-tabs .ml-tool-tab.active { background:var(--green); border-color:var(--green); color:#fff; box-shadow:0 10px 20px rgba(76,167,6,.18); }
+  .ml-tool-panel { display:none; margin-top:10px; }
+  .ml-tool-panel.active { display:block; }
+  .ml-quick-copy {
+    margin-top: 10px;
+    padding: 12px 14px 10px;
+    border-radius: 14px;
+    border: 1px solid rgba(76,167,6,.12);
+    background: linear-gradient(135deg, rgba(232,245,224,.95) 0%, rgba(255,255,255,.98) 100%);
+  }
+  .ml-quick-copy h3 { margin-bottom:4px; font-size:.95rem; }
+  .ml-quick-copy p { font-size:.82rem; color:var(--text-mid); margin:0; line-height:1.5; }
+  .ml-note { display:block; margin-top:6px; font-size:.72rem; line-height:1.4; color:var(--text-soft); }
+  .ml-logo-actions { display:flex; gap:8px; margin-top:8px; }
+  .ml-logo-actions .btn { flex:1; justify-content:center; }
+  .ml-full-actions { display:flex; gap:10px; margin-bottom:8px; }
+  .ml-full-actions .btn { flex:1; justify-content:center; }
+  .ml-upload-status { min-height:20px; margin:12px 0 0; font-size:.78rem; font-weight:600; color:var(--green-darker); }
+  .ml-size-control { margin-top:8px; margin-bottom:8px; }
+  .ml-size-head { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:10px; font-size:.85rem; font-weight:700; color:var(--text); }
+  .ml-size-head strong { color:var(--green-darker); font-variant-numeric:tabular-nums; }
+  .ml-size-control input[type=range] { width:100%; accent-color:var(--green); cursor:pointer; }
+  .ml-size-control input[type=range]:disabled { opacity:.4; cursor:default; }
+  .ml-templates { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:10px; align-items:center; }
+  .ml-tpl-label { font-size:.75rem; font-weight:600; color:var(--text-soft); width:100%; }
+  .ml-tpl-btn { display:inline-flex; align-items:center; gap:5px; padding:5px 10px; border:1px solid var(--gray-mid); border-radius:6px; background:#fff; font-size:.78rem; font-weight:600; cursor:pointer; color:var(--text); transition:border-color .1s,background .1s; }
+  .ml-tpl-btn:hover,.ml-tpl-btn.active { border-color:var(--green); background:#eaf5e0; color:var(--green); }
+  .ml-text-inputs { display:flex; flex-direction:column; gap:8px; }
+  .ml-text-inputs input[type=text], .ml-text-inputs input[type=url] { padding:8px 10px; border:1px solid #ddd; border-radius:8px; font-size:.85rem; width:100%; }
+  .ml-text-opt { display:flex; align-items:center; gap:8px; font-size:.82rem; font-weight:600; color:var(--text-soft); }
+  .ml-text-opt input[type=color] { width:28px; height:28px; border:none; background:none; cursor:pointer; padding:0; border-radius:4px; }
+  .ml-pos-row { display:flex; align-items:center; gap:10px; margin-top:8px; }
+  .ml-pos-label { font-size:.78rem; font-weight:600; color:var(--text-soft); flex-shrink:0; }
+  .ml-pos-btns { display:flex; gap:5px; }
+  .ml-pos-btn { width:36px; height:36px; border:1.5px solid var(--gray-mid); border-radius:8px; background:#fff; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:.9rem; color:var(--text); transition:background .1s,border-color .1s; flex-shrink:0; }
+  .ml-pos-btn:hover { border-color:var(--green); background:#f0fbe8; }
+  .ml-pos-btn.active { border-color:var(--green); background:#eaf5e0; color:var(--green); }
+  .ml-qr-controls .ml-size-head { margin-bottom:4px; }
+  /* State-based visibility — identical to gota-letre logic */
+  .ml-full.is-empty .ml-quick-copy,
+  .ml-full.is-empty .ml-tool-panel,
+  .ml-full.is-empty .ml-advanced-wrap { display:none; }
+  /* ml-size-control visibility handled by JS (panel + logo state) */
+  /* Order CTA */
+  .ml-order-cta { padding:16px; border-top:1px solid var(--gray-mid); background:#fafafa; }
+  .ml-order-btn { display:flex; align-items:center; justify-content:space-between; padding:14px 20px; background:var(--green); color:#fff; border-radius:12px; text-decoration:none; gap:12px; transition:background .15s,transform .15s; }
+  .ml-order-btn:hover { background:#3a9a0e; transform:translateY(-1px); }
+  .ml-order-copy { display:flex; flex-direction:column; }
+  .ml-order-copy strong { font-size:1rem; font-weight:700; }
+  .ml-order-copy small { font-size:.78rem; opacity:.85; }
+  .ml-order-icon { flex-shrink:0; }
+  @media (max-width:900px) {
+    .ml-full { display:flex; flex-direction:column; }
+    .ml-editor-main { display:block; order:1; min-height:0; }
+    .ml-3d-wrap { min-height:380px; }
+    .ml-mobile-tools { display:block; order:2; }
+    .ml-toolbar,.ml-input-panel,.ml-editor-side,.ml-layers-panel,.ml-3d-hint { display:none !important; }
+    .editor-final-cta { order:3; }
+    .ml-order-cta { order:4; }
+  }
+  @media (max-width:480px) {
+    .ml-tool-tab { font-size:.76rem; padding:9px 10px; }
+    .ml-3d-wrap { min-height:340px; }
+  }
+</style>
+
+<script type="module">
+  import * as THREE from './js/vendor/three.module.js';
+  import { GLTFLoader }    from './js/vendor/addons/loaders/GLTFLoader.js';
+  import { OrbitControls } from './js/vendor/addons/controls/OrbitControls.js';
+
+  /* ── THREE.JS ── */
+  const canvas3d  = document.getElementById('mlCupCanvas');
+  const loading3d = document.getElementById('mlCupLoading');
+
+  // Lazy-init: pause all Three.js work until the editor section scrolls into view
+  await new Promise(resolve => {
+    const section = document.getElementById('preview3d');
+    if (!section || section.getBoundingClientRect().top < window.innerHeight * 0.95) { resolve(); return; }
+    const obs = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) { obs.disconnect(); resolve(); }
+    }, { threshold: 0.1 });
+    obs.observe(section);
+  });
+
+  const renderer  = new THREE.WebGLRenderer({ canvas: canvas3d, antialias:true, alpha:true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  const scene  = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(40, 1, 0.1, 100);
+  camera.position.set(0, 0, 3.2);
+  scene.add(new THREE.AmbientLight(0xffffff, 1.8));
+  const key = new THREE.DirectionalLight(0xffffff, 2.5); key.position.set(4, 6, 4); scene.add(key);
+  const fill = new THREE.DirectionalLight(0xffffff, 0.8); fill.position.set(-4, 2, -2); scene.add(fill);
+  const controls = new OrbitControls(camera, canvas3d);
+  controls.enableDamping = true; controls.dampingFactor = 0.08;
+  controls.minDistance = 1.5; controls.maxDistance = 6;
+  controls.autoRotate = true; controls.autoRotateSpeed = 0.7;
+
+  function resize3d() {
+    const wrap = canvas3d.parentElement;
+    const w = wrap.clientWidth, h = wrap.clientHeight;
+    if (!w || !h) return;
+    renderer.setSize(w, h, false);
+    camera.aspect = w / h; camera.updateProjectionMatrix();
+  }
+  window.addEventListener('resize', resize3d);
+
+  const designMaterials = [];
+  let canvasTex = null;
+
+  new GLTFLoader().load('assets/models/mbajtese-luge.glb', gltf => {
+    resize3d();
+    const model = gltf.scene;
+    const box    = new THREE.Box3().setFromObject(model);
+    const center = box.getCenter(new THREE.Vector3());
+    const size   = box.getSize(new THREE.Vector3());
+    model.position.sub(center);
+    model.scale.setScalar(2 / Math.max(size.x, size.y, size.z));
+    scene.add(model);
+    const box2 = new THREE.Box3().setFromObject(model);
+    const c2   = box2.getCenter(new THREE.Vector3());
+    const s2   = box2.getSize(new THREE.Vector3());
+    controls.target.copy(c2);
+    const fovRad  = camera.fov * (Math.PI / 180);
+    const aspect  = camera.aspect || 1;
+    const fitDist = Math.max(s2.y / 2, s2.x / (2 * aspect)) / Math.tan(fovRad / 2);
+    camera.position.set(c2.x, c2.y, c2.z + fitDist * 1.18);
+    controls.minDistance = fitDist * 0.6;
+    controls.maxDistance = fitDist * 3;
+    controls.update();
+    model.traverse(node => {
+      if (!node.isMesh) return;
+      const mats = Array.isArray(node.material) ? node.material : [node.material];
+      mats.forEach(mat => {
+        if (mat.name === 'DESIGN' || mat.name === 'DESIGN.001') designMaterials.push(mat);
+      });
+    });
+    if (!designMaterials.length) {
+      model.traverse(node => {
+        if (!node.isMesh) return;
+        const mats = Array.isArray(node.material) ? node.material : [node.material];
+        // Only apply to materials that actually have a real texture map (mat.map truthy)
+        // and are not metallic (excludes cutlery steel)
+        mats.forEach(mat => {
+          if (mat.map && !designMaterials.includes(mat) && ((mat.metalness ?? 0) < 0.3)) {
+            designMaterials.push(mat);
+          }
+        });
+      });
+    }
+    if (designMaterials.length) {
+      canvasTex = new THREE.CanvasTexture(EC);
+      canvasTex.flipY = false;
+      canvasTex.colorSpace = THREE.SRGBColorSpace;
+      designMaterials.forEach(mat => { if (mat.map) mat.map.dispose(); mat.map = canvasTex; mat.side = THREE.FrontSide; mat.needsUpdate = true; });
+    }
+    // Make any non-design, non-metal paper surfaces explicitly white (e.g. inner pouch face)
+    model.traverse(node => {
+      if (!node.isMesh) return;
+      const mats = Array.isArray(node.material) ? node.material : [node.material];
+      mats.forEach(mat => {
+        if (!designMaterials.includes(mat) && (mat.metalness ?? 0) < 0.3) {
+          mat.color.set(0xffffff); mat.map = null; mat.side = THREE.FrontSide; mat.needsUpdate = true;
+        }
+      });
+    });
+    loading3d.style.display = 'none';
+    resize3d(); renderEditor();
+  }, undefined, err => {
+    console.error('GLB error', err);
+    loading3d.innerHTML = '<span style="color:#c0392b;font-size:.8rem;padding:20px;text-align:center;">Gabim duke ngarkuar modelin 3D.</span>';
+  });
+
+  (function animate() { requestAnimationFrame(animate); controls.update(); if (canvasTex) canvasTex.needsUpdate = true; renderer.render(scene, camera); })();
+
+  /* ── TEXTURE CANVAS ── */
+  const MM      = 6;           // px per mm
+  const TEX_W   = 85  * MM;   // 510 — width of holder band
+  const TEX_H   = 390 * MM;   // 2340 — full design height
+  const FRONT_H = 165 * MM;   // 990 — front visible zone (above cutlery)
+  const BACK_H  = TEX_H - FRONT_H; // 1350 — back zone
+  const FOLD_H  = 0;               // no fold zone — full FRONT_H is printable
+  const EC    = document.getElementById('mlEditorCanvas');
+  const GC    = document.getElementById('mlGuideCanvas');
+  const ectx  = EC.getContext('2d');
+  const gctx  = GC.getContext('2d');
+  EC.width = TEX_W; EC.height = TEX_H;
+
+  let objects  = [];
+  let selected = -1;
+  const HANDLE = 28;
+
+  function getRect(o) {
+    if (o.type === 'qr') return { x:o.x - o.size/2, y:o.y - o.size/2, w:o.size, h:o.size };
+    if (o.type === 'text') {
+      ectx.save(); ectx.font = `700 ${o.fontSize}px Inter,Arial,sans-serif`;
+      const m = ectx.measureText(o.text); ectx.restore();
+      const w = m.width + 20, h = o.fontSize * 1.5;
+      return { x:o.x - w/2, y:o.y - h/2, w, h };
+    }
+    const w = o.img.naturalWidth * o.scale, h = o.img.naturalHeight * o.scale;
+    return { x:o.x - w/2, y:o.y - h/2, w, h };
+  }
+  function corners(o) { const {x,y,w,h} = getRect(o); return [[x,y],[x+w,y],[x,y+h],[x+w,y+h]]; }
+  function selObj() { return selected >= 0 ? objects[selected] : null; }
+
+  function renderEditor() {
+    ectx.clearRect(0, 0, TEX_W, TEX_H);
+    // Front zone (white) + back zone (light gray)
+    ectx.fillStyle = '#ffffff'; ectx.fillRect(0, 0, TEX_W, FRONT_H);
+    ectx.fillStyle = '#f2f2f2'; ectx.fillRect(0, FRONT_H, TEX_W, BACK_H);
+    // Zone divider dashed line
+    ectx.strokeStyle = '#bbb'; ectx.lineWidth = 3; ectx.setLineDash([14, 7]);
+    ectx.beginPath(); ectx.moveTo(0, FRONT_H); ectx.lineTo(TEX_W, FRONT_H); ectx.stroke();
+    ectx.setLineDash([]);
+    // Zone labels
+    const lfs = Math.round(TEX_W * 0.05);
+    ectx.font = `600 ${lfs}px Inter,Arial,sans-serif`;
+    ectx.fillStyle = 'rgba(0,0,0,0.18)'; ectx.textAlign = 'center'; ectx.textBaseline = 'top';
+    ectx.fillText('ZONA BALLORE — 165mm', TEX_W/2, 10);
+    ectx.fillText('ZONA PRAPA — 225mm', TEX_W/2, FRONT_H + 10);
+    objects.forEach((o, i) => {
+      const {x,y,w,h} = getRect(o);
+      ectx.save(); ectx.globalAlpha = o.opacity;
+      if (o.type === 'text') {
+        ectx.font = `700 ${o.fontSize}px Inter,Arial,sans-serif`;
+        ectx.fillStyle = o.color || '#000';
+        ectx.textAlign = 'center'; ectx.textBaseline = 'middle';
+        ectx.fillText(o.text, o.x, o.y);
+      } else if (o.type === 'qr') {
+        ectx.drawImage(o.qrCanvas, x, y, w, h);
+      } else {
+        if (o.flipH || o.flipV) {
+          ectx.translate(x+w/2, y+h/2); ectx.scale(o.flipH?-1:1, o.flipV?-1:1);
+          ectx.drawImage(o.img, -w/2, -h/2, w, h);
+        } else { ectx.drawImage(o.img, x, y, w, h); }
+      }
+      ectx.restore();
+      if (i === selected) {
+        ectx.strokeStyle = '#4ca706'; ectx.lineWidth = 4; ectx.setLineDash([]);
+        ectx.strokeRect(x-2, y-2, w+4, h+4);
+        corners(o).forEach(([hx,hy]) => {
+          ectx.fillStyle = '#fff'; ectx.strokeStyle = '#4ca706'; ectx.lineWidth = 2;
+          ectx.beginPath(); ectx.arc(hx, hy, HANDLE/2, 0, Math.PI*2);
+          ectx.fill(); ectx.stroke();
+        });
+      }
+    });
+    document.getElementById('mlEditorEmpty').style.display = objects.length ? 'none' : '';
+    if (canvasTex) canvasTex.needsUpdate = true;
+  }
+
+  function renderGuides() {
+    const dw = GC.clientWidth, dh = GC.clientHeight;
+    if (!dw || !dh) return;
+    GC.width = dw; GC.height = dh;
+    gctx.clearRect(0, 0, dw, dh);
+  }
+
+  function updateMlEmptyState() {
+    const overlay  = document.getElementById('ml3dEmptyState');
+    const editorEl = document.getElementById('mlEditorFull');
+    const isEmpty  = objects.length === 0;
+    const hasLogo  = objects.some(o => o.linkedGroup === 'ml-logo');
+    const hasFull  = objects.some(o => o.type === 'fullDesign');
+    if (overlay) { isEmpty ? overlay.classList.remove('hidden') : overlay.classList.add('hidden'); }
+    if (editorEl) {
+      editorEl.classList.toggle('is-empty', isEmpty);
+      editorEl.classList.toggle('has-logo-upload', hasLogo);
+      editorEl.classList.toggle('has-upload', hasFull || hasLogo);
+    }
+    // Sync size slider visibility with current panel state
+    const sc = document.getElementById('mlSizeControl');
+    if (sc) {
+      const activeTab = document.querySelector('.ml-tool-tab.active');
+      const isLogoTab = activeTab && activeTab.dataset.mlPanel === 'logo';
+      sc.style.display = (isLogoTab && hasLogo) ? '' : 'none';
+    }
+  }
+
+  function renderLayers() {
+    const list = document.getElementById('mlLayersList');
+    if (!list) return;
+    updateMlEmptyState();
+    if (!objects.length) { list.innerHTML = '<div class="ml-layers-empty">Asnjë shtresë</div>'; return; }
+    list.innerHTML = [...objects].reverse().map((o, ri) => {
+      const i = objects.length - 1 - ri;
+      const label = o.type === 'image' ? 'Imazh' : o.type === 'text' ? o.text.substring(0,14) : 'QR Kod';
+      return `<div class="ml-layer-item${i===selected?' selected':''}" data-idx="${i}"><span style="font-size:.6rem;color:var(--text-soft);width:16px;">${i+1}</span><span>${label}</span></div>`;
+    }).join('');
+    list.querySelectorAll('.ml-layer-item').forEach(el => el.addEventListener('click', () => {
+      selected = +el.dataset.idx; syncToolbar(); renderEditor(); renderGuides();
+    }));
+  }
+
+  function syncToolbar() {
+    const o = selObj();
+    const hasObj = !!o;
+    ['mlBtnFlipH','mlBtnFlipV','mlBtnDelete'].forEach(id => { const el=document.getElementById(id); if(el) el.disabled = !hasObj; });
+    const op = document.getElementById('mlOpacitySlider');
+    const opVal = document.getElementById('mlOpacityVal');
+    if (op) { op.disabled = !hasObj; if (hasObj) { op.value = Math.round(o.opacity*100); if(opVal) opVal.textContent = op.value+'%'; } }
+  }
+
+  function createFileInput(accept, multi=false) {
+    const inp = document.createElement('input'); inp.type='file'; inp.accept=accept; if(multi) inp.multiple=true; inp.style.display='none'; return inp;
+  }
+
+  /* ── CANVAS MOUSE ── */
+  function canvasXY(e) {
+    const r = EC.getBoundingClientRect();
+    const cx = (e.touches ? e.touches[0].clientX : e.clientX) - r.left;
+    const cy = (e.touches ? e.touches[0].clientY : e.clientY) - r.top;
+    return { x: cx * TEX_W / r.width, y: cy * TEX_H / r.height };
+  }
+  let drag = null;
+  EC.addEventListener('mousedown', e => {
+    controls.autoRotate = false;
+    const {x,y} = canvasXY(e);
+    let hit = -1;
+    for (let i = objects.length-1; i >= 0; i--) {
+      const r = getRect(objects[i]);
+      if (x>=r.x&&x<=r.x+r.w&&y>=r.y&&y<=r.y+r.h) { hit=i; break; }
+    }
+    selected = hit;
+    if (hit >= 0) drag = { ox:objects[hit].x - x, oy:objects[hit].y - y };
+    syncToolbar(); renderEditor(); renderGuides(); renderLayers();
+  });
+  EC.addEventListener('mousemove', e => {
+    if (drag === null || selected < 0) return;
+    const {x,y} = canvasXY(e);
+    objects[selected].x = x + drag.ox;
+    objects[selected].y = y + drag.oy;
+    renderEditor(); renderGuides();
+  });
+  ['mouseup','mouseleave'].forEach(ev => EC.addEventListener(ev, () => { drag = null; }));
+
+  /* ── DESKTOP FILE UPLOAD ── */
+  document.getElementById('mlDesignUpload').addEventListener('change', function() {
+    [...this.files].forEach(file => {
+      const url = URL.createObjectURL(file);
+      const img = new Image();
+      img.onload = () => {
+        objects = objects.filter(o => o.linkedGroup !== 'ml-logo');
+        const maxW = TEX_W * 0.82, maxH = FRONT_H * 0.52;
+        const scale = Math.min(maxW/img.naturalWidth, maxH/img.naturalHeight, 1);
+        objects.push({ type:'image', img, x:TEX_W/2, y:FOLD_H + (FRONT_H - FOLD_H)/2, scale, opacity:1, flipH:false, flipV:false, linkedGroup:'ml-logo', zone:'front' });
+        objects.push({ type:'image', img, x:TEX_W/2, y:FRONT_H + BACK_H/2, scale, opacity:1, flipH:false, flipV:false, linkedGroup:'ml-logo', zone:'back' });
+        selected = objects.length-2; syncToolbar(); renderEditor(); renderGuides(); renderLayers();
+        URL.revokeObjectURL(url);
+      };
+      img.src = url;
+    });
+    this.value = '';
+  });
+
+  /* ── DESKTOP TOOLBAR ACTIONS ── */
+  document.getElementById('mlBtnAddText').addEventListener('click', () => {
+    document.getElementById('mlTextPanel').classList.toggle('open');
+    document.getElementById('mlQrPanel').classList.remove('open');
+  });
+  document.getElementById('mlBtnQR').addEventListener('click', () => {
+    document.getElementById('mlQrPanel').classList.toggle('open');
+    document.getElementById('mlTextPanel').classList.remove('open');
+  });
+  document.getElementById('mlQrCancelBtn').addEventListener('click', () => document.getElementById('mlQrPanel').classList.remove('open'));
+  document.getElementById('mlDeskTextCancelBtn').addEventListener('click', () => document.getElementById('mlTextPanel').classList.remove('open'));
+  document.getElementById('mlQrGenBtn').addEventListener('click', () => {
+    generateQR(document.getElementById('mlQrUrlInput').value);
+    document.getElementById('mlQrPanel').classList.remove('open');
+    document.getElementById('mlQrUrlInput').value = '';
+  });
+  document.getElementById('mlDeskTextAddBtn').addEventListener('click', () => {
+    addText(document.getElementById('mlDeskTextInput').value, document.getElementById('mlDeskTextColor').value);
+    document.getElementById('mlTextPanel').classList.remove('open');
+    document.getElementById('mlDeskTextInput').value = '';
+  });
+  document.getElementById('mlBtnFlipH').addEventListener('click', () => { const o=selObj(); if(o&&o.type==='image'){o.flipH=!o.flipH;renderEditor();} });
+  document.getElementById('mlBtnFlipV').addEventListener('click', () => { const o=selObj(); if(o&&o.type==='image'){o.flipV=!o.flipV;renderEditor();} });
+  document.getElementById('mlBtnDelete').addEventListener('click', () => { if(selected>=0){objects.splice(selected,1);selected=-1;syncToolbar();renderEditor();renderGuides();renderLayers();} });
+  document.getElementById('mlBtnClearAll').addEventListener('click', () => {
+    objects=[]; selected=-1; mobileBaseScale=0;
+    document.getElementById('mlSizeSlider').value=100; document.getElementById('mlSizeSlider').disabled=true;
+    document.getElementById('mlSizeValue').textContent='100%';
+    document.getElementById('mlUploadBtn').textContent='Ngarko Logon';
+    syncToolbar(); renderEditor(); renderGuides(); renderLayers();
+  });
+  document.getElementById('mlOpacitySlider').addEventListener('input', function() { const o=selObj();if(o){o.opacity=+this.value/100;document.getElementById('mlOpacityVal').textContent=this.value+'%';renderEditor();} });
+
+  /* ── GENERATE QR ── */
+  function generateQR(url) {
+    if (!url||!url.trim()) { alert('Vendos një link të vlefshëm.'); return; }
+    const tmp = document.createElement('div'); tmp.style.cssText='position:absolute;left:-9999px;'; document.body.appendChild(tmp);
+    try { new QRCode(tmp, { text:url.trim(), width:qrBaseSize, height:qrBaseSize, colorDark:'#000000', colorLight:'#ffffff' }); }
+    catch(e) { document.body.removeChild(tmp); alert('Gabim duke gjeneruar QR kodin.'); return; }
+    const qrCanvas = tmp.querySelector('canvas');
+    if (!qrCanvas) { document.body.removeChild(tmp); return; }
+    const existing = objects.findIndex(o => o.type==='qr');
+    if (existing>=0) objects.splice(existing,1);
+    const displaySize = Math.round(qrBaseSize * qrSizeScale);
+    const qrMargin = Math.round(TEX_W * 0.04);
+    const qrY = FRONT_H - displaySize/2 - qrMargin; // bottom of visible front face
+    objects.push({ type:'qr', qrCanvas, size:displaySize, x:TEX_W/2, y:qrY, opacity:1 });
+    selected = objects.length-1;
+    document.body.removeChild(tmp);
+    syncToolbar(); renderEditor(); renderGuides(); renderLayers();
+  }
+
+  /* ── ADD TEXT ── */
+  function addText(text, color) {
+    if (!text.trim()) { alert('Shkruaj diçka para se ta shtosh.'); return; }
+    const fontSize = Math.round(textBaseSize * textSizeScale);
+    const margin = Math.round(TEX_W * 0.04);
+    let y = FOLD_H + (FRONT_H - FOLD_H) / 2; // center of visible front face
+    if (textPosition === 'top')    y = FOLD_H + fontSize * 0.75 + margin;
+    else if (textPosition === 'bottom') y = FRONT_H - fontSize * 0.75 - margin;
+    objects.push({ type:'text', text:text.trim(), x:TEX_W/2, y, fontSize, color, opacity:1 });
+    selected = objects.length-1;
+    const ctrl = document.getElementById('mlTextControls');
+    if (ctrl) ctrl.style.display = '';
+    document.querySelectorAll('.ml-pos-btn[data-text-pos]').forEach(b => b.classList.toggle('active', b.dataset.textPos === textPosition));
+    syncToolbar(); renderEditor(); renderGuides(); renderLayers();
+  }
+
+  /* ── MOBILE LOGIC ── */
+  let mobileBaseScale = 0;
+  let logoScale = 1.0;
+  let ltFileInput = null;
+  let logoPosition  = 'center';
+  let qrBaseSize    = 240;
+  let qrSizeScale   = 1.0;
+  let qrPosition    = 'bottom';
+  const textBaseSize = Math.round(TEX_W * 0.13); // ~66px base font size
+  let textSizeScale  = 1.0;
+  let textPosition   = 'center';
+
+  function applyLogoPosition(preset) {
+    logoPosition = preset;
+    document.querySelectorAll('.ml-pos-btn[data-logo-pos]').forEach(b => b.classList.toggle('active', b.dataset.logoPos === preset));
+    const margin = Math.round(TEX_W * 0.04);
+    objects.forEach(o => {
+      if (o.linkedGroup !== 'ml-logo' || o.zone !== 'front') return;
+      const r = getRect(o);
+      if (preset === 'top')    o.y = FOLD_H + r.h/2 + margin;
+      else if (preset === 'center') o.y = FOLD_H + (FRONT_H - FOLD_H) / 2;
+      else if (preset === 'bottom') o.y = FRONT_H - r.h/2 - margin;
+    });
+    renderEditor();
+  }
+
+  function applyQrPosition(preset) {
+    qrPosition = preset;
+    document.querySelectorAll('.ml-pos-btn[data-qr-pos]').forEach(b => b.classList.toggle('active', b.dataset.qrPos === preset));
+    const margin = Math.round(TEX_W * 0.04);
+    objects.forEach(o => {
+      if (o.type !== 'qr') return;
+      if (preset === 'top')    o.y = FOLD_H + o.size/2 + margin;
+      else if (preset === 'center') o.y = FOLD_H + (FRONT_H - FOLD_H) / 2;
+      else if (preset === 'bottom') o.y = FRONT_H - o.size/2 - margin;
+    });
+    renderEditor();
+  }
+
+  function applyTextPosition(preset) {
+    textPosition = preset;
+    document.querySelectorAll('.ml-pos-btn[data-text-pos]').forEach(b => b.classList.toggle('active', b.dataset.textPos === preset));
+    const margin = Math.round(TEX_W * 0.04);
+    objects.forEach(o => {
+      if (o.type !== 'text') return;
+      const h = o.fontSize * 1.5;
+      if (preset === 'top')    o.y = FOLD_H + h/2 + margin;
+      else if (preset === 'center') o.y = FOLD_H + (FRONT_H - FOLD_H) / 2;
+      else if (preset === 'bottom') o.y = FRONT_H - h/2 - margin;
+    });
+    renderEditor();
+  }
+
+  function applyMobileLogo(img) {
+    objects = objects.filter(o => o.linkedGroup !== 'ml-logo');
+    const maxW = TEX_W * 0.82, maxH = FRONT_H * 0.52;
+    const scale = Math.min(maxW/img.naturalWidth, maxH/img.naturalHeight, 1);
+    mobileBaseScale = scale;
+    // Front zone — centered in visible area
+    objects.push({ type:'image', img, x:TEX_W/2, y:FRONT_H/2, scale:scale*logoScale, opacity:1, flipH:false, flipV:false, linkedGroup:'ml-logo', zone:'front' });
+    // Back zone — centered in back area
+    objects.push({ type:'image', img, x:TEX_W/2, y:FRONT_H + BACK_H/2, scale:scale*logoScale, opacity:1, flipH:false, flipV:false, linkedGroup:'ml-logo', zone:'back' });
+    selected = objects.length-2;
+    document.getElementById('mlSizeSlider').disabled = false;
+    document.getElementById('mlUploadBtn').textContent = 'Ndrysho Logon';
+    document.getElementById('mlUploadStatus').textContent = '✓ Logoja u vendos automatikisht në të dy anët.';
+    const clearBtn = document.getElementById('mlClearBtn');
+    if (clearBtn) clearBtn.style.display = '';
+    const posRow = document.getElementById('mlLogoPosRow');
+    if (posRow) { posRow.style.display = ''; }
+    logoPosition = 'center';
+    document.querySelectorAll('.ml-pos-btn[data-logo-pos]').forEach(b => b.classList.toggle('active', b.dataset.logoPos === 'center'));
+    syncToolbar(); renderEditor(); renderGuides(); renderLayers();
+  }
+
+  const mlToolTabs   = Array.from(document.querySelectorAll('.ml-tool-tab'));
+  const mlToolPanels = Array.from(document.querySelectorAll('[data-ml-panel]'));
+  const mlCopyMap = {
+    logo: { badge:'Preview i Thjeshtë', title:'Ngarko logon tënde', body:'Ngarko logon dhe shiko menjëherë si duket në mbajtësen e lugës.', note:'PNG me sfond transparent jep rezultatin më të mirë.' },
+    full: { badge:'Dizajn i Plotë', title:'Ngarko dizajnin final', body:'Shkarko shabllonin, dizajnoje vetë dhe ngarko skedarin e përfunduar këtu.', note:'Përdor shabllonin për dimensione të sakta.' },
+    text: { badge:'Tekst i Shpejtë', title:'Shto tekst në mbajtëse', body:'Vendos numër telefoni, Instagram ose çdo tekst të shkurtër.', note:'Ideale për kontakt ose mesazh të thjeshtë.' },
+    qr:   { badge:'QR Direkt', title:'Gjenero QR kod', body:'Ngjit linkun dhe e vendosim automatikisht në qendër të mbajtëses.', note:'Ideale për menu, Instagram ose website.' },
+  };
+
+  const mlAdvancedWrap = document.getElementById('mlAdvancedWrap');
+
+  function setMlPanel(name) {
+    mlToolTabs.forEach(b => b.classList.toggle('active', b.dataset.mlPanel === name));
+    mlToolPanels.forEach(p => p.classList.toggle('active', p.dataset.mlPanel === name));
+    const copy = mlCopyMap[name];
+    if (copy) {
+      document.getElementById('mlQuickTitle').textContent = copy.title;
+      document.getElementById('mlQuickBody').textContent  = copy.body;
+      document.getElementById('mlQuickNote').textContent  = copy.note;
+    }
+    // Mode class on editor — drives overlay button swap + CSS state
+    const editorEl = document.getElementById('mlEditorFull');
+    if (editorEl) {
+      const isDesign = (name === 'full');
+      editorEl.classList.toggle('mode-logo',   !isDesign);
+      editorEl.classList.toggle('mode-design',  isDesign);
+    }
+    // Update overlay title/subtitle to match active mode
+    const titleEl = document.getElementById('mlEmptyTitle');
+    const subEl   = document.getElementById('mlEmptySub');
+    if (titleEl && subEl) {
+      if (name === 'full') {
+        titleEl.textContent = 'Ngarko dizajnin tënd';
+        subEl.textContent   = 'Shkarko shabllonin, përgatit dizajnin dhe ngarko skedarin e plotë.';
+      } else {
+        titleEl.textContent = 'Ngarko logon tënde';
+        subEl.textContent   = 'Shihe direkt në 3D — pa regjistrim, pa angazhim.';
+      }
+    }
+    // Size slider: only show when in logo tab AND a logo has been uploaded
+    const sc = document.getElementById('mlSizeControl');
+    if (sc) {
+      const hasLogo = objects.some(o => o.linkedGroup === 'ml-logo');
+      sc.style.display = (name === 'logo' && hasLogo) ? '' : 'none';
+    }
+    // Close advanced wrap when switching to primary tabs
+    if ((name === 'logo' || name === 'full') && mlAdvancedWrap) {
+      mlAdvancedWrap.open = false;
+    }
+  }
+
+  mlToolTabs.forEach(btn => btn.addEventListener('click', () => setMlPanel(btn.dataset.mlPanel)));
+
+  document.getElementById('mlSizeSlider').addEventListener('input', function() {
+    logoScale = +this.value / 100;
+    document.getElementById('mlSizeValue').textContent = this.value + '%';
+    if (mobileBaseScale > 0) {
+      objects.forEach(o => { if (o.linkedGroup==='ml-logo') o.scale = mobileBaseScale * logoScale; });
+      renderEditor();
+    }
+  });
+
+  document.getElementById('mlUploadBtn').addEventListener('click', () => {
+    if (!ltFileInput) ltFileInput = createFileInput('image/png,image/jpeg,image/webp', false);
+    ltFileInput.onchange = function() {
+      const file = this.files[0]; if (!file) return;
+      document.getElementById('mlUploadStatus').textContent = 'Po ngarkojmë...';
+      const url = URL.createObjectURL(file);
+      const img = new Image();
+      img.onload = () => { applyMobileLogo(img); URL.revokeObjectURL(url); };
+      img.src = url; this.value = '';
+    };
+    ltFileInput.click();
+  });
+
+  document.getElementById('mlClearBtn').addEventListener('click', () => {
+    objects = objects.filter(o => o.linkedGroup !== 'ml-logo');
+    mobileBaseScale = 0;
+    document.getElementById('mlSizeSlider').disabled = true;
+    document.getElementById('mlSizeSlider').value = 100; logoScale = 1;
+    document.getElementById('mlSizeValue').textContent = '100%';
+    document.getElementById('mlUploadBtn').textContent = 'Ngarko Logon';
+    document.getElementById('mlUploadStatus').textContent = '';
+    document.getElementById('mlClearBtn').style.display = 'none';
+    const posRow = document.getElementById('mlLogoPosRow');
+    if (posRow) posRow.style.display = 'none';
+    selected = -1; syncToolbar(); renderEditor(); renderGuides(); renderLayers();
+  });
+
+  document.getElementById('mlFullDesignBtn').addEventListener('click', () => {
+    const inp = createFileInput('image/png,image/jpeg,image/webp', false);
+    inp.onchange = function() {
+      const file = this.files[0]; if (!file) return;
+      const url = URL.createObjectURL(file);
+      const img = new Image();
+      img.onload = () => {
+        objects = objects.filter(o => o.type==='qr'||o.type==='text');
+        const scale = TEX_W / img.naturalWidth;
+        objects.unshift({ type:'image', img, x:TEX_W/2, y:TEX_H/2, scale, opacity:1, flipH:false, flipV:false, fullDesign:true });
+        selected=0; syncToolbar(); renderEditor(); renderGuides(); renderLayers();
+        document.getElementById('mlRemoveFullDesignBtn').style.display = '';
+        URL.revokeObjectURL(url);
+      };
+      img.src = url; this.value='';
+    };
+    inp.click();
+  });
+
+  document.getElementById('mlRemoveFullDesignBtn').addEventListener('click', () => {
+    objects = objects.filter(o => !o.fullDesign);
+    selected = -1;
+    document.getElementById('mlRemoveFullDesignBtn').style.display = 'none';
+    syncToolbar(); renderEditor(); renderGuides(); renderLayers();
+  });
+
+  document.querySelectorAll('.ml-tpl-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.ml-tpl-btn').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      document.getElementById('mlTextInput').value = this.dataset.tpl;
+      document.getElementById('mlTextInput').focus();
+    });
+  });
+
+  document.getElementById('mlAddTextBtn').addEventListener('click', () => {
+    addText(document.getElementById('mlTextInput').value, document.getElementById('mlTextColor').value);
+    document.getElementById('mlTextInput').value = '';
+  });
+
+  document.getElementById('mlAddQrBtn').addEventListener('click', () => {
+    generateQR(document.getElementById('mlQrInput').value);
+    document.getElementById('mlQrInput').value = '';
+    // Show QR controls after generation
+    const ctrl = document.getElementById('mlQrControls');
+    if (ctrl) { ctrl.style.display = ''; }
+    qrSizeScale = 1.0; qrPosition = 'bottom';
+    const slider = document.getElementById('mlQrSizeSlider');
+    if (slider) { slider.value = 100; document.getElementById('mlQrSizeValue').textContent = '100%'; }
+    document.querySelectorAll('.ml-pos-btn[data-qr-pos]').forEach(b => b.classList.toggle('active', b.dataset.qrPos === 'bottom'));
+  });
+
+  /* ── QR SIZE SLIDER ── */
+  document.getElementById('mlQrSizeSlider').addEventListener('input', function() {
+    qrSizeScale = +this.value / 100;
+    document.getElementById('mlQrSizeValue').textContent = this.value + '%';
+    const newSize = Math.round(qrBaseSize * qrSizeScale);
+    objects.forEach(o => { if (o.type === 'qr') o.size = newSize; });
+    applyQrPosition(qrPosition); // reposition to stay in bounds
+  });
+
+  /* ── TEXT SIZE SLIDER ── */
+  document.getElementById('mlTextSizeSlider').addEventListener('input', function() {
+    textSizeScale = +this.value / 100;
+    document.getElementById('mlTextSizeValue').textContent = this.value + '%';
+    const newSize = Math.round(textBaseSize * textSizeScale);
+    objects.forEach(o => { if (o.type === 'text') o.fontSize = newSize; });
+    renderEditor();
+  });
+
+  /* ── POSITION BUTTONS ── */
+  document.querySelectorAll('.ml-pos-btn[data-logo-pos]').forEach(btn =>
+    btn.addEventListener('click', () => applyLogoPosition(btn.dataset.logoPos))
+  );
+  document.querySelectorAll('.ml-pos-btn[data-qr-pos]').forEach(btn =>
+    btn.addEventListener('click', () => applyQrPosition(btn.dataset.qrPos))
+  );
+  document.querySelectorAll('.ml-pos-btn[data-text-pos]').forEach(btn =>
+    btn.addEventListener('click', () => applyTextPosition(btn.dataset.textPos))
+  );
+
+  /* ── ORDER CTA ── */
+  document.getElementById('mlOrderBtn').addEventListener('click', e => {
+    if (!objects.length) return;
+    try { sessionStorage.setItem('era-ml-order-preview', JSON.stringify({ product:'mbajtese-luge', designImage:EC.toDataURL('image/png'), savedAt:Date.now() })); }
+    catch(err) {}
+  });
+
+  /* ── INIT ── */
+  setMlPanel('logo');
+  renderEditor();
+  renderGuides();
+  renderLayers();
+  syncToolbar();
+
+  // Empty state overlay upload button
+  const ml3dLogoUpload = document.getElementById('ml3dLogoUpload');
+  if (ml3dLogoUpload) {
+    ml3dLogoUpload.addEventListener('click', () => {
+      // Trigger logo upload (single image)
+      if (!ltFileInput) ltFileInput = createFileInput('image/png,image/jpeg,image/webp', false);
+      ltFileInput.onchange = function() {
+        const file = this.files[0]; if (!file) return;
+        document.getElementById('mlUploadStatus').textContent = 'Po ngarkojmë...';
+        const url = URL.createObjectURL(file);
+        const img = new Image();
+        img.onload = () => { applyMobileLogo(img); URL.revokeObjectURL(url); };
+        img.src = url; this.value = '';
+      };
+      ltFileInput.click();
+    });
+  }
+  const ml3dDesignUpload = document.getElementById('ml3dDesignUpload');
+  if (ml3dDesignUpload) {
+    ml3dDesignUpload.addEventListener('click', () => {
+      document.getElementById('mlFullDesignBtn').click();
+    });
+  }
+</script>
+
+
+
+<!-- ── USE CASES ──────────────────────────────────────────── -->
+<section class="section" style="background:var(--gray-light);">
+  <div class="container">
+    <div class="section-header text-center fade-in">
+      <span class="badge" id="useBadge">Ku Përdoren</span>
+      <h2 id="useTitle">Perfekte për Çdo Biznes</h2>
+      <p id="useSub">Mbajtëset tona të lugeve janë zgjidhja ideale për bizneset që kujdesen për detaje.</p>
+    </div>
+    <div class="use-cases-grid">
+      <div class="use-case-card fade-in">
+        <div class="use-case-icon">☕</div>
+        <h3>Kafene & Bare</h3>
+        <p>Prezantimi i lugës me logo tuaj i jep profesionalizëm çdo filxhani kafeje. Detaji që klientët e vërejnë.</p>
+      </div>
+      <div class="use-case-card fade-in">
+        <div class="use-case-icon">🍽️</div>
+        <h3>Restorante</h3>
+        <p>Për supat, dessert-et dhe çdo pjatë që kërkon lugë. Branding i qëndrueshëm nga tavoli deri te paketimi.</p>
+      </div>
+      <div class="use-case-card fade-in">
+        <div class="use-case-icon">🏨</div>
+        <h3>Hotele & Resort</h3>
+        <p>Shërbim i plotë me mbajtëse luge të markës suaj. Ngre standardin vizual të çdo dhome dhe restorantit tuaj.</p>
+      </div>
+      <div class="use-case-card fade-in">
+        <div class="use-case-icon">🥤</div>
+        <h3>Fast Food</h3>
+        <p>Për smoothie, milkshake dhe pije të ftohta. Funksionale dhe estetike njëkohësisht.</p>
+      </div>
+      <div class="use-case-card fade-in">
+        <div class="use-case-icon">🎪</div>
+        <h3>Evente & Festivale</h3>
+        <p>Porosi të mëdha për evente me shumë vizitorë. Dorëzim i shpejtë dhe çmime të arsyeshme per sasi.</p>
+      </div>
+      <div class="use-case-card fade-in">
+        <div class="use-case-icon">🏪</div>
+        <h3>Dyqane & Markete</h3>
+        <p>Për dyqanet që shërbejnë produkte të ftohta ose të nxehta dhe dëshirojnë brand consistency.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── WHY CHOOSE ─────────────────────────────────────────── -->
+<section class="section">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;">
+      <div class="fade-in">
+        <span class="badge">Pse ERA</span>
+        <h2 style="margin:12px 0 20px;">Cilësi në Çdo Detaj</h2>
+        <div class="why-list">
+          <div class="why-item">
+            <div class="why-item-icon">🏆</div>
+            <div>
+              <h4>Produkti #2 më i Kërkuar</h4>
+              <p>Mbi 110,000 mbajtëse luge të prodhuara çdo vit. E provuar nga dhjetëra biznese besnikë.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-item-icon">🎨</div>
+            <div>
+              <h4>Printim i Plotë</h4>
+              <p>Logoja, ngjyrat dhe mesazhi juaj në printim të qëndrueshëm. Ngjyra që nuk zbehen.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-item-icon">💪</div>
+            <div>
+              <h4>Material Cilësor</h4>
+              <p>Letër e fortë që mban lugën në vend. Nuk deformohet nga lagështia apo nxehtësia.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-item-icon">⚡</div>
+            <div>
+              <h4>Dorëzim i Shpejtë</h4>
+              <p>7–10 ditë pune pas aprovimit të dizajnit. Shërbim express disponibël.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cup-image-wrap fade-in" style="max-width:480px;margin:0 auto;">
+        <img src="assets/mbajtese-luge.jpg" alt="Mbajtëse Luge ERA" />
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── CUSTOMIZATION ──────────────────────────────────────── -->
+<section class="section" style="background:var(--gray-light);">
+  <div class="container">
+    <div class="section-header text-center fade-in">
+      <span class="badge">Personalizimi</span>
+      <h2>Mbajtëse me Markën Tuaj</h2>
+      <p>Procesi i thjeshtë 4-hap — nga dizajni tek dorëzimi.</p>
+    </div>
+    <div class="custom-steps">
+      <div class="custom-step fade-in">
+        <div class="custom-step-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></div>
+        <h4>Konfirmoni Sasinë</h4>
+        <p>Minimumi 10,000 copë. Çmimi ulet ndjeshëm me sasi më të mëdha.</p>
+      </div>
+      <div class="custom-step fade-in">
+        <div class="custom-step-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div>
+        <h4>Dërgoni Dizajnin</h4>
+        <p>Logoja dhe dizajni juaj në AI, PDF ose PSD. E përgatisim falas për printim.</p>
+      </div>
+      <div class="custom-step fade-in">
+        <div class="custom-step-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg></div>
+        <h4>Printimi</h4>
+        <p>Printim offset me cilësi të lartë. Ngjyra të sakta dhe rezistente.</p>
+      </div>
+      <div class="custom-step fade-in">
+        <div class="custom-step-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+        <h4>Dorëzimi</h4>
+        <p>Dorëzim direkt te biznesi juaj. Mundësi transporti në të gjithë Kosovën dhe rajonin.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── ORDER TABLE ────────────────────────────────────────── -->
+<section class="section-sm">
+  <div class="container" style="max-width:700px;">
+    <div class="section-header text-center fade-in">
+      <span class="badge">Porositja</span>
+      <h2>Informacion Porosie</h2>
+    </div>
+    <div class="fade-in">
+      <div class="table-wrap">
+
+      <table class="order-table">
+        <thead>
+          <tr>
+            <th>Produkti</th>
+            <th>Çmimi / copë</th>
+            <th>Porosia Minimale</th>
+            <th>Dorëzimi</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="highlight">Mbajtëse Luge</td>
+            <td>~€0.034/copë</td>
+            <td>10,000 copë</td>
+            <td>7–10 ditë pune</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+      <div style="margin-top:20px;padding:18px 22px;background:var(--green-light);border-radius:var(--radius);border-left:4px solid var(--green);">
+        <p style="font-size:.9rem;color:var(--green-darker);margin:0;">
+          <strong>💡 Shënim:</strong> Çmimi ulet me sasi mbi 40,000 copë. Klientët tanë më besnikë porosisin mesatarisht 40,000 copë çdo 55 ditë. Kontaktoni për ofertë sasi.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── FAQ ────────────────────────────────────────────────── -->
+<section class="section" style="background:var(--gray-light);">
+  <div class="container" style="max-width:760px;">
+    <div class="section-header text-center fade-in">
+      <span class="badge" id="faqBadge">FAQ</span>
+      <h2 id="faqTitle">Pyetje të Shpeshta</h2>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <details style="background:var(--white);border:1px solid var(--gray-mid);border-radius:var(--radius);overflow:hidden;" class="fade-in">
+        <summary style="padding:18px 22px;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;">
+          <span id="faqQ1">A mund të printoj vetëm logon time pa ngjyra shtesë?</span>
+          <span style="color:var(--green);font-size:1.2rem;">+</span>
+        </summary>
+        <p id="faqA1" style="padding:0 22px 18px;color:var(--text-mid);font-size:.92rem;">Po, ofrojmë printim nga 1 ngjyrë deri tek printim i plotë CMYK. Printimi me ngjyrë të vetme është opsioni më ekonomik.</p>
+      </details>
+      <details style="background:var(--white);border:1px solid var(--gray-mid);border-radius:var(--radius);overflow:hidden;" class="fade-in">
+        <summary style="padding:18px 22px;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;">
+          <span id="faqQ2">Çfarë formati duhet dizajni?</span>
+          <span style="color:var(--green);font-size:1.2rem;">+</span>
+        </summary>
+        <p id="faqA2" style="padding:0 22px 18px;color:var(--text-mid);font-size:.92rem;">Pranojmë AI, PDF, EPS dhe PSD. Nëse keni vetëm logon si PNG, ekipi ynë mund ta ripunojë për printim pa kosto shtesë.</p>
+      </details>
+      <details style="background:var(--white);border:1px solid var(--gray-mid);border-radius:var(--radius);overflow:hidden;" class="fade-in">
+        <summary style="padding:18px 22px;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;">
+          <span id="faqQ3">A bëni dorëzim jashtë Kosovës?</span>
+          <span style="color:var(--green);font-size:1.2rem;">+</span>
+        </summary>
+        <p id="faqA3" style="padding:0 22px 18px;color:var(--text-mid);font-size:.92rem;">Po, dorëzojmë në Shqipëri, Maqedoni të Veriut, Mal të Zi dhe rajonin e gjerë. Kemi klientë aktiv në Shqipëri dhe Zvicër.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── CTA BANNER ─────────────────────────────────────────── -->
+<section class="cta-banner">
+  <div class="container">
+    <h2 id="ctaTitle">Gati të Personalizoni Mbajtëset Tuaja?</h2>
+    <p id="ctaSub">Kontaktoni ekipin tonë sot dhe merrni një ofertë falas brenda 24 orëve.</p>
+    <div class="cta-btns">
+      <a href="contact.html" class="btn btn-outline btn-lg" id="ctaBtn1">Kërko Ofertë Falas</a>
+      <a href="https://wa.me/38344113533" target="_blank" class="btn btn-lg" style="background:#25d366;color:#fff;border:none;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── FOOTER ─────────────────────────────────────────────── -->
+<div id="site-footer"></div>
+
+<div id="site-whatsapp"></div>
+
+<script src="js/main.js?v=13"></script>
+
+<script>
+  /* ── Page-level bilingual translations ── */
+  const pageCopy = {
+    al: {
+      title: 'Mbajtëse Luge – ERA Print Pack',
+      description: 'Mbajtëse luge letre me printim të personalizuar. Ideale për kafene, restorante dhe fast food. Porosi minimale 10,000 copë.',
+      breadcrumbCurrent: 'Mbajtëse Luge',
+      heroBadge: 'Mbajtëse Luge',
+      heroTitle: 'Mbajtëse Luge me<br/><span class="text-green">Logo Tuaj</span>',
+      heroLead: 'Mbajtëse luge letre me printim të personalizuar — logoja dhe ngjyrat tuaja në çdo copë. Produkti ynë i dytë më i kërkuar, me mbi 110,000 copë të prodhuara çdo vit. Ideale për kafene, restorante dhe hotele.',
+      specLabelMat: 'Materiali',  specMat: 'Letër e Laminuar',
+      specLabelUse: 'Ideal për',  specUse: 'Kafene, Restorante, Hotele',
+      specLabelMin: 'Porosia Minimale', specMin: '10,000 copë',
+      heroCta1: 'Provo Dizajnin 3D', heroCta2: 'Porosit Tani',
+      editorIntroBadge: 'Preview i drejtpërdrejtë — pa regjistrim',
+      editorIntroTitle: 'Shiko logon tënde<br>në mbajtëse — <span>në 3D</span>',
+      editorIntroBody: 'Ngarko logon dhe shihe menjëherë. Pa angazhim — vetëm një parashikim, jo porosi.',
+      editorIntroAlt: 'Ose <a href="https://wa.me/38344113533?text=P%C3%ABrsh%C3%ABndetje%21%20M%C3%AB%20intereson%20Mbajtëse%20Luge.%20Ja%20logoja%20ime%3A" target="_blank">na shkruaj në WhatsApp →</a> nëse preferon ta bëjmë ne dizajnin për ty.',
+      hiwStep1Title: 'Na trego',      hiwStep1Body: 'Dërgo logon ose idenë',
+      hiwStep2Title: 'Ne dizajnojmë', hiwStep2Body: 'Përgatitje profesionale',
+      hiwStep3Title: 'Ti merr',       hiwStep3Body: '7–14 ditë pune',
+      mlEmptyTitle:      'Ngarko logon tënde',
+      mlEmptySub:        'Shihe direkt në 3D — pa regjistrim, pa angazhim.',
+      mlEmptyBtn:        'Ngarko logon',
+      mlEmptyRotateHint: 'Rrotulloje me gisht',
+      finalCtaTitle: 'Të pëlqen ajo që sheh?',
+      finalCtaBody:  'Na shkruaj — ofertë në të njëjtën ditë.',
+      finalCtaBtn1:  'Vazhdo me porosi',
+      finalCtaBtn2:  'Pyet në WhatsApp',
+      useBadge: 'Ku Përdoren', useTitle: 'Perfekte për Çdo Biznes',
+      useSub: 'Mbajtëset tona të lugeve janë zgjidhja ideale për bizneset që kujdesen për detaje.',
+      faqBadge: 'FAQ',
+      faqTitle: 'Pyetje të Shpeshta',
+      faqQ1: 'A mund të printoj vetëm logon time pa ngjyra shtesë?',
+      faqA1: 'Po, ofrojmë printim nga 1 ngjyrë deri tek printim i plotë CMYK. Printimi me ngjyrë të vetme është opsioni më ekonomik.',
+      faqQ2: 'Çfarë formati duhet dizajni?',
+      faqA2: 'Pranojmë AI, PDF, EPS dhe PSD. Nëse keni vetëm logon si PNG, ekipi ynë mund ta ripunojë për printim pa kosto shtesë.',
+      faqQ3: 'A bëni dorëzim jashtë Kosovës?',
+      faqA3: 'Po, dorëzojmë në Shqipëri, Maqedoni të Veriut, Mal të Zi dhe rajonin e gjerë. Kemi klientë aktiv në Shqipëri dhe Zvicër.',
+      ctaTitle: 'Gati të Personalizoni Mbajtëset Tuaja?',
+      ctaSub:   'Kontaktoni ekipin tonë sot dhe merrni një ofertë falas brenda 24 orëve.',
+      ctaBtn1:  'Kërko Ofertë Falas',
+    },
+    en: {
+      title: 'Cutlery Holders – ERA Print Pack',
+      description: 'Custom-printed paper cutlery holders. Perfect for cafes, restaurants and fast food. Minimum order 10,000 pieces.',
+      breadcrumbCurrent: 'Cutlery Holders',
+      heroBadge: 'Cutlery Holders',
+      heroTitle: 'Cutlery Holders with<br/><span class="text-green">Your Logo</span>',
+      heroLead: 'Custom-printed paper cutlery holders — your logo and brand colors on every piece. Our second best-selling product, with over 110,000 pieces produced every year. Ideal for cafes, restaurants and hotels.',
+      specLabelMat: 'Material',  specMat: 'Laminated Paper',
+      specLabelUse: 'Best for',  specUse: 'Cafes, Restaurants, Hotels',
+      specLabelMin: 'Minimum Order', specMin: '10,000 pieces',
+      heroCta1: 'Try the 3D Design', heroCta2: 'Order Now',
+      editorIntroBadge: 'Live preview — no sign-up needed',
+      editorIntroTitle: 'See your logo<br>on the holder — <span>in 3D</span>',
+      editorIntroBody: 'Upload your logo and see it instantly. No commitment — just a preview, not an order.',
+      editorIntroAlt: 'Or <a href="https://wa.me/38344113533?text=Hello%21%20I%27m%20interested%20in%20Cutlery%20Holders.%20Here%20is%20my%20logo%3A" target="_blank">message us on WhatsApp →</a> if you\'d prefer us to handle the design for you.',
+      hiwStep1Title: 'Tell us',        hiwStep1Body: 'Send your logo or idea',
+      hiwStep2Title: 'We design',      hiwStep2Body: 'Professional preparation',
+      hiwStep3Title: 'You receive',    hiwStep3Body: '7–14 working days',
+      mlEmptyTitle:      'Upload your logo',
+      mlEmptySub:        'See it live in 3D — no sign-up, no commitment.',
+      mlEmptyBtn:        'Upload logo',
+      mlEmptyRotateHint: 'Rotate with your finger',
+      finalCtaTitle: 'Like what you see?',
+      finalCtaBody:  'Message us — quote within the same day.',
+      finalCtaBtn1:  'Proceed to order',
+      finalCtaBtn2:  'Ask on WhatsApp',
+      useBadge: 'Where Used', useTitle: 'Perfect for Every Business',
+      useSub: 'Our cutlery holders are the ideal solution for businesses that care about the details.',
+      faqBadge: 'FAQ',
+      faqTitle: 'Frequently Asked Questions',
+      faqQ1: 'Can I print only my logo without extra colors?',
+      faqA1: 'Yes, we offer printing from 1 color up to full CMYK. Single-color printing is the most economical option.',
+      faqQ2: 'What format does the design need to be in?',
+      faqA2: 'We accept AI, PDF, EPS and PSD. If you only have your logo as a PNG, our team can rework it for print at no extra cost.',
+      faqQ3: 'Do you deliver outside Kosovo?',
+      faqA3: 'Yes, we deliver to Albania, North Macedonia, Montenegro and the wider region. We have active clients in Albania and Switzerland.',
+      ctaTitle: 'Ready to Brand Your Cutlery Holders?',
+      ctaSub:   'Contact our team today and get a free quote within 24 hours.',
+      ctaBtn1:  'Request a Free Quote',
+    }
+  };
+
+  window.applyPageTranslations = function applyCutleryHolderPageTranslations(lang) {
+    const copy = pageCopy[lang] || pageCopy.al;
+
+    document.title = copy.title;
+    document.querySelector('meta[name="description"]').setAttribute('content', copy.description);
+
+    const set = (id, val, html) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      if (html) el.innerHTML = val; else el.textContent = val;
+    };
+
+    set('breadcrumbCurrent', copy.breadcrumbCurrent);
+    set('heroBadge',   copy.heroBadge);
+    set('heroTitle',   copy.heroTitle,   true);
+    set('heroLead',    copy.heroLead);
+    set('specLabelMat', copy.specLabelMat); set('specMat', copy.specMat);
+    set('specLabelUse', copy.specLabelUse); set('specUse', copy.specUse);
+    set('specLabelMin', copy.specLabelMin); set('specMin', copy.specMin);
+    set('heroCta1', copy.heroCta1); set('heroCta2', copy.heroCta2);
+
+    const badge = document.getElementById('editorIntroBadge');
+    if (badge) {
+      const svg = badge.querySelector('svg');
+      badge.innerHTML = (svg ? svg.outerHTML + ' ' : '') + copy.editorIntroBadge;
+    }
+    set('editorIntroTitle', copy.editorIntroTitle, true);
+    set('editorIntroBody',  copy.editorIntroBody);
+    set('editorIntroAlt',   copy.editorIntroAlt,   true);
+
+    set('hiwStep1Title', copy.hiwStep1Title); set('hiwStep1Body', copy.hiwStep1Body);
+    set('hiwStep2Title', copy.hiwStep2Title); set('hiwStep2Body', copy.hiwStep2Body);
+    set('hiwStep3Title', copy.hiwStep3Title); set('hiwStep3Body', copy.hiwStep3Body);
+
+    set('mlEmptyTitle',      copy.mlEmptyTitle);
+    set('mlEmptySub',        copy.mlEmptySub);
+    set('mlEmptyBtn',        copy.mlEmptyBtn);
+    set('mlEmptyRotateHint', copy.mlEmptyRotateHint);
+
+    set('finalCtaTitle', copy.finalCtaTitle);
+    set('finalCtaBody',  copy.finalCtaBody);
+    set('finalCtaBtn1',  copy.finalCtaBtn1);
+    set('finalCtaBtn2',  copy.finalCtaBtn2);
+
+    set('useBadge',  copy.useBadge);
+    set('useTitle',  copy.useTitle);
+    set('useSub',    copy.useSub);
+
+    set('faqBadge',  copy.faqBadge);
+    set('faqTitle',  copy.faqTitle);
+    set('faqQ1', copy.faqQ1); set('faqA1', copy.faqA1);
+    set('faqQ2', copy.faqQ2); set('faqA2', copy.faqA2);
+    set('faqQ3', copy.faqQ3); set('faqA3', copy.faqA3);
+
+    set('ctaTitle', copy.ctaTitle);
+    set('ctaSub',   copy.ctaSub);
+    set('ctaBtn1',  copy.ctaBtn1);
+  };
+</script>
+</body>
+</html>

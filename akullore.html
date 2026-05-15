@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kupa Akullore – ERA Print Pack</title>
+  <meta name="description" content="Kupa akullore letre me printim të personalizuar në dy madhësi: H53 dhe H63. Ideale për gelaterie, kafene dhe dyqane." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css?v=2" />
+  <link rel="icon" type="image/svg+xml" href="assets/era-logo.svg" />
+  <style>
+    /* ── SIZE SELECTOR BUTTONS ─────────────────────────────── */
+    .size-selector { display:flex; gap:12px; margin-bottom:28px; flex-wrap:wrap; }
+    .size-btn {
+      padding:10px 28px; border-radius:100px; border:2px solid var(--gray-mid);
+      font-size:.9rem; font-weight:600; color:var(--text-mid);
+      transition:var(--transition); cursor:pointer; background:var(--white);
+    }
+    .size-btn:hover, .size-btn.active { border-color:var(--green); background:var(--green); color:var(--white); }
+
+    /* ── HERO LAYOUT ────────────────────────────────────────── */
+    .cup-showcase { display:grid; grid-template-columns:1fr 1fr; gap:72px; align-items:center; }
+
+    /* ── SQUARE IMAGE ───────────────────────────────────────── */
+    .cup-image-wrap {
+      position:relative; border-radius:var(--radius-lg); overflow:hidden;
+      aspect-ratio:1;
+    }
+    .cup-image-wrap img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .5s ease; }
+    .cup-image-wrap:hover img { transform:scale(1.04); }
+    .cup-badge-size {
+      position:absolute; top:20px; right:20px;
+      background:var(--green); color:var(--white);
+      font-size:.85rem; font-weight:700; padding:6px 14px; border-radius:100px;
+    }
+
+    .cup-info h1 { margin-bottom:14px; }
+    .cup-info .lead { font-size:1.1rem; color:var(--text-mid); margin-bottom:28px; line-height:1.75; }
+
+    /* ── SPECS — 3 columns, bordered ───────────────────────── */
+    .cup-specs {
+      display:grid; grid-template-columns:repeat(3,1fr);
+      gap:0; margin-bottom:28px;
+      border:1px solid var(--gray-mid); border-radius:var(--radius); overflow:hidden;
+    }
+    .spec-item { padding:10px 14px; background:var(--gray-light); }
+    .spec-item + .spec-item { border-left:1px solid var(--gray-mid); }
+    .spec-label { font-size:.68rem; font-weight:600; text-transform:uppercase; letter-spacing:.07em; color:var(--gray); margin-bottom:3px; }
+    .spec-value { font-size:.88rem; font-weight:700; color:var(--text); }
+
+    .cup-ctas { display:flex; gap:12px; flex-wrap:wrap; }
+
+    /* ── SIZES SECTION ──────────────────────────────────────── */
+    .sizes-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:28px; max-width:760px; margin:0 auto; }
+    .size-card { border:2px solid var(--gray-mid); border-radius:var(--radius-lg); overflow:hidden; transition:var(--transition); background:var(--white); }
+    .size-card:hover, .size-card.featured { border-color:var(--green); box-shadow:var(--shadow-md); transform:translateY(-6px); }
+    .size-card.featured { transform:translateY(-10px); }
+    .size-card-img { position:relative; padding-top:100%; overflow:hidden; }
+    .size-card-img img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; transition:transform .4s ease; }
+    .size-card:hover .size-card-img img { transform:scale(1.06); }
+    .popular-tag {
+      position:absolute; top:14px; right:14px;
+      background:var(--green); color:var(--white);
+      font-size:.72rem; font-weight:700; padding:4px 10px;
+      border-radius:100px; text-transform:uppercase; letter-spacing:.05em;
+    }
+    .size-card-body { padding:22px; }
+    .size-oz { font-size:1.6rem; font-weight:800; color:var(--green); line-height:1; margin-bottom:4px; }
+    .size-ml { font-size:.8rem; color:var(--gray); font-weight:500; margin-bottom:10px; }
+    .size-card-body h3 { margin-bottom:8px; font-size:1rem; }
+    .size-card-body p  { font-size:.85rem; margin-bottom:16px; }
+    .size-uses { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:18px; }
+    .use-tag { font-size:.75rem; padding:4px 10px; border-radius:100px; background:var(--green-light); color:var(--green-darker); font-weight:500; }
+
+    /* ── CUSTOM STEPS ───────────────────────────────────────── */
+    .custom-steps { display:grid; grid-template-columns:repeat(4,1fr); gap:24px; }
+    .custom-step { text-align:center; padding:28px 20px; background:var(--white); border-radius:var(--radius-lg); border:1px solid var(--gray-mid); transition:var(--transition); }
+    .custom-step:hover { border-color:var(--green); box-shadow:var(--shadow-sm); }
+    .custom-step-icon { width:64px; height:64px; background:var(--green); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 18px; box-shadow:0 4px 16px rgba(76,167,6,.25); flex-shrink:0; }
+    .custom-step h4 { margin-bottom:8px; }
+    .custom-step p  { font-size:.85rem; }
+
+    /* ── ORDER TABLE ────────────────────────────────────────── */
+    .order-table { width:100%; border-collapse:collapse; background:var(--white); border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow-sm); }
+    .order-table th { background:var(--green); color:var(--white); padding:16px 20px; text-align:left; font-size:.85rem; font-weight:600; letter-spacing:.04em; }
+    .order-table td { padding:15px 20px; border-bottom:1px solid var(--gray-mid); font-size:.9rem; }
+    .order-table tr:last-child td { border-bottom:none; }
+    .order-table tr:hover td { background:var(--green-light); }
+    .order-table .highlight { font-weight:700; color:var(--green); }
+
+    /* ═══════════════════════════════════════════════════════════
+       3D EDITOR — full ML pattern
+    ══════════════════════════════════════════════════════════════ */
+
+    /* ── 3D WRAP ──────────────────────────────────────────────── */
+    .ml-3d-wrap {
+      position:relative;
+      background:linear-gradient(135deg,#eaf4e1 0%,#f4faf0 100%);
+      min-height:520px; flex:1;
+    }
+    #mlCupCanvas { width:100%; height:100%; display:block; }
+    .ml-3d-loading {
+      position:absolute; inset:0; display:flex; flex-direction:column;
+      align-items:center; justify-content:center; gap:10px;
+      background:linear-gradient(135deg,#eaf4e1 0%,#f4faf0 100%); z-index:5;
+    }
+    .ml-spinner {
+      width:36px; height:36px; border:3px solid rgba(76,167,6,.2);
+      border-top-color:var(--green); border-radius:50%; animation:spin .8s linear infinite;
+    }
+    @keyframes spin { to { transform:rotate(360deg); } }
+    .ml-3d-hint {
+      position:absolute; bottom:14px; left:50%; transform:translateX(-50%);
+      font-size:.74rem; color:#2d4a1e; opacity:.7; white-space:nowrap;
+      background:rgba(255,255,255,.55); padding:4px 10px; border-radius:100px;
+    }
+
+    /* ── EMPTY STATE OVERLAY ──────────────────────────────────── */
+    .cup-empty-overlay {
+      position:absolute; inset:0; z-index:4;
+      display:none;
+      align-items:center; justify-content:center;
+      pointer-events:none;
+    }
+    .cup-empty-overlay.hidden { opacity:0; visibility:hidden; pointer-events:none; }
+    @media (max-width:900px) { .cup-empty-overlay { display:flex; } }
+    .cup-empty-card {
+      pointer-events:auto;
+      background:rgba(255,255,255,.35);
+      border:1.5px dashed rgba(76,167,6,.7);
+      border-radius:16px; padding:24px 28px;
+      max-width:280px; width:calc(100% - 48px);
+      text-align:center; box-shadow:0 8px 24px rgba(0,0,0,.08);
+    }
+    .cup-empty-icon { color:var(--green); margin-bottom:12px; display:flex; justify-content:center; }
+    .cup-empty-title { font-size:1.05rem; font-weight:700; color:#1a2e10; margin:0 0 6px; }
+    .cup-empty-sub   { font-size:.875rem; color:#2d4a1e; margin:0 0 16px; line-height:1.4; }
+    .cup-empty-actions { display:flex; flex-direction:column; gap:10px; align-items:stretch; margin-bottom:12px; }
+    .cup-empty-btn { width:100%; justify-content:center; display:inline-flex; align-items:center; gap:8px; }
+    .cup-empty-rotate-hint { display:inline-flex; align-items:center; gap:6px; font-size:.75rem; color:#2d4a1e; opacity:.8; }
+    .cup-empty-design-actions { display:none; }
+    .ml-full.mode-design .cup-empty-logo-actions  { display:none; }
+    .ml-full.mode-design .cup-empty-design-actions { display:flex; }
+    .cup-empty-template-btn {
+      width:100%; justify-content:center; border-radius:12px;
+      padding:11px 18px; font-size:.88rem;
+      background:rgba(255,255,255,.74); box-shadow:none;
+    }
+
+    /* ── EDITOR CONTAINER (desktop 2-col grid) ─────────────────── */
+    .ml-full {
+      display:grid;
+      grid-template-columns:1fr 340px;
+      grid-template-rows:1fr auto;
+      background:#fff;
+      border-radius:var(--radius-lg);
+      overflow:hidden;
+      box-shadow:var(--shadow-md);
+      border:1px solid var(--gray-mid);
+    }
+    .ml-editor-main {
+      grid-column:1; grid-row:1;
+      display:flex; flex-direction:column;
+      min-height:520px;
+    }
+
+    /* ── DESKTOP TOOLS PANEL ──────────────────────────────────── */
+    .ml-mobile-tools {
+      grid-column:2; grid-row:1 / 3;
+      display:block;
+      padding:18px 16px 16px;
+      border-left:1px solid var(--gray-mid);
+      background:linear-gradient(180deg,#f9fcf6 0%,#ffffff 100%);
+      overflow-y:auto;
+    }
+    .ak-tools-heading {
+      font-size:.78rem; font-weight:700; text-transform:uppercase;
+      letter-spacing:.08em; color:var(--text-soft); margin:0 0 12px;
+    }
+
+    /* ── TAB PILLS ────────────────────────────────────────────── */
+    .ml-tool-tabs { display:flex; gap:8px; }
+    .ml-tool-tab {
+      flex:1; min-width:0;
+      padding:9px 12px; border-radius:999px;
+      border:1px solid var(--gray-mid); background:#fff;
+      font-size:.8rem; font-weight:700; color:var(--text-soft);
+      cursor:pointer; transition:var(--transition);
+    }
+    .ml-tool-tab.active {
+      background:var(--green); border-color:var(--green);
+      color:#fff; box-shadow:0 10px 20px rgba(76,167,6,.18);
+    }
+
+    /* ── ADVANCED TOOLS COLLAPSIBLE ───────────────────────────── */
+    .ml-advanced-wrap { margin-top:12px; }
+    .ml-advanced-toggle {
+      display:flex; align-items:center; gap:7px;
+      padding:9px 12px; font-size:.82rem; font-weight:600; color:var(--text-mid);
+      cursor:pointer; list-style:none;
+      background:var(--gray-light); border-radius:var(--radius); user-select:none;
+    }
+    .ml-advanced-tabs { margin-top:10px; display:flex; gap:8px; }
+    .ml-advanced-tabs .ml-tool-tab { border-radius:999px; border:1px solid var(--gray-mid); background:#fff; }
+    .ml-advanced-tabs .ml-tool-tab.active { background:var(--green); border-color:var(--green); color:#fff; box-shadow:0 10px 20px rgba(76,167,6,.18); }
+
+    /* ── PANELS ───────────────────────────────────────────────── */
+    .ml-tool-panel { display:none; margin-top:12px; }
+    .ml-tool-panel.active { display:block; }
+
+    /* ── COPY CARD ────────────────────────────────────────────── */
+    .ml-quick-copy {
+      margin-top:12px; padding:12px 14px 10px;
+      border-radius:14px;
+      border:1px solid rgba(76,167,6,.12);
+      background:linear-gradient(135deg,rgba(232,245,224,.95) 0%,rgba(255,255,255,.98) 100%);
+    }
+    .ml-quick-copy h3 { margin-bottom:4px; font-size:.92rem; }
+    .ml-quick-copy p  { font-size:.82rem; color:var(--text-mid); margin:0; line-height:1.5; }
+    .ml-note { display:block; margin-top:6px; font-size:.72rem; line-height:1.4; color:var(--text-soft); }
+
+    /* ── PANEL BUTTONS ────────────────────────────────────────── */
+    .ml-logo-actions { display:flex; gap:8px; margin-top:8px; }
+    .ml-logo-actions .btn { flex:1; justify-content:center; }
+    .ml-full-actions { display:flex; gap:10px; margin-bottom:8px; }
+    .ml-full-actions .btn { flex:1; justify-content:center; }
+    .ml-upload-status { min-height:18px; margin:10px 0 0; font-size:.78rem; font-weight:600; color:var(--green-darker); }
+
+    /* ── SIZE SLIDER ──────────────────────────────────────────── */
+    .ml-size-control { margin-top:8px; margin-bottom:8px; }
+    .ml-size-head {
+      display:flex; align-items:center; justify-content:space-between;
+      gap:12px; margin-bottom:8px; font-size:.85rem; font-weight:700; color:var(--text);
+    }
+    .ml-size-head strong { color:var(--green-darker); font-variant-numeric:tabular-nums; }
+    .ml-size-control input[type=range] { width:100%; accent-color:var(--green); cursor:pointer; }
+    .ml-size-control input[type=range]:disabled { opacity:.4; cursor:default; }
+
+    /* ── TEXT TOOL INPUTS ─────────────────────────────────────── */
+    .ml-text-row { display:flex; gap:8px; flex-wrap:wrap; }
+    .ml-text-row input[type=text] {
+      flex:1; min-width:0; padding:8px 10px; border-radius:var(--radius);
+      border:1px solid var(--gray-mid); font-size:.85rem;
+    }
+    .ml-text-row input[type=number] {
+      width:60px; padding:8px 10px; border-radius:var(--radius);
+      border:1px solid var(--gray-mid); font-size:.85rem;
+    }
+    .ml-text-row input[type=color] {
+      width:38px; height:36px; border:1px solid var(--gray-mid); border-radius:var(--radius);
+      padding:2px; cursor:pointer;
+    }
+    .ml-text-check { display:flex; align-items:center; gap:6px; margin-top:8px; font-size:.82rem; }
+    .ml-qr-row { display:flex; gap:8px; }
+    .ml-qr-row input[type=url] {
+      flex:1; min-width:0; padding:8px 10px; border-radius:var(--radius);
+      border:1px solid var(--gray-mid); font-size:.85rem;
+    }
+
+    /* ── STATE-BASED VISIBILITY ────────────────────────────────── */
+    .ml-full.is-empty .ml-quick-copy,
+    .ml-full.is-empty .ml-tool-panel,
+    .ml-full.is-empty .ml-advanced-wrap { display:none; }
+
+    /* ── FINAL CTA ─────────────────────────────────────────────── */
+    .editor-final-cta {
+      grid-column:1; grid-row:2;
+      padding:16px 20px 18px; text-align:center;
+      border-top:1px solid var(--gray-mid);
+      background:linear-gradient(180deg,#f9fcf6 0%,#fff 100%);
+    }
+    .editor-final-cta h3 { font-size:1rem; font-weight:700; margin:0 0 4px; }
+    .editor-final-cta p  { font-size:.85rem; color:var(--text-mid); margin:0 0 12px; }
+    .editor-final-cta-buttons { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+
+    /* ── MOBILE OVERRIDES (≤900px) ─────────────────────────────── */
+    @media (max-width:900px) {
+      .cup-showcase { grid-template-columns:1fr; gap:28px; }
+      .cup-image-wrap { aspect-ratio:unset; max-height:42vh; border-radius:20px; }
+      .cup-image-wrap img { object-fit:contain; height:42vh; max-height:42vh; }
+      .cup-specs { grid-template-columns:repeat(3,1fr); }
+
+      .ml-full {
+        display:flex; flex-direction:column;
+        border-radius:0;
+      }
+      .ml-editor-main { order:1; min-height:0; }
+      .ml-3d-wrap { min-height:380px; }
+      .ml-mobile-tools {
+        grid-column:unset; grid-row:unset;
+        order:2; border-left:none;
+        border-top:1px solid var(--gray-mid);
+        height:auto; overflow-y:visible;
+      }
+      .editor-final-cta {
+        grid-column:unset; grid-row:unset;
+        order:3;
+      }
+      .ml-3d-hint { display:none !important; }
+      .editor-final-cta-buttons { flex-direction:column; align-items:stretch; }
+      .editor-final-cta-buttons .btn { justify-content:center; }
+    }
+    @media (max-width:480px) {
+      .ml-tool-tab { font-size:.76rem; padding:9px 10px; }
+      .ml-3d-wrap { min-height:330px; }
+      .ml-full.mode-design .cup-empty-card { max-width:218px; width:calc(100% - 96px); padding:15px 18px; border-radius:14px; }
+      .ml-full.mode-design .cup-empty-title { font-size:.9rem; margin-bottom:5px; }
+      .ml-full.mode-design .cup-empty-sub   { font-size:.76rem; margin-bottom:10px; }
+    }
+
+    /* ── SIZES / CUSTOMISE / OTHER SECTIONS ────────────────────── */
+    @media (max-width:768px) {
+      .sizes-grid   { grid-template-columns:1fr; }
+      .size-card.featured { transform:none; }
+      .custom-steps { grid-template-columns:1fr 1fr; }
+    }
+    @media (max-width:480px) { .custom-steps { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+
+<!-- ── NAVBAR ─────────────────────────────────────────────── -->
+<div id="site-nav"></div>
+
+
+<!-- ── BREADCRUMB ─────────────────────────────────────────── -->
+<div style="background:var(--gray-light);border-bottom:1px solid var(--gray-mid);padding:14px 0;margin-top:72px;">
+  <div class="container">
+    <div style="display:flex;align-items:center;gap:8px;font-size:.85rem;color:var(--text-soft);">
+      <a href="index.html" style="color:var(--text-soft);transition:color .2s;" onmouseover="this.style.color='#4ca706'" onmouseout="this.style.color=''">Kryefaqja</a>
+      <span>›</span>
+      <a href="products.html" style="color:var(--text-soft);transition:color .2s;" onmouseover="this.style.color='#4ca706'" onmouseout="this.style.color=''">Produktet</a>
+      <span>›</span>
+      <span style="color:var(--text);font-weight:500;">Kupa Akullore</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ── HERO SHOWCASE ──────────────────────────────────────── -->
+<section class="section" style="padding-top:56px;">
+  <div class="container">
+    <div class="cup-showcase">
+
+      <div class="cup-image-wrap fade-in">
+        <img src="assets/akullore-h63.jpg" alt="Kupa Akullore ERA Print Pack" id="cupHeroImg" />
+        <span class="cup-badge-size" id="cupBadge">H63</span>
+      </div>
+
+      <div class="cup-info fade-in">
+        <span class="badge">Kupa Akullore</span>
+        <h1>Kupa Akullore me<br/><span class="text-green">Logo Tuaj</span></h1>
+        <p class="lead">Kupa letre për akullore me printim të plotë — logoja dhe ngjyrat tuaja në çdo kupë. Dy madhësi për çdo nevojë, nga gelateria te dyqanet e specializuara.</p>
+
+        <div class="size-selector">
+          <button class="size-btn active" data-size="h63" onclick="switchCup(this,'assets/akullore-h63.jpg','H63')">H63 — e madhe</button>
+          <button class="size-btn"        data-size="h53" onclick="switchCup(this,'assets/akullore-h53.jpg','H53')">H53 — e vogël</button>
+        </div>
+
+        <div class="cup-specs">
+          <div class="spec-item">
+            <div class="spec-label">Madhësia</div>
+            <div class="spec-value" id="specCap">H63 — e madhe</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Ideal për</div>
+            <div class="spec-value" id="specUse">Akullore, Parfait</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Porosia Minimale</div>
+            <div class="spec-value">10,000 copë</div>
+          </div>
+        </div>
+
+        <div class="cup-ctas">
+          <a href="#preview3d" class="btn btn-primary btn-lg">Provo Dizajnin 3D</a>
+          <a href="order.html?p=akullore&source=preview" class="btn btn-outline-green btn-lg">Porosit Tani</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     3D EDITOR SECTION
+═══════════════════════════════════════════════════════════════ -->
+<section class="section-sm" id="preview3d" style="background:var(--gray-light);padding-top:48px;padding-bottom:64px;">
+  <div class="container">
+
+    <div class="editor-intro-simple fade-in">
+      <div class="editor-intro-badge" id="editorIntroBadge">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        Preview i drejtpërdrejtë — pa regjistrim
+      </div>
+      <h2 id="editorIntroTitle">Shiko logon tënde<br>në kupë — <span>në 3D</span></h2>
+      <p id="editorIntroBody">Ngarko logon dhe shihe menjëherë. Pa angazhim — vetëm një parashikim, jo porosi.</p>
+      <p class="editor-intro-alt" id="editorIntroAlt">
+        Ose <a href="https://wa.me/38344113533?text=P%C3%ABrsh%C3%ABndetje%21%20M%C3%AB%20intereson%20Kupa%20Akullore.%20Ja%20logoja%20ime%3A" target="_blank">na shkruaj në WhatsApp →</a> nëse preferon ta bëjmë ne dizajnin për ty.
+      </p>
+    </div>
+
+    <!-- Editor container -->
+    <div class="ml-full fade-in is-empty mode-logo" id="mlEditorFull">
+
+      <!-- ── MOBILE / DESKTOP TOOLS PANEL ───────────────────── -->
+      <div class="ml-mobile-tools" id="mlMobileTools">
+
+        <p class="ak-tools-heading">Personalizo Kupën</p>
+
+        <!-- Primary tabs -->
+        <div class="ml-tool-tabs" role="tablist">
+          <button class="ml-tool-tab active" type="button" data-ml-panel="logo">Logo</button>
+          <button class="ml-tool-tab" type="button" data-ml-panel="full">Dizajn i Plotë</button>
+        </div>
+
+        <!-- Advanced collapsible -->
+        <details class="ml-advanced-wrap" id="mlAdvancedWrap">
+          <summary class="ml-advanced-toggle">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+            Mjete shtesë
+          </summary>
+          <div class="ml-advanced-tabs" role="tablist">
+            <button class="ml-tool-tab" type="button" data-ml-panel="text">Tekst</button>
+            <button class="ml-tool-tab" type="button" data-ml-panel="qr">QR Kod</button>
+          </div>
+        </details>
+
+        <!-- Size slider -->
+        <div class="ml-size-control" id="mlSizeControl" style="display:none;">
+          <div class="ml-size-head">
+            <span>Madhësia e logos</span>
+            <strong id="mlSizeValue">100%</strong>
+          </div>
+          <input type="range" id="mlSizeSlider" min="40" max="200" step="1" value="100" disabled>
+        </div>
+
+        <!-- Description card -->
+        <div class="ml-quick-copy" id="mlQuickCopy">
+          <h3 id="mlQuickTitle">Ngarko logon tënde</h3>
+          <p id="mlQuickBody">Ngarko logon dhe shiko menjëherë si duket në kupë.</p>
+          <small class="ml-note" id="mlQuickNote">PNG me sfond transparent jep rezultatin më të mirë.</small>
+        </div>
+
+        <!-- LOGO panel -->
+        <div class="ml-tool-panel active" data-ml-panel="logo">
+          <div class="ml-logo-actions">
+            <button class="btn btn-outline-green btn-sm" id="mlUploadBtn">Ngarko Logon</button>
+          </div>
+          <p class="ml-upload-status" id="mlUploadStatus"></p>
+          <button type="button" id="mlClearBtn" style="display:none;margin-top:4px;background:none;border:none;font-size:.74rem;color:var(--text-soft);cursor:pointer;text-decoration:underline;padding:0;">Pastro</button>
+        </div>
+
+        <!-- FULL DESIGN panel -->
+        <div class="ml-tool-panel" data-ml-panel="full">
+          <div class="ml-full-actions">
+            <a class="btn btn-outline-green btn-sm" href="assets/templates/akullore-template.pdf" download>
+              Shkarko Shabllonin
+            </a>
+            <button class="btn btn-primary btn-sm" id="mlFullDesignBtn">Ngarko Dizajnin</button>
+          </div>
+          <button class="btn btn-danger btn-sm" id="mlRemoveFullDesignBtn" style="display:none;margin-top:10px;width:100%;">
+            Hiq Dizajnin
+          </button>
+          <p class="ml-upload-status" id="mlFullDesignStatus"></p>
+        </div>
+
+        <!-- TEXT panel -->
+        <div class="ml-tool-panel" data-ml-panel="text">
+          <div class="ml-text-row">
+            <input type="text" id="mlTextInput" placeholder="P.sh. @emribiznesit…" />
+            <input type="number" id="mlFontSize" value="30" min="10" max="120" title="Madhësia e shkronjave" />
+            <input type="color" id="mlTextColor" value="#000000" title="Ngjyra" />
+          </div>
+          <label class="ml-text-check">
+            <input type="checkbox" id="mlTextBold" /> <span>Bold</span>
+          </label>
+          <button class="btn btn-primary btn-sm" id="mlAddTextBtn" style="width:100%;margin-top:8px;">Shto Tekstin</button>
+          <p class="ml-upload-status" id="mlTextStatus"></p>
+        </div>
+
+        <!-- QR panel -->
+        <div class="ml-tool-panel" data-ml-panel="qr">
+          <div class="ml-qr-row">
+            <input type="url" id="mlQrUrl" placeholder="https://example.com" />
+          </div>
+          <button class="btn btn-primary btn-sm" id="mlGenQrBtn" style="width:100%;margin-top:8px;">Gjenero QR</button>
+          <p class="ml-upload-status" id="mlQrStatus"></p>
+          <div id="mlQrHidden" style="display:none;position:absolute;left:-9999px;"></div>
+        </div>
+
+      </div><!-- /ml-mobile-tools -->
+
+      <!-- ── EDITOR MAIN ──────────────────────────────────────── -->
+      <div class="ml-editor-main">
+
+        <!-- 3D viewer -->
+        <div class="ml-3d-wrap">
+          <!-- Loading overlay -->
+          <div class="ml-3d-loading" id="mlCupLoading">
+            <div class="ml-spinner"></div>
+            <span style="font-size:.85rem;color:#2d4a1e;">Duke ngarkuar modelin 3D…</span>
+          </div>
+
+          <!-- Three.js canvas -->
+          <canvas id="mlCupCanvas"></canvas>
+
+          <!-- Rotation hint -->
+          <div class="ml-3d-hint">Rrotulloje me gisht për ta parë nga të gjitha anët</div>
+
+          <!-- Empty state overlay (mobile only) -->
+          <div class="cup-empty-overlay" id="ml3dEmptyState">
+            <div class="cup-empty-card">
+              <div class="cup-empty-icon">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                  <polyline points="17 8 12 3 7 8"/>
+                  <line x1="12" y1="3" x2="12" y2="15"/>
+                </svg>
+              </div>
+              <h3 class="cup-empty-title" id="mlEmptyTitle">Ngarko logon tënde</h3>
+              <p class="cup-empty-sub" id="mlEmptySub">Shihe direkt në 3D — pa regjistrim, pa angazhim.</p>
+
+              <!-- Logo mode -->
+              <div class="cup-empty-actions cup-empty-logo-actions">
+                <button type="button" id="ml3dLogoUpload" class="btn btn-primary cup-empty-btn">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                  Ngarko logon
+                </button>
+              </div>
+
+              <!-- Design mode -->
+              <div class="cup-empty-actions cup-empty-design-actions">
+                <a class="btn btn-outline-green cup-empty-template-btn" href="assets/templates/akullore-template.pdf" download>Shkarko shabllonin</a>
+                <button type="button" id="ml3dDesignUpload" class="btn btn-primary cup-empty-btn">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                  Ngarko dizajnin
+                </button>
+              </div>
+
+              <div class="cup-empty-rotate-hint">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 2v6h-6M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M3 22v-6h6M21 12a9 9 0 0 1-15 6.7L3 16"/></svg>
+                <span id="mlEmptyRotateHint">Rrotulloje me gisht</span>
+              </div>
+            </div>
+          </div><!-- /cup-empty-overlay -->
+
+        </div><!-- /ml-3d-wrap -->
+      </div><!-- /ml-editor-main -->
+
+      <!-- ── FINAL CTA ─────────────────────────────────────────── -->
+      <div class="editor-final-cta">
+        <h3>Të pëlqen ajo që sheh?</h3>
+        <p>Na shkruaj — ofertë në të njëjtën ditë.</p>
+        <div class="editor-final-cta-buttons">
+          <a href="order.html?p=akullore&source=preview" class="btn btn-primary">Vazhdo me porosi</a>
+          <a href="https://wa.me/38344113533" target="_blank" class="btn btn-outline-green">Pyet në WhatsApp</a>
+        </div>
+      </div>
+
+    </div><!-- /ml-full -->
+  </div>
+</section>
+
+
+<!-- ── 2 SIZES COMPARISON ─────────────────────────────────── -->
+<section class="section" style="background:var(--gray-light);padding-top:72px;">
+  <div class="container">
+    <div class="section-header text-center fade-in">
+      <span class="badge">2 Madhësi</span>
+      <h2>Zgjidhni Madhësinë e Duhur</h2>
+      <p>Dy madhësi të projektuar për nevoja të ndryshme — nga porcioni i vogël te servimi i plotë.</p>
+    </div>
+
+    <div class="sizes-grid">
+
+      <!-- H63 -->
+      <div class="size-card featured fade-in">
+        <div class="size-card-img">
+          <span class="popular-tag">Më e Popullarizuar</span>
+          <img src="assets/akullore-h63.jpg" alt="Kupa Akullore H63" />
+        </div>
+        <div class="size-card-body">
+          <div class="size-oz">H63</div>
+          <div class="size-ml">Madhësia e Madhe</div>
+          <h3>Kupa Akullore e Madhe</h3>
+          <p>Madhësia standarde për shërbim të plotë. Ideale për gelaterie, kafene dhe dyqane akullore me prezantim premium.</p>
+          <div class="size-uses">
+            <span class="use-tag">🍦 Akullore</span>
+            <span class="use-tag">Parfait</span>
+            <span class="use-tag">Frozen Yogurt</span>
+            <span class="use-tag">Gelaterie</span>
+          </div>
+          <a href="contact.html" class="btn btn-primary btn-sm" style="width:100%;justify-content:center;">Kërko Ofertë</a>
+        </div>
+      </div>
+
+      <!-- H53 -->
+      <div class="size-card fade-in">
+        <div class="size-card-img">
+          <img src="assets/akullore-h53.jpg" alt="Kupa Akullore H53" />
+        </div>
+        <div class="size-card-body">
+          <div class="size-oz">H53</div>
+          <div class="size-ml">Madhësia e Vogël</div>
+          <h3>Kupa Akullore e Vogël</h3>
+          <p>Perfekte për porcione të vogla, taste dhe shërbim kids. Ideale për evente dhe parqe argëtimi.</p>
+          <div class="size-uses">
+            <span class="use-tag">🍨 Taste</span>
+            <span class="use-tag">Kids</span>
+            <span class="use-tag">Evente</span>
+            <span class="use-tag">Parqe</span>
+          </div>
+          <a href="contact.html" class="btn btn-outline-green btn-sm" style="width:100%;justify-content:center;">Kërko Ofertë</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ── CUSTOMIZATION ──────────────────────────────────────── -->
+<section class="section">
+  <div class="container">
+    <div class="section-header text-center fade-in">
+      <span class="badge">Personalizimi</span>
+      <h2>Kupa me Markën Tuaj</h2>
+      <p>Çdo kupë akullore printohet me dizajnin tuaj unik. Procesi është i thjeshtë dhe i shpejtë.</p>
+    </div>
+    <div class="custom-steps">
+      <div class="custom-step fade-in">
+        <div class="custom-step-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></div>
+        <h4>Zgjidhni Madhësinë</h4>
+        <p>H63 për porcione standarde ose H53 për taste dhe shërbim të vogël.</p>
+      </div>
+      <div class="custom-step fade-in">
+        <div class="custom-step-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div>
+        <h4>Dërgoni Dizajnin</h4>
+        <p>Logoja dhe dizajni juaj në AI, PDF ose PSD. Ekipi ynë e përgatit për printim.</p>
+      </div>
+      <div class="custom-step fade-in">
+        <div class="custom-step-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg></div>
+        <h4>Printimi</h4>
+        <p>Printim offset me ngjyra të qëndrueshme. Material i laminuar, rezistent ndaj lagështirës.</p>
+      </div>
+      <div class="custom-step fade-in">
+        <div class="custom-step-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+        <h4>Dorëzimi</h4>
+        <p>Dorëzim direkt te biznesi juaj brenda afatit të rënë dakord.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── ORDER TABLE ────────────────────────────────────────── -->
+<section class="section-sm" style="background:var(--gray-light);">
+  <div class="container" style="max-width:700px;">
+    <div class="section-header text-center fade-in">
+      <span class="badge">Porositja</span>
+      <h2>Informacion Porosie</h2>
+    </div>
+    <div class="fade-in">
+      <div class="table-wrap">
+        <table class="order-table">
+          <thead>
+            <tr>
+              <th>Madhësia</th>
+              <th>Çmimi / copë</th>
+              <th>Porosia Minimale</th>
+              <th>Ideal për</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="highlight">H63</td>
+              <td>~€0.070/copë</td>
+              <td>10,000 copë</td>
+              <td>Akullore, Parfait, Gelaterie</td>
+            </tr>
+            <tr>
+              <td class="highlight">H53</td>
+              <td>~€0.055/copë</td>
+              <td>10,000 copë</td>
+              <td>Taste, Kids, Evente, Parqe</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="margin-top:20px;padding:18px 22px;background:var(--green-light);border-radius:var(--radius);border-left:4px solid var(--green);">
+        <p style="font-size:.9rem;color:var(--green-darker);margin:0;">
+          <strong>💡 Shënim:</strong> Çmimet ndryshojnë sipas sasisë dhe kompleksitetit të dizajnit. Kontaktoni për ofertë të personalizuar falas.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── FAQ ────────────────────────────────────────────────── -->
+<section class="section">
+  <div class="container" style="max-width:760px;">
+    <div class="section-header text-center fade-in">
+      <span class="badge">FAQ</span>
+      <h2>Pyetje të Shpeshta</h2>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <details style="background:var(--gray-light);border:1px solid var(--gray-mid);border-radius:var(--radius);overflow:hidden;" class="fade-in">
+        <summary style="padding:18px 22px;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;">
+          A janë kupat rezistente ndaj ngrirjes?
+          <span style="color:var(--green);font-size:1.2rem;">+</span>
+        </summary>
+        <p style="padding:0 22px 18px;color:var(--text-mid);font-size:.92rem;">Po, materiali i laminuar i kupave tona është rezistent ndaj temperaturave të ulëta dhe lagështirës nga akullorja.</p>
+      </details>
+      <details style="background:var(--gray-light);border:1px solid var(--gray-mid);border-radius:var(--radius);overflow:hidden;" class="fade-in">
+        <summary style="padding:18px 22px;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;">
+          A mund të porosis të dyja madhësitë bashkë?
+          <span style="color:var(--green);font-size:1.2rem;">+</span>
+        </summary>
+        <p style="padding:0 22px 18px;color:var(--text-mid);font-size:.92rem;">Po, mund të kombinoni H63 dhe H53 në të njëjtën porosi. Minimumi mbetet 10,000 copë për secilën madhësi.</p>
+      </details>
+      <details style="background:var(--gray-light);border:1px solid var(--gray-mid);border-radius:var(--radius);overflow:hidden;" class="fade-in">
+        <summary style="padding:18px 22px;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;">
+          Sa kohë zgjat prodhimi?
+          <span style="color:var(--green);font-size:1.2rem;">+</span>
+        </summary>
+        <p style="padding:0 22px 18px;color:var(--text-mid);font-size:.92rem;">Koha standarde e prodhimit është 7–10 ditë pune pas aprovimit të dizajnit. Ofrojmë shërbim express për porosite urgjente.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── CTA BANNER ─────────────────────────────────────────── -->
+<section class="cta-banner">
+  <div class="container">
+    <h2>Gati të Personalizoni Kupat Tuaja?</h2>
+    <p>Kontaktoni ekipin tonë sot dhe merrni një ofertë falas brenda 24 orëve.</p>
+    <div class="cta-btns">
+      <a href="contact.html" class="btn btn-outline btn-lg">Kërko Ofertë Falas</a>
+      <a href="https://wa.me/38344113533" target="_blank" class="btn btn-lg" style="background:#25d366;color:#fff;border:none;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── FOOTER ─────────────────────────────────────────────── -->
+<div id="site-footer"></div>
+<div id="site-whatsapp"></div>
+
+<script src="js/main.js?v=13"></script>
+<script>
+  const cupData = {
+    h63: { cap: 'H63 — e madhe', use: 'Akullore, Parfait' },
+    h53: { cap: 'H53 — e vogël', use: 'Taste, Kids, Evente' }
+  };
+  function switchCup(btn, imgSrc, badgeText) {
+    document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('cupHeroImg').src = imgSrc;
+    document.getElementById('cupBadge').textContent = badgeText;
+    const key = btn.dataset.size;
+    document.getElementById('specCap').textContent = cupData[key].cap;
+    document.getElementById('specUse').textContent = cupData[key].use;
+  }
+</script>
+<!-- QRCode.js for QR tool -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<!-- 3D Editor -->
+<script type="module" async src="js/ak-editor.js?v=12"></script>
+</body>
+</html>

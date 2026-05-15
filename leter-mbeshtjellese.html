@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Letër Mbështjellëse – ERA Print Pack</title>
+  <meta name="description" content="Letër mbështjellëse ushqimore me printim të personalizuar në formatin 34x34cm. Ideale për burger, sandviçe, tost dhe fast food." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" type="image/svg+xml" href="assets/era-logo.svg" />
+  <style>
+    .size-selector {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+    .size-btn {
+      padding: 10px 24px;
+      border-radius: 100px;
+      border: 2px solid var(--gray-mid);
+      font-size: .9rem;
+      font-weight: 600;
+      color: var(--text-mid);
+      transition: var(--transition);
+      cursor: pointer;
+      background: var(--white);
+    }
+    .size-btn:hover, .size-btn.active {
+      border-color: var(--green);
+      background: var(--green);
+      color: var(--white);
+    }
+
+    .cup-showcase {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+    .cup-image-wrap {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      aspect-ratio: 1;
+    }
+    .cup-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .5s ease;
+    }
+    .cup-image-wrap:hover img { transform: scale(1.04); }
+    .cup-badge-size {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: var(--green);
+      color: var(--white);
+      font-size: .85rem;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 100px;
+    }
+
+    .cup-info h1 { margin-bottom: 14px; }
+    .cup-info .lead {
+      font-size: 1.1rem;
+      color: var(--text-mid);
+      margin-bottom: 28px;
+      line-height: 1.75;
+    }
+
+    .cup-specs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 32px;
+    }
+    .spec-item {
+      background: var(--gray-light);
+      border-radius: var(--radius);
+      padding: 16px;
+    }
+    .spec-label {
+      font-size: .75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      color: var(--gray);
+      margin-bottom: 4px;
+    }
+    .spec-value {
+      font-size: .95rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .cup-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .sizes-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 28px;
+      max-width: 460px;
+      margin: 0 auto;
+    }
+    .size-card {
+      border: 2px solid var(--gray-mid);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: var(--transition);
+      cursor: pointer;
+      background: var(--white);
+      text-decoration: none;
+    }
+    .size-card:hover, .size-card.featured {
+      border-color: var(--green);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-6px);
+    }
+    .size-card.featured { transform: translateY(-10px); }
+    .size-card-img {
+      aspect-ratio: 1;
+      position: relative;
+      overflow: hidden;
+    }
+    .size-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .4s ease;
+    }
+    .size-card:hover .size-card-img img { transform: scale(1.06); }
+    .popular-tag {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: var(--green);
+      color: var(--white);
+      font-size: .72rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 100px;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+    .size-card-body { padding: 22px; }
+    .size-oz {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--green);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .size-ml {
+      font-size: .8rem;
+      color: var(--gray);
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+    .size-card-body h3 { margin-bottom: 8px; font-size: 1rem; }
+    .size-card-body p { font-size: .85rem; margin-bottom: 16px; }
+    .size-uses {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 18px;
+    }
+    .use-tag {
+      font-size: .75rem;
+      padding: 4px 10px;
+      border-radius: 100px;
+      background: var(--green-light);
+      color: var(--green-darker);
+      font-weight: 500;
+    }
+
+    .custom-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    .custom-step {
+      text-align: center;
+      padding: 28px 20px;
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--gray-mid);
+      transition: var(--transition);
+    }
+    .custom-step:hover {
+      border-color: var(--green);
+      box-shadow: var(--shadow-sm);
+    }
+    .custom-step-icon {
+      width: 64px;
+      height: 64px;
+      background: var(--green);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 18px;
+      box-shadow: 0 4px 16px rgba(76,167,6,.25);
+      flex-shrink: 0;
+    }
+    .custom-step h4 { margin-bottom: 8px; }
+    .custom-step p { font-size: .85rem; }
+
+    .order-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+    .order-table th {
+      background: var(--green);
+      color: var(--white);
+      padding: 16px 20px;
+      text-align: left;
+      font-size: .85rem;
+      font-weight: 600;
+      letter-spacing: .04em;
+    }
+    .order-table td {
+      padding: 15px 20px;
+      border-bottom: 1px solid var(--gray-mid);
+      font-size: .9rem;
+    }
+    .order-table tr:last-child td { border-bottom: none; }
+    .order-table tr:hover td { background: var(--green-light); }
+    .order-table .highlight { font-weight: 700; color: var(--green); }
+
+    @media (max-width: 768px) {
+      .cup-showcase { grid-template-columns: 1fr; gap: 32px; }
+      .sizes-grid { grid-template-columns: 1fr; }
+      .size-card.featured { transform: none; }
+      .custom-steps { grid-template-columns: 1fr 1fr; }
+      .cup-specs { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .custom-steps { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="site-nav"></div>
+
+<div style="background:var(--gray-light);border-bottom:1px solid var(--gray-mid);padding:14px 0;margin-top:72px;">
+  <div class="container">
+    <div style="display:flex;align-items:center;gap:8px;font-size:.85rem;color:var(--text-soft);">
+      <a href="index.html" style="color:var(--text-soft);transition:color .2s;" onmouseover="this.style.color='#4ca706'" onmouseout="this.style.color=''">Kryefaqja</a>
+      <span>›</span>
+      <a href="products.html" style="color:var(--text-soft);transition:color .2s;" onmouseover="this.style.color='#4ca706'" onmouseout="this.style.color=''">Produktet</a>
+      <span>›</span>
+      <span id="breadcrumbCurrent" style="color:var(--text);font-weight:500;">Letër Mbështjellëse</span>
+    </div>
+  </div>
+</div>
+
+<section class="section" style="padding-top:56px;">
+  <div class="container">
+    <div class="cup-showcase">
+      <div class="cup-image-wrap fade-in">
+        <img src="assets/leter-ushqimore.jpg" alt="Letër Mbështjellëse ERA Print Pack" id="wrapHeroImg" />
+        <span class="cup-badge-size" id="wrapBadge">34x34cm</span>
+      </div>
+
+      <div class="cup-info fade-in">
+        <span class="badge" id="heroBadge">Letër Mbështjellëse</span>
+        <h1 id="heroTitle">Letër Ushqimore me<br/><span class="text-green">Printim të Personalizuar</span></h1>
+        <p class="lead" id="heroLead">Letër mbështjellëse cilësore për burgerë, sandviçe, tost dhe produkte fast food. Praktike, e pastër dhe e personalizuar me identitetin e markës suaj.</p>
+
+        <div class="cup-specs">
+          <div class="spec-item">
+            <div class="spec-label" id="specLabelFormat">Formati</div>
+            <div class="spec-value" id="specFormat">34x34cm</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label" id="specLabelUse">Ideale për</div>
+            <div class="spec-value" id="specUse">Burgerë, sandviçe, tost</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label" id="specLabelMaterial">Materiali</div>
+            <div class="spec-value" id="specMaterial">Letër ushqimore e printueshme</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label" id="specLabelMin">Porosia Minimale</div>
+            <div class="spec-value" id="specMin">10,000 copë</div>
+          </div>
+        </div>
+
+        <div class="cup-ctas">
+          <a href="order.html?p=leter-mbeshtjellese&source=preview" class="btn btn-primary btn-lg" id="heroCta1">Porosit Tani</a>
+          <a href="contact.html" class="btn btn-outline-green btn-lg" id="heroCta2">Kërko Ofertë</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--gray-light);padding-top:72px;">
+  <div class="container">
+    <div class="section-header text-center fade-in">
+      <span class="badge" id="sizesBadge">Përdorimi</span>
+      <h2 id="sizesTitle">Formati 34x34cm në Përdorim</h2>
+      <p id="sizesSub">Një format praktik dhe i balancuar për mbështjellje të shpejtë, të pastër dhe profesionale.</p>
+    </div>
+
+    <div class="sizes-grid">
+      <div class="size-card featured fade-in">
+        <div class="size-card-img">
+          <img src="assets/leter-ushqimore.jpg" alt="Letër 34x34cm" />
+        </div>
+        <div class="size-card-body">
+          <div class="size-oz">34x34cm</div>
+          <div class="size-ml" id="card1Meta">Format standard</div>
+          <h3 id="card1Title">Për Burgerë, Sandviçe & Tost</h3>
+          <p id="card1Desc">Zgjedhja ideale për produkte fast food që kërkojnë mbështjellje të pastër, prezantim të rregullt dhe përdorim praktik gjatë shërbimit ose delivery-t.</p>
+          <div class="size-uses">
+            <span class="use-tag" id="card1Tag1">Burger</span>
+            <span class="use-tag" id="card1Tag2">Sandviç</span>
+            <span class="use-tag" id="card1Tag3">Toast</span>
+          </div>
+          <a href="contact.html" class="btn btn-outline-green btn-sm" style="width:100%;justify-content:center;" id="card1Cta">Kërko Ofertë</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-header text-center fade-in">
+      <span class="badge" id="customBadge">Personalizimi</span>
+      <h2 id="customTitle">Letër me Identitetin e Markës Suaj</h2>
+      <p id="customSub">Çdo fletë mund të printohet me logon, ngjyrat dhe pattern-et e biznesit tuaj për një prezantim më profesional.</p>
+    </div>
+
+    <div class="custom-steps">
+      <div class="custom-step fade-in">
+        <div class="custom-step-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></div>
+        <h4 id="step1Title">Zgjidhni Formatin</h4>
+        <p id="step1Desc">Formati 34x34cm është gati për përdorim në shumicën e produkteve fast food që shërbeni çdo ditë.</p>
+      </div>
+      <div class="custom-step fade-in">
+        <div class="custom-step-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div>
+        <h4 id="step2Title">Dërgoni Dizajnin</h4>
+        <p id="step2Desc">Na dërgoni logon ose dizajnin tuaj dhe ne e përshtatim për printim të pastër në letër ushqimore.</p>
+      </div>
+      <div class="custom-step fade-in">
+        <div class="custom-step-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg></div>
+        <h4 id="step3Title">Printimi</h4>
+        <p id="step3Desc">Printim me ngjyra të qëndrueshme dhe përshtatje të saktë për përdorim në fast food dhe horeca.</p>
+      </div>
+      <div class="custom-step fade-in">
+        <div class="custom-step-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+        <h4 id="step4Title">Dorëzimi</h4>
+        <p id="step4Desc">I paketojmë sipas sasisë së porositur dhe i dorëzojmë gati për përdorim në biznesin tuaj.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-sm" style="background:var(--gray-light);">
+  <div class="container" style="max-width:860px;">
+    <div class="section-header text-center fade-in">
+      <span class="badge" id="orderBadge">Porositja</span>
+      <h2 id="orderTitle">Informacion Porosie</h2>
+    </div>
+
+    <div class="fade-in">
+      <div class="table-wrap">
+        <table class="order-table">
+          <thead>
+            <tr>
+              <th id="tableHead1">Formati</th>
+              <th id="tableHead2">Përdorimi Kryesor</th>
+              <th id="tableHead3">Porosia Minimale</th>
+              <th id="tableHead4">Përfitimi</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="highlight">34x34cm</td>
+              <td id="row1Use">Burgerë, sandviçe, tost</td>
+              <td>10,000 copë</td>
+              <td id="row1Benefit">Mbështjellje kompakte dhe praktike</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div style="margin-top:20px;padding:18px 22px;background:var(--green-light);border-radius:var(--radius);border-left:4px solid var(--green);">
+        <p style="font-size:.9rem;color:var(--green-darker);margin:0;" id="orderNote">
+          <strong>💡 Shënim:</strong> Çmimi ndryshon sipas sasisë, numrit të ngjyrave dhe kompleksitetit të dizajnit. Na kontaktoni për një ofertë të personalizuar pa detyrim.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container" style="max-width:760px;">
+    <div class="section-header text-center fade-in">
+      <span class="badge" id="faqBadge">FAQ</span>
+      <h2 id="faqTitle">Pyetje të Shpeshta</h2>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <details style="background:var(--gray-light);border:1px solid var(--gray-mid);border-radius:var(--radius);overflow:hidden;" class="fade-in">
+        <summary style="padding:18px 22px;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;">
+          <span id="faqQ1">A është e përshtatshme për kontakt me ushqim?</span>
+          <span style="color:var(--green);font-size:1.2rem;">+</span>
+        </summary>
+        <p style="padding:0 22px 18px;color:var(--text-mid);font-size:.92rem;" id="faqA1">Po, letra është e përshtatshme për paketim ushqimor dhe përdoret gjerësisht për produkte fast food dhe bakery.</p>
+      </details>
+
+      <details style="background:var(--gray-light);border:1px solid var(--gray-mid);border-radius:var(--radius);overflow:hidden;" class="fade-in">
+        <summary style="padding:18px 22px;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;">
+          <span id="faqQ2">A mund të printohet me logon time?</span>
+          <span style="color:var(--green);font-size:1.2rem;">+</span>
+        </summary>
+        <p style="padding:0 22px 18px;color:var(--text-mid);font-size:.92rem;" id="faqA2">Po, ofrojmë printim të personalizuar me logon, sloganin ose elemente grafike të markës suaj.</p>
+      </details>
+
+      <details style="background:var(--gray-light);border:1px solid var(--gray-mid);border-radius:var(--radius);overflow:hidden;" class="fade-in">
+        <summary style="padding:18px 22px;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;">
+          <span id="faqQ3">Për cilat produkte përdoret më së shumti?</span>
+          <span style="color:var(--green);font-size:1.2rem;">+</span>
+        </summary>
+        <p style="padding:0 22px 18px;color:var(--text-mid);font-size:.92rem;" id="faqA3">Ky format përdoret më së shumti për burgerë, sandviçe, tost dhe produkte të ngjashme fast food që kërkojnë mbështjellje të shpejtë dhe të pastër.</p>
+      </details>
+
+      <details style="background:var(--gray-light);border:1px solid var(--gray-mid);border-radius:var(--radius);overflow:hidden;" class="fade-in">
+        <summary style="padding:18px 22px;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;">
+          <span id="faqQ4">Sa zgjat prodhimi?</span>
+          <span style="color:var(--green);font-size:1.2rem;">+</span>
+        </summary>
+        <p style="padding:0 22px 18px;color:var(--text-mid);font-size:.92rem;" id="faqA4">Afati standard i prodhimit është 7 deri në 10 ditë pune pas aprovimit të dizajnit. Për porosi urgjente mund të ofrojmë edhe shërbim express.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="cta-banner">
+  <div class="container">
+    <h2 id="ctaTitle">Gati ta Brendoni Paketimin tuaj?</h2>
+    <p id="ctaSub">Kontaktoni ekipin tonë sot dhe merrni një ofertë falas për letrën mbështjellëse brenda 24 orëve.</p>
+    <div class="cta-btns">
+      <a href="contact.html" class="btn btn-outline btn-lg" id="ctaBtn1">Kërko Ofertë Falas</a>
+      <a href="https://wa.me/38344113533" target="_blank" rel="noopener noreferrer" class="btn btn-lg" style="background:#25d366;color:#fff;border:none;" id="ctaBtn2">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<div id="site-whatsapp"></div>
+
+<script src="js/main.js?v=13"></script>
+<script>
+  const pageCopy = {
+    al: {
+      title: 'Letër Mbështjellëse – ERA Print Pack',
+      description: 'Letër mbështjellëse ushqimore me printim të personalizuar në formatin 34x34cm. Ideale për burger, sandviçe, tost dhe fast food.',
+      breadcrumbCurrent: 'Letër Mbështjellëse',
+      heroBadge: 'Letër Mbështjellëse',
+      heroTitle: 'Letër Ushqimore me<br/><span class="text-green">Printim të Personalizuar</span>',
+      heroLead: 'Letër mbështjellëse cilësore për burgerë, sandviçe, tost dhe produkte fast food. Praktike, e pastër dhe e personalizuar me identitetin e markës suaj.',
+      specLabelFormat: 'Formati',
+      specLabelUse: 'Ideale për',
+      specLabelMaterial: 'Materiali',
+      specLabelMin: 'Porosia Minimale',
+      specMaterial: 'Letër ushqimore e printueshme',
+      specMin: '10,000 copë',
+      heroCta1: 'Porosit Tani',
+      heroCta2: 'Kërko Ofertë',
+      sizesBadge: 'Përdorimi',
+      sizesTitle: 'Formati 34x34cm në Përdorim',
+      sizesSub: 'Një format praktik dhe i balancuar për mbështjellje të shpejtë, të pastër dhe profesionale.',
+      card1Meta: 'Format standard',
+      card1Title: 'Për Burgerë, Sandviçe & Tost',
+      card1Desc: 'Zgjedhja ideale për produkte fast food që kërkojnë mbështjellje të pastër, prezantim të rregullt dhe përdorim praktik gjatë shërbimit ose delivery-t.',
+      card1Tag1: 'Burger',
+      card1Tag2: 'Sandviç',
+      card1Tag3: 'Toast',
+      card1Cta: 'Kërko Ofertë',
+      customBadge: 'Personalizimi',
+      customTitle: 'Letër me Identitetin e Markës Suaj',
+      customSub: 'Çdo fletë mund të printohet me logon, ngjyrat dhe pattern-et e biznesit tuaj për një prezantim më profesional.',
+      step1Title: 'Zgjidhni Formatin',
+      step1Desc: 'Formati 34x34cm është gati për përdorim në shumicën e produkteve fast food që shërbeni çdo ditë.',
+      step2Title: 'Dërgoni Dizajnin',
+      step2Desc: 'Na dërgoni logon ose dizajnin tuaj dhe ne e përshtatim për printim të pastër në letër ushqimore.',
+      step3Title: 'Printimi',
+      step3Desc: 'Printim me ngjyra të qëndrueshme dhe përshtatje të saktë për përdorim në fast food dhe horeca.',
+      step4Title: 'Dorëzimi',
+      step4Desc: 'I paketojmë sipas sasisë së porositur dhe i dorëzojmë gati për përdorim në biznesin tuaj.',
+      orderBadge: 'Porositja',
+      orderTitle: 'Informacion Porosie',
+      tableHead1: 'Formati',
+      tableHead2: 'Përdorimi Kryesor',
+      tableHead3: 'Porosia Minimale',
+      tableHead4: 'Përfitimi',
+      row1Use: 'Burgerë, sandviçe, tost',
+      row1Benefit: 'Mbështjellje kompakte dhe praktike',
+      orderNote: '<strong>💡 Shënim:</strong> Çmimi ndryshon sipas sasisë, numrit të ngjyrave dhe kompleksitetit të dizajnit. Na kontaktoni për një ofertë të personalizuar pa detyrim.',
+      faqBadge: 'FAQ',
+      faqTitle: 'Pyetje të Shpeshta',
+      faqQ1: 'A është e përshtatshme për kontakt me ushqim?',
+      faqA1: 'Po, letra është e përshtatshme për paketim ushqimor dhe përdoret gjerësisht për produkte fast food dhe bakery.',
+      faqQ2: 'A mund të printohet me logon time?',
+      faqA2: 'Po, ofrojmë printim të personalizuar me logon, sloganin ose elemente grafike të markës suaj.',
+      faqQ3: 'Për cilat produkte përdoret më së shumti?',
+      faqA3: 'Ky format përdoret më së shumti për burgerë, sandviçe, tost dhe produkte të ngjashme fast food që kërkojnë mbështjellje të shpejtë dhe të pastër.',
+      faqQ4: 'Sa zgjat prodhimi?',
+      faqA4: 'Afati standard i prodhimit është 7 deri në 10 ditë pune pas aprovimit të dizajnit. Për porosi urgjente mund të ofrojmë edhe shërbim express.',
+      ctaTitle: 'Gati ta Brendoni Paketimin tuaj?',
+      ctaSub: 'Kontaktoni ekipin tonë sot dhe merrni një ofertë falas për letrën mbështjellëse brenda 24 orëve.',
+      ctaBtn1: 'Kërko Ofertë Falas'
+    },
+    en: {
+      title: 'Wrapping Paper – ERA Print Pack',
+      description: 'Custom-printed food wrapping paper in a 34x34cm format. Ideal for burgers, sandwiches, toast, and fast food.',
+      breadcrumbCurrent: 'Wrapping Paper',
+      heroBadge: 'Wrapping Paper',
+      heroTitle: 'Food Wrapping Paper with<br/><span class="text-green">Custom Printing</span>',
+      heroLead: 'Quality wrapping paper for burgers, sandwiches, toast, and fast-food items. Clean, practical, and branded with your visual identity.',
+      specLabelFormat: 'Format',
+      specLabelUse: 'Best for',
+      specLabelMaterial: 'Material',
+      specLabelMin: 'Minimum Order',
+      specMaterial: 'Printable food-grade paper',
+      specMin: '10,000 pieces',
+      heroCta1: 'Order Now',
+      heroCta2: 'Request a Quote',
+      sizesBadge: 'Usage',
+      sizesTitle: 'The 34x34cm Format in Use',
+      sizesSub: 'One practical, balanced format for fast, clean, and professional wrapping.',
+      card1Meta: 'Standard format',
+      card1Title: 'For Burgers, Sandwiches & Toast',
+      card1Desc: 'An ideal choice for fast-food items that need clean wrapping, tidy presentation, and practical handling during service or delivery.',
+      card1Tag1: 'Burger',
+      card1Tag2: 'Sandwich',
+      card1Tag3: 'Toast',
+      card1Cta: 'Request a Quote',
+      customBadge: 'Customization',
+      customTitle: 'Paper That Carries Your Brand',
+      customSub: 'Each sheet can be printed with your logo, colors, and patterns for a more polished customer presentation.',
+      step1Title: 'Choose the Format',
+      step1Desc: 'The 34x34cm format is ready for use across most of the fast-food products you serve every day.',
+      step2Title: 'Send the Design',
+      step2Desc: 'Send us your logo or artwork and we will adapt it for clean, professional food-paper printing.',
+      step3Title: 'Printing',
+      step3Desc: 'Consistent color printing with accurate output for fast food and horeca use.',
+      step4Title: 'Delivery',
+      step4Desc: 'We pack the order by quantity and deliver it ready for immediate use in your business.',
+      orderBadge: 'Ordering',
+      orderTitle: 'Order Information',
+      tableHead1: 'Format',
+      tableHead2: 'Primary Use',
+      tableHead3: 'Minimum Order',
+      tableHead4: 'Advantage',
+      row1Use: 'Burgers, sandwiches, toast',
+      row1Benefit: 'Compact and practical wrapping',
+      orderNote: '<strong>💡 Note:</strong> Pricing depends on quantity, number of colors, and design complexity. Contact us for a tailored quote with no obligation.',
+      faqBadge: 'FAQ',
+      faqTitle: 'Frequently Asked Questions',
+      faqQ1: 'Is it suitable for food contact?',
+      faqA1: 'Yes. The paper is suitable for food packaging and is widely used for fast-food and bakery products.',
+      faqQ2: 'Can it be printed with my logo?',
+      faqA2: 'Yes, we offer custom printing with your logo, slogan, or other brand graphics.',
+      faqQ3: 'What products is it best suited for?',
+      faqA3: 'This format is best suited for burgers, sandwiches, toast, and similar fast-food items that need quick, clean wrapping.',
+      faqQ4: 'How long does production take?',
+      faqA4: 'Standard production time is 7 to 10 business days after the design is approved. We can also offer express service for urgent orders.',
+      ctaTitle: 'Ready to Brand Your Packaging?',
+      ctaSub: 'Contact our team today and get a free quote for your wrapping paper within 24 hours.',
+      ctaBtn1: 'Get a Free Quote'
+    }
+  };
+
+  window.applyPageTranslations = function applyWrappingPageTranslations(lang) {
+    const copy = pageCopy[lang] || pageCopy.al;
+    document.getElementById('breadcrumbCurrent').textContent = copy.breadcrumbCurrent;
+    document.getElementById('heroBadge').textContent = copy.heroBadge;
+    document.getElementById('heroTitle').innerHTML = copy.heroTitle;
+    document.getElementById('heroLead').textContent = copy.heroLead;
+    document.getElementById('specLabelFormat').textContent = copy.specLabelFormat;
+    document.getElementById('specLabelUse').textContent = copy.specLabelUse;
+    document.getElementById('specLabelMaterial').textContent = copy.specLabelMaterial;
+    document.getElementById('specLabelMin').textContent = copy.specLabelMin;
+    document.getElementById('specMaterial').textContent = copy.specMaterial;
+    document.getElementById('specMin').textContent = copy.specMin;
+    document.getElementById('heroCta1').textContent = copy.heroCta1;
+    document.getElementById('heroCta2').textContent = copy.heroCta2;
+    document.getElementById('sizesBadge').textContent = copy.sizesBadge;
+    document.getElementById('sizesTitle').textContent = copy.sizesTitle;
+    document.getElementById('sizesSub').textContent = copy.sizesSub;
+    document.getElementById('card1Meta').textContent = copy.card1Meta;
+    document.getElementById('card1Title').textContent = copy.card1Title;
+    document.getElementById('card1Desc').textContent = copy.card1Desc;
+    document.getElementById('card1Tag1').textContent = copy.card1Tag1;
+    document.getElementById('card1Tag2').textContent = copy.card1Tag2;
+    document.getElementById('card1Tag3').textContent = copy.card1Tag3;
+    document.getElementById('card1Cta').textContent = copy.card1Cta;
+    document.getElementById('customBadge').textContent = copy.customBadge;
+    document.getElementById('customTitle').textContent = copy.customTitle;
+    document.getElementById('customSub').textContent = copy.customSub;
+    document.getElementById('step1Title').textContent = copy.step1Title;
+    document.getElementById('step1Desc').textContent = copy.step1Desc;
+    document.getElementById('step2Title').textContent = copy.step2Title;
+    document.getElementById('step2Desc').textContent = copy.step2Desc;
+    document.getElementById('step3Title').textContent = copy.step3Title;
+    document.getElementById('step3Desc').textContent = copy.step3Desc;
+    document.getElementById('step4Title').textContent = copy.step4Title;
+    document.getElementById('step4Desc').textContent = copy.step4Desc;
+    document.getElementById('orderBadge').textContent = copy.orderBadge;
+    document.getElementById('orderTitle').textContent = copy.orderTitle;
+    document.getElementById('tableHead1').textContent = copy.tableHead1;
+    document.getElementById('tableHead2').textContent = copy.tableHead2;
+    document.getElementById('tableHead3').textContent = copy.tableHead3;
+    document.getElementById('tableHead4').textContent = copy.tableHead4;
+    document.getElementById('row1Use').textContent = copy.row1Use;
+    document.getElementById('row1Benefit').textContent = copy.row1Benefit;
+    document.getElementById('orderNote').innerHTML = copy.orderNote;
+    document.getElementById('faqBadge').textContent = copy.faqBadge;
+    document.getElementById('faqTitle').textContent = copy.faqTitle;
+    document.getElementById('faqQ1').textContent = copy.faqQ1;
+    document.getElementById('faqA1').textContent = copy.faqA1;
+    document.getElementById('faqQ2').textContent = copy.faqQ2;
+    document.getElementById('faqA2').textContent = copy.faqA2;
+    document.getElementById('faqQ3').textContent = copy.faqQ3;
+    document.getElementById('faqA3').textContent = copy.faqA3;
+    document.getElementById('faqQ4').textContent = copy.faqQ4;
+    document.getElementById('faqA4').textContent = copy.faqA4;
+    document.getElementById('ctaTitle').textContent = copy.ctaTitle;
+    document.getElementById('ctaSub').textContent = copy.ctaSub;
+    document.getElementById('ctaBtn1').textContent = copy.ctaBtn1;
+
+    document.title = copy.title;
+    document.querySelector('meta[name="description"]').setAttribute('content', copy.description);
+  };
+</script>
+</body>
+</html>

@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kapak për Gota – ERA Print Pack</title>
+  <meta name="description" content="Kapakë për gota letre në dy ngjyra – të bardhë dhe të zinj. Përshtatës për gota 7oz dhe 12oz, ideal për kafene dhe restorante." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" type="image/svg+xml" href="assets/era-logo.svg" />
+  <style>
+    .cup-showcase {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+    .cup-image-wrap {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      aspect-ratio: 1;
+      background: var(--gray-light);
+    }
+    .cup-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .5s ease;
+    }
+    .cup-image-wrap:hover img { transform: scale(1.04); }
+    .cup-badge-size {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: var(--green);
+      color: var(--white);
+      font-size: .85rem;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 100px;
+    }
+
+    .cup-info h1 { margin-bottom: 14px; }
+    .cup-info .lead {
+      font-size: 1.1rem;
+      color: var(--text-mid);
+      margin-bottom: 28px;
+      line-height: 1.75;
+    }
+
+    .cup-specs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 32px;
+    }
+    .spec-item {
+      background: var(--gray-light);
+      border-radius: var(--radius);
+      padding: 16px;
+    }
+    .spec-label {
+      font-size: .75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      color: var(--gray);
+      margin-bottom: 4px;
+    }
+    .spec-value {
+      font-size: .95rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .cup-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    /* Colour picker */
+    .color-picker {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 28px;
+      align-items: center;
+    }
+    .color-picker-label {
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--text-mid);
+      margin-right: 4px;
+    }
+    .color-swatch {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 3px solid var(--gray-mid);
+      cursor: pointer;
+      transition: var(--transition);
+      position: relative;
+    }
+    .color-swatch:hover, .color-swatch.active {
+      border-color: var(--green);
+      transform: scale(1.15);
+    }
+    .color-swatch.active::after {
+      content: '';
+      position: absolute;
+      inset: -5px;
+      border-radius: 50%;
+      border: 2px solid var(--green);
+    }
+    .color-swatch.white { background: #fff; box-shadow: 0 0 0 1px #ddd; }
+    .color-swatch.black { background: #1a1a1a; }
+
+    /* Colour variant cards */
+    .variants-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    .variant-card {
+      border: 2px solid var(--gray-mid);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: var(--transition);
+      background: var(--white);
+      text-decoration: none;
+    }
+    .variant-card:hover {
+      border-color: var(--green);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-6px);
+    }
+    .variant-card-img {
+      aspect-ratio: 1;
+      overflow: hidden;
+      background: var(--gray-light);
+    }
+    .variant-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .4s ease;
+    }
+    .variant-card:hover .variant-card-img img { transform: scale(1.06); }
+    .variant-card-body { padding: 20px; }
+    .variant-name {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .variant-desc {
+      font-size: .85rem;
+      color: var(--text-mid);
+      margin-bottom: 14px;
+    }
+    .variant-dot {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      vertical-align: middle;
+      margin-right: 6px;
+      border: 1px solid rgba(0,0,0,.1);
+    }
+
+    .custom-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    .custom-step {
+      text-align: center;
+      padding: 28px 20px;
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--gray-mid);
+      transition: var(--transition);
+    }
+    .custom-step:hover {
+      border-color: var(--green);
+      box-shadow: var(--shadow-sm);
+    }
+    .custom-step-icon {
+      width: 64px;
+      height: 64px;
+      background: var(--green);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 18px;
+      box-shadow: 0 4px 16px rgba(76,167,6,.25);
+      flex-shrink: 0;
+    }
+    .custom-step h4 { margin-bottom: 8px; }
+    .custom-step p { font-size: .85rem; }
+
+    .order-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+    .order-table th {
+      background: var(--green);
+      color: var(--white);
+      padding: 16px 20px;
+      text-align: left;
+      font-size: .85rem;
+      font-weight: 600;
+      letter-spacing: .04em;
+    }
+    .order-table td {
+      padding: 15px 20px;
+      border-bottom: 1px solid var(--gray-mid);
+      font-size: .9rem;
+    }
+    .order-table tr:last-child td { border-bottom: none; }
+    .order-table tr:hover td { background: var(--green-light); }
+    .order-table .highlight { font-weight: 700; color: var(--green); }
+
+    @media (max-width: 768px) {
+      .cup-showcase { grid-template-columns: 1fr; gap: 32px; }
+      .variants-grid { grid-template-columns: 1fr; max-width: 360px; }
+      .custom-steps { grid-template-columns: 1fr 1fr; }
+      .cup-specs { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .custom-steps { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="site-nav"></div>
+
+<!-- Breadcrumb -->
+<div style="background:var(--gray-light);border-bottom:1px solid var(--gray-mid);padding:14px 0;margin-top:72px;">
+  <div class="container">
+    <div style="display:flex;align-items:center;gap:8px;font-size:.85rem;color:var(--text-soft);">
+      <a href="index.html" style="color:var(--text-soft);transition:color .2s;" onmouseover="this.style.color='#4ca706'" onmouseout="this.style.color=''">Kryefaqja</a>
+      <span>›</span>
+      <a href="products.html" style="color:var(--text-soft);transition:color .2s;" onmouseover="this.style.color='#4ca706'" onmouseout="this.style.color=''">Produktet</a>
+      <span>›</span>
+      <span id="breadcrumbCurrent" style="color:var(--text);font-weight:500;">Kapak për Gota</span>
+    </div>
+  </div>
+</div>
+
+<!-- Hero -->
+<section class="section" style="padding-top:56px;">
+  <div class="container">
+    <div class="cup-showcase">
+
+      <!-- Image — shows both lids together -->
+      <div class="cup-image-wrap fade-in">
+        <img src="assets/kapak-gota-both.jpg" alt="Kapak për Gota – i Bardhë dhe i Zi" id="heroImg" />
+        <span class="cup-badge-size" id="heroBadgeSize">7oz & 12oz</span>
+      </div>
+
+      <div class="cup-info fade-in">
+        <span class="badge" id="heroBadge">Kapak për Gota</span>
+        <h1 id="heroTitle">Kapakë të Sigurt<br/><span class="text-green">Bardhë & Zi</span></h1>
+        <p class="lead" id="heroLead">Kapakë plastikë të qëndrueshëm për gota letre 7oz dhe 12oz. Disponohen në dy ngjyra klasike – të bardhë dhe të zinj – ideal për kafene, restorante dhe çdo biznes horeca.</p>
+
+        <div class="cup-specs">
+          <div class="spec-item">
+            <div class="spec-label" id="specLabelSize">Madhësitë</div>
+            <div class="spec-value" id="specSize">7oz & 12oz</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label" id="specLabelColor">Ngjyrat</div>
+            <div class="spec-value" id="specColor">I bardhë & i zi</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label" id="specLabelUse">Ideale për</div>
+            <div class="spec-value" id="specUse">Kafene & restorante</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label" id="specLabelMin">Porosia Minimale</div>
+            <div class="spec-value" id="specMin">1,000 copë</div>
+          </div>
+        </div>
+
+        <!-- Colour picker -->
+        <div class="color-picker">
+          <span class="color-picker-label" id="colorLabel">Ngjyra:</span>
+          <span class="color-swatch white active" title="I bardhë" onclick="switchColor('white', this)"></span>
+          <span class="color-swatch black" title="I zi" onclick="switchColor('black', this)"></span>
+        </div>
+
+        <div class="cup-ctas">
+          <a href="https://wa.me/38344113533?text=Pershendetje%2C%20dua%20te%20porosis%20kapake%20per%20gota%20letre." target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg" id="heroCta1">Porosit Tani</a>
+          <a href="contact.html" class="btn btn-outline-green btn-lg" id="heroCta2">Kërko Ofertë</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Colour variants -->
+<section class="section" style="background:var(--gray-light);padding-top:72px;">
+  <div class="container">
+    <div class="section-header text-center fade-in">
+      <span class="badge" id="colorsBadge">Variantet</span>
+      <h2 id="colorsTitle">Dy Ngjyra – Një Cilësi</h2>
+      <p id="colorsSub">Zgjidhni ngjyrën që përshtatet më mirë me identitetin e biznesit tuaj. Të dyja variantet ofrojnë të njëjtën cilësi dhe qëndrueshmëri.</p>
+    </div>
+
+    <div class="variants-grid">
+      <!-- White -->
+      <div class="variant-card fade-in">
+        <div class="variant-card-img">
+          <img src="assets/kapak-gota-bardhe.jpg" alt="Kapak i Bardhë" />
+        </div>
+        <div class="variant-card-body">
+          <div class="variant-name">
+            <span class="variant-dot" style="background:#fff;box-shadow:0 0 0 1px #ccc;"></span>
+            <span id="whiteName">I Bardhë</span>
+          </div>
+          <p class="variant-desc" id="whiteDesc">Pamje e pastër dhe klasike – plotëson çdo gotë me dizajn të ndritshëm ose të bardhë.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;">
+            <span class="use-tag" id="whiteTag1">7oz</span>
+            <span class="use-tag" id="whiteTag2">12oz</span>
+            <span class="use-tag" id="whiteTag3">Klasik</span>
+          </div>
+          <a href="https://wa.me/38344113533?text=Pershendetje%2C%20dua%20te%20porosis%20kapake%20te%20bardhe%20per%20gota%20letre." target="_blank" rel="noopener noreferrer" class="btn btn-outline-green btn-sm" style="width:100%;justify-content:center;" id="whiteCta">Porosit Tani</a>
+        </div>
+      </div>
+
+      <!-- Black -->
+      <div class="variant-card fade-in">
+        <div class="variant-card-img">
+          <img src="assets/kapak-gota-zi.jpg" alt="Kapak i Zi" />
+        </div>
+        <div class="variant-card-body">
+          <div class="variant-name">
+            <span class="variant-dot" style="background:#1a1a1a;"></span>
+            <span id="blackName">I Zi</span>
+          </div>
+          <p class="variant-desc" id="blackDesc">Pamje moderne dhe elegante – ideal për kafene premium dhe branding të errët.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;">
+            <span class="use-tag" id="blackTag1">7oz</span>
+            <span class="use-tag" id="blackTag2">12oz</span>
+            <span class="use-tag" id="blackTag3">Premium</span>
+          </div>
+          <a href="https://wa.me/38344113533?text=Pershendetje%2C%20dua%20te%20porosis%20kapake%20te%20zinj%20per%20gota%20letre." target="_blank" rel="noopener noreferrer" class="btn btn-outline-green btn-sm" style="width:100%;justify-content:center;" id="blackCta">Porosit Tani</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Steps -->
+<section class="section">
+  <div class="container">
+    <div class="section-header text-center fade-in">
+      <span class="badge" id="stepsBadge">Si Funksionon</span>
+      <h2 id="stepsTitle">Nga Porosia tek Dorëzimi</h2>
+      <p id="stepsSub">Procesi ynë është i thjeshtë dhe i shpejtë – nga zgjedhja e madhësisë deri te dorëzimi te dera juaj.</p>
+    </div>
+
+    <div class="custom-steps">
+      <div class="custom-step fade-in">
+        <div class="custom-step-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 3 21 3 21 9"/>
+            <polyline points="9 21 3 21 3 15"/>
+            <line x1="21" y1="3" x2="14" y2="10"/>
+            <line x1="3" y1="21" x2="10" y2="14"/>
+          </svg>
+        </div>
+        <h4 id="step1Title">Zgjidhni Madhësinë</h4>
+        <p id="step1Desc">Zgjidhni mes madhësisë 7oz dhe 12oz sipas gotave që përdorni.</p>
+      </div>
+      <div class="custom-step fade-in">
+        <div class="custom-step-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+          </svg>
+        </div>
+        <h4 id="step2Title">Zgjidhni Ngjyrën</h4>
+        <p id="step2Desc">I bardhë për pamje klasike, i zi për elegancë moderne – sipas brandingut tuaj.</p>
+      </div>
+      <div class="custom-step fade-in">
+        <div class="custom-step-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 6 2 18 2 18 9"/>
+            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+            <rect x="6" y="14" width="12" height="8"/>
+          </svg>
+        </div>
+        <h4 id="step3Title">Konfirmoni Porosinë</h4>
+        <p id="step3Desc">Na kontaktoni me sasinë dhe ne ju dërgojmë ofertën dhe afatin e dorëzimit.</p>
+      </div>
+      <div class="custom-step fade-in">
+        <div class="custom-step-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="1" y="3" width="15" height="13"/>
+            <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+            <circle cx="5.5" cy="18.5" r="2.5"/>
+            <circle cx="18.5" cy="18.5" r="2.5"/>
+          </svg>
+        </div>
+        <h4 id="step4Title">Dorëzimi</h4>
+        <p id="step4Desc">I paketojmë me kujdes dhe i dorëzojmë direkt në biznesin tuaj.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Order table -->
+<section class="section-sm" style="background:var(--gray-light);">
+  <div class="container" style="max-width:860px;">
+    <div class="section-header text-center fade-in">
+      <span class="badge" id="orderBadge">Porositja</span>
+      <h2 id="orderTitle">Informacion Porosie</h2>
+    </div>
+
+    <div class="fade-in">
+      <div class="table-wrap">
+        <table class="order-table">
+          <thead>
+            <tr>
+              <th id="tableHead1">Madhësia</th>
+              <th id="tableHead2">Ngjyra</th>
+              <th id="tableHead3">Porosia Minimale</th>
+              <th id="tableHead4">Përshtatje</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="highlight">7oz</td>
+              <td id="row1Color">I bardhë / I zi</td>
+              <td>1,000 copë</td>
+              <td id="row1Fit">Gota letre 7oz ERA</td>
+            </tr>
+            <tr>
+              <td class="highlight">12oz</td>
+              <td id="row2Color">I bardhë / I zi</td>
+              <td>1,000 copë</td>
+              <td id="row2Fit">Gota letre 12oz ERA</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div style="margin-top:20px;padding:18px 22px;background:var(--green-light);border-radius:var(--radius);border-left:4px solid var(--green);">
+        <p style="font-size:.9rem;color:var(--green-darker);margin:0;" id="orderNote">
+          <strong>💡 Shënim:</strong> Kapakët janë të projektuar të përshtaten saktë me gota letre ERA. Na kontaktoni për të verifikuar përputhshmërinë me gota nga furnitorë të tjerë.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section">
+  <div class="container" style="max-width:760px;">
+    <div class="section-header text-center fade-in">
+      <span class="badge" id="faqBadge">FAQ</span>
+      <h2 id="faqTitle">Pyetje të Shpeshta</h2>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <details style="background:var(--gray-light);border:1px solid var(--gray-mid);border-radius:var(--radius);overflow:hidden;" class="fade-in">
+        <summary style="padding:18px 22px;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;">
+          <span id="faqQ1">A përshtaten kapakët me gota të markave të tjera?</span>
+          <span style="color:var(--green);font-size:1.2rem;">+</span>
+        </summary>
+        <p style="padding:0 22px 18px;color:var(--text-mid);font-size:.92rem;" id="faqA1">Kapakët janë projektuar për gota letre ERA. Për përputhshmërinë me gota të markave të tjera rekomandojmë të na kontaktoni paraprakisht me specifikimet e gotës tuaj.</p>
+      </details>
+
+      <details style="background:var(--gray-light);border:1px solid var(--gray-mid);border-radius:var(--radius);overflow:hidden;" class="fade-in">
+        <summary style="padding:18px 22px;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;">
+          <span id="faqQ2">A mund të porosisim të dyja ngjyrat bashkë?</span>
+          <span style="color:var(--green);font-size:1.2rem;">+</span>
+        </summary>
+        <p style="padding:0 22px 18px;color:var(--text-mid);font-size:.92rem;" id="faqA2">Po, mund të porositni kapakë të bardhë dhe të zinj në të njëjtën porosi. Minimumi aplikohet për çdo variant veç e veç.</p>
+      </details>
+
+      <details style="background:var(--gray-light);border:1px solid var(--gray-mid);border-radius:var(--radius);overflow:hidden;" class="fade-in">
+        <summary style="padding:18px 22px;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;">
+          <span id="faqQ3">A janë kapakët të sigurt për pije të nxehta?</span>
+          <span style="color:var(--green);font-size:1.2rem;">+</span>
+        </summary>
+        <p style="padding:0 22px 18px;color:var(--text-mid);font-size:.92rem;" id="faqA3">Po, kapakët janë të bërë nga plastikë e certifikuar për pije të nxehta dhe të ftohta, duke garantuar siguri dhe qëndrueshmëri gjatë gjithë shërbimit.</p>
+      </details>
+
+      <details style="background:var(--gray-light);border:1px solid var(--gray-mid);border-radius:var(--radius);overflow:hidden;" class="fade-in">
+        <summary style="padding:18px 22px;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;">
+          <span id="faqQ4">Sa zgjat dorëzimi?</span>
+          <span style="color:var(--green);font-size:1.2rem;">+</span>
+        </summary>
+        <p style="padding:0 22px 18px;color:var(--text-mid);font-size:.92rem;" id="faqA4">Kapakët janë produkt standard dhe dorëzimi bëhet brenda 3–5 ditëve pune nga konfirmimi i porosisë.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-banner">
+  <div class="container">
+    <h2 id="ctaTitle">Gati të Plotësoni Gotat tuaja?</h2>
+    <p id="ctaSub">Kontaktoni ekipin tonë sot dhe merrni një ofertë falas për kapakët brenda 24 orëve.</p>
+    <div class="cta-btns">
+      <a href="https://wa.me/38344113533?text=Pershendetje%2C%20dua%20te%20porosis%20kapake%20per%20gota%20letre." target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-lg" id="ctaBtn1">Porosit Tani</a>
+      <a href="https://wa.me/38344113533" target="_blank" rel="noopener noreferrer" class="btn btn-lg" style="background:#25d366;color:#fff;border:none;" id="ctaBtn2">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+<div id="site-whatsapp"></div>
+
+<script src="js/main.js?v=13"></script>
+<script>
+  /* ── Colour switcher ── */
+  const heroImg = document.getElementById('heroImg');
+  function switchColor(color, el) {
+    document.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('active'));
+    el.classList.add('active');
+    if (color === 'white') {
+      heroImg.src = 'assets/kapak-gota-bardhe.jpg';
+      heroImg.alt = 'Kapak i Bardhë';
+    } else {
+      heroImg.src = 'assets/kapak-gota-zi.jpg';
+      heroImg.alt = 'Kapak i Zi';
+    }
+  }
+
+  /* ── Bilingual copy ── */
+  const pageCopy = {
+    al: {
+      title: 'Kapak për Gota – ERA Print Pack',
+      description: 'Kapakë për gota letre në dy ngjyra – të bardhë dhe të zinj. Përshtatës për gota 7oz dhe 12oz, ideal për kafene dhe restorante.',
+      breadcrumbCurrent: 'Kapak për Gota',
+      heroBadge: 'Kapak për Gota',
+      heroTitle: 'Kapakë të Sigurt<br/><span class="text-green">Bardhë & Zi</span>',
+      heroLead: 'Kapakë plastikë të qëndrueshëm për gota letre 7oz dhe 12oz. Disponohen në dy ngjyra klasike – të bardhë dhe të zinj – ideal për kafene, restorante dhe çdo biznes horeca.',
+      specLabelSize: 'Madhësitë',
+      specSize: '7oz & 12oz',
+      specLabelColor: 'Ngjyrat',
+      specColor: 'I bardhë & i zi',
+      specLabelUse: 'Ideale për',
+      specUse: 'Kafene & restorante',
+      specLabelMin: 'Porosia Minimale',
+      specMin: '1,000 copë',
+      colorLabel: 'Ngjyra:',
+      heroCta1: 'Porosit Tani',
+      heroCta2: 'Kërko Ofertë',
+      colorsBadge: 'Variantet',
+      colorsTitle: 'Dy Ngjyra – Një Cilësi',
+      colorsSub: 'Zgjidhni ngjyrën që përshtatet më mirë me identitetin e biznesit tuaj. Të dyja variantet ofrojnë të njëjtën cilësi dhe qëndrueshmëri.',
+      whiteName: 'I Bardhë',
+      whiteDesc: 'Pamje e pastër dhe klasike – plotëson çdo gotë me dizajn të ndritshëm ose të bardhë.',
+      whiteTag1: '7oz', whiteTag2: '12oz', whiteTag3: 'Klasik',
+      whiteCta: 'Porosit Tani',
+      blackName: 'I Zi',
+      blackDesc: 'Pamje moderne dhe elegante – ideal për kafene premium dhe branding të errët.',
+      blackTag1: '7oz', blackTag2: '12oz', blackTag3: 'Premium',
+      blackCta: 'Porosit Tani',
+      stepsBadge: 'Si Funksionon',
+      stepsTitle: 'Nga Porosia tek Dorëzimi',
+      stepsSub: 'Procesi ynë është i thjeshtë dhe i shpejtë – nga zgjedhja e madhësisë deri te dorëzimi te dera juaj.',
+      step1Title: 'Zgjidhni Madhësinë',
+      step1Desc: 'Zgjidhni mes madhësisë 7oz dhe 12oz sipas gotave që përdorni.',
+      step2Title: 'Zgjidhni Ngjyrën',
+      step2Desc: 'I bardhë për pamje klasike, i zi për elegancë moderne – sipas brandingut tuaj.',
+      step3Title: 'Konfirmoni Porosinë',
+      step3Desc: 'Na kontaktoni me sasinë dhe ne ju dërgojmë ofertën dhe afatin e dorëzimit.',
+      step4Title: 'Dorëzimi',
+      step4Desc: 'I paketojmë me kujdes dhe i dorëzojmë direkt në biznesin tuaj.',
+      orderBadge: 'Porositja',
+      orderTitle: 'Informacion Porosie',
+      tableHead1: 'Madhësia',
+      tableHead2: 'Ngjyra',
+      tableHead3: 'Porosia Minimale',
+      tableHead4: 'Përshtatje',
+      row1Color: 'I bardhë / I zi',
+      row1Fit: 'Gota letre 7oz ERA',
+      row2Color: 'I bardhë / I zi',
+      row2Fit: 'Gota letre 12oz ERA',
+      orderNote: '<strong>💡 Shënim:</strong> Kapakët janë të projektuar të përshtaten saktë me gota letre ERA. Na kontaktoni për të verifikuar përputhshmërinë me gota nga furnitorë të tjerë.',
+      faqBadge: 'FAQ',
+      faqTitle: 'Pyetje të Shpeshta',
+      faqQ1: 'A përshtaten kapakët me gota të markave të tjera?',
+      faqA1: 'Kapakët janë projektuar për gota letre ERA. Për përputhshmërinë me gota të markave të tjera rekomandojmë të na kontaktoni paraprakisht me specifikimet e gotës tuaj.',
+      faqQ2: 'A mund të porosisim të dyja ngjyrat bashkë?',
+      faqA2: 'Po, mund të porositni kapakë të bardhë dhe të zinj në të njëjtën porosi. Minimumi aplikohet për çdo variant veç e veç.',
+      faqQ3: 'A janë kapakët të sigurt për pije të nxehta?',
+      faqA3: 'Po, kapakët janë të bërë nga plastikë e certifikuar për pije të nxehta dhe të ftohta, duke garantuar siguri dhe qëndrueshmëri gjatë gjithë shërbimit.',
+      faqQ4: 'Sa zgjat dorëzimi?',
+      faqA4: 'Kapakët janë produkt standard dhe dorëzimi bëhet brenda 3–5 ditëve pune nga konfirmimi i porosisë.',
+      ctaTitle: 'Gati të Plotësoni Gotat tuaja?',
+      ctaSub: 'Kontaktoni ekipin tonë sot dhe merrni një ofertë falas për kapakët brenda 24 orëve.',
+      ctaBtn1: 'Kërko Ofertë Falas'
+    },
+    en: {
+      title: 'Cup Lids – ERA Print Pack',
+      description: 'Paper cup lids in two colours – white and black. Fits 7oz and 12oz cups, ideal for cafes and restaurants.',
+      breadcrumbCurrent: 'Cup Lids',
+      heroBadge: 'Cup Lids',
+      heroTitle: 'Secure Cup Lids<br/><span class="text-green">White & Black</span>',
+      heroLead: 'Durable plastic lids for 7oz and 12oz paper cups. Available in two classic colours – white and black – ideal for cafes, restaurants, and any horeca business.',
+      specLabelSize: 'Sizes',
+      specSize: '7oz & 12oz',
+      specLabelColor: 'Colours',
+      specColor: 'White & Black',
+      specLabelUse: 'Best for',
+      specUse: 'Cafes & restaurants',
+      specLabelMin: 'Minimum Order',
+      specMin: '1,000 pieces',
+      colorLabel: 'Colour:',
+      heroCta1: 'Order Now',
+      heroCta2: 'Request a Quote',
+      colorsBadge: 'Variants',
+      colorsTitle: 'Two Colours – One Quality',
+      colorsSub: 'Choose the colour that best matches your brand identity. Both variants deliver the same quality and durability.',
+      whiteName: 'White',
+      whiteDesc: 'Clean and classic look — complements any cup with a bright or white design.',
+      whiteTag1: '7oz', whiteTag2: '12oz', whiteTag3: 'Classic',
+      whiteCta: 'Order Now',
+      blackName: 'Black',
+      blackDesc: 'Modern and elegant look — ideal for premium cafes and dark branding.',
+      blackTag1: '7oz', blackTag2: '12oz', blackTag3: 'Premium',
+      blackCta: 'Order Now',
+      stepsBadge: 'How It Works',
+      stepsTitle: 'From Order to Delivery',
+      stepsSub: 'Our process is simple and fast — from choosing the size to delivery at your door.',
+      step1Title: 'Choose the Size',
+      step1Desc: 'Select between 7oz and 12oz based on the cups you currently use.',
+      step2Title: 'Choose the Colour',
+      step2Desc: 'White for a classic look, black for modern elegance — matched to your branding.',
+      step3Title: 'Confirm the Order',
+      step3Desc: 'Contact us with your quantity and we will send a quote and delivery timeline.',
+      step4Title: 'Delivery',
+      step4Desc: 'We pack carefully and deliver directly to your business.',
+      orderBadge: 'Ordering',
+      orderTitle: 'Order Information',
+      tableHead1: 'Size',
+      tableHead2: 'Colour',
+      tableHead3: 'Minimum Order',
+      tableHead4: 'Compatibility',
+      row1Color: 'White / Black',
+      row1Fit: 'ERA 7oz paper cups',
+      row2Color: 'White / Black',
+      row2Fit: 'ERA 12oz paper cups',
+      orderNote: '<strong>💡 Note:</strong> Lids are designed to fit ERA paper cups precisely. Contact us to verify compatibility with cups from other suppliers.',
+      faqBadge: 'FAQ',
+      faqTitle: 'Frequently Asked Questions',
+      faqQ1: 'Do the lids fit cups from other brands?',
+      faqA1: 'The lids are designed for ERA paper cups. For compatibility with other brands, we recommend contacting us with your cup specifications beforehand.',
+      faqQ2: 'Can we order both colours together?',
+      faqA2: 'Yes, you can order white and black lids in the same order. The minimum applies per variant separately.',
+      faqQ3: 'Are the lids safe for hot drinks?',
+      faqA3: 'Yes, the lids are made from plastic certified for both hot and cold drinks, ensuring safety and durability throughout service.',
+      faqQ4: 'How long does delivery take?',
+      faqA4: 'Lids are a standard product and delivery is made within 3–5 business days from order confirmation.',
+      ctaTitle: 'Ready to Complete Your Cups?',
+      ctaSub: 'Message us on WhatsApp and we\'ll get back to you within minutes.',
+      ctaBtn1: 'Order Now'
+    }
+  };
+
+  window.applyPageTranslations = function applyLidPageTranslations(lang) {
+    const c = pageCopy[lang] || pageCopy.al;
+    const set = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
+    const setHTML = (id, val) => { const el = document.getElementById(id); if (el) el.innerHTML = val; };
+
+    document.title = c.title;
+    document.querySelector('meta[name="description"]').setAttribute('content', c.description);
+    set('breadcrumbCurrent', c.breadcrumbCurrent);
+    set('heroBadge', c.heroBadge);
+    setHTML('heroTitle', c.heroTitle);
+    set('heroLead', c.heroLead);
+    set('specLabelSize', c.specLabelSize);   set('specSize', c.specSize);
+    set('specLabelColor', c.specLabelColor); set('specColor', c.specColor);
+    set('specLabelUse', c.specLabelUse);     set('specUse', c.specUse);
+    set('specLabelMin', c.specLabelMin);     set('specMin', c.specMin);
+    set('colorLabel', c.colorLabel);
+    set('heroCta1', c.heroCta1);             set('heroCta2', c.heroCta2);
+    set('colorsBadge', c.colorsBadge);       set('colorsTitle', c.colorsTitle); set('colorsSub', c.colorsSub);
+    set('whiteName', c.whiteName);           set('whiteDesc', c.whiteDesc);
+    set('whiteTag1', c.whiteTag1);           set('whiteTag2', c.whiteTag2);     set('whiteTag3', c.whiteTag3);
+    set('whiteCta', c.whiteCta);
+    set('blackName', c.blackName);           set('blackDesc', c.blackDesc);
+    set('blackTag1', c.blackTag1);           set('blackTag2', c.blackTag2);     set('blackTag3', c.blackTag3);
+    set('blackCta', c.blackCta);
+    set('stepsBadge', c.stepsBadge);         set('stepsTitle', c.stepsTitle);   set('stepsSub', c.stepsSub);
+    set('step1Title', c.step1Title);         set('step1Desc', c.step1Desc);
+    set('step2Title', c.step2Title);         set('step2Desc', c.step2Desc);
+    set('step3Title', c.step3Title);         set('step3Desc', c.step3Desc);
+    set('step4Title', c.step4Title);         set('step4Desc', c.step4Desc);
+    set('orderBadge', c.orderBadge);         set('orderTitle', c.orderTitle);
+    set('tableHead1', c.tableHead1);         set('tableHead2', c.tableHead2);
+    set('tableHead3', c.tableHead3);         set('tableHead4', c.tableHead4);
+    set('row1Color', c.row1Color);           set('row1Fit', c.row1Fit);
+    set('row2Color', c.row2Color);           set('row2Fit', c.row2Fit);
+    setHTML('orderNote', c.orderNote);
+    set('faqBadge', c.faqBadge);             set('faqTitle', c.faqTitle);
+    set('faqQ1', c.faqQ1);                   set('faqA1', c.faqA1);
+    set('faqQ2', c.faqQ2);                   set('faqA2', c.faqA2);
+    set('faqQ3', c.faqQ3);                   set('faqA3', c.faqA3);
+    set('faqQ4', c.faqQ4);                   set('faqA4', c.faqA4);
+    set('ctaTitle', c.ctaTitle);             set('ctaSub', c.ctaSub);
+    set('ctaBtn1', c.ctaBtn1);
+  };
+</script>
+</body>
+</html>
