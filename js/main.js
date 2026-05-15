@@ -13,8 +13,8 @@ const TRANSLATIONS = {
 
     /* Hero */
     'hero.badge':   'Prodhim Vendor · Kosovë',
-    'hero.title':   'Ambalazh që Pasqyron <span class="text-green">Cilësinë</span> e Biznesit Tuaj',
-    'hero.sub':     'Zgjidhje profesionale për ambalazhimin dhe printimin e bizneseve në Kosovë dhe rajon. Dizajn i veçantë, materiale cilësore dhe dorëzim i shpejtë.',
+    'hero.title':   'Ambalazhë Letre me <span class="text-green">Dizajn të Personalizuar</span>',
+    'hero.sub':     'Printim profesional për kafene, restorante dhe fast food në Kosovë — logoja juaj, stili juaj. Dorëzim brenda 7–14 ditëve.',
     'hero.cta1':    'Kërko Ofertë Falas',
     'hero.cta2':    'Shiko Produktet',
     'hero.cta3':    'Porosit Tani',
@@ -102,6 +102,10 @@ const TRANSLATIONS = {
     't8.name': 'Shpresa Osmani', 't8.role': 'Menaxhere, Furra Osmani',
     't9.text': '"Partneritet i shkëlqyer. ERA kupton nevojat e restorantit dhe dorëzon gjithmonë sipas pritshmërive tona."',
     't9.name': 'Erion Halili', 't9.role': 'F&B Menaxher, Hotel Grand',
+
+    /* About intro (homepage SEO section) */
+    'about.seo.title': 'Producent kosovar me 15 vite eksperiencë',
+    'about.seo.text':  'ERA Print Pack është producent i specializuar i ambalazheve të letrës — gota, kupa, kuti ushqimore dhe paketime të personalizuara me printim offset. Me 13 makina prodhimi dhe mbi 397 klientë aktiv, shërbejmë kafene, restorante, fast food dhe biznese të industrisë ushqimore në Kosovë dhe rajon.',
 
     /* Partners */
     'partners.label': 'Besuar nga bizneset kryesore',
@@ -331,6 +335,10 @@ const TRANSLATIONS = {
     't9.text': '"Excellent partnership. ERA understands the restaurant\'s needs and always delivers according to our expectations."',
     't9.name': 'Erion Halili', 't9.role': 'F&B Manager, Hotel Grand',
 
+    /* About intro (homepage SEO section) */
+    'about.seo.title': 'Kosovo-based manufacturer with 15 years of experience',
+    'about.seo.text':  'ERA Print Pack is a specialized manufacturer of paper packaging — cups, bowls, food boxes and custom printed packaging using offset printing. With 13 production machines and over 397 active clients, we serve cafes, restaurants, fast food businesses and the food industry across Kosovo and the region.',
+
     /* Partners */
     'partners.label': 'Trusted by leading businesses',
 
@@ -403,7 +411,7 @@ const TRANSLATIONS = {
     'form.s.other':   'Other',
     'nav.machines':  'Machines',
     'mach.badge':    'Our Capabilities',
-    'mach.title':    '<span style="color:var(--green)">13</span> Production Machines',
+    'mach.title':    '13 Production Machines',
     'mach.sub':      'Our production line uses advanced industrial technology, from Heidelberg offset printing to automatic paper cup forming machines.',
     'mach.s1': 'Production Machines', 'mach.s2': 'Production Categories',
     'mach.s3': 'Packages / 2025',     'mach.s4': 'Oldest Machine',
