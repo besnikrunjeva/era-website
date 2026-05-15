@@ -684,7 +684,7 @@ function initSharedNav() {
           <button class="lang-btn active" data-lang="al">AL</button>
           <button class="lang-btn" data-lang="en">EN</button>
         </div>
-        <a href="contact.html" class="btn btn-primary btn-sm" data-i18n="nav.cta"></a>
+        <a href="contact.html" class="btn btn-primary btn-sm" data-i18n="nav.cta" aria-label="Kërko Ofertë">Kërko Ofertë</a>
       </div>
       <button class="hamburger" aria-label="Menu">
         <span></span><span></span><span></span>
