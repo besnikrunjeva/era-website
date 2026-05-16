@@ -126,11 +126,75 @@
     .group-cta p { color: var(--text-mid); max-width: 520px; margin: 0 auto 32px; line-height: 1.7; }
     .group-cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
 
+    /* ── Teal hero variant (Slide-Out me Ndarje) ───────────── */
+    .variant-section.dark-hero-teal {
+      background: radial-gradient(ellipse at 65% 52%, #b8deda 0%, #1e5a55 50%, #070f0e 100%);
+      padding: 48px 0;
+      overflow: hidden;
+      position: relative;
+    }
+    .variant-section.dark-hero-teal .variant-row {
+      min-height: 520px;
+      align-items: center;
+    }
+    .variant-section.dark-hero-teal .variant-img {
+      background: transparent;
+      border-radius: 0;
+      overflow: visible;
+      aspect-ratio: unset;
+      position: relative;
+    }
+    .variant-section.dark-hero-teal .variant-img img {
+      width: 128%;
+      max-width: none;
+      height: auto;
+      position: relative;
+      transform: translate(14%, -14%);
+      filter:
+        drop-shadow(0 56px 100px rgba(0,0,0,.9))
+        drop-shadow(0 0 80px rgba(184,222,218,.2));
+    }
+    .variant-section.dark-hero-teal .gold-label {
+      display: inline-block;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: #c9a84c;
+      border: 1px solid rgba(201,168,76,.4);
+      border-radius: 100px;
+      padding: 4px 14px;
+      margin-bottom: 20px;
+    }
+    .variant-section.dark-hero-teal .variant-text h3 { color: #fff; font-size: 1.65rem; }
+    .variant-section.dark-hero-teal .variant-text p { color: rgba(255,255,255,.62); }
+    .variant-section.dark-hero-teal .variant-text .detail {
+      color: rgba(255,255,255,.32);
+      font-style: normal;
+      border-top: 1px solid rgba(255,255,255,.07);
+      padding-top: 14px;
+      margin-top: 4px;
+    }
+    .variant-section.dark-hero-teal .btn-primary {
+      background: #c9a84c;
+      border-color: #c9a84c;
+      color: #0d0804;
+      font-weight: 700;
+    }
+    .variant-section.dark-hero-teal .btn-primary:hover {
+      background: #d6b85e;
+      border-color: #d6b85e;
+    }
+
     @media (max-width: 768px) {
       .variant-row { grid-template-columns: 1fr; }
       .variant-row.reverse .variant-img { order: 0; }
       .variant-row.reverse .variant-text { order: 0; }
       .group-hero h1 { font-size: 1.9rem; }
+      .variant-section.dark-hero-teal .variant-img img {
+        width: 110%;
+        transform: translate(0, 0);
+      }
     }
   </style>
 </head>
@@ -173,13 +237,14 @@
 
 
 <!-- ── VARIANT 2 — Kuti Slide-Out me Ndarje ───────────────── -->
-<section class="variant-section">
+<section class="variant-section dark-hero-teal">
   <div class="container">
     <div class="variant-row reverse">
-      <div class="variant-img">
-        <img src="assets/placeholder-premium-divider.jpg" alt="Kuti slide-out me ndarje për pralina dhe çokollata artizanale" loading="lazy" width="800" height="600" />
+      <div class="variant-img" style="aspect-ratio:unset;background:transparent;">
+        <img src="assets/premium-slideout-divider.png" alt="Kuti slide-out me ndarje për pralina dhe çokollata artizanale" loading="lazy" />
       </div>
       <div class="variant-text">
+        <span class="gold-label">Slide-Out · me Ndarje</span>
         <h3>Kuti Slide-Out me Ndarje</h3>
         <p>Kuti rrëshqitëse me ndarje të brendshme të personalizuara, për çokollata dhe pralina. Numri i ndarjeve dhe forma e tyre përshtaten sipas produktit tuaj.</p>
         <p class="detail">Ndarje: sipas kërkesës (rrjet 6, 9, 12, 16 ose më shumë) · Finish matte ose glossy</p>
