@@ -186,6 +186,73 @@
       border-color: #d6b85e;
     }
 
+    /* ── Pastel aurora variant (Slide-Out Pa Ndarje) ───────── */
+    .variant-section.dark-hero-pastel {
+      background:
+        radial-gradient(ellipse at 22% 38%, rgba(251,232,154,.55) 0%, transparent 42%),
+        radial-gradient(ellipse at 42% 68%, rgba(242,191,217,.5)  0%, transparent 38%),
+        radial-gradient(ellipse at 55% 42%, rgba(184,222,218,.42) 0%, transparent 36%),
+        #080e0d;
+      padding: 48px 0;
+      overflow: hidden;
+      position: relative;
+    }
+    .variant-section.dark-hero-pastel .variant-row {
+      min-height: 520px;
+      align-items: center;
+    }
+    .variant-section.dark-hero-pastel .variant-img {
+      background: transparent;
+      border-radius: 0;
+      overflow: visible;
+      aspect-ratio: unset;
+      position: relative;
+    }
+    .variant-section.dark-hero-pastel .variant-img img {
+      width: 128%;
+      max-width: none;
+      height: auto;
+      position: relative;
+      left: -14%;
+      top: -14%;
+      filter:
+        drop-shadow(0 56px 100px rgba(0,0,0,.88))
+        drop-shadow(0 0 60px rgba(242,191,217,.2));
+    }
+    .variant-section.dark-hero-pastel .pastel-label {
+      display: inline-block;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      background: linear-gradient(90deg, #fbe89a 0%, #f2bfd9 50%, #b8deda 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      border: 1px solid rgba(242,191,217,.35);
+      border-radius: 100px;
+      padding: 4px 14px;
+      margin-bottom: 20px;
+    }
+    .variant-section.dark-hero-pastel .variant-text h3 { color: #fff; font-size: 1.65rem; }
+    .variant-section.dark-hero-pastel .variant-text p { color: rgba(255,255,255,.62); }
+    .variant-section.dark-hero-pastel .variant-text .detail {
+      color: rgba(255,255,255,.32);
+      font-style: normal;
+      border-top: 1px solid rgba(255,255,255,.07);
+      padding-top: 14px;
+      margin-top: 4px;
+    }
+    .variant-section.dark-hero-pastel .btn-primary {
+      background: linear-gradient(90deg, #fbe89a, #f2bfd9);
+      border: none;
+      color: #1a0d14;
+      font-weight: 700;
+    }
+    .variant-section.dark-hero-pastel .btn-primary:hover {
+      opacity: .88;
+    }
+
     @media (max-width: 768px) {
       .variant-row { grid-template-columns: 1fr; }
       .variant-row.reverse .variant-img { order: 0; }
@@ -194,6 +261,11 @@
       .variant-section.dark-hero-teal .variant-img img {
         width: 110%;
         transform: translate(0, 0);
+      }
+      .variant-section.dark-hero-pastel .variant-img img {
+        width: 110%;
+        left: -5%;
+        top: 0;
       }
     }
   </style>
@@ -256,13 +328,14 @@
 
 
 <!-- ── VARIANT 3 — Kuti Slide-Out (Pa Ndarje) ─────────────── -->
-<section class="variant-section bg-alt">
+<section class="variant-section dark-hero-pastel">
   <div class="container">
     <div class="variant-row">
-      <div class="variant-img">
-        <img src="assets/placeholder-premium-slideout.jpg" alt="Kuti slide-out pa ndarje për macarons dhe ëmbëlsira premium" loading="lazy" width="800" height="600" />
+      <div class="variant-img" style="aspect-ratio:unset;background:transparent;">
+        <img src="assets/premium-slideout-plain.png" alt="Kuti slide-out pa ndarje në tre variante ngjyrash — rozë, krem dhe teal" loading="lazy" />
       </div>
       <div class="variant-text">
+        <span class="pastel-label">Slide-Out · Pa Ndarje</span>
         <h3>Kuti Slide-Out (Pa Ndarje)</h3>
         <p>E njëjta strukturë rrëshqitëse, pa ndarje të brendshme. Ideale për macarons, biskota artizanale, bakllava dhe ëmbëlsira individuale.</p>
         <p class="detail">Tabaka e thjeshtë me folie brenda · Finish matte ose glossy</p>
