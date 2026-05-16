@@ -3,13 +3,174 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Produktet – ERA Print Pack</title>
-  <meta name="description" content="Shfleto gamën e plotë të produkteve të ERA Print Pack: paketime fast food, farmaceutike, branding i personalizuar dhe printim profesional." />
+  <title>Produktet – ERA Print Pack | Ambalazhe Letre për Fast Food, Kafene &amp; Restorante</title>
+  <meta name="description" content="Gamë e plotë e ambalazheve letre për fast food, kafene dhe restorante. Personalizoni gota, kupa, kuti dhe letër me printim profesional — prodhuar në Kosovë." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=62" />
+  <link rel="stylesheet" href="css/style.css?v=64" />
   <link rel="icon" type="image/svg+xml" href="assets/era-logo.svg" />
+  <style>
+    /* ── TIER SHARED ──────────────────────────────────────── */
+    .tier-section { padding: 72px 0; }
+    .tier-header { text-align: center; margin-bottom: 48px; }
+    .tier-header h2 { font-size: 1.85rem; font-weight: 800; color: #0f1a0a; margin-bottom: 10px; }
+    .tier-header p { color: var(--text-mid); font-size: 1.05rem; }
+
+    /* ── TIER 1 — 3D Products ─────────────────────────────── */
+    .tier1-section { padding: 72px 0; background: #fff; }
+    .t1-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .t1-card {
+      background: #fff;
+      border-radius: 18px;
+      border: 2px solid #c8e6a0;
+      box-shadow: 0 4px 24px rgba(76,167,6,.08);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform .32s cubic-bezier(.22,1,.36,1), box-shadow .32s ease, border-color .32s ease;
+    }
+    .t1-card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 16px 48px rgba(76,167,6,.18);
+      border-color: #4ca706;
+    }
+    .t1-media {
+      position: relative;
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      background: #f4f9ee;
+    }
+    .t1-media img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .5s ease;
+    }
+    .t1-card:hover .t1-media img { transform: scale(1.05); }
+    .t1-3d-badge {
+      position: absolute;
+      top: 12px; left: 12px;
+      background: #4ca706;
+      color: #fff;
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: 5px 11px;
+      border-radius: 100px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      box-shadow: 0 2px 10px rgba(76,167,6,.35);
+    }
+    .t1-body {
+      padding: 22px 24px 24px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .t1-body h3 { font-size: 1.15rem; font-weight: 700; color: #0f1a0a; margin-bottom: 7px; }
+    .t1-body p  { font-size: .9rem; color: var(--text-mid); line-height: 1.55; flex: 1; margin-bottom: 18px; }
+    .t1-btns { display: flex; gap: 8px; flex-wrap: wrap; }
+
+    /* ── TIER 2 — Standard Products ───────────────────────── */
+    .tier2-section { padding: 72px 0; background: #f8faf5; }
+    .t2-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .t2-card {
+      background: #fff;
+      border-radius: 14px;
+      border: 1px solid #e0ecd4;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+    .t2-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 32px rgba(76,167,6,.12);
+    }
+    .t2-media {
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      background: #f4f9ee;
+    }
+    .t2-media img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .5s ease;
+    }
+    .t2-card:hover .t2-media img { transform: scale(1.04); }
+    .t2-body {
+      padding: 16px 18px 20px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .t2-body h3 { font-size: 1rem; font-weight: 700; color: #0f1a0a; margin-bottom: 6px; }
+    .t2-body p  { font-size: .85rem; color: var(--text-mid); line-height: 1.5; flex: 1; margin-bottom: 14px; }
+
+    /* ── TIER 3 — Compact Catalog ─────────────────────────── */
+    .tier3-section { padding: 64px 0; background: #fff; border-top: 1px solid #e8f0e0; }
+    .t3-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .t3-item {
+      background: #f8faf5;
+      border-radius: 14px;
+      border: 1px solid #e4edd8;
+      padding: 22px 22px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .t3-icon {
+      width: 42px; height: 42px;
+      background: #eaf5d8;
+      border-radius: 11px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 4px;
+    }
+    .t3-item h3 { font-size: .95rem; font-weight: 700; color: #0f1a0a; margin: 0; }
+    .t3-item p  { font-size: .82rem; color: var(--text-mid); line-height: 1.5; flex: 1; margin: 0; }
+
+    /* ── CLOSING CTA ──────────────────────────────────────── */
+    .prod-closing-cta {
+      padding: 80px 0;
+      text-align: center;
+      background: #f4f9ee;
+      border-top: 1px solid #d4e8b8;
+    }
+    .prod-closing-cta h2 { font-size: 1.8rem; font-weight: 800; color: #0f1a0a; margin-bottom: 14px; }
+    .prod-closing-cta p  { color: var(--text-mid); font-size: 1.05rem; max-width: 520px; margin: 0 auto 32px; line-height: 1.7; }
+    .prod-closing-btns   { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    /* ── RESPONSIVE ───────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .t1-grid { grid-template-columns: repeat(2, 1fr); }
+      .t2-grid { grid-template-columns: repeat(2, 1fr); }
+      .t3-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .t1-grid { grid-template-columns: 1fr; }
+      .t2-grid { grid-template-columns: 1fr; }
+      .t3-grid { grid-template-columns: 1fr; }
+      .tier-header h2 { font-size: 1.5rem; }
+    }
+  </style>
 </head>
 <body>
 
@@ -20,276 +181,268 @@
 <!-- ── PAGE HERO ──────────────────────────────────────────── -->
 <section class="page-hero">
   <div class="container">
-    <span class="badge hero-anim-badge" style="--delay:0ms" data-i18n="prod.badge"></span>
-    <h1 class="hero-anim-title" style="--delay:180ms" data-i18n="prod.title"></h1>
-    <p class="hero-anim-text" style="--delay:360ms" data-i18n="prod.sub"></p>
+    <span class="badge hero-anim-badge" style="--delay:0ms" data-i18n="prod.badge">Produktet Tona</span>
+    <h1 class="hero-anim-title" style="--delay:180ms" data-i18n="prod.title">Produktet Tona</h1>
+    <p class="hero-anim-text" style="--delay:360ms" data-i18n="prod.sub">Specializuar në ambalazhe letre për biznese ushqimore — gota, kupa, kuti dhe paketime me printim të personalizuar. Mbi 397 klientë në Kosovë dhe rajon na besojnë.</p>
   </div>
 </section>
 
 
-<!-- ── FILTER BAR ─────────────────────────────────────────── -->
-<div class="filter-bar">
+<!-- ══════════════════════════════════════════════════════════
+     TIER 1 — Personalizo në 3D
+═══════════════════════════════════════════════════════════ -->
+<section class="tier1-section">
   <div class="container">
-    <div class="filter-btns-wrap">
-      <div class="filter-btns">
-        <button class="filter-btn active" data-filter="all"     data-i18n="filter.all"></button>
-        <button class="filter-btn"        data-filter="kupa"    data-i18n="filter.kupa"></button>
-        <button class="filter-btn"        data-filter="kuti"    data-i18n="filter.kuti"></button>
-        <button class="filter-btn"        data-filter="leter"   data-i18n="filter.leter"></button>
-        <button class="filter-btn"        data-filter="etiketa" data-i18n="filter.etiketa"></button>
-      </div>
+
+    <div class="tier-header fade-in">
+      <h2>Personalizo në 3D</h2>
+      <p>Ngarko logon, shihe në 3D dhe porosit — vetëm te ERA në Kosovë.</p>
     </div>
-    <div class="filter-count" id="productCount"></div>
-  </div>
-</div>
 
+    <div class="t1-grid">
 
-<!-- ── PRODUCTS GRID ──────────────────────────────────────── -->
-<section class="section-sm">
-  <div class="container">
-    <div class="products-grid">
-
-      <!-- ── Gota & Kupa ───────────────────────────── -->
-      <div class="product-card fade-in" data-cat="kupa">
-        <div class="product-thumb">
-          <span class="product-badge">
-            <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
-              <path d="M12 2.8l2.84 5.75 6.35.92-4.59 4.47 1.08 6.32L12 17.27l-5.68 2.99 1.08-6.32L2.81 9.47l6.35-.92L12 2.8z"/>
-            </svg>
-            <span data-i18n="tops.card.badge"></span>
+      <!-- Gota Letre -->
+      <div class="t1-card fade-in">
+        <div class="t1-media">
+          <img src="assets/cup-7oz.jpg" alt="Gota Letre me printim të personalizuar" loading="lazy" />
+          <span class="t1-3d-badge">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+            Personalizo në 3D
           </span>
-          <img src="assets/cup-7oz.jpg" alt="Gota Letre" loading="lazy" style="object-fit:cover;padding:0;" />
         </div>
-        <div class="product-info">
-          <div class="product-cat" data-i18n="filter.kupa"></div>
+        <div class="t1-body">
           <h3>Gota Letre</h3>
-          <p>3 madhësi me printim të personalizuar për kafene, hotele dhe evente.</p>
-          <div class="product-btns">
+          <p>Gota letre cilësore me printim të plotë në 3 madhësi.</p>
+          <div class="t1-btns">
             <a href="gota-letre.html" class="btn btn-outline-green btn-sm">Shiko Detajet →</a>
-            <a href="gota-letre.html#preview3d" class="btn btn-primary btn-sm" id="cupCustomizeBtn">Personalizo Tani</a>
+            <a href="gota-letre.html#preview3d" class="btn btn-primary btn-sm">Personalizo Tani</a>
           </div>
         </div>
       </div>
 
-      <div class="product-card fade-in" data-cat="kupa">
-        <div class="product-thumb">
-          <span class="product-badge">
-            <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
-              <path d="M12 2.8l2.84 5.75 6.35.92-4.59 4.47 1.08 6.32L12 17.27l-5.68 2.99 1.08-6.32L2.81 9.47l6.35-.92L12 2.8z"/>
-            </svg>
-            <span data-i18n="tops.card.badge"></span>
+      <!-- Mbajtëse Luge & Kafe -->
+      <div class="t1-card fade-in">
+        <div class="t1-media">
+          <img src="assets/mbajtese-luge.jpg" alt="Mbajtëse Luge dhe Kafe me printim të personalizuar" loading="lazy" />
+          <span class="t1-3d-badge">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+            Personalizo në 3D
           </span>
-          <img src="assets/kupa-pasta-m.jpeg" alt="Kupa Pasta & Supe" loading="lazy" style="object-fit:cover;padding:0;" />
         </div>
-        <div class="product-info">
-          <div class="product-cat" data-i18n="filter.kupa"></div>
-          <h3>Kupa Pasta & Supe</h3>
-          <p>4 madhësi praktike për fast food, food court dhe delivery.</p>
-          <div class="product-btns">
-            <a href="kupa-pasta-supe.html" class="btn btn-outline-green btn-sm">Shiko Detajet →</a>
-            <a href="order.html?p=kupa-pasta&source=preview" class="btn btn-primary btn-sm">Porosit Tani</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="product-card fade-in" data-cat="kupa">
-        <div class="product-thumb">
-          <img src="assets/akullore-h63.jpg" alt="Kupa Akullore" loading="lazy" style="object-fit:cover;padding:0;" />
-        </div>
-        <div class="product-info">
-          <div class="product-cat" data-i18n="filter.kupa"></div>
-          <h3>Kupa Akullore</h3>
-          <p>2 madhësi me printim të personalizuar për gelateri, kafene dhe evente.</p>
-          <div class="product-btns">
-            <a href="akullore.html" class="btn btn-outline-green btn-sm">Shiko Detajet →</a>
-            <a href="akullore.html#preview3d" class="btn btn-primary btn-sm">Personalizo Tani</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="product-card fade-in" data-cat="kupa">
-        <div class="product-thumb">
-          <img src="assets/kapak-gota-both.jpg" alt="Kapak për Gota" loading="lazy" style="object-fit:cover;padding:0;" />
-        </div>
-        <div class="product-info">
-          <div class="product-cat" data-i18n="filter.kupa"></div>
-          <h3>Kapak për Gota</h3>
-          <p>Kapakë për gota 7oz dhe 12oz, për pije të nxehta ose të ftohta.</p>
-          <div class="product-btns">
-            <a href="kapak-gota.html" class="btn btn-outline-green btn-sm">Shiko Detajet →</a>
-            <a href="https://wa.me/38344113533?text=Pershendetje%2C%20dua%20te%20porosis%20kapake%20per%20gota%20letre." target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">Porosit Tani</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- ── Kuti & Ambalazhe ───────────────────────── -->
-      <div class="product-card fade-in" data-cat="kuti">
-        <div class="product-thumb">
-          <img src="assets/kuti-ushqimore.jpg" alt="Kuti Ushqimore" loading="lazy" style="object-fit:cover;padding:0;" />
-        </div>
-        <div class="product-info">
-          <div class="product-cat" data-i18n="filter.kuti"></div>
-          <h3>Kuti Ushqimore</h3>
-          <p>Kuti ushqimore për burgerë, pomfrit, sandviçe dhe fast food.</p>
-          <a href="kuti-ushqimore.html" class="btn btn-outline-green btn-sm">Shiko Detajet →</a>
-        </div>
-      </div>
-
-      <div class="product-card fade-in" data-cat="kuti">
-        <div class="product-thumb">
-          <div class="portfolio-placeholder" style="position:absolute;inset:0;">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#4ca706" stroke-width="1.5"><path d="M12 2l2 7h7l-6 4 2 7-5-4-5 4 2-7-6-4h7z"/></svg>
-            <span>Kuti Premium & Foli Gold</span>
-          </div>
-        </div>
-        <div class="product-info">
-          <div class="product-cat" data-i18n="filter.kuti"></div>
-          <h3>Kuti Premium & Foli Gold</h3>
-          <p>Kuti premium me përfundime elegante për dhurata dhe produkte high-end.</p>
-          <a href="contact.html" class="btn btn-outline-green btn-sm" data-i18n="nav.cta"></a>
-        </div>
-      </div>
-
-      <div class="product-card fade-in" data-cat="kuti">
-        <div class="product-thumb">
-          <div class="portfolio-placeholder" style="position:absolute;inset:0;">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#4ca706" stroke-width="1.5"><path d="M3 6l9-4 9 4v6c0 5-4 9-9 10C7 21 3 17 3 12V6z"/></svg>
-            <span>Kuti Çaji & Erëzash</span>
-          </div>
-        </div>
-        <div class="product-info">
-          <div class="product-cat" data-i18n="filter.kuti"></div>
-          <h3>Kuti Çaji & Erëzash</h3>
-          <p>Kuti për çaj dhe erëza në forma të ndryshme me printim të personalizuar.</p>
-          <a href="contact.html" class="btn btn-outline-green btn-sm" data-i18n="nav.cta"></a>
-        </div>
-      </div>
-
-      <div class="product-card fade-in" data-cat="kuti">
-        <div class="product-thumb">
-          <img src="assets/kuti-folie.jpg" alt="Kuti me Folie" loading="lazy" style="object-fit:cover;padding:0;" />
-        </div>
-        <div class="product-info">
-          <div class="product-cat" data-i18n="filter.kuti"></div>
-          <h3>Kuti me Folie</h3>
-          <p>Kuti me shtresë folie të brendshme për izolim më të mirë termik.</p>
-          <a href="contact.html" class="btn btn-outline-green btn-sm" data-i18n="nav.cta"></a>
-        </div>
-      </div>
-
-      <div class="product-card fade-in" data-cat="kuti">
-        <div class="product-thumb">
-          <img src="assets/product-pharma.svg" alt="Kuti Farmaceutike" loading="lazy" />
-        </div>
-        <div class="product-info">
-          <div class="product-cat" data-i18n="filter.kuti"></div>
-          <h3>Kuti Farmaceutike & Industriale</h3>
-          <p>Kuti farmaceutike dhe industriale me standard të lartë prodhimi.</p>
-          <a href="contact.html" class="btn btn-outline-green btn-sm" data-i18n="nav.cta"></a>
-        </div>
-      </div>
-
-      <!-- ── Letër & Mbajtëse ───────────────────────── -->
-      <div class="product-card fade-in" data-cat="leter">
-        <div class="product-thumb">
-          <img src="assets/leter-tavoline.png" alt="Letër Tavoline" loading="lazy" style="object-fit:cover;padding:0;" />
-        </div>
-        <div class="product-info">
-          <div class="product-cat" data-i18n="filter.leter"></div>
-          <h3>Letër Tavoline</h3>
-          <p>Letër tavoline me printim të personalizuar për restorante dhe kafene.</p>
-          <div class="product-btns">
-            <a href="leter-tavoline.html" class="btn btn-outline-green btn-sm">Shiko Detajet →</a>
-            <a href="leter-tavoline.html#preview3d" class="btn btn-primary btn-sm">Personalizo Tani</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="product-card fade-in" data-cat="leter">
-        <div class="product-thumb">
-          <img src="assets/leter-ushqimore.jpg" alt="Letër Mbështjellëse" loading="lazy" style="object-fit:cover;padding:0;" />
-        </div>
-        <div class="product-info">
-          <div class="product-cat" data-i18n="filter.leter"></div>
-          <h3>Letër Mbështjellëse</h3>
-          <p>Letër mbështjellëse 34×34cm për burgerë, sandviçe dhe tost.</p>
-          <div class="product-btns">
-            <a href="leter-mbeshtjellese.html" class="btn btn-outline-green btn-sm">Shiko Detajet →</a>
-            <a href="order.html?p=leter-mbeshtjellese&source=preview" class="btn btn-primary btn-sm">Porosit Tani</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="product-card fade-in" data-cat="leter">
-        <div class="product-thumb">
-          <img src="assets/mbajtese-luge.jpg" alt="Mbajtëse Luge & Kafe" loading="lazy" style="object-fit:cover;padding:0;" />
-        </div>
-        <div class="product-info">
-          <div class="product-cat" data-i18n="filter.leter"></div>
-          <h3>Mbajtëse Luge & Kafe</h3>
-          <p>Mbajtëse për lugë, pirunë dhe shkopinj kafeje për horeca dhe fast food.</p>
-          <div class="product-btns">
+        <div class="t1-body">
+          <h3>Mbajtëse Luge &amp; Kafe</h3>
+          <p>Mbajtëse për lugë dhe shkopinj kafeje, të personalizuara.</p>
+          <div class="t1-btns">
             <a href="mbajtese-luge.html" class="btn btn-outline-green btn-sm">Shiko Detajet →</a>
             <a href="mbajtese-luge.html#preview3d" class="btn btn-primary btn-sm">Personalizo Tani</a>
           </div>
         </div>
       </div>
 
-      <!-- ── Etiketa & Kartona ──────────────────────── -->
-      <div class="product-card fade-in" data-cat="etiketa">
-        <div class="product-thumb">
-          <div class="portfolio-placeholder" style="position:absolute;inset:0;">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#4ca706" stroke-width="1.5"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><circle cx="7" cy="7" r="1.5" fill="#4ca706"/></svg>
-            <span>Etiketa & Stickers</span>
-          </div>
+      <!-- Kupa Akullore -->
+      <div class="t1-card fade-in">
+        <div class="t1-media">
+          <img src="assets/akullore-h63.jpg" alt="Kupa Akullore me printim të personalizuar" loading="lazy" />
+          <span class="t1-3d-badge">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+            Personalizo në 3D
+          </span>
         </div>
-        <div class="product-info">
-          <div class="product-cat" data-i18n="filter.etiketa"></div>
-          <h3>Etiketa & Stickers</h3>
-          <p>Etiketa ngjitëse dhe stickers për produkte, paketime dhe branding.</p>
-          <a href="contact.html" class="btn btn-outline-green btn-sm" data-i18n="nav.cta"></a>
+        <div class="t1-body">
+          <h3>Kupa Akullore</h3>
+          <p>Kupa akullore në 2 madhësi me printim të plotë.</p>
+          <div class="t1-btns">
+            <a href="akullore.html" class="btn btn-outline-green btn-sm">Shiko Detajet →</a>
+            <a href="akullore.html#preview3d" class="btn btn-primary btn-sm">Personalizo Tani</a>
+          </div>
         </div>
       </div>
 
-      <div class="product-card fade-in" data-cat="etiketa">
-        <div class="product-thumb">
-          <div class="portfolio-placeholder" style="position:absolute;inset:0;">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#4ca706" stroke-width="1.5"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
-            <span>Kartona & Ambalazhe</span>
+      <!-- Letër Tavoline -->
+      <div class="t1-card fade-in">
+        <div class="t1-media">
+          <img src="assets/leter-tavoline.png" alt="Letër Tavoline me printim të personalizuar" loading="lazy" />
+          <span class="t1-3d-badge">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+            Personalizo në 3D
+          </span>
+        </div>
+        <div class="t1-body">
+          <h3>Letër Tavoline</h3>
+          <p>Letër tavoline me dizajn të personalizuar për restorante.</p>
+          <div class="t1-btns">
+            <a href="leter-tavoline.html" class="btn btn-outline-green btn-sm">Shiko Detajet →</a>
+            <a href="leter-tavoline.html#preview3d" class="btn btn-primary btn-sm">Personalizo Tani</a>
           </div>
         </div>
-        <div class="product-info">
-          <div class="product-cat" data-i18n="filter.etiketa"></div>
-          <h3>Kartona & Ambalazhe</h3>
-          <p>Kartona dhe ambalazhe të forta për pije, kanaqe dhe paketime promocionale.</p>
-          <a href="contact.html" class="btn btn-outline-green btn-sm" data-i18n="nav.cta"></a>
+      </div>
+
+      <!-- Letër Mbështjellëse -->
+      <div class="t1-card fade-in">
+        <div class="t1-media">
+          <img src="assets/leter-ushqimore.jpg" alt="Letër Mbështjellëse me printim të personalizuar" loading="lazy" />
+          <span class="t1-3d-badge">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+            Personalizo në 3D
+          </span>
+        </div>
+        <div class="t1-body">
+          <h3>Letër Mbështjellëse</h3>
+          <p>Letër mbështjellëse 34×34cm me printim të plotë.</p>
+          <div class="t1-btns">
+            <a href="leter-mbeshtjellese.html" class="btn btn-outline-green btn-sm">Shiko Detajet →</a>
+            <a href="leter-mbeshtjellese.html#preview3d" class="btn btn-primary btn-sm">Personalizo Tani</a>
+          </div>
         </div>
       </div>
 
     </div>
-
-    <!-- Customization banner -->
-    <div class="custom-banner fade-in">
-      <div class="custom-banner-icon">🎨</div>
-      <div>
-        <h3 data-i18n="custom.title"></h3>
-        <p data-i18n="custom.desc"></p>
-      </div>
-      <a href="contact.html" class="btn btn-primary btn-sm" data-i18n="nav.cta"></a>
-    </div>
-
   </div>
 </section>
 
 
-<!-- ── CTA BANNER ─────────────────────────────────────────── -->
-<section class="cta-banner">
+<!-- ══════════════════════════════════════════════════════════
+     TIER 2 — Standard Products
+═══════════════════════════════════════════════════════════ -->
+<section class="tier2-section">
   <div class="container">
-    <h2 data-i18n="cta.title"></h2>
-    <p data-i18n="cta.sub"></p>
-    <div class="cta-btns">
-      <a href="contact.html" class="btn btn-outline btn-lg" data-i18n="cta.btn1"></a>
-      <a href="tel:+38344113533" class="btn btn-lg" style="background:rgba(255,255,255,.15);color:#fff;border:2px solid rgba(255,255,255,.3);" data-i18n="cta.btn2"></a>
+
+    <div class="tier-header fade-in">
+      <h2>Të gjitha produktet</h2>
+      <p>Gamë e plotë e ambalazheve për biznesin tuaj.</p>
+    </div>
+
+    <div class="t2-grid">
+
+      <!-- Kupa Pasta & Supe -->
+      <div class="t2-card fade-in">
+        <div class="t2-media">
+          <img src="assets/kupa-pasta-m.jpeg" alt="Kupa Pasta dhe Supe" loading="lazy" />
+        </div>
+        <div class="t2-body">
+          <h3>Kupa Pasta &amp; Supe</h3>
+          <p>4 madhësi praktike për fast food, food court dhe delivery.</p>
+          <a href="kupa-pasta-supe.html" class="btn btn-outline-green btn-sm">Shiko Detajet →</a>
+        </div>
+      </div>
+
+      <!-- Kuti Ushqimore -->
+      <div class="t2-card fade-in">
+        <div class="t2-media">
+          <img src="assets/kuti-ushqimore.jpg" alt="Kuti Ushqimore për fast food" loading="lazy" />
+        </div>
+        <div class="t2-body">
+          <h3>Kuti Ushqimore</h3>
+          <p>Kuti për burgerë, pomfrit, sandviçe dhe fast food.</p>
+          <a href="kuti-ushqimore.html" class="btn btn-outline-green btn-sm">Shiko Detajet →</a>
+        </div>
+      </div>
+
+      <!-- Kapak për Gota -->
+      <div class="t2-card fade-in">
+        <div class="t2-media">
+          <img src="assets/kapak-gota-both.jpg" alt="Kapak për Gota Letre" loading="lazy" />
+        </div>
+        <div class="t2-body">
+          <h3>Kapak për Gota</h3>
+          <p>Kapakë për gota 7oz dhe 12oz, për pije të nxehta ose të ftohta.</p>
+          <a href="kapak-gota.html" class="btn btn-outline-green btn-sm">Shiko Detajet →</a>
+        </div>
+      </div>
+
+      <!-- Kuti me Folie -->
+      <div class="t2-card fade-in">
+        <div class="t2-media">
+          <img src="assets/kuti-folie.jpg" alt="Kuti me Folie për izolim termik" loading="lazy" />
+        </div>
+        <div class="t2-body">
+          <h3>Kuti me Folie</h3>
+          <p>Kuti me shtresë folie për izolim termik.</p>
+          <a href="contact.html" class="btn btn-outline-green btn-sm">Kërko Ofertë</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     TIER 3 — Edhe Këto i Prodhojmë
+═══════════════════════════════════════════════════════════ -->
+<section class="tier3-section">
+  <div class="container">
+
+    <div class="tier-header fade-in">
+      <h2>Edhe këto i prodhojmë</h2>
+      <p>Për produktet e mëposhtme, na kontaktoni për ofertë të personalizuar.</p>
+    </div>
+
+    <div class="t3-grid">
+
+      <div class="t3-item fade-in">
+        <div class="t3-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4ca706" stroke-width="2"><path d="M12 2l2 7h7l-6 4 2 7-5-4-5 4 2-7-6-4h7z"/></svg>
+        </div>
+        <h3>Kuti Premium &amp; Foli Gold</h3>
+        <p>Kuti elegante me përfundime premium për dhurata dhe produkte high-end.</p>
+        <a href="contact.html" class="btn btn-outline-green btn-sm" style="align-self:flex-start;margin-top:4px;">Kërko Ofertë</a>
+      </div>
+
+      <div class="t3-item fade-in">
+        <div class="t3-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4ca706" stroke-width="2"><path d="M3 6l9-4 9 4v6c0 5-4 9-9 10C7 21 3 17 3 12V6z"/></svg>
+        </div>
+        <h3>Kuti Çaji &amp; Erëzash</h3>
+        <p>Kuti për çaj dhe erëza në forma të ndryshme me printim të personalizuar.</p>
+        <a href="contact.html" class="btn btn-outline-green btn-sm" style="align-self:flex-start;margin-top:4px;">Kërko Ofertë</a>
+      </div>
+
+      <div class="t3-item fade-in">
+        <div class="t3-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4ca706" stroke-width="2"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+        </div>
+        <h3>Kuti Farmaceutike &amp; Industriale</h3>
+        <p>Kuti farmaceutike dhe industriale me standard të lartë prodhimi.</p>
+        <a href="contact.html" class="btn btn-outline-green btn-sm" style="align-self:flex-start;margin-top:4px;">Kërko Ofertë</a>
+      </div>
+
+      <div class="t3-item fade-in">
+        <div class="t3-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4ca706" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><circle cx="7" cy="7" r="1.5" fill="#4ca706" stroke="none"/></svg>
+        </div>
+        <h3>Etiketa &amp; Stickers</h3>
+        <p>Etiketa ngjitëse dhe stickers për produkte, paketime dhe branding.</p>
+        <a href="contact.html" class="btn btn-outline-green btn-sm" style="align-self:flex-start;margin-top:4px;">Kërko Ofertë</a>
+      </div>
+
+      <div class="t3-item fade-in">
+        <div class="t3-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4ca706" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+        </div>
+        <h3>Kartona &amp; Ambalazhe</h3>
+        <p>Kartona dhe ambalazhe të forta për pije dhe paketime promocionale.</p>
+        <a href="contact.html" class="btn btn-outline-green btn-sm" style="align-self:flex-start;margin-top:4px;">Kërko Ofertë</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     CLOSING CTA
+═══════════════════════════════════════════════════════════ -->
+<section class="prod-closing-cta">
+  <div class="container">
+    <h2>Nuk e gjete atë që kërkoje?</h2>
+    <p>Prodhojmë ambalazhe të personalizuara për nevoja specifike. Na kontaktoni dhe gjejmë zgjidhjen e duhur për biznesin tuaj.</p>
+    <div class="prod-closing-btns">
+      <a href="contact.html" class="btn btn-primary btn-lg">Kërko Ofertë Falas</a>
+      <a href="https://wa.me/38344113533" target="_blank" rel="noopener noreferrer" class="btn btn-lg" style="background:#25d366;color:#fff;border:none;display:inline-flex;align-items:center;gap:8px;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp
+      </a>
     </div>
   </div>
 </section>
@@ -297,95 +450,8 @@
 
 <!-- ── FOOTER ─────────────────────────────────────────────── -->
 <div id="site-footer"></div>
-
 <div id="site-whatsapp"></div>
 
 <script src="js/main.js?v=13"></script>
-<script>
-  const productsPageCopy = {
-    al: {
-      items: [
-        ['Gota Letre', '3 madhësi me printim të personalizuar për kafene, hotele dhe evente.', 'Shiko Detajet ->', 'Personalizo Tani'],
-        ['Kupa Pasta & Supe', '4 madhësi praktike për fast food, food court dhe delivery.', 'Shiko Detajet ->'],
-        ['Kupa Akullore', '2 madhësi me printim të personalizuar për gelateri, kafene dhe evente.', 'Shiko Detajet ->', 'Personalizo Tani'],
-        ['Kapak për Gota', 'Kapakë për gota 7oz dhe 12oz, për pije të nxehta ose të ftohta.', 'Shiko Detajet ->'],
-        ['Kuti Ushqimore', 'Kuti ushqimore për burgerë, pomfrit, sandviçe dhe fast food.', 'Shiko Detajet ->'],
-        ['Kuti Premium & Foli Gold', 'Kuti premium me përfundime elegante për dhurata dhe produkte high-end.', null],
-        ['Kuti Çaji & Erëzash', 'Kuti për çaj dhe erëza në forma të ndryshme me printim të personalizuar.', null],
-        ['Kuti me Folie', 'Kuti me shtresë folie të brendshme për izolim më të mirë termik.', null],
-        ['Kuti Farmaceutike & Industriale', 'Kuti farmaceutike dhe industriale me standard të lartë prodhimi.', null],
-        ['Letër Tavoline', 'Letër tavoline me printim të personalizuar për restorante dhe kafene.', 'Shiko Detajet ->', 'Personalizo Tani'],
-        ['Letër Mbështjellëse', 'Letër mbështjellëse 34x34cm për burgerë, sandviçe dhe tost.', 'Shiko Detajet ->'],
-        ['Mbajtëse Luge & Kafe', 'Mbajtëse për lugë, pirunë dhe shkopinj kafeje për horeca dhe fast food.', 'Shiko Detajet ->', 'Personalizo Tani'],
-        ['Etiketa & Stickers', 'Etiketa ngjitëse dhe stickers për produkte, paketime dhe branding.', null],
-        ['Kartona për Kanaqe', 'Kartona dhe ambalazhe të forta për pije, kanaqe dhe paketime promocionale.', null]
-      ]
-    },
-    en: {
-      items: [
-        ['Paper Cups', '3 custom-print sizes for cafes, hotels, and events.', 'View Details ->', 'Customize Now'],
-        ['Pasta & Soup Bowls', '4 practical sizes for fast food, food courts, and delivery.', 'View Details ->'],
-        ['Ice Cream Cups', '2 custom-print sizes for gelato shops, cafes, and events.', 'View Details ->', 'Customize Now'],
-        ['Cup Lids', 'Lids for 7oz and 12oz cups, for hot or cold drinks.', 'View Details ->'],
-        ['Food Boxes', 'Food boxes for burgers, fries, sandwiches, and fast-food items.', 'View Details ->'],
-        ['Premium & Gold-Foil Boxes', 'Premium boxes with elegant finishing for gifts and high-end products.', null],
-        ['Tea & Spice Boxes', 'Custom-print tea and spice boxes in multiple shapes.', null],
-        ['Foil-Lined Boxes', 'Boxes with an inner foil layer for better thermal insulation.', null],
-        ['Pharmaceutical & Industrial Boxes', 'Pharmaceutical and industrial boxes with a high production standard.', null],
-        ['Table Paper', 'Custom-printed table paper for restaurants and cafes.', 'View Details ->', 'Customize Now'],
-        ['Wrapping Paper', '34x34cm wrapping paper for burgers, sandwiches, and toast.', 'View Details ->'],
-        ['Cutlery & Coffee Holders', 'Holders for cutlery and coffee stirrers for horeca and fast food.', 'View Details ->', 'Customize Now'],
-        ['Labels & Stickers', 'Adhesive labels and stickers for products, packaging, and branding.', null],
-        ['Can Carrier Cartons', 'Strong cartons and packaging for drinks, cans, and promotional packs.', null]
-      ]
-    }
-  };
-
-  window.applyPageTranslations = function applyProductsPageTranslations(lang) {
-    const copy = productsPageCopy[lang] || productsPageCopy.al;
-    document.querySelectorAll('.product-card').forEach((card, index) => {
-      const data = copy.items[index];
-      if (!data) return;
-      const [title, desc, cta, primaryCta] = data;
-      const titleEl = card.querySelector('h3');
-      const descEl = card.querySelector('p');
-      const ctaEl = card.querySelector('.btn');
-      const primaryBtn = card.querySelector('.btn-primary');
-      const placeholder = card.querySelector('.portfolio-placeholder span');
-      if (titleEl) titleEl.textContent = title;
-      if (descEl) descEl.textContent = desc;
-      if (ctaEl) {
-        if (cta) {
-          ctaEl.textContent = cta;
-          ctaEl.removeAttribute('data-i18n');
-        } else {
-          ctaEl.setAttribute('data-i18n', 'nav.cta');
-          ctaEl.textContent = lang === 'en' ? 'Get a Quote' : 'Kërko Ofertë';
-        }
-      }
-      if (placeholder) placeholder.textContent = title;
-      // Products with 3D editors: primary button → Personalizo/Customize
-      const pageMap = {
-        'Gota Letre':       'gota-letre.html#preview3d',
-        'Paper Cups':       'gota-letre.html#preview3d',
-        'Kupa Akullore':    'akullore.html#preview3d',
-        'Ice Cream Cups':   'akullore.html#preview3d',
-        'Letër Tavoline':   'leter-tavoline.html#preview3d',
-        'Table Paper':      'leter-tavoline.html#preview3d',
-        'Mbajtëse Luge & Kafe':      'mbajtese-luge.html#preview3d',
-        'Cutlery & Coffee Holders':  'mbajtese-luge.html#preview3d',
-      };
-      if (primaryBtn && primaryCta && pageMap[title]) {
-        primaryBtn.textContent = primaryCta;
-        primaryBtn.setAttribute('href', pageMap[title]);
-      }
-      if (ctaEl && (title === 'Letër Mbështjellëse' || title === 'Wrapping Paper')) {
-        ctaEl.setAttribute('href', 'leter-mbeshtjellese.html');
-      }
-    });
-  };
-
-  window.applyPageTranslations(localStorage.getItem('era-lang') || 'al');
-</script>
 </body>
 </html>
