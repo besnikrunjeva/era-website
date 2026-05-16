@@ -45,6 +45,60 @@
     .variant-text p { color: var(--text-mid); line-height: 1.75; margin-bottom: 10px; }
     .variant-text .detail { font-size: .85rem; color: var(--text-mid); opacity: .7; margin-bottom: 24px; font-style: italic; }
 
+    /* ── Dark hero variant (Two-Piece) ─────────────────────── */
+    .variant-section.dark-hero {
+      background: linear-gradient(135deg, #150d0d 0%, #0e0808 60%, #100d07 100%);
+      padding: 96px 0;
+    }
+    .variant-section.dark-hero .variant-img {
+      background: transparent;
+      border-radius: 0;
+      overflow: visible;
+    }
+    .variant-section.dark-hero .variant-img img {
+      object-fit: contain;
+      width: 100%;
+      height: auto;
+      aspect-ratio: auto;
+      filter:
+        drop-shadow(0 40px 80px rgba(0,0,0,.85))
+        drop-shadow(0 8px 24px rgba(0,0,0,.5));
+    }
+    .variant-section.dark-hero .gold-label {
+      display: inline-block;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: #c9a84c;
+      border: 1px solid rgba(201,168,76,.4);
+      border-radius: 100px;
+      padding: 4px 14px;
+      margin-bottom: 20px;
+    }
+    .variant-section.dark-hero .variant-text h3 {
+      color: #fff;
+      font-size: 1.65rem;
+    }
+    .variant-section.dark-hero .variant-text p { color: rgba(255,255,255,.62); }
+    .variant-section.dark-hero .variant-text .detail {
+      color: rgba(255,255,255,.32);
+      font-style: normal;
+      border-top: 1px solid rgba(255,255,255,.07);
+      padding-top: 14px;
+      margin-top: 4px;
+    }
+    .variant-section.dark-hero .btn-primary {
+      background: #c9a84c;
+      border-color: #c9a84c;
+      color: #0d0804;
+      font-weight: 700;
+    }
+    .variant-section.dark-hero .btn-primary:hover {
+      background: #d6b85e;
+      border-color: #d6b85e;
+    }
+
     .group-cta {
       padding: 80px 0;
       text-align: center;
@@ -83,13 +137,14 @@
 
 
 <!-- ── VARIANT 1 — Kuti me Kapak (Two-Piece) ──────────────── -->
-<section class="variant-section bg-alt">
+<section class="variant-section dark-hero">
   <div class="container">
     <div class="variant-row">
-      <div class="variant-img">
-        <img src="assets/placeholder-premium-twopiece.jpg" alt="Kuti premium me kapak dhe bazë të ndarë, finish matte me folie ari" loading="lazy" width="800" height="600" />
+      <div class="variant-img" style="aspect-ratio:unset;background:transparent;">
+        <img src="assets/premium-twopiece.png" alt="Kuti premium me kapak dhe bazë të ndarë, finish matte burgundy me folie ari" loading="lazy" />
       </div>
       <div class="variant-text">
+        <span class="gold-label">Two-Piece · Folie Ari</span>
         <h3>Kuti me Kapak (Two-Piece)</h3>
         <p>Kuti me bazë dhe kapak të ndarë, me finish matte ose glossy dhe folie të brendshme ari ose argjendi. Ideale për pasta të vogla, ëmbëlsira të zgjedhura dhe dhurata premium.</p>
         <p class="detail">Forma: drejtkëndore, e rrumbullakët, gjashtëkëndore ose me dizajn special · Foliestamp për logo dhe slogan</p>
