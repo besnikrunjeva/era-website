@@ -186,11 +186,9 @@
       border-color: #d6b85e;
     }
 
-    /* ── Pastel aurora variant (Slide-Out Pa Ndarje) ───────── */
+    /* ── Pastel variant (Slide-Out Pa Ndarje) ───────────────── */
     .variant-section.dark-hero-pastel {
-      background:
-        radial-gradient(ellipse at 36% 52%, rgba(251,232,154,.13) 0%, transparent 48%),
-        linear-gradient(135deg, #0c1918 0%, #181108 42%, #1e0d16 82%, #0a080b 100%);
+      background: linear-gradient(135deg, #b8deda 0%, #fbe89a 50%, #f2bfd9 100%);
       padding: 48px 0;
       overflow: hidden;
       position: relative;
@@ -213,9 +211,7 @@
       position: relative;
       left: -14%;
       top: -14%;
-      filter:
-        drop-shadow(0 56px 100px rgba(0,0,0,.88))
-        drop-shadow(0 0 60px rgba(242,191,217,.2));
+      filter: drop-shadow(0 40px 60px rgba(0,0,0,.22));
     }
     .variant-section.dark-hero-pastel .pastel-label {
       display: inline-block;
@@ -223,32 +219,30 @@
       font-weight: 700;
       letter-spacing: .1em;
       text-transform: uppercase;
-      background: linear-gradient(90deg, #fbe89a 0%, #f2bfd9 50%, #b8deda 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      border: 1px solid rgba(242,191,217,.35);
+      color: #3a2a20;
+      border: 1px solid rgba(58,42,32,.3);
       border-radius: 100px;
       padding: 4px 14px;
       margin-bottom: 20px;
     }
-    .variant-section.dark-hero-pastel .variant-text h3 { color: #fff; font-size: 1.65rem; }
-    .variant-section.dark-hero-pastel .variant-text p { color: rgba(255,255,255,.62); }
+    .variant-section.dark-hero-pastel .variant-text h3 { color: #1a1210; font-size: 1.65rem; }
+    .variant-section.dark-hero-pastel .variant-text p { color: rgba(30,20,16,.68); }
     .variant-section.dark-hero-pastel .variant-text .detail {
-      color: rgba(255,255,255,.32);
+      color: rgba(30,20,16,.45);
       font-style: normal;
-      border-top: 1px solid rgba(255,255,255,.07);
+      border-top: 1px solid rgba(30,20,16,.12);
       padding-top: 14px;
       margin-top: 4px;
     }
     .variant-section.dark-hero-pastel .btn-primary {
-      background: linear-gradient(90deg, #fbe89a, #f2bfd9);
-      border: none;
-      color: #1a0d14;
+      background: #1a1210;
+      border-color: #1a1210;
+      color: #fbe89a;
       font-weight: 700;
     }
     .variant-section.dark-hero-pastel .btn-primary:hover {
-      opacity: .88;
+      background: #2e201a;
+      border-color: #2e201a;
     }
 
     @media (max-width: 768px) {
