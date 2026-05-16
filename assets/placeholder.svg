@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#f4f9ee"/>
+  <rect x="340" y="240" width="120" height="120" rx="12" fill="#dcefd0"/>
+  <text x="400" y="395" text-anchor="middle" fill="#8ab87a" font-size="18" font-family="Inter, sans-serif">Foto vjen së shpejti</text>
+</svg>
