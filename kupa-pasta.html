@@ -1,0 +1,3559 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kupa Pasta – ERA Print Pack | Kupa Letre për Pasta dhe Pjata</title>
+  <meta name="description" content="Kupa letre për pasta, rizoto dhe pjata delivery me printim të personalizuar. 2 madhësi: 500ml dhe 750ml. Prodhuar në Kosovë nga ERA Print Pack." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css?v=2" />
+  <link rel="icon" type="image/svg+xml" href="assets/era-logo.svg" />
+  <style>
+    /* ── Page-specific styles ── */
+    .size-selector {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+    .size-btn {
+      padding: 10px 24px;
+      border-radius: 100px;
+      border: 2px solid var(--gray-mid);
+      font-size: .9rem;
+      font-weight: 600;
+      color: var(--text-mid);
+      transition: var(--transition);
+      cursor: pointer;
+      background: var(--white);
+    }
+    .size-btn:hover, .size-btn.active {
+      border-color: var(--green);
+      background: var(--green);
+      color: var(--white);
+    }
+
+    .cup-showcase {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+    .cup-image-wrap {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      aspect-ratio: 1;
+    }
+    .cup-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .5s ease;
+    }
+    .cup-image-wrap:hover img { transform: scale(1.04); }
+    .cup-badge-size {
+      position: absolute;
+      top: 20px; right: 20px;
+      background: var(--green);
+      color: var(--white);
+      font-size: .85rem;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 100px;
+    }
+
+    .cup-info h1 { margin-bottom: 14px; }
+    .cup-info .lead {
+      font-size: 1.1rem;
+      color: var(--text-mid);
+      margin-bottom: 28px;
+      line-height: 1.75;
+    }
+
+    .cup-specs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      margin-bottom: 28px;
+      border: 1px solid var(--gray-mid);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .spec-item {
+      padding: 10px 14px;
+      background: var(--gray-light);
+    }
+    .spec-item + .spec-item {
+      border-left: 1px solid var(--gray-mid);
+    }
+    .spec-label {
+      font-size: .68rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      color: var(--gray);
+      margin-bottom: 3px;
+    }
+    .spec-value {
+      font-size: .88rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .cup-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    /* Two sizes comparison */
+    .sizes-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .size-card {
+      border: 2px solid var(--gray-mid);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: var(--transition);
+      cursor: pointer;
+      background: var(--white);
+      text-decoration: none;
+    }
+    .size-card:hover, .size-card.featured {
+      border-color: var(--green);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-6px);
+    }
+    .size-card.featured { transform: translateY(-10px); }
+    .size-card-img {
+      aspect-ratio: 1;
+      position: relative;
+      overflow: hidden;
+    }
+    .size-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .4s ease;
+    }
+    .size-card:hover .size-card-img img { transform: scale(1.06); }
+    .popular-tag {
+      position: absolute;
+      top: 14px; right: 14px;
+      background: var(--green);
+      color: var(--white);
+      font-size: .72rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 100px;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+    .size-card-body { padding: 22px; }
+    .size-oz {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--green);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .size-ml {
+      font-size: .8rem;
+      color: var(--gray);
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+    .size-card-body h3 { margin-bottom: 8px; font-size: 1rem; }
+    .size-card-body p  { font-size: .85rem; margin-bottom: 16px; }
+    .size-uses {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 18px;
+    }
+    .use-tag {
+      font-size: .75rem;
+      padding: 4px 10px;
+      border-radius: 100px;
+      background: var(--green-light);
+      color: var(--green-darker);
+      font-weight: 500;
+    }
+
+    /* Customization section */
+    .custom-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    .custom-step {
+      text-align: center;
+      padding: 28px 20px;
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--gray-mid);
+      transition: var(--transition);
+    }
+    .custom-step:hover {
+      border-color: var(--green);
+      box-shadow: var(--shadow-sm);
+    }
+    .custom-step-icon {
+      width: 64px;
+      height: 64px;
+      background: var(--green);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 18px;
+      box-shadow: 0 4px 16px rgba(76,167,6,.25);
+      flex-shrink: 0;
+    }
+    .custom-step h4 { margin-bottom: 8px; }
+    .custom-step p  { font-size: .85rem; }
+
+    /* Minimum order table */
+    .order-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+    .order-table th {
+      background: var(--green);
+      color: var(--white);
+      padding: 16px 20px;
+      text-align: left;
+      font-size: .85rem;
+      font-weight: 600;
+      letter-spacing: .04em;
+    }
+    .order-table td {
+      padding: 15px 20px;
+      border-bottom: 1px solid var(--gray-mid);
+      font-size: .9rem;
+    }
+    .order-table tr:last-child td { border-bottom: none; }
+    .order-table tr:hover td { background: var(--green-light); }
+    .order-table .highlight { font-weight: 700; color: var(--green); }
+
+    @media (max-width: 768px) {
+      .cup-showcase   { grid-template-columns: 1fr; gap: 20px; }
+      .cup-image-wrap {
+        aspect-ratio: unset;
+        max-height: 42vh;
+        border-radius: 20px;
+      }
+      .cup-image-wrap img {
+        object-fit: contain;
+        height: 42vh;
+        max-height: 42vh;
+      }
+      .sizes-grid     { grid-template-columns: 1fr; gap: 18px; }
+      body.viewing-size-cards .whatsapp-float {
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(8px);
+      }
+      .size-card.featured { transform: none; }
+      .size-card:hover { transform: none; }
+      .size-card-img {
+        aspect-ratio: auto;
+        height: 200px;
+        max-height: 220px;
+        width: 100%;
+        border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+      }
+      .size-card-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        background: transparent;
+      }
+      .size-card:hover .size-card-img img { transform: none; }
+      .popular-tag {
+        top: 10px;
+        right: 10px;
+        font-size: .62rem;
+        padding: 3px 8px;
+      }
+      .size-card-body {
+        padding: 16px;
+      }
+      .size-oz {
+        font-size: 1.35rem;
+        margin-bottom: 2px;
+      }
+      .size-ml {
+        font-size: .74rem;
+        margin-bottom: 6px;
+      }
+      .size-card-body h3 {
+        font-size: .95rem;
+        margin-bottom: 5px;
+      }
+      .size-card-body p {
+        font-size: .8rem;
+        line-height: 1.35;
+        margin-bottom: 9px;
+      }
+      .size-uses {
+        gap: 5px;
+        margin-bottom: 0;
+      }
+      .use-tag {
+        font-size: .68rem;
+        padding: 3px 8px;
+      }
+      .custom-steps   { grid-template-columns: 1fr 1fr; }
+      .cup-specs      { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .custom-steps { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAVBAR ─────────────────────────────────────────────── -->
+<div id="site-nav"></div>
+
+
+<!-- ── BREADCRUMB ─────────────────────────────────────────── -->
+<div style="background:var(--gray-light);border-bottom:1px solid var(--gray-mid);padding:14px 0;margin-top:72px;">
+  <div class="container">
+    <div style="display:flex;align-items:center;gap:8px;font-size:.85rem;color:var(--text-soft);">
+      <a href="index.html" style="color:var(--text-soft);transition:color .2s;" onmouseover="this.style.color='#4ca706'" onmouseout="this.style.color=''">Kryefaqja</a>
+      <span>›</span>
+      <a href="products.html" style="color:var(--text-soft);transition:color .2s;" onmouseover="this.style.color='#4ca706'" onmouseout="this.style.color=''">Produktet</a>
+      <span>›</span>
+      <span id="breadcrumbCurrent" style="color:var(--text);font-weight:500;">Kupa Pasta</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ── HERO SHOWCASE ──────────────────────────────────────── -->
+<section class="section" style="padding-top:56px;">
+  <div class="container">
+    <div class="cup-showcase">
+
+      <!-- Image -->
+      <div class="cup-image-wrap fade-in" id="mainCupImg">
+        <img src="assets/kupa-pasta.webp" alt="Kupa Pasta ERA Print Pack" id="cupHeroImg" />
+        <span class="cup-badge-size" id="cupBadge">500ml</span>
+      </div>
+
+      <!-- Info -->
+      <div class="cup-info fade-in">
+        <span class="badge" id="heroBadge">Kupa Pasta</span>
+        <h1 id="heroTitle">Kupa Pasta me Dizajn<br/><span class="text-green">të Personalizuar</span></h1>
+        <p class="lead" id="heroLead">Kupa letre cilësore me kapak PET — ideale për pasta, rizoto, kous-kous dhe pjata delivery. Me printim offset të plotë: logoja dhe dizajni juaj, direkt mbi kupën.</p>
+
+        <!-- Size selector -->
+        <div class="size-selector">
+          <button class="size-btn active" data-size="500" onclick="switchCup(this, 'assets/kupa-pasta.webp', '500ml')">500 ml</button>
+          <button class="size-btn" data-size="750" onclick="switchCup(this, 'assets/kupa-pasta.webp', '750ml')">750 ml</button>
+          
+        </div>
+
+        <!-- Specs -->
+        <div class="cup-specs" id="cupSpecs">
+          <div class="spec-item">
+            <div class="spec-label" id="specLabelCap">Kapaciteti</div>
+            <div class="spec-value" id="specCap">500 ml</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label" id="specLabelUse">Ideal për</div>
+            <div class="spec-value" id="specUse">Pasta, Rizoto, Bowl</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label" id="specLabelMin">Porosia Minimale</div>
+            <div class="spec-value" id="specMin">5,000 copë</div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ── 3D DESIGN PREVIEW ───────────────────────────────────── -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<section class="section" id="preview3d" style="background:var(--gray-light);">
+  <div class="container">
+
+    <!-- ── EDITOR INTRO ── -->
+    <div class="editor-intro-simple fade-in">
+      <div class="editor-intro-badge" id="editorIntroBadge">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        Preview i drejtpërdrejtë — pa regjistrim
+      </div>
+      <h2 id="editorIntroTitle">Shiko logon tënde<br>në kupë — <span>në 3D</span></h2>
+      <p id="editorIntroBody">Ngarko logon dhe shihe menjëherë mbi kupën e pastave. Pa angazhim — vetëm një parashikim, jo porosi.</p>
+      <p class="editor-intro-alt" id="editorIntroAlt">
+        Ose <a href="https://wa.me/38344113533?text=P%C3%ABrsh%C3%ABndetje%21%20M%C3%AB%20intereson%20Kupa%20Pasta.%20Ja%20logoja%20ime%3A" target="_blank">na shkruaj në WhatsApp →</a> nëse preferon ta bëjmë ne dizajnin për ty.
+      </p>
+    </div>
+
+    <!-- ── SI FUNKSIONON ── -->
+    <div class="how-it-works-mini fade-in">
+      <div class="hiw-step">
+        <span class="hiw-num">1</span>
+        <div class="hiw-step-text">
+          <h4 id="hiwStep1Title">Na trego</h4>
+          <p id="hiwStep1Body">Dërgo logon ose idenë</p>
+        </div>
+      </div>
+      <div class="hiw-arrow">›</div>
+      <div class="hiw-step">
+        <span class="hiw-num">2</span>
+        <div class="hiw-step-text">
+          <h4 id="hiwStep2Title">Ne dizajnojmë</h4>
+          <p id="hiwStep2Body">Përgatitje profesionale</p>
+        </div>
+      </div>
+      <div class="hiw-arrow">›</div>
+      <div class="hiw-step">
+        <span class="hiw-num">3</span>
+        <div class="hiw-step-text">
+          <h4 id="hiwStep3Title">Ti merr</h4>
+          <p id="hiwStep3Body">7–14 ditë pune</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── DESKTOP EDITOR ── -->
+    <a id="editor-canvas" aria-hidden="true" style="display:block;position:relative;top:-72px;visibility:hidden;pointer-events:none;"></a>
+    <div class="editor-full fade-in is-empty mode-logo" id="editorFull">
+
+      <!-- Mobile quick tools (hidden on desktop via CSS) -->
+      <div class="mobile-quick-upload" id="mobileQuickUpload">
+        <!-- Primary tabs: Logo + Ngarko Dizajnin always visible -->
+        <div class="mobile-tool-tabs" role="tablist" aria-label="Mjetet kryesore">
+          <button class="mobile-tool-tab active" type="button" data-mobile-panel="logo">Logo</button>
+          <button class="mobile-tool-tab" type="button" data-mobile-panel="full">Ngarko Dizajnin</button>
+        </div>
+        <!-- Advanced tools collapsible (mobile) -->
+        <details class="mobile-advanced-wrap" id="mobileAdvancedWrap">
+          <summary class="mobile-advanced-toggle">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+            Mjete shtesë
+          </summary>
+          <div class="mobile-advanced-tabs" role="tablist" aria-label="Mjetet shtesë">
+            <button class="mobile-tool-tab" type="button" data-mobile-panel="text">Tekst</button>
+            <button class="mobile-tool-tab" type="button" data-mobile-panel="qr">QR Kodi</button>
+          </div>
+          <div class="mobile-adv-hints">
+            <p class="mobile-adv-hint" id="mobileAdvHintText" style="display:none;"><strong>Tekst:</strong> Shto emrin e biznesit, sloganin ose çfarëdo teksti.</p>
+            <p class="mobile-adv-hint" id="mobileAdvHintQr" style="display:none;"><strong>QR Kod:</strong> P.sh. menyja online, Instagrami yt, ose oferta speciale. Klienti e skanon me telefon.</p>
+          </div>
+          <button class="btn btn-sm" type="button" id="mobileClearBtn" style="margin-top:10px;width:100%;color:var(--text-soft);border:1px solid var(--gray-mid);background:none;border-radius:8px;padding:8px;">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px;"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/></svg>
+            Pastro të gjitha
+          </button>
+        </details>
+
+        <div class="mobile-size-control">
+          <div class="mobile-size-head">
+            <span>Madhësia e logos</span>
+            <strong id="mobileSizeValue">100%</strong>
+          </div>
+          <input type="range" id="mobileSizeSlider" min="60" max="160" step="1" value="100" disabled>
+        </div>
+
+        <div class="mobile-quick-copy" id="mobileQuickCopy">
+          <h3 id="mobileQuickTitle">Ngarko vetëm logon</h3>
+          <p id="mobileQuickBody">Ne e qendrojmë automatikisht mbi kupën e pastave, që ta shihni menjëherë si duket.</p>
+          <small class="mobile-quick-note" id="mobileQuickNote">PNG me sfond transparent jep rezultatin më të mirë.</small>
+        </div>
+
+        <div class="mobile-tool-panel active" data-mobile-panel="logo">
+          <div class="mobile-quick-actions">
+            <button class="btn btn-outline-green btn-sm" type="button" id="mobileUploadBtn">Ngarko Logon</button>
+          </div>
+          <p class="mobile-upload-status" id="mobileUploadStatus"></p>
+        </div>
+
+        <div class="mobile-tool-panel" data-mobile-panel="full">
+          <div class="mobile-full-guide">
+            <div class="mobile-full-actions">
+              <a class="btn btn-outline-green btn-sm" href="assets/templates/kupa-dizajn-template.pdf" download>Shkarko shabllonin</a>
+              <button class="btn btn-primary btn-sm" type="button" id="mobileFullDesignBtn">Ngarko dizajnin</button>
+            </div>
+            <p class="mobile-upload-status" id="mobileFullDesignStatus"></p>
+          </div>
+        </div>
+
+        <!-- Mobile Text Tool -->
+        <div class="mobile-text-tool mobile-tool-panel" data-mobile-panel="text">
+          <div class="mobile-templates">
+            <span class="mtemplate-label">Zgjidhni shabllon:</span>
+            <button class="mtemplate-btn" data-tpl="+383 "><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.06 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.83.873 2.81.7A2 2 0 0122 16.92z"/></svg> Numri i Telefonit</button>
+            <button class="mtemplate-btn" data-tpl="@">Instagram / Facebook</button>
+            <button class="mtemplate-btn" data-tpl="">Tekst i lirë</button>
+          </div>
+          <div class="mobile-text-inputs">
+            <input type="text" id="mobileTextInput" placeholder="Shkruaj tekstin këtu…" maxlength="60">
+            <div class="mobile-text-options">
+              <label class="mtext-opt">
+                <input type="color" id="mobileTextColor" value="#000000"> Ngjyra
+              </label>
+              <select id="mobileTextSide">
+                <option value="both">Të dy anët</option>
+                <option value="left">Ana e majtë</option>
+                <option value="right">Ana e djathtë</option>
+              </select>
+            </div>
+            <button class="btn btn-primary btn-sm" id="mobileAddTextBtn" style="width:100%;justify-content:center;margin-top:10px;">
+              Vendos Tekstin në Gotë
+            </button>
+          </div>
+        </div>
+
+        <!-- Mobile QR Tool -->
+        <div class="mobile-qr-tool mobile-tool-panel" data-mobile-panel="qr">
+          <div class="mobile-text-inputs">
+            <input type="url" id="mobileQrInput" placeholder="Ngjit linkun këtu (p.sh. https://era.al)">
+            <button class="btn btn-primary btn-sm" id="mobileAddQrBtn" style="width:100%;justify-content:center;margin-top:10px;">
+              Gjenero QR Kodin
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── PRIMARY TOOLBAR (desktop only) ── -->
+      <!-- Hidden file inputs -->
+      <input type="file" id="designUpload" accept="image/png,image/jpeg,image/jpg,image/webp" multiple style="display:none">
+      <input type="file" id="fullDesignUpload" accept="image/png,image/jpeg,image/jpg,image/webp" style="display:none">
+
+      <!-- ── DESKTOP TEST-DRIVE CONTROLS ── -->
+      <div class="desktop-testdrive-panel" id="desktopTestdrivePanel">
+        <div class="desktop-tool-tabs" role="tablist" aria-label="Mjetet kryesore">
+          <button class="desktop-tool-tab active" type="button" data-desktop-panel="logo">Logo</button>
+          <button class="desktop-tool-tab" type="button" data-desktop-panel="full">Ngarko Dizajnin</button>
+        </div>
+
+        <div class="desktop-mode-panel active" data-desktop-panel="logo">
+          <div class="desktop-mode-copy">
+            <strong>Ngarko logon</strong>
+            <span>Logoja vendoset automatikisht në të dy anët e kupës.</span>
+          </div>
+          <button class="btn btn-primary" type="button" id="desktopLogoUploadBtn">Ngarko logon</button>
+        </div>
+
+        <div class="desktop-mode-panel" data-desktop-panel="full">
+          <div class="desktop-mode-copy">
+            <strong>Ngarko dizajnin e plotë</strong>
+            <span>Përdor shabllonin, përgatit dizajnin dhe ngarko skedarin final.</span>
+          </div>
+          <div class="desktop-mode-actions">
+            <a class="btn btn-outline-green" href="assets/templates/kupa-dizajn-template.pdf" download>Shkarko shabllonin</a>
+            <button class="btn btn-primary" type="button" id="desktopDesignUploadBtn">Ngarko dizajnin</button>
+          </div>
+        </div>
+
+        <div class="desktop-size-control">
+          <div class="desktop-size-head">
+            <span>Madhësia e logos</span>
+            <strong id="desktopSizeValue">100%</strong>
+          </div>
+          <input type="range" id="desktopSizeSlider" min="60" max="160" step="1" value="100" disabled>
+        </div>
+      </div>
+
+      <div class="etb etb-primary-bar" id="desktopToolbar">
+        <!-- Primary: logo upload -->
+        <label class="etb-btn etb-upload-main etb-upload-secondary" for="designUpload" title="Ngarko logon tënde">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          Ngarko Logon
+        </label>
+        <!-- Secondary: full design upload -->
+        <button class="etb-btn etb-secondary-upload" type="button" id="desktopFullDesignBtn" title="Ke dizajn të gatshëm? Ngarko skedarin e plotë">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="11"/></svg>
+          Ngarko Dizajnin e Plotë
+        </button>
+        <div class="etb-sep"></div>
+        <!-- Cup background color -->
+        <div class="etb-color-wrap" title="Ngjyra e sfondit të kupës">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="10.5" r="2.5"/><circle cx="8.5" cy="7.5" r="2.5"/><circle cx="6.5" cy="12.5" r="2.5"/><path d="M12 2C6.5 2 2 6.5 2 12s3.8 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 3.855-2.503 3.855-3.854C21.965 6.012 17.461 2 12 2z"/></svg>
+          <input type="color" id="bgColorPicker" value="#ffffff" title="Ngjyra e sfondit të kupës">
+        </div>
+      </div>
+
+      <!-- ── ADVANCED TOOLS COLLAPSIBLE (desktop only) ── -->
+      <details class="advanced-tools-wrap" id="advancedToolsWrap">
+        <summary class="advanced-tools-summary">
+          <svg class="adv-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+          Mjete shtesë <span class="adv-hint-label">(tekst, QR kod, pozicionim)</span>
+        </summary>
+        <div class="advanced-tools-inner">
+          <!-- Text tool -->
+          <div class="adv-group">
+            <p class="adv-tool-hint">Emër, slogan ose tekst i shkurtër.</p>
+            <button class="etb-btn etb-teal" id="btnAddText" title="Shto tekst">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+              Shto Tekst
+            </button>
+          </div>
+          <div class="adv-sep"></div>
+          <!-- QR tool -->
+          <div class="adv-group">
+            <p class="adv-tool-hint">Menu online, Instagram ose ofertë speciale.</p>
+            <button class="etb-btn etb-teal" id="btnQR" title="Krijo QR Kod">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="3" height="3"/></svg>
+              QR Kod
+            </button>
+          </div>
+          <div class="adv-sep adv-sep-pro"></div>
+          <!-- Pro tools group -->
+          <div class="adv-group adv-group-pro">
+            <p class="adv-tool-hint">Kontrolle për dizajnerë: pozicion, shtresa dhe transparencë.</p>
+            <div class="adv-pro-tools">
+              <button class="etb-btn" id="btnFlipH" disabled>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 12h18"/><polyline points="8 7 3 12 8 17"/><polyline points="16 7 21 12 16 17"/></svg>
+                Flip H
+              </button>
+              <button class="etb-btn" id="btnFlipV" disabled>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 3v18"/><polyline points="7 8 12 3 17 8"/><polyline points="7 16 12 21 17 16"/></svg>
+                Flip V
+              </button>
+              <div class="etb-sep"></div>
+              <button class="etb-btn" id="btnCenterL" disabled title="Qendro majtë (QR-aware)">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/><line x1="9" y1="12" x2="3" y2="12"/><rect x="14" y="6" width="7" height="12" rx="1.5" fill="none"/></svg>
+                Majtas
+              </button>
+              <button class="etb-btn" id="btnCenterR" disabled title="Qendro djathtas (QR-aware)">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/><line x1="15" y1="12" x2="21" y2="12"/><rect x="3" y="6" width="7" height="12" rx="1.5" fill="none"/></svg>
+                Djathtas
+              </button>
+              <button class="etb-btn" id="btnCenterV" disabled>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"/><rect x="9" y="4" width="6" height="16" rx="1.5"/></svg>
+                Qendro V
+              </button>
+              <div class="etb-sep"></div>
+              <button class="etb-btn" id="btnDuplicate" disabled>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                Kopjo
+              </button>
+              <button class="etb-btn etb-danger" id="btnDelete" disabled>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>
+                Fshi
+              </button>
+              <div class="etb-sep"></div>
+              <div class="etb-opacity">
+                <span>Transparenca</span>
+                <input type="range" id="opacitySlider" min="10" max="100" value="100" step="1" disabled>
+                <span id="opacityVal">100%</span>
+              </div>
+              <div class="etb-sep"></div>
+              <button class="etb-btn etb-ghost" id="btnClearAll" title="Hiq të gjitha elementet nga dizajni">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/></svg>
+                Pastro të gjitha
+              </button>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <!-- ── QR INPUT PANEL (desktop, toggles) ── -->
+      <div class="qr-panel" id="qrPanel">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="3" height="3"/></svg>
+        <span>Ngjit linkun:</span>
+        <input type="url" id="qrUrlInput" placeholder="https://era.al" style="flex:1;min-width:180px;">
+        <button class="etb-btn etb-primary" id="qrGenBtn">Gjenero</button>
+        <button class="etb-btn etb-ghost" id="qrCancelBtn">Anulo</button>
+        <small class="qr-note">QR kodi vendoset automatikisht në qendër. Logosat rirenditen në zonat anësore.</small>
+      </div>
+
+      <!-- ── TEXT INPUT PANEL (desktop, toggles) ── -->
+      <div class="qr-panel" id="textPanel">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+        <span>Teksti:</span>
+        <input type="text" id="textInput" placeholder="Shkruaj tekstin këtu…" maxlength="60" style="flex:1;min-width:160px;">
+        <input type="color" id="textColorPicker" value="#000000" title="Ngjyra e tekstit" style="width:34px;height:30px;border-radius:6px;border:1px solid #ddd;cursor:pointer;padding:2px;">
+        <select id="textSideSelect" style="padding:6px 8px;border:1px solid #ddd;border-radius:6px;font-size:.8rem;">
+          <option value="left">Ana e majtë</option>
+          <option value="right">Ana e djathtë</option>
+          <option value="both">Të dy anët</option>
+        </select>
+        <button class="etb-btn etb-primary" id="textAddBtn">Shto</button>
+        <button class="etb-btn etb-ghost" id="textCancelBtn">Anulo</button>
+      </div>
+
+      <!-- ── MAIN AREA ── -->
+      <div class="editor-main">
+
+        <!-- 2D Editor -->
+        <div class="editor-side">
+          <div class="editor-canvas-wrap">
+            <canvas id="editorCanvas"></canvas>
+            <canvas id="guideCanvas"></canvas>
+            <div class="editor-empty" id="editorEmpty">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--gray)" stroke-width="1.5" stroke-linecap="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              <span>Kliko "Shto Imazh" për të filluar</span>
+              <small>PNG · JPG · WebP</small>
+            </div>
+          </div>
+          <div class="editor-reminder">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            Për mbulim të plotë, vendos logon në <strong>&nbsp;të dy anët&nbsp;</strong> e kupës — majtas dhe djathtas
+          </div>
+        </div>
+
+        <!-- Layers panel -->
+        <div class="layers-panel">
+          <div class="layers-header">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+            Shtresat
+          </div>
+          <div class="layers-list" id="layersList">
+            <div class="layers-empty">Asnjë shtresë</div>
+          </div>
+        </div>
+
+        <!-- 3D cup -->
+        <div class="preview3d-canvas-wrap">
+          <div class="preview3d-loading" id="cupLoading">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"><animateTransform attributeName="transform" type="rotate" from="0 12 12" to="360 12 12" dur="1s" repeatCount="indefinite"/></path></svg>
+            <span>Duke ngarkuar modelin…</span>
+          </div>
+          <canvas id="cupCanvas"></canvas>
+          <div class="preview3d-fallback" id="preview3dFallback">
+            <img src="assets/kupa-pasta.webp" alt="Preview statik i kupës" />
+            <div class="preview3d-fallback-copy">
+              <strong>Preview 3D nuk u hap në këtë pajisje</strong>
+              <span>Përdore sërish në Chrome ose Safari modern, ose vazhdo me dizajnin dhe porosinë pa 3D.</span>
+            </div>
+          </div>
+          <div class="cup3d-hint">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+            Rrotulloje me gisht për ta parë nga të gjitha anët
+          </div>
+          <!-- Empty state overlay — shown when no design is loaded -->
+          <div class="cup-empty-overlay" id="cup3dEmptyState">
+            <div class="cup-empty-card">
+              <div class="cup-empty-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              </div>
+              <h3 class="cup-empty-title" id="cupEmptyTitle">Ngarko logon tënde</h3>
+              <p class="cup-empty-sub" id="cupEmptySub">Shihe direkt në 3D — pa regjistrim, pa angazhim.</p>
+              <div class="cup-empty-actions cup-empty-logo-actions">
+                <button type="button" id="cup3dLogoUpload" class="btn btn-primary cup-empty-btn">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                  Ngarko logon
+                </button>
+              </div>
+              <div class="cup-empty-actions cup-empty-design-actions">
+                <a class="btn btn-outline-green cup-empty-template-btn" href="assets/templates/kupa-dizajn-template.pdf" download>
+                  Shkarko shabllonin
+                </a>
+                <button type="button" id="cup3dDesignUpload" class="btn btn-primary cup-empty-btn">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                  Ngarko dizajnin
+                </button>
+              </div>
+              <div class="cup-empty-rotate-hint">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+                <span>Rrotulloje me gisht</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="editor-final-cta">
+        <h3 id="finalCtaTitle">Të pëlqen ajo që sheh?</h3>
+        <p id="finalCtaBody">Na shkruaj — ofertë në të njëjtën ditë.</p>
+        <div class="editor-final-cta-buttons">
+          <a href="order.html?p=kupa-pasta&source=preview" class="btn btn-primary btn-lg" id="orderPreviewBtn">
+            <span id="finalCtaBtn1">Vazhdo me porosi</span>
+          </a>
+          <a href="https://wa.me/38344113533?text=P%C3%ABrsh%C3%ABndetje%21%20M%C3%AB%20intereson%20Kupa%20Letre%207oz.%20Mund%20t%C3%AB%20m%C3%AB%20d%C3%ABrgoni%20nj%C3%AB%20ofert%C3%AB%3F"
+             target="_blank" class="btn btn-outline-green btn-lg">
+            <span id="finalCtaBtn2">Pyet në WhatsApp</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile fallback -->
+    <div class="editor-mobile fade-in" id="editorMobile">
+      <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.6" stroke-linecap="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+      <p>Editori 3D është i disponueshëm vetëm në desktop.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── MIN ORDER BOX ── -->
+<section class="section-sm">
+  <div class="container" style="max-width:800px;">
+    <div class="min-order-box fade-in">
+      <h3 id="minOrderTitle">Sasia minimale e porosisë</h3>
+      <ul class="min-order-list" id="minOrderList">
+        <li><strong>5,000 copë</strong> për 500ml ose 750ml</li>
+      </ul>
+      <div class="min-order-offer">
+        <span class="offer-badge" id="offerBadge">Ofertë speciale</span>
+        <p id="offerBody"><strong>5,000 copë 500ml + 5,000 copë 750ml</strong>
+        në një porosi të vetme. Ideale për restorantet dhe fast food-et që ofrojnë porcione të ndryshme.</p>
+      </div>
+      <p class="min-order-note" id="minOrderNote">
+        Për sasi më të vogla ose kombinime të tjera, na shkruaj në WhatsApp —
+        gjejmë zgjidhje, sidomos për porosi testimi.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* ── Shell ── */
+  .editor-full {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--gray-mid);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+  }
+
+  /* ── Mobile quick upload: hidden on desktop ── */
+  .mobile-quick-upload {
+    display: none;
+    padding: 14px 16px 12px;
+    border-bottom: 1px solid var(--gray-mid);
+    background: linear-gradient(180deg, #f9fcf6 0%, #ffffff 100%);
+  }
+  .mobile-quick-copy {
+    margin-top: 10px;
+    padding: 12px 14px 10px;
+    border-radius: 14px;
+    border: 1px solid rgba(76,167,6,.12);
+    background: linear-gradient(135deg, rgba(232,245,224,.95) 0%, rgba(255,255,255,.98) 100%);
+  }
+  .mobile-quick-copy h3 { margin-bottom: 4px; font-size: .95rem; }
+  .mobile-quick-copy p { font-size: .82rem; color: var(--text-mid); margin: 0; line-height: 1.5; }
+  .mobile-quick-note { display: block; margin-top: 6px; font-size: .72rem; line-height: 1.4; color: var(--text-soft); }
+  .mobile-tool-tabs {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+  }
+  .mobile-tool-tab {
+    flex: 1;
+    min-width: 0;
+    padding: 10px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--gray-mid);
+    background: #fff;
+    font-size: .8rem;
+    font-weight: 700;
+    color: var(--text-soft);
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  .mobile-tool-tab.active {
+    background: var(--green);
+    border-color: var(--green);
+    color: #fff;
+    box-shadow: 0 10px 20px rgba(76,167,6,.18);
+  }
+  .mobile-tool-panel {
+    display: none;
+    margin-top: 10px;
+  }
+  .mobile-tool-panel.active {
+    display: block;
+  }
+  .mobile-quick-actions { display: flex; gap: 8px; margin-top: 8px; }
+  .mobile-quick-actions .btn { flex: 1; justify-content: center; }
+  .mobile-full-guide { padding-top: 2px; }
+  .mobile-full-copy {
+    margin: 0 0 12px;
+    font-size: .86rem;
+    color: var(--text-mid);
+    line-height: 1.6;
+  }
+  .mobile-full-actions {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+  .mobile-full-actions .btn {
+    flex: 1;
+    justify-content: center;
+  }
+  .mobile-size-control { margin-top: 8px; margin-bottom: 8px; }
+  .mobile-size-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 10px; font-size: .85rem; font-weight: 700; color: var(--text); }
+  .mobile-size-head strong { color: var(--green-darker); font-variant-numeric: tabular-nums; }
+  .mobile-size-control input[type=range] { width: 100%; accent-color: var(--green); cursor: pointer; }
+  .mobile-size-control input[type=range]:disabled { opacity: .4; cursor: default; }
+  .mobile-upload-status { min-height: 20px; margin: 12px 0 0; font-size: .78rem; font-weight: 600; color: var(--green-darker); }
+
+  @media (max-width: 900px) {
+    .editor-full.is-empty .mobile-quick-copy,
+    .editor-full.is-empty .mobile-size-control,
+    .editor-full.is-empty .mobile-tool-panel,
+    .editor-full.is-empty .mobile-advanced-wrap {
+      display: none;
+    }
+
+    .editor-full.has-logo-upload.mode-logo .mobile-size-control {
+      display: block;
+    }
+
+    .editor-full.has-upload.mode-design .mobile-size-control,
+    .editor-full.has-upload.mode-text .mobile-size-control,
+    .editor-full.has-upload.mode-qr .mobile-size-control {
+      display: none;
+    }
+
+    .editor-full.has-upload .mobile-advanced-wrap {
+      display: block;
+    }
+  }
+
+  /* Mobile text + QR tools */
+  .mobile-text-tool, .mobile-qr-tool {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0;
+  }
+  .mobile-text-head {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: .85rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 12px;
+  }
+  .mobile-templates {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+  .mtemplate-label { font-size: .75rem; color: var(--text-soft); font-weight: 600; width: 100%; }
+  .mtemplate-btn {
+    padding: 5px 12px;
+    border-radius: 100px;
+    border: 1px solid var(--gray-mid);
+    background: #f6f6f6;
+    font-size: .78rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .14s, border-color .14s;
+  }
+  .mtemplate-btn:hover, .mtemplate-btn.active { background: #e4f4d8; border-color: var(--green); color: var(--green-darker); }
+  .mobile-text-inputs input[type=text],
+  .mobile-text-inputs input[type=url] {
+    width: 100%;
+    padding: 9px 12px;
+    border: 1px solid var(--gray-mid);
+    border-radius: 8px;
+    font-size: .88rem;
+    box-sizing: border-box;
+    margin-top: 8px;
+  }
+  .mobile-text-options {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  .mtext-opt { display: flex; align-items: center; gap: 5px; font-size: .8rem; font-weight: 600; color: var(--text-soft); cursor: pointer; }
+  .mtext-opt input[type=color] { width: 28px; height: 28px; border-radius: 5px; border: 1px solid #ddd; cursor: pointer; padding: 2px; }
+  .mobile-text-options select {
+    flex: 1;
+    padding: 7px 8px;
+    border: 1px solid var(--gray-mid);
+    border-radius: 8px;
+    font-size: .8rem;
+    background: #fff;
+  }
+
+  /* ── Toolbar ── */
+  .etb {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    padding: 8px 12px;
+    background: #f6f6f6;
+    border-bottom: 1px solid var(--gray-mid);
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    min-height: 48px;
+    scrollbar-width: none;
+  }
+  .etb::-webkit-scrollbar { display: none; }
+  .etb-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 11px;
+    border-radius: 6px;
+    font-size: .78rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid transparent;
+    background: none;
+    color: var(--text);
+    transition: background .14s, color .14s;
+    white-space: nowrap;
+    user-select: none;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .etb-btn:hover:not(:disabled) { background: #e6e6e6; }
+  .etb-btn:disabled { opacity: .35; cursor: default; pointer-events: none; }
+  .etb-btn.etb-primary { background: var(--green); color: #fff; border-color: var(--green); cursor: pointer; }
+  .etb-btn.etb-primary:hover { background: var(--green-darker); border-color: var(--green-darker); }
+  .etb-btn.etb-teal { background: #e8f5e9; color: #2e7d22; border-color: #c8e6c9; }
+  .etb-btn.etb-teal:hover { background: #c8e6c9; }
+  .etb-btn.etb-danger:hover:not(:disabled) { background: #fdecea; color: #c0392b; }
+  .etb-btn.etb-ghost { color: var(--text-soft); }
+  .etb-btn.etb-ghost:hover:not(:disabled) { background: #e6e6e6; color: var(--text); }
+  .etb-sep { width: 1px; height: 22px; background: #ddd; margin: 0 3px; flex-shrink: 0; }
+  .etb-spacer { flex: 1; min-width: 8px; }
+  .etb-opacity { display: inline-flex; align-items: center; gap: 6px; font-size: .75rem; color: var(--text-soft); font-weight: 600; flex-shrink: 0; }
+  .etb-opacity input[type=range] { width: 80px; accent-color: var(--green); cursor: pointer; }
+  .etb-opacity input[type=range]:disabled { opacity: .35; cursor: default; }
+  #opacityVal { min-width: 34px; font-variant-numeric: tabular-nums; }
+  .etb-color-wrap {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 8px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    background: #fff;
+    font-size: .75rem;
+    font-weight: 600;
+    color: var(--text-soft);
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+  .etb-color-wrap:hover { background: #f0f0f0; }
+  .etb-color-wrap input[type=color] { width: 22px; height: 22px; border: none; background: none; cursor: pointer; padding: 0; border-radius: 3px; }
+
+  /* ── QR / Text input panels ── */
+  .qr-panel {
+    display: none;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    background: #f0f8e8;
+    border-bottom: 1px solid #c8e6c9;
+    flex-wrap: wrap;
+  }
+  .qr-panel.open { display: flex; }
+  .qr-panel span { font-size: .8rem; font-weight: 700; color: var(--text); white-space: nowrap; }
+  .qr-panel input[type=url],
+  .qr-panel input[type=text] {
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: .82rem;
+    min-width: 140px;
+  }
+  .qr-note { font-size: .72rem; color: var(--text-soft); width: 100%; margin: 0; }
+
+  /* ── Main grid ── */
+  .editor-main {
+    display: block;
+    min-height: 500px;
+  }
+  .editor-side {
+    display: none;
+    flex-direction: column;
+    border-right: 1px solid var(--gray-mid);
+  }
+
+  /* ── 2D canvas + guide overlay ── */
+  .editor-canvas-wrap {
+    position: relative;
+    aspect-ratio: 2877 / 1161;
+    background: #ebebeb;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  #editorCanvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    cursor: default;
+  }
+  #guideCanvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+  }
+  .editor-empty {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    pointer-events: none;
+  }
+  .editor-empty span { font-size: .88rem; font-weight: 600; color: var(--text-soft); }
+  .editor-empty small { font-size: .73rem; color: var(--gray); }
+
+  /* ── Reminder ── */
+  .editor-reminder {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background: #fffbeb;
+    border-top: 1px solid #f0e199;
+    font-size: .77rem;
+    color: #7a5800;
+    line-height: 1.45;
+    flex: 1;
+  }
+  .editor-reminder svg { flex-shrink: 0; color: #d4a010; }
+
+  /* ── Layers panel ── */
+  .layers-panel {
+    display: none;
+    flex-direction: column;
+    border-right: 1px solid var(--gray-mid);
+    background: #fafafa;
+    overflow: hidden;
+  }
+  .layers-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 12px;
+    font-size: .72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: var(--text-soft);
+    border-bottom: 1px solid var(--gray-mid);
+    background: #f2f2f2;
+    flex-shrink: 0;
+  }
+  .layers-list { flex: 1; overflow-y: auto; display: flex; flex-direction: column; }
+  .layers-empty { padding: 20px 12px; font-size: .75rem; color: var(--gray); text-align: center; }
+  .layer-item { display: flex; align-items: center; gap: 7px; padding: 7px 10px; cursor: pointer; border-bottom: 1px solid #ebebeb; transition: background .12s; user-select: none; }
+  .layer-item:hover { background: #efefef; }
+  .layer-item.active { background: #e6f4df; }
+  .layer-thumb { flex-shrink: 0; width: 40px; height: 20px; border-radius: 3px; border: 1px solid #ddd; background: #fff; display: block; }
+  .layer-name { flex: 1; font-size: .72rem; font-weight: 600; color: var(--text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .layer-actions { display: flex; flex-direction: column; gap: 2px; flex-shrink: 0; }
+  .layer-arrow { background: none; border: none; cursor: pointer; font-size: .6rem; color: var(--text-soft); line-height: 1; padding: 1px 3px; border-radius: 3px; transition: background .1s, color .1s; }
+  .layer-arrow:hover:not(:disabled) { background: #ddd; color: var(--text); }
+  .layer-arrow:disabled { opacity: .25; cursor: default; }
+
+  /* ── 3D panel ── */
+  .preview3d-canvas-wrap {
+    position: relative;
+    background: linear-gradient(135deg, #eaf4e1 0%, #f4faf0 100%);
+    overflow: hidden;
+    min-height: 500px;
+  }
+  .mobile-touch-tip {
+    position: absolute;
+    inset: auto 16px 16px 16px;
+    z-index: 4;
+    display: none;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px;
+    border-radius: 16px;
+    background: rgba(17, 24, 39, .78);
+    color: #fff;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 12px 30px rgba(0,0,0,.18);
+    opacity: 0;
+    transform: translateY(10px);
+    pointer-events: none;
+  }
+  .mobile-touch-tip.show {
+    display: flex;
+    animation: mobileTouchTipInOut 2.2s ease forwards;
+  }
+  .mobile-touch-tip-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 999px;
+    background: rgba(255,255,255,.12);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .mobile-touch-tip-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+  }
+  .mobile-touch-tip-copy strong {
+    font-size: .84rem;
+    line-height: 1.2;
+  }
+  .mobile-touch-tip-copy span {
+    font-size: .74rem;
+    line-height: 1.45;
+    color: rgba(255,255,255,.82);
+  }
+  @keyframes mobileTouchTipInOut {
+    0% { opacity: 0; transform: translateY(12px); }
+    12% { opacity: 1; transform: translateY(0); }
+    78% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(8px); }
+  }
+  .preview3d-loading { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; z-index: 2; background: linear-gradient(135deg, #eaf4e1 0%, #f4faf0 100%); }
+  .preview3d-loading span { font-size: .85rem; font-weight: 600; color: var(--text-soft); }
+  #cupCanvas { width: 100%; height: 100%; display: block; position: absolute; inset: 0; }
+  .preview3d-fallback {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding: 18px;
+    background: linear-gradient(135deg, #eef7e7 0%, #f8fcf3 100%);
+    text-align: center;
+  }
+  .preview3d-fallback.show { display: flex; }
+  .preview3d-fallback img {
+    width: min(72%, 240px);
+    max-height: 68%;
+    object-fit: contain;
+    filter: drop-shadow(0 14px 26px rgba(0,0,0,.12));
+  }
+  .preview3d-fallback-copy {
+    max-width: 280px;
+  }
+  .preview3d-fallback-copy strong {
+    display: block;
+    font-size: .92rem;
+    margin-bottom: 6px;
+    color: var(--text);
+  }
+  .preview3d-fallback-copy span {
+    display: block;
+    font-size: .78rem;
+    line-height: 1.55;
+    color: var(--text-soft);
+  }
+  .cup3d-hint { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 6px; font-size: .75rem; font-weight: 500; color: rgba(0,0,0,.45); background: rgba(255,255,255,.7); backdrop-filter: blur(6px); padding: 6px 12px; border-radius: 20px; white-space: nowrap; pointer-events: none; z-index: 3; box-shadow: 0 2px 8px rgba(0,0,0,.08); }
+
+  /* 3D cup empty state overlay */
+  /* Empty-state overlay — transparent so cup shows through */
+  .cup-empty-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 5;
+    visibility: visible;
+    transition: opacity 0.3s ease;
+  }
+  .cup-empty-overlay.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+  .cup-empty-overlay.hidden .cup-empty-card {
+    pointer-events: none;
+  }
+  .cup-empty-card {
+    pointer-events: auto;
+    background: rgba(255, 255, 255, 0.35);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border: 1.5px dashed rgba(76,167,6,.7);
+    border-radius: 16px;
+    padding: 24px 28px;
+    max-width: 280px;
+    width: calc(100% - 48px);
+    text-align: center;
+    box-shadow: 0 8px 24px rgba(0,0,0,.08);
+  }
+  .cup-empty-icon {
+    color: var(--green);
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: center;
+  }
+  .cup-empty-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #1a2e10;
+    margin: 0 0 6px;
+    text-shadow: 0 1px 2px rgba(255,255,255,.4);
+  }
+  .cup-empty-sub {
+    font-size: .875rem;
+    color: #2d4a1e;
+    margin: 0 0 16px;
+    line-height: 1.4;
+  }
+  .cup-empty-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+    margin-bottom: 12px;
+  }
+  .cup-empty-design-actions {
+    display: none;
+  }
+  .editor-full.mode-design .cup-empty-logo-actions {
+    display: none;
+  }
+  .editor-full.mode-design .cup-empty-design-actions {
+    display: flex;
+  }
+  .cup-empty-btn {
+    width: 100%;
+    justify-content: center;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .cup-empty-template-btn {
+    width: 100%;
+    justify-content: center;
+    border-radius: 12px;
+    padding: 11px 18px;
+    font-size: .88rem;
+    background: rgba(255,255,255,.74);
+    box-shadow: none;
+  }
+  .cup-empty-rotate-hint {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: .75rem;
+    color: #2d4a1e;
+    opacity: .8;
+  }
+  @media (min-width: 901px) {
+    .cup-empty-overlay {
+      display: none;
+    }
+    #desktopToolbar {
+      display: none;
+    }
+    .editor-full.is-empty #advancedToolsWrap {
+      display: none;
+    }
+    .editor-full.has-upload #advancedToolsWrap {
+      display: block;
+    }
+  }
+  .cup3d-rotate-note { display: flex; align-items: center; gap: 5px; font-size: .72rem; color: var(--green); font-weight: 600; margin-top: 4px; }
+
+  /* Editor steps row */
+  .editor-steps { display: flex; align-items: center; justify-content: center; gap: 10px; margin: 20px auto 0; flex-wrap: wrap; }
+  .editor-step { display: flex; align-items: center; gap: 8px; background: #fff; border: 1.5px solid #e0f0d0; border-radius: 24px; padding: 7px 14px; }
+  .editor-step-num { width: 22px; height: 22px; border-radius: 50%; background: var(--green); color: #fff; font-size: .72rem; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .editor-step-label { font-size: .78rem; font-weight: 600; color: var(--text); }
+  .editor-step-arrow { font-size: 1rem; color: var(--green); opacity: .5; font-weight: 300; }
+  @media (max-width: 480px) { .editor-step-arrow { display: none; } .editor-steps { gap: 6px; } .editor-step { padding: 6px 10px; } .editor-step-label { font-size: .72rem; } }
+
+  /* ── Template download section ── */
+  .tpl-section {
+    border-top: 1px solid var(--gray-mid);
+    background: #f7faf3;
+    padding: 14px 18px 16px;
+  }
+  .tpl-inner {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .tpl-icon {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    background: #e4f3d8;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    color: var(--green);
+  }
+  .tpl-copy { flex: 1; min-width: 140px; }
+  .tpl-copy strong { display: block; font-size: .82rem; font-weight: 700; color: var(--text); margin-bottom: 2px; }
+  .tpl-copy span { font-size: .75rem; color: var(--text-soft); line-height: 1.4; }
+  .tpl-btns { display: flex; gap: 8px; flex-wrap: wrap; flex-shrink: 0; }
+  .tpl-btn-dl, .tpl-btn-ul {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 7px 13px;
+    border-radius: 8px;
+    font-size: .78rem; font-weight: 600;
+    cursor: pointer; white-space: nowrap;
+    transition: background .15s, color .15s;
+    text-decoration: none;
+    border: 1.5px solid var(--green);
+  }
+  .tpl-btn-dl { background: #fff; color: var(--green); }
+  .tpl-btn-dl:hover { background: #eaf5df; }
+  .tpl-btn-ul { background: var(--green); color: #fff; border-color: var(--green); }
+  .tpl-btn-ul:hover { background: #3a9a0e; }
+
+  /* ── CTA ── */
+  .preview-order-cta { padding: 18px 20px 22px; border-top: 1px solid var(--gray-mid); background: #fff; }
+  .preview-order-btn { display: flex; align-items: center; justify-content: space-between; gap: 16px; width: 100%; padding: 16px 18px; text-decoration: none; color: #fff; border-radius: 18px; background: linear-gradient(135deg, var(--green) 0%, #2f8f12 100%); box-shadow: 0 16px 30px rgba(76,167,6,.24); transition: transform .22s ease, box-shadow .22s ease; }
+  .preview-order-btn:hover { transform: translateY(-2px); box-shadow: 0 20px 36px rgba(76,167,6,.28); }
+  .preview-order-copy { display: flex; flex-direction: column; gap: 3px; }
+  .preview-order-copy strong { font-size: 1rem; }
+  .preview-order-copy small { font-size: .78rem; color: rgba(255,255,255,.84); }
+  .preview-order-icon { width: 42px; height: 42px; border-radius: 999px; background: rgba(255,255,255,.14); display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
+
+  /* ── Mobile fallback (shows instead of editor on small screens) ── */
+  .editor-mobile { display: none; flex-direction: column; align-items: center; gap: 16px; padding: 64px 24px; text-align: center; background: var(--white); border-radius: var(--radius-lg); border: 1px solid var(--gray-mid); }
+  .editor-mobile p { font-size: .95rem; color: var(--text-soft); max-width: 280px; margin: 0; }
+
+  /* ── Responsive ── */
+  @media (max-width: 900px) {
+    .editor-full  { display: flex; flex-direction: column; }
+    .desktop-testdrive-panel { display: none; }
+    .mobile-quick-upload { display: block; }
+    #desktopToolbar, #advancedToolsWrap, #qrPanel, #textPanel,
+    .layers-panel, .editor-side, .cup3d-hint { display: none; }
+    .editor-main { display: block; min-height: 0; order: 1; }
+    .mobile-quick-upload { order: 2; padding: 16px 16px 18px; }
+    .tpl-section { order: 3; }
+    .preview-order-cta { order: 4; }
+    .editor-final-cta { order: 4; }
+    .preview3d-canvas-wrap { min-height: 300px; }
+    .mobile-touch-tip { display: flex; }
+    .preview-order-btn { padding: 15px 16px; border-radius: 16px; }
+    .preview-order-copy strong { font-size: .95rem; }
+    .preview-order-copy small { font-size: .74rem; }
+    .editor-mobile { display: none; }
+  }
+  @media (max-width: 480px) {
+    .mobile-tool-tabs { gap: 6px; }
+    .mobile-tool-tab { padding: 9px 10px; font-size: .76rem; }
+    .mobile-quick-actions,
+    .mobile-full-actions { flex-direction: column; }
+    .preview3d-canvas-wrap { min-height: 320px; }
+    .mobile-text-options { flex-wrap: wrap; }
+    .cup-empty-card { max-width: 240px; padding: 20px 22px; }
+    .cup-empty-title { font-size: 1rem; }
+    .editor-full.mode-design .cup-empty-card {
+      max-width: 218px;
+      width: calc(100% - 96px);
+      padding: 15px 18px;
+      border-radius: 14px;
+    }
+    .editor-full.mode-design .cup-empty-icon {
+      margin-bottom: 7px;
+    }
+    .editor-full.mode-design .cup-empty-icon svg {
+      width: 24px;
+      height: 24px;
+    }
+    .editor-full.mode-design .cup-empty-title {
+      font-size: .9rem;
+      margin-bottom: 5px;
+    }
+    .editor-full.mode-design .cup-empty-sub {
+      font-size: .76rem;
+      line-height: 1.32;
+      margin-bottom: 10px;
+    }
+    .editor-full.mode-design .cup-empty-actions {
+      gap: 7px;
+      margin-bottom: 8px;
+    }
+    .editor-full.mode-design .cup-empty-btn,
+    .editor-full.mode-design .cup-empty-template-btn {
+      padding: 9px 12px;
+      min-height: 40px;
+      font-size: .8rem;
+      border-radius: 11px;
+    }
+    .editor-full.mode-design .cup-empty-rotate-hint {
+      font-size: .68rem;
+    }
+  }
+
+  /* ── EDITOR INTRO (simple version) ── */
+  /* ── EDITOR INTRO (simple) ── */
+  .editor-intro-simple {
+    text-align: center;
+    max-width: 580px;
+    margin: 0 auto;
+    padding: 36px 24px 20px;
+  }
+  .editor-intro-simple h2 {
+    font-size: clamp(1.4rem, 4vw, 2rem);
+    font-weight: 800;
+    margin: 0 0 14px;
+    color: var(--text);
+    letter-spacing: -.02em;
+    line-height: 1.2;
+  }
+  .editor-intro-simple h2 span {
+    color: var(--green);
+  }
+  .editor-intro-simple p {
+    color: var(--text-mid);
+    margin: 0 0 8px;
+    line-height: 1.6;
+    font-size: .95rem;
+  }
+  .editor-intro-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(76,167,6,.1);
+    color: var(--green);
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 20px;
+    margin-bottom: 18px;
+  }
+  .editor-intro-badge svg { flex-shrink: 0; }
+  .editor-intro-alt {
+    font-size: .85rem;
+    color: var(--text-soft, #6a7a6a);
+    margin-top: 18px !important;
+  }
+  .editor-intro-alt a {
+    color: var(--green);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .editor-intro-alt a:hover { color: var(--green-dark, #3d8505); }
+
+  /* ── HOW IT WORKS MINI — compact inline strip ── */
+  .how-it-works-mini {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    padding: 14px 20px;
+    background: var(--white);
+    border-radius: var(--radius);
+    border: 1px solid var(--gray-mid);
+    margin-bottom: 24px;
+    overflow: hidden;
+  }
+  .hiw-step {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 14px;
+    text-align: left;
+    flex: 1;
+    min-width: 0;
+  }
+  .hiw-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--green);
+    color: #fff;
+    font-weight: 700;
+    font-size: .72rem;
+    flex-shrink: 0;
+  }
+  .hiw-step-text { min-width: 0; }
+  .hiw-step h4 {
+    font-size: .78rem;
+    font-weight: 700;
+    color: var(--text);
+    margin: 0;
+    white-space: nowrap;
+  }
+  .hiw-step p {
+    font-size: .7rem;
+    color: var(--text-mid);
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .hiw-arrow {
+    font-size: .9rem;
+    color: var(--gray-mid);
+    flex-shrink: 0;
+    line-height: 1;
+  }
+  @media (max-width: 560px) {
+    .how-it-works-mini { display: none; }
+  }
+
+  /* ── PRIMARY TOOLBAR (desktop) ── */
+  .etb-primary-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    background: var(--gray-light);
+    border-bottom: 1px solid var(--gray-mid);
+    flex-wrap: wrap;
+  }
+  /* Demoted logo upload label — outline style, not primary */
+  .etb-upload-main {
+    font-weight: 500;
+    font-size: .86rem;
+    padding: 8px 14px;
+    background: var(--white);
+    color: var(--text);
+    border-radius: var(--radius);
+    cursor: pointer;
+    border: 1px solid var(--gray-mid);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: border-color .18s, background .18s;
+  }
+  .etb-upload-main:hover { border-color: var(--green); background: rgba(76,167,6,.05); }
+  .etb-secondary-upload {
+    font-size: .86rem;
+    padding: 8px 14px;
+    background: var(--white);
+    color: var(--text);
+    border: 1px solid var(--gray-mid);
+    border-radius: var(--radius);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: border-color .18s, background .18s;
+  }
+  .etb-secondary-upload:hover { border-color: var(--green); background: rgba(76,167,6,.05); }
+
+  /* ── DESKTOP TEST-DRIVE PANEL ── */
+  .desktop-testdrive-panel {
+    display: grid;
+    grid-template-columns: minmax(240px, 320px) 1fr auto;
+    align-items: center;
+    gap: 18px;
+    padding: 18px 22px;
+    background: linear-gradient(180deg, #f9fcf6 0%, #fff 100%);
+    border-bottom: 1px solid var(--gray-mid);
+  }
+  .desktop-tool-tabs {
+    display: flex;
+    gap: 8px;
+    padding: 4px;
+    border: 1px solid var(--gray-mid);
+    border-radius: 999px;
+    background: #fff;
+  }
+  .desktop-tool-tab {
+    flex: 1;
+    border: 0;
+    border-radius: 999px;
+    padding: 10px 16px;
+    background: transparent;
+    color: var(--text-soft);
+    font-size: .84rem;
+    font-weight: 800;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: var(--transition);
+  }
+  .desktop-tool-tab.active {
+    background: var(--green);
+    color: #fff;
+    box-shadow: 0 10px 22px rgba(76,167,6,.18);
+  }
+  .desktop-mode-panel {
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    min-width: 0;
+  }
+  .desktop-mode-panel.active {
+    display: flex;
+  }
+  .desktop-mode-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 0;
+  }
+  .desktop-mode-copy strong {
+    font-size: .98rem;
+    color: var(--text);
+  }
+  .desktop-mode-copy span {
+    font-size: .82rem;
+    color: var(--text-mid);
+    line-height: 1.45;
+  }
+  .desktop-mode-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+  .desktop-size-control {
+    display: none;
+    min-width: 190px;
+  }
+  .desktop-size-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 8px;
+    font-size: .78rem;
+    font-weight: 800;
+    color: var(--text);
+  }
+  .desktop-size-head strong {
+    color: var(--green-darker);
+    font-variant-numeric: tabular-nums;
+  }
+  .desktop-size-control input[type=range] {
+    width: 100%;
+    accent-color: var(--green);
+    cursor: pointer;
+  }
+  .editor-full.has-logo-upload.mode-logo .desktop-size-control {
+    display: block;
+  }
+  .editor-full.mode-design .desktop-size-control,
+  .editor-full.is-empty .desktop-size-control {
+    display: none;
+  }
+  @media (max-width: 900px) {
+    .desktop-testdrive-panel {
+      display: none;
+    }
+  }
+
+  /* ── ADVANCED TOOLS COLLAPSIBLE (desktop) ── */
+  .advanced-tools-wrap {
+    border-bottom: 1px solid var(--gray-mid);
+  }
+  .advanced-tools-summary {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    font-size: .84rem;
+    font-weight: 600;
+    color: var(--text-mid);
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+    background: var(--white);
+    transition: background .15s;
+  }
+  .advanced-tools-summary:hover { background: var(--gray-light); }
+  .advanced-tools-wrap[open] .advanced-tools-summary { color: var(--text); }
+  .adv-chevron {
+    transition: transform .22s;
+    flex-shrink: 0;
+  }
+  .advanced-tools-wrap[open] .adv-chevron { transform: rotate(90deg); }
+  .adv-hint-label {
+    font-weight: 400;
+    color: var(--gray);
+    font-size: .78rem;
+  }
+  .advanced-tools-inner {
+    display: grid;
+    grid-template-columns: minmax(220px, 300px) minmax(260px, 340px) 1fr;
+    align-items: stretch;
+    gap: 12px;
+    padding: 14px 16px;
+    background: #fafafa;
+  }
+  .adv-group {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 12px;
+    border: 1px solid var(--gray-mid);
+    border-radius: 12px;
+    background: var(--white);
+  }
+  .adv-tool-hint {
+    font-size: .78rem;
+    line-height: 1.45;
+    color: var(--text-mid);
+    margin: 0;
+    max-width: 240px;
+  }
+  .adv-sep {
+    display: none;
+  }
+  .adv-group-pro {
+    align-items: center;
+    min-width: 0;
+  }
+  .adv-pro-tools {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    min-width: 0;
+  }
+  @media (max-width: 1180px) and (min-width: 901px) {
+    .advanced-tools-inner {
+      grid-template-columns: 1fr 1fr;
+    }
+    .adv-group-pro {
+      grid-column: 1 / -1;
+    }
+  }
+
+  /* ── MOBILE ADVANCED COLLAPSIBLE ── */
+  .mobile-advanced-wrap {
+    margin-top: 10px;
+  }
+  .mobile-advanced-toggle {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 9px 12px;
+    font-size: .82rem;
+    font-weight: 600;
+    color: var(--text-mid);
+    cursor: pointer;
+    list-style: none;
+    background: var(--gray-light);
+    border-radius: var(--radius);
+    user-select: none;
+  }
+  .mobile-advanced-tabs {
+    margin-top: 10px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .mobile-adv-hints { margin-top: 8px; }
+  .mobile-adv-hint {
+    font-size: .78rem;
+    color: var(--text-mid);
+    margin: 4px 0 0;
+    padding: 6px 10px;
+    background: rgba(76,167,6,.06);
+    border-radius: 8px;
+    border-left: 3px solid var(--green);
+  }
+
+  /* ── EDITOR FINAL CTA ── */
+  .editor-final-cta {
+    padding: 18px 20px 20px;
+    text-align: center;
+    border-top: 1px solid var(--gray-mid);
+    background: linear-gradient(180deg, #f9fcf6 0%, #fff 100%);
+  }
+  .editor-final-cta h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text);
+    margin: 0 0 4px;
+  }
+  .editor-final-cta p {
+    font-size: .85rem;
+    color: var(--text-mid);
+    margin: 0 0 14px;
+  }
+  .editor-final-cta-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .btn-lg {
+    padding: 12px 24px;
+    font-size: .95rem;
+    font-weight: 600;
+    border-radius: var(--radius);
+  }
+
+  /* ── MIN ORDER BOX ── */
+  .min-order-box {
+    background: var(--gray-light);
+    border: 1px solid var(--gray-mid);
+    border-radius: var(--radius-lg);
+    padding: 32px 36px;
+  }
+  .min-order-box h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text);
+    margin: 0 0 14px;
+  }
+  .min-order-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .min-order-list li {
+    font-size: .95rem;
+    color: var(--text);
+    padding-left: 20px;
+    position: relative;
+  }
+  .min-order-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--green);
+    font-weight: 700;
+  }
+  .min-order-offer {
+    background: var(--white);
+    border: 1px solid rgba(76,167,6,.25);
+    border-radius: var(--radius);
+    padding: 16px 20px;
+    margin-bottom: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .offer-badge {
+    display: inline-block;
+    background: var(--green);
+    color: #fff;
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 20px;
+    align-self: flex-start;
+  }
+  .min-order-offer p {
+    font-size: .9rem;
+    color: var(--text);
+    margin: 0;
+  }
+  .min-order-note {
+    font-size: .82rem;
+    color: var(--text-mid);
+    margin: 0;
+  }
+  @media (max-width: 600px) {
+    .min-order-box { padding: 24px 20px; }
+  }
+</style>
+
+<script type="module">
+  import * as THREE from './js/vendor/three.module.js';
+  import { GLTFLoader }    from './js/vendor/addons/loaders/GLTFLoader.js';
+  import { OrbitControls } from './js/vendor/addons/controls/OrbitControls.js';
+
+  /* ═══════════════════════════════════════════════
+     THREE.JS SETUP
+  ═══════════════════════════════════════════════ */
+  const canvas  = document.getElementById('cupCanvas');
+  const loading = document.getElementById('cupLoading');
+  const preview3dFallback = document.getElementById('preview3dFallback');
+
+  function show3dFallback(message) {
+    if (loading) {
+      loading.style.display = 'none';
+    }
+    if (preview3dFallback) {
+      if (message) {
+        const text = preview3dFallback.querySelector('.preview3d-fallback-copy span');
+        if (text) text.textContent = message;
+      }
+      preview3dFallback.classList.add('show');
+    }
+  }
+
+  if (window.location.protocol === 'file:') {
+    loading.innerHTML = '<span style="color:#7a5800;font-size:.85rem;padding:20px;text-align:center;line-height:1.6;">Preview 3D nuk hapet saktë nga <strong>file://</strong>.<br>Hape faqen nga linku i preview-it me <strong>http://</strong> ose linku publik për ta testuar.</span>';
+    show3dFallback('Hape këtë faqe nga linku i preview-it me http:// ose nga linku publik që ta shohësh 3D.');
+    throw new Error('3D preview requires http/https context');
+  }
+
+  // Lazy-init: pause all Three.js work until the editor section scrolls into view
+  await new Promise(resolve => {
+    const section = document.getElementById('preview3d');
+    if (!section || section.getBoundingClientRect().top < window.innerHeight * 0.95) { resolve(); return; }
+    const obs = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) { obs.disconnect(); resolve(); }
+    }, { threshold: 0.1 });
+    obs.observe(section);
+  });
+
+  let renderer;
+  try {
+    renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+  } catch (error) {
+    console.error('WebGL renderer error:', error);
+    show3dFallback('Kjo pajisje ose ky browser nuk po e inicializon preview-in 3D. Provoje në një browser tjetër modern.');
+    throw error;
+  }
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+
+  const scene  = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(40, 1, 0.1, 100);
+  camera.position.set(0, 0, 3.8);
+
+  scene.add(new THREE.AmbientLight(0xffffff, 1.8));
+  const key = new THREE.DirectionalLight(0xffffff, 2.5);
+  key.position.set(4, 6, 4); scene.add(key);
+  const fill = new THREE.DirectionalLight(0xffffff, 0.6);
+  fill.position.set(-4, 0, -3); scene.add(fill);
+
+  const controls = new OrbitControls(camera, renderer.domElement);
+  controls.enableDamping = true; controls.dampingFactor = 0.06;
+  controls.enablePan = false; controls.minDistance = 1.8; controls.maxDistance = 5;
+  controls.autoRotate = true; controls.autoRotateSpeed = 1.8;
+  controls.addEventListener('start', () => controls.autoRotate = false);
+
+  function resize3d() {
+    const wrap = canvas.parentElement;
+    const w = wrap.clientWidth, h = wrap.clientHeight;
+    if (!w || !h) return;
+    renderer.setSize(w, h, false);
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+  }
+
+  /* ═══════════════════════════════════════════════
+     2D EDITOR CANVAS
+  ═══════════════════════════════════════════════ */
+  const EC    = document.getElementById('editorCanvas');
+  const ectx  = EC.getContext('2d');
+  const GC    = document.getElementById('guideCanvas');
+  const gctx  = GC.getContext('2d');
+  const TEX_W = 2048, TEX_H = 826;
+  EC.width = TEX_W; EC.height = TEX_H;
+
+  const mobileMode        = window.matchMedia('(max-width: 900px)');
+  const mobileSizeSlider  = document.getElementById('mobileSizeSlider');
+  const mobileSizeValue   = document.getElementById('mobileSizeValue');
+  const mobileUploadBtn   = document.getElementById('mobileUploadBtn');
+  const mobileUploadStatus = document.getElementById('mobileUploadStatus');
+  const mobileFullDesignBtn = document.getElementById('mobileFullDesignBtn');
+  const mobileFullDesignStatus = document.getElementById('mobileFullDesignStatus');
+  const designUploadInput = document.getElementById('designUpload');
+  const fullDesignUploadInput = document.getElementById('fullDesignUpload');
+  const orderPreviewBtn   = document.getElementById('orderPreviewBtn');
+  const mobileTouchTip    = document.getElementById('mobileTouchTip');
+  const mobileToolTabs    = Array.from(document.querySelectorAll('.mobile-tool-tab'));
+  const mobileToolPanels  = Array.from(document.querySelectorAll('.mobile-tool-panel'));
+  const mobileQuickBadge  = document.getElementById('mobileQuickBadge');
+  const mobileQuickTitle  = document.getElementById('mobileQuickTitle');
+  const mobileQuickBody   = document.getElementById('mobileQuickBody');
+  const mobileQuickNote   = document.getElementById('mobileQuickNote');
+  const mobileAdvancedWrap = document.getElementById('mobileAdvancedWrap');
+  const advancedToolsWrap = document.getElementById('advancedToolsWrap');
+  const desktopToolTabs = Array.from(document.querySelectorAll('.desktop-tool-tab'));
+  const desktopModePanels = Array.from(document.querySelectorAll('.desktop-mode-panel'));
+  const desktopLogoUploadBtn = document.getElementById('desktopLogoUploadBtn');
+  const desktopDesignUploadBtn = document.getElementById('desktopDesignUploadBtn');
+  const desktopSizeSlider = document.getElementById('desktopSizeSlider');
+  const desktopSizeValue = document.getElementById('desktopSizeValue');
+  const editorFull        = document.getElementById('editorFull');
+  const cupEmptyTitle     = document.getElementById('cupEmptyTitle');
+  const cupEmptySub       = document.getElementById('cupEmptySub');
+  let mobileActivePanel = 'logo';
+
+  const mobileQuickCopyMap = {
+    logo: {
+      badge: 'Preview i Thjeshtë',
+      title: 'Ngarko vetëm logon',
+      body: 'Ne e qendrojmë automatikisht mbi kupën e pastave, që ta shihni menjëherë si duket.',
+      note: 'PNG me sfond transparent jep rezultatin më të mirë.'
+    },
+    full: {
+      badge: 'Dizajn i Plotë',
+      title: 'Ngarko dizajnin tënd',
+      body: 'Ke një dizajn të gatshëm? Shkarko shabllonin, vendos dizajnin mbi të dhe ngarko këtu.',
+      note: 'Përdor shabllonin për dimensione të sakta.'
+    },
+    text: {
+      badge: 'Tekst i Shpejtë',
+      title: 'Shto tekst në kupë',
+      body: 'Shkruaj numrin e telefonit, Instagram-in ose çfarëdo teksti të shkurtër — ne e vendosim në kupë.',
+      note: 'I përshtatshëm edhe pa dizajn të gatshëm.'
+    },
+    qr: {
+      badge: 'QR Kodi',
+      title: 'Shto QR Kod në kupë',
+      body: 'Vendos linkun tënd (website, menu, Instagram) dhe do të gjenerohet automatikisht.',
+      note: 'Ideal për menu dixhitale ose faqe Instagram.'
+    }
+  };
+
+  const designMaterials = [];
+  let canvasTex    = null;
+  let bgColor      = '#ffffff';
+  let mobileBaseScale = 0;
+  let modelLoaded = false;
+  const fallbackTimer = window.setTimeout(() => {
+    if (!modelLoaded) {
+      show3dFallback('Preview 3D po merr shumë kohë për t’u hapur në këtë pajisje. Mund të vazhdosh me dizajnin edhe pa modelin 3D.');
+    }
+  }, 7000);
+
+  function setMobilePanel(panelName) {
+    mobileActivePanel = panelName;
+    mobileToolTabs.forEach(button => {
+      button.classList.toggle('active', button.dataset.mobilePanel === panelName);
+    });
+    mobileToolPanels.forEach(panel => {
+      panel.classList.toggle('active', panel.dataset.mobilePanel === panelName);
+    });
+    desktopToolTabs.forEach(button => {
+      button.classList.toggle('active', button.dataset.desktopPanel === panelName);
+    });
+    desktopModePanels.forEach(panel => {
+      panel.classList.toggle('active', panel.dataset.desktopPanel === panelName);
+    });
+    const copy = mobileQuickCopyMap[panelName];
+    if (copy) {
+      if (mobileQuickBadge) mobileQuickBadge.textContent = copy.badge;
+      mobileQuickTitle.textContent = copy.title;
+      mobileQuickBody.textContent = copy.body;
+      mobileQuickNote.textContent = copy.note;
+    }
+    syncEditorState();
+  }
+
+  function setDesktopPanel(panelName) {
+    mobileActivePanel = panelName;
+    mobileToolTabs.forEach(button => {
+      button.classList.toggle('active', button.dataset.mobilePanel === panelName);
+    });
+    mobileToolPanels.forEach(panel => {
+      panel.classList.toggle('active', panel.dataset.mobilePanel === panelName);
+    });
+    desktopToolTabs.forEach(button => {
+      button.classList.toggle('active', button.dataset.desktopPanel === panelName);
+    });
+    desktopModePanels.forEach(panel => {
+      panel.classList.toggle('active', panel.dataset.desktopPanel === panelName);
+    });
+    syncEditorState();
+  }
+
+  function hasPrimaryUpload() {
+    return objects.some(o => o.type === 'image' || o.type === 'fullDesign');
+  }
+
+  function syncEditorState() {
+    const hasUpload = hasPrimaryUpload();
+    const hasLogoUpload = objects.some(o => o.type === 'image');
+    const hasDesignUpload = objects.some(o => o.type === 'fullDesign');
+    if (editorFull) {
+      editorFull.classList.toggle('has-upload', hasUpload);
+      editorFull.classList.toggle('has-logo-upload', hasLogoUpload);
+      editorFull.classList.toggle('has-design-upload', hasDesignUpload);
+      editorFull.classList.toggle('is-empty', !hasUpload);
+      ['logo', 'design', 'text', 'qr'].forEach(mode => {
+        editorFull.classList.toggle(`mode-${mode}`, mode === (mobileActivePanel === 'full' ? 'design' : mobileActivePanel));
+      });
+    }
+
+    if (cupEmptyTitle && cupEmptySub) {
+      if (mobileActivePanel === 'full') {
+        cupEmptyTitle.textContent = 'Ngarko dizajnin tënd';
+        cupEmptySub.textContent = 'Shkarko shabllonin, përgatit dizajnin dhe ngarko skedarin e plotë.';
+      } else {
+        cupEmptyTitle.textContent = 'Ngarko logon tënde';
+        cupEmptySub.textContent = 'Shihe direkt në 3D — pa regjistrim, pa angazhim.';
+      }
+    }
+    if (mobileUploadBtn) {
+      mobileUploadBtn.textContent = hasLogoUpload ? 'Ndrysho logon' : 'Ngarko Logon';
+    }
+    if (mobileFullDesignBtn) {
+      mobileFullDesignBtn.textContent = hasDesignUpload ? 'Ndrysho dizajnin' : 'Ngarko dizajnin';
+    }
+    if (desktopLogoUploadBtn) {
+      desktopLogoUploadBtn.textContent = hasLogoUpload ? 'Ndrysho logon' : 'Ngarko logon';
+    }
+    if (desktopDesignUploadBtn) {
+      desktopDesignUploadBtn.textContent = hasDesignUpload ? 'Ndrysho dizajnin' : 'Ngarko dizajnin';
+    }
+  }
+
+  function showMobileTouchTip() {
+    if (!mobileMode.matches || !mobileTouchTip) return;
+    mobileTouchTip.classList.remove('show');
+    requestAnimationFrame(() => {
+      mobileTouchTip.classList.add('show');
+      window.setTimeout(() => {
+        mobileTouchTip.classList.remove('show');
+      }, 2200);
+    });
+  }
+
+  window.addEventListener('resize', () => { resize3d(); renderGuides(); });
+  mobileMode.addEventListener('change', () => {
+    if (mobileMode.matches) showMobileTouchTip();
+  });
+
+  /* ═══════════════════════════════════════════════
+     LOAD GLB
+  ═══════════════════════════════════════════════ */
+  new GLTFLoader().load('assets/models/kupa-pasta-3d.glb', (gltf) => {
+    modelLoaded = true;
+    window.clearTimeout(fallbackTimer);
+    resize3d(); // ensure aspect ratio is correct before auto-fit calc
+    const model = gltf.scene;
+    const box   = new THREE.Box3().setFromObject(model);
+    const center = box.getCenter(new THREE.Vector3());
+    const size   = box.getSize(new THREE.Vector3());
+    model.position.sub(center);
+    model.scale.setScalar(2 / Math.max(size.x, size.y, size.z));
+    scene.add(model);
+    const box2 = new THREE.Box3().setFromObject(model);
+    const c2   = box2.getCenter(new THREE.Vector3());
+    const s2   = box2.getSize(new THREE.Vector3());
+    controls.target.copy(c2);
+
+    // Auto-fit: calculate Z so the full model fits in viewport with padding
+    const fovRad   = camera.fov * (Math.PI / 180);
+    const aspect   = camera.aspect || 1;
+    const halfH    = s2.y / 2;
+    const halfW    = s2.x / (2 * aspect);
+    const fitDist  = Math.max(halfH, halfW) / Math.tan(fovRad / 2);
+    camera.position.set(c2.x, c2.y, c2.z + fitDist * 1.18); // 1.18 = 18% breathing room
+    controls.minDistance = fitDist * 0.6;
+    controls.maxDistance = fitDist * 3;
+    controls.update();
+    model.traverse(node => {
+      if (!node.isMesh) return;
+      (Array.isArray(node.material) ? node.material : [node.material]).forEach(mat => {
+        if (mat.name === 'DESIGN' || mat.name === 'DESIGN.001') designMaterials.push(mat);
+      });
+    });
+    canvasTex = new THREE.CanvasTexture(EC);
+    canvasTex.flipY = false;
+    canvasTex.colorSpace = THREE.SRGBColorSpace;
+    designMaterials.forEach(mat => { if (mat.map) mat.map.dispose(); mat.map = canvasTex; mat.needsUpdate = true; });
+    renderEditor();
+    renderGuides();
+    loading.style.display = 'none';
+    preview3dFallback.classList.remove('show');
+    resize3d();
+  }, undefined, (err) => {
+    window.clearTimeout(fallbackTimer);
+    modelLoaded = false;
+    loading.innerHTML = '<span style="color:#c0392b;font-size:.8rem;padding:20px;text-align:center;">Gabim duke ngarkuar modelin 3D.</span>';
+    show3dFallback('Modeli 3D nuk u ngarkua në këtë pajisje. Mund të vazhdosh me dizajnin dhe porosinë pa 3D.');
+    console.error('GLB load error:', err);
+  });
+
+  (function animate() {
+    requestAnimationFrame(animate);
+    controls.update();
+    if (canvasTex) canvasTex.needsUpdate = true;
+    renderer.render(scene, camera);
+  })();
+
+  /* ═══════════════════════════════════════════════
+     OBJECTS — types: 'image' | 'fullDesign' | 'text' | 'qr'
+  ═══════════════════════════════════════════════ */
+  let objects  = [];
+  let selected = -1;
+  const HANDLE = 28;
+
+  function selObj() { return selected >= 0 ? objects[selected] : null; }
+
+  // Returns { x, y, w, h } bounding rect, centred on o.x, o.y
+  function getRect(o) {
+    if (o.type === 'qr') {
+      return { x: o.x - o.size / 2, y: o.y - o.size / 2, w: o.size, h: o.size };
+    }
+    if (o.type === 'text') {
+      ectx.save();
+      ectx.font = `700 ${o.fontSize}px Inter, Arial, sans-serif`;
+      const m = ectx.measureText(o.text);
+      ectx.restore();
+      const w = m.width + 20, h = o.fontSize * 1.5;
+      return { x: o.x - w / 2, y: o.y - h / 2, w, h };
+    }
+    // image
+    const w = o.img.naturalWidth  * o.scale;
+    const h = o.img.naturalHeight * o.scale;
+    return { x: o.x - w / 2, y: o.y - h / 2, w, h };
+  }
+
+  function fmtNum(value) {
+    return Number(value).toFixed(2).replace(/\.00$/, '');
+  }
+
+  function escapeXml(value) {
+    return String(value)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&apos;');
+  }
+
+  function imageToDataURL(img) {
+    const temp = document.createElement('canvas');
+    temp.width = img.naturalWidth || img.width;
+    temp.height = img.naturalHeight || img.height;
+    const ctx = temp.getContext('2d');
+    ctx.drawImage(img, 0, 0, temp.width, temp.height);
+    return temp.toDataURL('image/png');
+  }
+
+  function layerNameForObject(o, index) {
+    if (o.type === 'text') return `text-${index + 1}`;
+    if (o.type === 'qr') return `qr-${index + 1}`;
+    if (o.type === 'fullDesign') return `full-design-${index + 1}`;
+    return `logo-${index + 1}`;
+  }
+
+  function buildLayeredSvg() {
+    const layers = [];
+    layers.push(`<rect id="background" x="0" y="0" width="${TEX_W}" height="${TEX_H}" fill="${escapeXml(bgColor)}" />`);
+
+    objects.forEach((o, index) => {
+      const rect = getRect(o);
+      const opacity = typeof o.opacity === 'number' ? o.opacity : 1;
+      const layerName = layerNameForObject(o, index);
+      if (o.type === 'text') {
+        layers.push(
+          `<g id="${layerName}" data-layer-name="${layerName}" opacity="${fmtNum(opacity)}">` +
+          `<text x="${fmtNum(o.x)}" y="${fmtNum(o.y)}" fill="${escapeXml(o.color || '#000000')}" font-family="Inter, Arial, sans-serif" font-size="${fmtNum(o.fontSize)}" font-weight="700" text-anchor="middle" dominant-baseline="middle" xml:space="preserve">${escapeXml(o.text)}</text>` +
+          `</g>`
+        );
+        return;
+      }
+
+      const dataUrl = o.type === 'qr' ? o.qrCanvas.toDataURL('image/png') : imageToDataURL(o.img);
+      const scaleX = o.flipH ? -1 : 1;
+      const scaleY = o.flipV ? -1 : 1;
+      const transform = [
+        `translate(${fmtNum(o.x)} ${fmtNum(o.y)})`,
+        `scale(${scaleX} ${scaleY})`,
+        `translate(${fmtNum(-rect.w / 2)} ${fmtNum(-rect.h / 2)})`
+      ].join(' ');
+
+      layers.push(
+        `<g id="${layerName}" data-layer-name="${layerName}" opacity="${fmtNum(opacity)}">` +
+        `<image href="${dataUrl}" width="${fmtNum(rect.w)}" height="${fmtNum(rect.h)}" preserveAspectRatio="none" transform="${transform}" />` +
+        `</g>`
+      );
+    });
+
+    return [
+      `<?xml version="1.0" encoding="UTF-8"?>`,
+      `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="${TEX_W}" height="${TEX_H}" viewBox="0 0 ${TEX_W} ${TEX_H}">`,
+      `<title>ERA Cup Design Export</title>`,
+      `<desc>Layered export generated from the ERA cup preview editor.</desc>`,
+      ...layers,
+      `</svg>`
+    ].join('\n');
+  }
+
+  function buildDesignExportData() {
+    return {
+      product: 'kupa-pasta',
+      canvas: { width: TEX_W, height: TEX_H },
+      background: bgColor,
+      generatedAt: new Date().toISOString(),
+      objects: objects.map((o, index) => {
+        const rect = getRect(o);
+        if (o.type === 'text') {
+          return {
+            layer: layerNameForObject(o, index),
+            type: o.type,
+            text: o.text,
+            x: o.x,
+            y: o.y,
+            fontSize: o.fontSize,
+            color: o.color || '#000000',
+            opacity: typeof o.opacity === 'number' ? o.opacity : 1
+          };
+        }
+        return {
+          layer: layerNameForObject(o, index),
+          type: o.type,
+          x: o.x,
+          y: o.y,
+          width: rect.w,
+          height: rect.h,
+          scale: o.scale || null,
+          size: o.size || null,
+          opacity: typeof o.opacity === 'number' ? o.opacity : 1,
+          flipH: !!o.flipH,
+          flipV: !!o.flipV
+        };
+      })
+    };
+  }
+
+  function corners(o) {
+    const { x, y, w, h } = getRect(o);
+    return [[x, y], [x + w, y], [x, y + h], [x + w, y + h]];
+  }
+
+  function toCanvas(e) {
+    const r   = EC.getBoundingClientRect();
+    const src = e.touches ? e.touches[0] : e;
+    return [
+      (src.clientX - r.left) * (TEX_W / r.width),
+      (src.clientY - r.top)  * (TEX_H / r.height),
+    ];
+  }
+
+  function hitCornerOf(o, cx, cy) {
+    return corners(o).findIndex(([hx, hy]) =>
+      Math.abs(cx - hx) < HANDLE && Math.abs(cy - hy) < HANDLE);
+  }
+
+  function hitObject(o, cx, cy) {
+    const { x, y, w, h } = getRect(o);
+    return cx >= x && cx <= x + w && cy >= y && cy <= y + h;
+  }
+
+  /* ═══════════════════════════════════════════════
+     QR-AWARE SNAP POSITIONS
+  ═══════════════════════════════════════════════ */
+  function getSnapX(side) {
+    const qr = objects.find(o => o.type === 'qr');
+    if (qr) {
+      const qrL = TEX_W / 2 - qr.size / 2;
+      const qrR = TEX_W / 2 + qr.size / 2;
+      return side === 'L' ? qrL / 2 : qrR + (TEX_W - qrR) / 2;
+    }
+    return side === 'L' ? TEX_W / 4 : TEX_W * 3 / 4;
+  }
+
+  /* ═══════════════════════════════════════════════
+     RENDER EDITOR (texture canvas — no guide labels)
+  ═══════════════════════════════════════════════ */
+  function renderEditor() {
+    ectx.clearRect(0, 0, TEX_W, TEX_H);
+    ectx.fillStyle = bgColor;
+    ectx.fillRect(0, 0, TEX_W, TEX_H);
+
+    const drawObj = (o, isSel) => {
+      const { x, y, w, h } = getRect(o);
+      ectx.save();
+      ectx.globalAlpha = o.opacity;
+
+      if (o.type === 'text') {
+        ectx.font = `700 ${o.fontSize}px Inter, Arial, sans-serif`;
+        ectx.fillStyle = o.color || '#000000';
+        ectx.textAlign = 'center';
+        ectx.textBaseline = 'middle';
+        ectx.fillText(o.text, o.x, o.y);
+      } else if (o.type === 'qr') {
+        ectx.drawImage(o.qrCanvas, x, y, w, h);
+      } else {
+        // image / fullDesign
+        if (o.flipH || o.flipV) {
+          ectx.translate(x + w / 2, y + h / 2);
+          ectx.scale(o.flipH ? -1 : 1, o.flipV ? -1 : 1);
+          ectx.drawImage(o.img, -w / 2, -h / 2, w, h);
+        } else {
+          ectx.drawImage(o.img, x, y, w, h);
+        }
+      }
+      ectx.restore();
+
+      if (isSel) {
+        ectx.strokeStyle = '#4ca706';
+        ectx.lineWidth = 4;
+        ectx.setLineDash([]);
+        ectx.strokeRect(x - 2, y - 2, w + 4, h + 4);
+        corners(o).forEach(([hx, hy]) => {
+          ectx.fillStyle = '#4ca706';
+          ectx.beginPath();
+          ectx.roundRect(hx - HANDLE / 2, hy - HANDLE / 2, HANDLE, HANDLE, 5);
+          ectx.fill();
+          ectx.fillStyle = '#fff';
+          ectx.beginPath();
+          ectx.roundRect(hx - HANDLE / 2 + 6, hy - HANDLE / 2 + 6, HANDLE - 12, HANDLE - 12, 3);
+          ectx.fill();
+        });
+      }
+    };
+
+    objects.forEach((o, i) => { if (i !== selected) drawObj(o, false); });
+    if (selected >= 0) drawObj(objects[selected], true);
+
+    document.getElementById('editorEmpty').style.display = objects.length ? 'none' : 'flex';
+    updateEmptyStateOverlay();
+  }
+
+  /* ═══════════════════════════════════════════════
+     GUIDE OVERLAY (separate canvas — NOT in texture)
+  ═══════════════════════════════════════════════ */
+  function renderGuides() {
+    const dw = GC.clientWidth, dh = GC.clientHeight;
+    if (!dw || !dh) return;
+    GC.width = dw; GC.height = dh;
+    const sx = dw / TEX_W, sy = dh / TEX_H;
+
+    gctx.clearRect(0, 0, dw, dh);
+
+    const MID = dw / 2;
+    // Dashed divider
+    gctx.save();
+    gctx.setLineDash([14, 9]);
+    gctx.strokeStyle = 'rgba(0,0,0,.14)';
+    gctx.lineWidth = 2;
+    gctx.beginPath(); gctx.moveTo(MID, 0); gctx.lineTo(MID, dh); gctx.stroke();
+    gctx.setLineDash([]);
+
+    // Zone labels
+    const fs = Math.max(10, Math.round(38 * sx));
+    gctx.globalAlpha = 0.16;
+    gctx.font = `bold ${fs}px Inter, Arial, sans-serif`;
+    gctx.fillStyle = '#1a3c2c';
+    gctx.textAlign = 'center';
+    gctx.textBaseline = 'middle';
+    gctx.fillText('ANA E PARË',  MID / 2,       dh / 2);
+    gctx.fillText('ANA E DYTË', MID + MID / 2, dh / 2);
+    gctx.globalAlpha = 1;
+
+    // Snap crosshairs (QR-aware)
+    const qr = objects.find(o => o.type === 'qr');
+    let leftX, rightX;
+    if (qr) {
+      const qrHalfPx = (qr.size / TEX_W) * dw / 2;
+      leftX  = (MID - qrHalfPx) / 2;
+      rightX = MID + qrHalfPx + (dw - MID - qrHalfPx) / 2;
+    } else {
+      leftX = dw / 4; rightX = dw * 3 / 4;
+    }
+    [leftX, rightX].forEach(zx => {
+      const zy = dh / 2;
+      gctx.globalAlpha = 0.26;
+      gctx.strokeStyle = '#2e7d22';
+      gctx.lineWidth = 2;
+      gctx.setLineDash([8, 6]);
+      gctx.beginPath(); gctx.moveTo(zx - 36, zy); gctx.lineTo(zx + 36, zy); gctx.stroke();
+      gctx.beginPath(); gctx.moveTo(zx, zy - 22); gctx.lineTo(zx, zy + 22); gctx.stroke();
+      gctx.setLineDash([]);
+      gctx.globalAlpha = 0.42;
+      gctx.fillStyle = '#2e7d22';
+      gctx.beginPath(); gctx.arc(zx, zy, 4, 0, Math.PI * 2); gctx.fill();
+      gctx.globalAlpha = 1;
+    });
+    gctx.restore();
+  }
+
+  /* ═══════════════════════════════════════════════
+     TOOLBAR STATE
+  ═══════════════════════════════════════════════ */
+  /* ── Empty-state overlay (class-based so CSS transition plays) ── */
+  function updateEmptyStateOverlay() {
+    const overlay = document.getElementById('cup3dEmptyState');
+    if (!overlay) return;
+    syncEditorState();
+    if (!hasPrimaryUpload()) {
+      overlay.classList.remove('hidden');
+    } else {
+      overlay.classList.add('hidden');
+    }
+  }
+
+  // Quick upload buttons inside the empty-state card
+  const cup3dLogoUpload = document.getElementById('cup3dLogoUpload');
+  if (cup3dLogoUpload) {
+    cup3dLogoUpload.addEventListener('click', () => {
+      designUploadInput.click();
+    });
+  }
+  const cup3dDesignUpload = document.getElementById('cup3dDesignUpload');
+  if (cup3dDesignUpload) {
+    cup3dDesignUpload.addEventListener('click', () => {
+      fullDesignUploadInput.click();
+    });
+  }
+
+  const tbBtns = ['btnFlipH','btnFlipV','btnCenterL','btnCenterR','btnCenterV','btnDuplicate','btnDelete','opacitySlider'];
+
+  function syncToolbar() {
+    const hasSel = selected >= 0;
+    const o = selObj();
+    tbBtns.forEach(id => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      // Flip buttons only for image objects
+      if ((id === 'btnFlipH' || id === 'btnFlipV') && o && o.type !== 'image') {
+        el.disabled = true;
+      } else if (id === 'btnDuplicate' && o && o.type === 'fullDesign') {
+        el.disabled = true;
+      } else {
+        el.disabled = !hasSel;
+      }
+    });
+    if (hasSel && o) {
+      const v = Math.round(o.opacity * 100);
+      document.getElementById('opacitySlider').value = v;
+      document.getElementById('opacityVal').textContent = v + '%';
+    }
+    syncMobileSizeControl();
+  }
+
+  /* ═══════════════════════════════════════════════
+     MOUSE INTERACTION
+  ═══════════════════════════════════════════════ */
+  let mode = null;
+  let dragSX, dragSY, startX, startY;
+  let resizeStartDist, resizeStartScale;
+  let ignoreNextCanvasClick = false;
+
+  EC.addEventListener('mousedown', e => {
+    if (ignoreNextCanvasClick) { ignoreNextCanvasClick = false; return; }
+    const [cx, cy] = toCanvas(e);
+
+    if (selected >= 0) {
+      const ci = hitCornerOf(objects[selected], cx, cy);
+      if (ci >= 0) {
+        mode = 'resize';
+        resizeStartDist  = Math.hypot(cx - objects[selected].x, cy - objects[selected].y);
+        resizeStartScale = objects[selected].scale ?? objects[selected].size;
+        return;
+      }
+    }
+
+    let hit = -1;
+    for (let i = objects.length - 1; i >= 0; i--) {
+      if (hitObject(objects[i], cx, cy)) { hit = i; break; }
+    }
+
+    if (hit >= 0) {
+      selected = hit;
+      mode = 'drag';
+      dragSX = cx; dragSY = cy;
+      startX = objects[hit].x; startY = objects[hit].y;
+      syncToolbar();
+      renderEditor();
+    } else {
+      selected = -1;
+      syncToolbar();
+      renderEditor();
+    }
+  });
+
+  document.addEventListener('mousemove', e => {
+    const [cx, cy] = toCanvas(e);
+    if (!mode) {
+      if (e.target === EC) {
+        if (selected >= 0 && hitCornerOf(objects[selected], cx, cy) >= 0) {
+          EC.style.cursor = 'nwse-resize';
+        } else {
+          let onAny = false;
+          for (let i = objects.length - 1; i >= 0; i--) {
+            if (hitObject(objects[i], cx, cy)) { onAny = true; break; }
+          }
+          EC.style.cursor = onAny ? 'grab' : 'default';
+        }
+      }
+      return;
+    }
+    const o = objects[selected];
+    if (!o) return;
+    if (mode === 'drag') {
+      o.x = startX + (cx - dragSX);
+      o.y = startY + (cy - dragSY);
+    } else {
+      if (o.type === 'qr') {
+        const d = Math.hypot(cx - o.x, cy - o.y) * 2;
+        o.size = Math.max(200, d);
+      } else {
+        const d = Math.hypot(cx - o.x, cy - o.y);
+        o.scale = Math.max(0.01, resizeStartScale * (d / Math.max(1, resizeStartDist)));
+      }
+    }
+    renderEditor();
+    renderGuides();
+  });
+
+  document.addEventListener('mouseup', () => { mode = null; EC.style.cursor = 'default'; });
+
+  /* ═══════════════════════════════════════════════
+     LAYERS PANEL
+  ═══════════════════════════════════════════════ */
+  function renderLayers() {
+    const list = document.getElementById('layersList');
+    list.innerHTML = '';
+    if (!objects.length) {
+      list.innerHTML = '<div class="layers-empty">Asnjë shtresë</div>';
+      return;
+    }
+    for (let i = objects.length - 1; i >= 0; i--) {
+      const o = objects[i];
+      const item = document.createElement('div');
+      item.className = 'layer-item' + (i === selected ? ' active' : '');
+
+      const thumb = document.createElement('canvas');
+      thumb.className = 'layer-thumb';
+      thumb.width = 40; thumb.height = 20;
+      const tc = thumb.getContext('2d');
+      tc.fillStyle = bgColor;
+      tc.fillRect(0, 0, 40, 20);
+      if ((o.type === 'image' || o.type === 'fullDesign') && o.img) {
+        const ar = o.img.naturalWidth / o.img.naturalHeight;
+        let tw = 40, th = 20;
+        if (ar > 2) { th = tw / ar; } else { tw = th * ar; }
+        tc.drawImage(o.img, (40 - tw) / 2, (20 - th) / 2, tw, th);
+      } else if (o.type === 'qr' && o.qrCanvas) {
+        tc.drawImage(o.qrCanvas, 4, 2, 16, 16);
+      } else if (o.type === 'text') {
+        tc.fillStyle = o.color || '#000';
+        tc.font = 'bold 10px Inter, Arial, sans-serif';
+        tc.textAlign = 'left';
+        tc.textBaseline = 'middle';
+        tc.fillText('T  ' + o.text.slice(0, 8), 2, 10);
+      }
+
+      const nameEl = document.createElement('span');
+      nameEl.className = 'layer-name';
+      nameEl.textContent = o.type === 'qr'
+        ? 'QR Kod'
+        : o.type === 'text'
+          ? o.text.slice(0, 12) || 'Tekst'
+          : o.type === 'fullDesign'
+            ? 'Dizajn i Plotë'
+            : 'Imazh ' + (i + 1);
+
+      const actions = document.createElement('div');
+      actions.className = 'layer-actions';
+      const upBtn = document.createElement('button');
+      upBtn.className = 'layer-arrow'; upBtn.textContent = '▲'; upBtn.title = 'Lëviz lart';
+      upBtn.disabled = i === objects.length - 1;
+      upBtn.onclick = ev => { ev.stopPropagation(); moveLayer(i, 1); };
+      const dnBtn = document.createElement('button');
+      dnBtn.className = 'layer-arrow'; dnBtn.textContent = '▼'; dnBtn.title = 'Lëviz poshtë';
+      dnBtn.disabled = i === 0;
+      dnBtn.onclick = ev => { ev.stopPropagation(); moveLayer(i, -1); };
+      actions.append(upBtn, dnBtn);
+      item.append(thumb, nameEl, actions);
+
+      item.addEventListener('click', e => {
+        e.stopPropagation();
+        ignoreNextCanvasClick = true;
+        selected = i;
+        syncToolbar();
+        renderEditor();
+        renderLayers();
+      });
+      list.appendChild(item);
+    }
+  }
+
+  function moveLayer(idx, dir) {
+    const target = idx + dir;
+    if (target < 0 || target >= objects.length) return;
+    [objects[idx], objects[target]] = [objects[target], objects[idx]];
+    if (selected === idx) selected = target;
+    else if (selected === target) selected = idx;
+    renderEditor();
+    renderLayers();
+  }
+
+  /* ═══════════════════════════════════════════════
+     QR CODE GENERATION
+  ═══════════════════════════════════════════════ */
+  function generateQR(url) {
+    if (!url || !url.trim()) { alert('Vendos një link të vlefshëm.'); return; }
+    const QR_SIZE = 320; // pixels on texture — ~28mm at print res, scannable
+    const tmp = document.createElement('div');
+    tmp.style.cssText = 'position:absolute;left:-9999px;';
+    document.body.appendChild(tmp);
+    try {
+      new QRCode(tmp, { text: url.trim(), width: QR_SIZE, height: QR_SIZE, colorDark: '#000000', colorLight: '#ffffff' });
+    } catch(err) {
+      document.body.removeChild(tmp);
+      alert('Gabim duke gjeneruar QR kodin.'); return;
+    }
+    const qrCanvas = tmp.querySelector('canvas');
+    if (!qrCanvas) { document.body.removeChild(tmp); alert('Gabim duke gjeneruar QR kodin.'); return; }
+
+    // Remove existing QR if any
+    const existingQRIdx = objects.findIndex(o => o.type === 'qr');
+    if (existingQRIdx >= 0) objects.splice(existingQRIdx, 1);
+
+    objects.push({ type: 'qr', qrCanvas, size: QR_SIZE, x: TEX_W / 2, y: TEX_H / 2, opacity: 1 });
+    selected = objects.length - 1;
+
+    // Auto-reposition logo objects to QR-aware snap points
+    objects.forEach((o, i) => {
+      if (i === selected || o.type !== 'image') return;
+      const snapL = getSnapX('L'), snapR = getSnapX('R');
+      const distL = Math.abs(o.x - TEX_W / 4), distR = Math.abs(o.x - TEX_W * 3 / 4);
+      if (distL < distR && distL < 300) o.x = snapL;
+      else if (distR < 300) o.x = snapR;
+    });
+
+    document.body.removeChild(tmp);
+    syncToolbar();
+    renderEditor();
+    renderGuides();
+    renderLayers();
+    controls.autoRotate = false;
+  }
+
+  /* ═══════════════════════════════════════════════
+     TEXT OBJECTS
+  ═══════════════════════════════════════════════ */
+  function addTextObject(text, color, side) {
+    if (!text.trim()) { alert('Shkruaj diçka para se ta shtosh.'); return; }
+    const fontSize = Math.round(TEX_H * 0.052); // small — ~43px on texture (~4mm print)
+    const textY = Math.round(TEX_H * 0.84);     // near bottom of cup
+    const positions = {
+      left:  [{ x: getSnapX('L'), y: textY }],
+      right: [{ x: getSnapX('R'), y: textY }],
+      both:  [{ x: getSnapX('L'), y: textY }, { x: getSnapX('R'), y: textY }],
+    };
+    (positions[side] || positions.both).forEach(({ x, y }) => {
+      objects.push({ type: 'text', text: text.trim(), x, y, fontSize, color, opacity: 1 });
+    });
+    selected = objects.length - 1;
+    syncToolbar();
+    renderEditor();
+    renderGuides();
+    renderLayers();
+    controls.autoRotate = false;
+  }
+
+  /* ═══════════════════════════════════════════════
+     DESKTOP TOOLBAR ACTIONS
+  ═══════════════════════════════════════════════ */
+  // Background color
+  document.getElementById('bgColorPicker').addEventListener('input', function () {
+    bgColor = this.value; renderEditor();
+  });
+
+  // QR panel toggle
+  document.getElementById('btnQR').addEventListener('click', () => {
+    document.getElementById('qrPanel').classList.toggle('open');
+    document.getElementById('textPanel').classList.remove('open');
+  });
+  document.getElementById('qrGenBtn').addEventListener('click', () => {
+    generateQR(document.getElementById('qrUrlInput').value);
+    document.getElementById('qrPanel').classList.remove('open');
+    document.getElementById('qrUrlInput').value = '';
+  });
+  document.getElementById('qrCancelBtn').addEventListener('click', () => {
+    document.getElementById('qrPanel').classList.remove('open');
+  });
+
+  // Text panel toggle
+  document.getElementById('btnAddText').addEventListener('click', () => {
+    document.getElementById('textPanel').classList.toggle('open');
+    document.getElementById('qrPanel').classList.remove('open');
+  });
+  document.getElementById('textAddBtn').addEventListener('click', () => {
+    const txt   = document.getElementById('textInput').value;
+    const color = document.getElementById('textColorPicker').value;
+    const side  = document.getElementById('textSideSelect').value;
+    addTextObject(txt, color, side);
+    document.getElementById('textPanel').classList.remove('open');
+    document.getElementById('textInput').value = '';
+  });
+  document.getElementById('textCancelBtn').addEventListener('click', () => {
+    document.getElementById('textPanel').classList.remove('open');
+  });
+  document.getElementById('textInput').addEventListener('keydown', e => {
+    if (e.key === 'Enter') document.getElementById('textAddBtn').click();
+  });
+
+  // Flip, center, duplicate, delete, opacity, clear
+  document.getElementById('btnFlipH').addEventListener('click', () => { const o = selObj(); if (!o || o.type !== 'image') return; o.flipH = !o.flipH; renderEditor(); });
+  document.getElementById('btnFlipV').addEventListener('click', () => { const o = selObj(); if (!o || o.type !== 'image') return; o.flipV = !o.flipV; renderEditor(); });
+  document.getElementById('btnCenterL').addEventListener('click', () => { const o = selObj(); if (!o) return; o.x = getSnapX('L'); renderEditor(); renderGuides(); });
+  document.getElementById('btnCenterR').addEventListener('click', () => { const o = selObj(); if (!o) return; o.x = getSnapX('R'); renderEditor(); renderGuides(); });
+  document.getElementById('btnCenterV').addEventListener('click', () => { const o = selObj(); if (!o) return; o.y = TEX_H / 2; renderEditor(); });
+  document.getElementById('btnDuplicate').addEventListener('click', () => {
+    const o = selObj(); if (!o || o.type === 'qr') return;
+    objects.push({ ...o, x: o.x + 36, y: o.y + 36 });
+    selected = objects.length - 1;
+    syncToolbar(); renderEditor(); renderLayers();
+  });
+  document.getElementById('btnDelete').addEventListener('click', () => {
+    if (selected < 0) return;
+    objects.splice(selected, 1);
+    selected = objects.length > 0 ? objects.length - 1 : -1;
+    syncToolbar(); renderEditor(); renderGuides(); renderLayers();
+  });
+  document.getElementById('opacitySlider').addEventListener('input', function () {
+    const o = selObj(); if (!o) return;
+    o.opacity = parseInt(this.value) / 100;
+    document.getElementById('opacityVal').textContent = this.value + '%';
+    renderEditor();
+  });
+  document.getElementById('btnClearAll').addEventListener('click', () => {
+    if (!objects.length) return;
+    if (!confirm('Fshi të gjitha elementet nga editori?')) return;
+    objects = []; selected = -1;
+    syncToolbar(); renderEditor(); renderGuides(); renderLayers();
+  });
+
+  /* ═══════════════════════════════════════════════
+     DESKTOP FILE UPLOAD
+  ═══════════════════════════════════════════════ */
+  designUploadInput.addEventListener('change', e => {
+    const files = Array.from(e.target.files);
+    if (!files.length) return;
+
+    if (mobileMode.matches) {
+      const file = files[0];
+      mobileUploadBtn.disabled = true;
+      mobileUploadBtn.textContent = 'Po vendosim logon...';
+      mobileUploadStatus.textContent = '';
+      const url = URL.createObjectURL(file);
+      const image = new Image();
+      image.onload = () => { applySimpleMobileLogo(image); mobileUploadBtn.disabled = false; URL.revokeObjectURL(url); };
+      image.onerror = () => { mobileUploadBtn.disabled = false; syncEditorState(); mobileUploadStatus.textContent = 'Skedari nuk u lexua.'; URL.revokeObjectURL(url); };
+      image.src = url;
+      e.target.value = '';
+      return;
+    }
+
+    const file = files[0];
+    if (desktopLogoUploadBtn) {
+      desktopLogoUploadBtn.disabled = true;
+      desktopLogoUploadBtn.textContent = 'Po vendosim logon...';
+    }
+    const url = URL.createObjectURL(file);
+    const image = new Image();
+    image.onload = () => {
+      applySimpleDesktopLogo(image);
+      if (desktopLogoUploadBtn) desktopLogoUploadBtn.disabled = false;
+      URL.revokeObjectURL(url);
+    };
+    image.onerror = () => {
+      if (desktopLogoUploadBtn) {
+        desktopLogoUploadBtn.disabled = false;
+        syncEditorState();
+      }
+      URL.revokeObjectURL(url);
+    };
+    image.src = url;
+    e.target.value = '';
+  });
+
+  /* ═══════════════════════════════════════════════
+     MOBILE LOGIC
+  ═══════════════════════════════════════════════ */
+  function isSimpleMobileMode() { return mobileMode.matches; }
+
+  function fitScaleForCenteredLogo(image) {
+    const maxW = TEX_W * 0.22, maxH = TEX_H * 0.42;
+    return Math.min(maxW / image.naturalWidth, maxH / image.naturalHeight);
+  }
+
+  function applySimpleMobileLogo(image) {
+    applyTwoSidedLogo(image);
+    mobileUploadStatus.textContent = 'Logoja u vendos automatikisht në të dy anët.';
+    mobileFullDesignStatus.textContent = '';
+  }
+
+  function applySimpleDesktopLogo(image) {
+    applyTwoSidedLogo(image);
+  }
+
+  function applyTwoSidedLogo(image) {
+    const scale = fitScaleForCenteredLogo(image);
+    mobileBaseScale = scale;
+    setLogoSizeControlValue(100, false);
+    // Replace existing image/full design objects, keep text/QR
+    const kept = objects.filter(o => o.type !== 'image' && o.type !== 'fullDesign');
+    objects = [
+      { type: 'image', img: image, x: TEX_W / 4, y: TEX_H / 2, scale, opacity: 1, flipH: false, flipV: false },
+      { type: 'image', img: image, x: TEX_W * 3 / 4, y: TEX_H / 2, scale, opacity: 1, flipH: false, flipV: false },
+      ...kept,
+    ];
+    selected = -1;
+    controls.autoRotate = false;
+    if (mobileAdvancedWrap) mobileAdvancedWrap.open = false;
+    if (advancedToolsWrap) advancedToolsWrap.open = false;
+    syncToolbar(); renderEditor(); renderLayers();
+  }
+
+  function fitScaleForFullDesign(image) {
+    return Math.min(TEX_W / image.naturalWidth, TEX_H / image.naturalHeight);
+  }
+
+  function applyFullWrapDesign(image) {
+    const scale = fitScaleForFullDesign(image);
+    mobileBaseScale = 0;
+    setLogoSizeControlValue(100, true);
+    objects = [
+      { type: 'fullDesign', img: image, x: TEX_W / 2, y: TEX_H / 2, scale, opacity: 1, flipH: false, flipV: false }
+    ];
+    selected = -1;
+    controls.autoRotate = false;
+    if (mobileAdvancedWrap) mobileAdvancedWrap.open = false;
+    if (advancedToolsWrap) advancedToolsWrap.open = false;
+    syncToolbar();
+    renderEditor();
+    renderLayers();
+    mobileFullDesignStatus.textContent = 'Dizajni i plotë u vendos mbi të gjithë sipërfaqen e kupës.';
+    mobileUploadStatus.textContent = '';
+  }
+
+  function syncMobileSizeControl() {
+    const hasImg = objects.some(o => o.type === 'image');
+    const hasFullDesign = objects.some(o => o.type === 'fullDesign');
+    if (mobileSizeSlider) mobileSizeSlider.disabled = !hasImg;
+    if (desktopSizeSlider) desktopSizeSlider.disabled = !hasImg;
+    if (!hasImg) {
+      setLogoSizeControlValue(100, true);
+      mobileBaseScale = 0;
+      mobileUploadStatus.textContent = '';
+    }
+    if (!hasFullDesign) {
+      mobileFullDesignStatus.textContent = '';
+    }
+    syncEditorState();
+  }
+
+  function setLogoSizeControlValue(value, disabled) {
+    const stringValue = String(value);
+    if (mobileSizeSlider) {
+      mobileSizeSlider.value = stringValue;
+      mobileSizeSlider.disabled = disabled;
+    }
+    if (mobileSizeValue) mobileSizeValue.textContent = stringValue + '%';
+    if (desktopSizeSlider) {
+      desktopSizeSlider.value = stringValue;
+      desktopSizeSlider.disabled = disabled;
+    }
+    if (desktopSizeValue) desktopSizeValue.textContent = stringValue + '%';
+  }
+
+  function applyLogoSizeValue(value) {
+    if (!objects.length || !mobileBaseScale) return;
+    const factor = parseInt(value, 10) / 100;
+    setLogoSizeControlValue(value, false);
+    objects.filter(o => o.type === 'image').forEach(o => { o.scale = mobileBaseScale * factor; });
+    renderEditor();
+  }
+
+  // Mobile upload button triggers file input
+  mobileToolTabs.forEach(button => {
+    button.addEventListener('click', () => {
+      setMobilePanel(button.dataset.mobilePanel);
+    });
+  });
+
+  desktopToolTabs.forEach(button => {
+    button.addEventListener('click', () => {
+      setDesktopPanel(button.dataset.desktopPanel);
+    });
+  });
+
+  document.getElementById('mobileUploadBtn').addEventListener('click', () => {
+    designUploadInput.click();
+  });
+
+  mobileFullDesignBtn.addEventListener('click', () => {
+    fullDesignUploadInput.click();
+  });
+
+  if (desktopLogoUploadBtn) {
+    desktopLogoUploadBtn.addEventListener('click', () => {
+      designUploadInput.click();
+    });
+  }
+
+  if (desktopDesignUploadBtn) {
+    desktopDesignUploadBtn.addEventListener('click', () => {
+      fullDesignUploadInput.click();
+    });
+  }
+
+  // Desktop "Ngarko Dizajnin e Plotë" button
+  const desktopFullDesignBtn = document.getElementById('desktopFullDesignBtn');
+  if (desktopFullDesignBtn) {
+    desktopFullDesignBtn.addEventListener('click', () => {
+      fullDesignUploadInput.click();
+    });
+  }
+
+  // Mobile clear
+  document.getElementById('mobileClearBtn').addEventListener('click', () => {
+    objects = []; selected = -1;
+    controls.autoRotate = true;
+    if (mobileAdvancedWrap) mobileAdvancedWrap.open = false;
+    syncToolbar(); renderEditor(); renderLayers();
+  });
+
+  // Mobile size slider
+  mobileSizeSlider.addEventListener('input', () => {
+    applyLogoSizeValue(mobileSizeSlider.value);
+  });
+
+  if (desktopSizeSlider) {
+    desktopSizeSlider.addEventListener('input', () => {
+      applyLogoSizeValue(desktopSizeSlider.value);
+    });
+  }
+
+  // Mobile text templates
+  document.querySelectorAll('.mtemplate-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.mtemplate-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const inp = document.getElementById('mobileTextInput');
+      inp.value = btn.dataset.tpl;
+      inp.focus();
+      inp.setSelectionRange(inp.value.length, inp.value.length);
+    });
+  });
+
+  // Mobile add text
+  document.getElementById('mobileAddTextBtn').addEventListener('click', () => {
+    const txt   = document.getElementById('mobileTextInput').value;
+    const color = document.getElementById('mobileTextColor').value;
+    const side  = document.getElementById('mobileTextSide').value;
+    addTextObject(txt, color, side);
+    document.getElementById('mobileTextInput').value = '';
+  });
+
+  // Mobile QR
+  document.getElementById('mobileAddQrBtn').addEventListener('click', () => {
+    generateQR(document.getElementById('mobileQrInput').value);
+    document.getElementById('mobileQrInput').value = '';
+  });
+
+  fullDesignUploadInput.addEventListener('change', e => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    mobileFullDesignBtn.disabled = true;
+    mobileFullDesignBtn.textContent = 'Po vendosim dizajnin...';
+    mobileFullDesignStatus.textContent = '';
+    if (desktopDesignUploadBtn) {
+      desktopDesignUploadBtn.disabled = true;
+      desktopDesignUploadBtn.textContent = 'Po vendosim dizajnin...';
+    }
+    const url = URL.createObjectURL(file);
+    const image = new Image();
+    image.onload = () => {
+      applyFullWrapDesign(image);
+      mobileFullDesignBtn.disabled = false;
+      if (desktopDesignUploadBtn) desktopDesignUploadBtn.disabled = false;
+      URL.revokeObjectURL(url);
+    };
+    image.onerror = () => {
+      mobileFullDesignBtn.disabled = false;
+      if (desktopDesignUploadBtn) desktopDesignUploadBtn.disabled = false;
+      syncEditorState();
+      mobileFullDesignStatus.textContent = 'Skedari i dizajnit nuk u lexua.';
+      URL.revokeObjectURL(url);
+    };
+    image.src = url;
+    e.target.value = '';
+  });
+
+  // Order preview
+  function persistCupDesignForOrder() {
+    if (!objects.length) return false;
+    try {
+      sessionStorage.setItem('era-cup-order-preview', JSON.stringify({
+        product: 'kupa-pasta',
+        designImage: EC.toDataURL('image/png'),
+        layeredSvg: buildLayeredSvg(),
+        designJson: JSON.stringify(buildDesignExportData(), null, 2),
+        savedAt: Date.now()
+      }));
+      return true;
+    } catch (e) {
+      console.error('Failed to persist cup design export package:', e);
+      return false;
+    }
+  }
+
+  orderPreviewBtn.addEventListener('click', e => {
+    if (!persistCupDesignForOrder()) return;
+    e.preventDefault();
+    window.location.href = orderPreviewBtn.getAttribute('href');
+  });
+
+  // Initial render
+  syncToolbar();
+  renderEditor();
+  renderGuides();
+  renderLayers();
+  setMobilePanel('logo');
+  showMobileTouchTip();
+</script>
+
+
+<!-- ── 2 SIZES COMPARISON ─────────────────────────────────── -->
+<section class="section" style="background:var(--gray-light);padding-top:72px;">
+  <div class="container">
+    <div class="section-header text-center fade-in">
+      <span class="badge">2 Madhësi</span>
+      <h2>Zgjidhni Madhësinë e Duhur</h2>
+      <p>Dy madhësi të studiuara për pasta dhe pjata delivery — nga porcionet individuale tek ato familjare.</p>
+    </div>
+
+    <div class="sizes-grid">
+
+      <!-- 500ml – featured -->
+      <div class="size-card featured fade-in">
+        <div class="size-card-img">
+          <span class="popular-tag">Më e Popullarizuar</span>
+          <img src="assets/kupa-pasta.webp" alt="Kupa Pasta 500ml" />
+        </div>
+        <div class="size-card-body">
+          <div class="size-oz">500ml</div>
+          <div class="size-ml">Porcioni standard</div>
+          <h3>Kupa Pasta Standarde</h3>
+          <p>Ideale për pasta, rizoto dhe pjata delivery — porcioni perfekt për një person.</p>
+          <div class="size-uses">
+            <span class="use-tag">Pasta</span>
+            <span class="use-tag">Rizoto</span>
+            <span class="use-tag">Delivery</span>
+            <span class="use-tag">Min. 5,000 copë</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 750ml -->
+      <div class="size-card fade-in">
+        <div class="size-card-img">
+          <img src="assets/kupa-pasta.webp" alt="Kupa Pasta 750ml" />
+        </div>
+        <div class="size-card-body">
+          <div class="size-oz">750ml</div>
+          <div class="size-ml">Porcioni i madh</div>
+          <h3>Kupa Pasta e Madhe</h3>
+          <p>Për porcione familjare, kous-kous dhe pjata me shtesa — më shumë hapësirë, po aq stil.</p>
+          <div class="size-uses">
+            <span class="use-tag">Kous-kous</span>
+            <span class="use-tag">Bowl</span>
+            <span class="use-tag">Takeaway</span>
+            <span class="use-tag">Min. 5,000 copë</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="fade-in" style="margin-top:24px;padding:18px 22px;background:var(--green-light);border-radius:var(--radius);border-left:4px solid var(--green);">
+      <p style="font-size:.9rem;color:var(--green-darker);margin:0;">
+        <strong>Shënim:</strong> Çmimet ndryshojnë sipas sasisë, numrit të ngjyrave dhe kompleksitetit të dizajnit.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── FAQ ────────────────────────────────────────────────── -->
+<section class="section">
+  <div class="container" style="max-width:760px;">
+    <div class="section-header text-center fade-in">
+      <span class="badge" id="faqBadge">FAQ</span>
+      <h2 id="faqTitle">Pyetje të Shpeshta</h2>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <details style="background:var(--gray-light);border:1px solid var(--gray-mid);border-radius:var(--radius);overflow:hidden;" class="fade-in">
+        <summary style="padding:18px 22px;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;">
+          <span id="faqQ1">A mund të porosis të dyja madhësitë në të njëjtën porosi?</span>
+          <span style="color:var(--green);font-size:1.2rem;">+</span>
+        </summary>
+        <p id="faqA1" style="padding:0 22px 18px;color:var(--text-mid);font-size:.92rem;">Po, mund të kombinoni 500ml dhe 750ml në një porosi të vetme. Minimumi për secilën madhësi është 5,000 copë — ose 5,000 + 5,000 me ofertën tonë speciale.</p>
+      </details>
+
+      <details style="background:var(--gray-light);border:1px solid var(--gray-mid);border-radius:var(--radius);overflow:hidden;" class="fade-in">
+        <summary style="padding:18px 22px;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;">
+          <span id="faqQ2">Sa kohë zgjat prodhimi?</span>
+          <span style="color:var(--green);font-size:1.2rem;">+</span>
+        </summary>
+        <p id="faqA2" style="padding:0 22px 18px;color:var(--text-mid);font-size:.92rem;">Koha standarde e prodhimit është 7–14 ditë pune pas aprovimit të dizajnit. Ofrojmë shërbim express për porosite urgjente.</p>
+      </details>
+
+      <details style="background:var(--gray-light);border:1px solid var(--gray-mid);border-radius:var(--radius);overflow:hidden;" class="fade-in">
+        <summary style="padding:18px 22px;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;">
+          <span id="faqQ3">A janë kupat të sigurta për ushqime?</span>
+          <span style="color:var(--green);font-size:1.2rem;">+</span>
+        </summary>
+        <p id="faqA3" style="padding:0 22px 18px;color:var(--text-mid);font-size:.92rem;">Po, janë të certifikuara për kontakt me ushqim. Prodhohen nga karton foodgrade dhe janë të përshtatshme për pjata të nxehta.</p>
+      </details>
+
+      <details style="background:var(--gray-light);border:1px solid var(--gray-mid);border-radius:var(--radius);overflow:hidden;" class="fade-in">
+        <summary style="padding:18px 22px;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;">
+          <span id="faqQ4">A ofron ERA kapakë për kupat e pastave?</span>
+          <span style="color:var(--green);font-size:1.2rem;">+</span>
+        </summary>
+        <p id="faqA4" style="padding:0 22px 18px;color:var(--text-mid);font-size:.92rem;">Po, ofrojmë kapakë PET transparentë të kompatibël me të dyja madhësitë. Pyetni për çmimet dhe variantet.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── CTA BANNER ─────────────────────────────────────────── -->
+<section class="cta-banner">
+  <div class="container">
+    <h2 id="ctaTitle">Gati të Personalizoni Kupat e Pastave?</h2>
+    <p id="ctaSub">Na dërgo logon ose idenë dhe ta kthejmë me ofertë.</p>
+    <div class="cta-btns">
+      <a href="contact.html" class="btn btn-outline btn-lg" id="ctaBtn1">Kërko Ofertë Falas</a>
+      <a href="https://wa.me/38344113533" target="_blank" class="btn btn-lg" style="background:#25d366;color:#fff;border:none;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── FOOTER ─────────────────────────────────────────────── -->
+<div id="site-footer"></div>
+
+<div id="site-whatsapp"></div>
+
+<script src="js/main.js?v=13"></script>
+<script>
+  /* Size switcher for hero section */
+  const cupData = {
+    '500': { al: { cap: '500ml', use: 'Pasta, Rizoto, Delivery' },  en: { cap: '500ml', use: 'Pasta, Risotto, Delivery' } },
+    '750': { al: { cap: '750ml', use: 'Kous-kous, Bowl, Takeaway' }, en: { cap: '750ml', use: 'Couscous, Bowl, Takeaway' } }
+  };
+
+  function getActiveCupKey() {
+    const active = document.querySelector('.size-btn.active');
+    return active ? active.dataset.size : '500';
+  }
+
+  function switchCup(btn, imgSrc, badgeText) {
+    document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('cupHeroImg').src = imgSrc;
+    document.getElementById('cupBadge').textContent = badgeText;
+    const key = btn.dataset.size;
+    const lang = (typeof window.currentLang !== 'undefined' ? window.currentLang : null) ||
+                 localStorage.getItem('era-lang') || 'al';
+    document.getElementById('specCap').textContent = cupData[key][lang].cap;
+    document.getElementById('specUse').textContent = cupData[key][lang].use;
+  }
+
+  const sizeCardsGrid = document.querySelector('.sizes-grid');
+  const sizeCardsMobile = window.matchMedia('(max-width: 768px)');
+  let sizeCardsObserver = null;
+
+  function syncSizeCardsWhatsapp() {
+    if (sizeCardsObserver) {
+      sizeCardsObserver.disconnect();
+      sizeCardsObserver = null;
+    }
+    document.body.classList.remove('viewing-size-cards');
+    if (!sizeCardsGrid || !sizeCardsMobile.matches || !('IntersectionObserver' in window)) return;
+
+    sizeCardsObserver = new IntersectionObserver(entries => {
+      const visible = entries.some(entry => entry.isIntersecting);
+      document.body.classList.toggle('viewing-size-cards', visible);
+    }, { threshold: 0.08 });
+
+    sizeCardsObserver.observe(sizeCardsGrid);
+  }
+
+  syncSizeCardsWhatsapp();
+  sizeCardsMobile.addEventListener('change', syncSizeCardsWhatsapp);
+</script>
+
+<script>
+  /* ── Page-level bilingual translations ── */
+  const pageCopy = {
+    al: {
+      title: 'Kupa Pasta – ERA Print Pack',
+      description: 'Kupa letre për pasta, rizoto dhe pjata delivery me printim të personalizuar. 2 madhësi: 500ml dhe 750ml. Prodhuar në Kosovë nga ERA Print Pack.',
+      breadcrumbCurrent: 'Kupa Pasta',
+      heroBadge: 'Kupa Pasta',
+      heroTitle: 'Kupa Pasta me Dizajn<br/><span class="text-green">të Personalizuar</span>',
+      heroLead: 'Kupa letre cilësore me kapak PET — ideale për pasta, rizoto, kous-kous dhe pjata delivery. Me printim offset të plotë: logoja dhe dizajni juaj, direkt mbi kupën.',
+      specLabelCap: 'Kapaciteti',
+      specLabelUse: 'Ideal për',
+      specLabelMin: 'Porosia Minimale',
+      specMin: '5,000 copë',
+      editorIntroBadge: 'Preview i drejtpërdrejtë — pa regjistrim',
+      editorIntroTitle: 'Shiko logon tënde<br>në kupë — <span>në 3D</span>',
+      editorIntroBody: 'Ngarko logon dhe shihe menjëherë mbi kupën e pastave. Pa angazhim — vetëm një parashikim, jo porosi.',
+      editorIntroAlt: 'Ose <a href="https://wa.me/38344113533?text=P%C3%ABrsh%C3%ABndetje%21%20M%C3%AB%20intereson%20Kupa%20Pasta.%20Ja%20logoja%20ime%3A" target="_blank">na shkruaj në WhatsApp →</a> nëse preferon ta bëjmë ne dizajnin për ty.',
+      hiwStep1Title: 'Na trego',      hiwStep1Body: 'Dërgo logon ose idenë',
+      hiwStep2Title: 'Ne dizajnojmë', hiwStep2Body: 'Përgatitje profesionale',
+      hiwStep3Title: 'Ti merr',       hiwStep3Body: '7–14 ditë pune',
+      cupEmptyTitle: 'Ngarko logon tënde',
+      cupEmptySub:   'Shihe direkt në 3D — pa regjistrim, pa angazhim.',
+      finalCtaTitle: 'Të pëlqen ajo që sheh?',
+      finalCtaBody:  'Na shkruaj — ofertë në të njëjtën ditë.',
+      finalCtaBtn1:  'Vazhdo me porosi',
+      finalCtaBtn2:  'Pyet në WhatsApp',
+      minOrderTitle: 'Sasia minimale e porosisë',
+      minOrderList:  '<li><strong>5,000 copë</strong> për 500ml ose 750ml</li>',
+      offerBadge:    'Ofertë speciale',
+      offerBody:     '<strong>5,000 copë × 500ml + 5,000 copë × 750ml</strong> në një porosi të vetme — ideale për restorantet që ofrojnë dy madhësi porcioni.',
+      minOrderNote:  'Për sasi më të vogla ose kombinime të tjera, na shkruaj në WhatsApp — gjejmë zgjidhje, sidomos për porosi testimi.',
+      faqBadge:  'FAQ',
+      faqTitle:  'Pyetje të Shpeshta',
+      faqQ1: 'A mund të porosis të dyja madhësitë në të njëjtën porosi?',
+      faqA1: 'Po, mund të kombinoni 500ml dhe 750ml në një porosi të vetme. Minimumi për secilën madhësi është 5,000 copë — ose 5,000 + 5,000 me ofertën tonë speciale.',
+      faqQ2: 'Sa kohë zgjat prodhimi?',
+      faqA2: 'Koha standarde e prodhimit është 7–14 ditë pune pas aprovimit të dizajnit. Ofrojmë shërbim express për porosite urgjente.',
+      faqQ3: 'A janë kupat të sigurta për ushqime?',
+      faqA3: 'Po, janë të certifikuara për kontakt me ushqim. Prodhohen nga karton foodgrade dhe janë të përshtatshme për pjata të nxehta.',
+      faqQ4: 'A ofron ERA kapakë për kupat e pastave?',
+      faqA4: 'Po, ofrojmë kapakë PET transparentë të kompatibël me të dyja madhësitë. Pyetni për çmimet dhe variantet.',
+      ctaTitle: 'Gati të Personalizoni Kupat e Pastave?',
+      ctaSub:   'Na dërgo logon ose idenë dhe ta kthejmë me ofertë.',
+      ctaBtn1:  'Kërko Ofertë Falas',
+    },
+    en: {
+      title: 'Pasta Bowls – ERA Print Pack',
+      description: 'Custom-printed paper pasta bowls in 2 sizes: 500ml and 750ml. Ideal for pasta, risotto, couscous and food delivery. Made in Kosovo.',
+      breadcrumbCurrent: 'Pasta Bowls',
+      heroBadge: 'Pasta Bowls',
+      heroTitle: 'Pasta Bowls with a<br/><span class="text-green">Custom Design</span>',
+      heroLead: 'Premium paper bowls with PET lid — ideal for pasta, risotto, couscous and delivery. Full offset printing: your logo and design, directly on the bowl.',
+      specLabelCap: 'Capacity',
+      specLabelUse: 'Best for',
+      specLabelMin: 'Minimum Order',
+      specMin: '5,000 pieces',
+      editorIntroBadge: 'Live preview — no sign-up needed',
+      editorIntroTitle: 'See your logo<br>on the bowl — <span>in 3D</span>',
+      editorIntroBody: 'Upload your logo and see it instantly on the pasta bowl. No commitment — just a preview, not an order.',
+      editorIntroAlt: 'Or <a href="https://wa.me/38344113533?text=Hello%21%20I%27m%20interested%20in%20Pasta%20Bowls.%20Here%20is%20my%20logo%3A" target="_blank">message us on WhatsApp →</a> if you\'d prefer us to handle the design for you.',
+      hiwStep1Title: 'Tell us',        hiwStep1Body: 'Send your logo or idea',
+      hiwStep2Title: 'We design',      hiwStep2Body: 'Professional preparation',
+      hiwStep3Title: 'You receive',    hiwStep3Body: '7–14 working days',
+      cupEmptyTitle: 'Upload your logo',
+      cupEmptySub:   'See it live in 3D — no sign-up, no commitment.',
+      finalCtaTitle: 'Like what you see?',
+      finalCtaBody:  'Message us — quote within the same day.',
+      finalCtaBtn1:  'Proceed to order',
+      finalCtaBtn2:  'Ask on WhatsApp',
+      minOrderTitle: 'Minimum order quantity',
+      minOrderList:  '<li><strong>5,000 pieces</strong> per size (500ml or 750ml)</li>',
+      offerBadge:    'Special offer',
+      offerBody:     '<strong>5,000 × 500ml bowls + 5,000 × 750ml bowls</strong> in a single order. Perfect for restaurants serving two portion sizes.',
+      minOrderNote:  'For smaller quantities or other combinations, message us on WhatsApp — we\'ll find a solution, especially for test orders.',
+      faqBadge:  'FAQ',
+      faqTitle:  'Frequently Asked Questions',
+      faqQ1: 'Can I order both sizes in the same order?',
+      faqA1: 'Yes, you can combine 500ml and 750ml in one order. The minimum per size is 5,000 pieces — or 5,000 + 5,000 with our special bundle offer.',
+      faqQ2: 'How long does production take?',
+      faqA2: 'Standard production time is 7–14 working days after design approval. We also offer express service for urgent orders.',
+      faqQ3: 'Are the bowls food-safe?',
+      faqA3: 'Yes, they are certified for food contact. Made from foodgrade paperboard, suitable for hot dishes.',
+      faqQ4: 'Does ERA offer lids for pasta bowls?',
+      faqA4: 'Yes, we offer transparent PET lids compatible with both sizes. Ask us for pricing and variants.',
+      ctaTitle: 'Ready to Brand Your Pasta Bowls?',
+      ctaSub:   'Send us your logo or idea and we\'ll get back to you with a quote.',
+      ctaBtn1:  'Request a Free Quote',
+    }
+  };
+
+  window.applyPageTranslations = function applyPaperCupPageTranslations(lang) {
+    const copy = pageCopy[lang] || pageCopy.al;
+
+    document.title = copy.title;
+    document.querySelector('meta[name="description"]').setAttribute('content', copy.description);
+
+    const set = (id, val, html) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      if (html) el.innerHTML = val; else el.textContent = val;
+    };
+
+    set('breadcrumbCurrent', copy.breadcrumbCurrent);
+    set('heroBadge',        copy.heroBadge);
+    set('heroTitle',        copy.heroTitle,        true);
+    set('heroLead',         copy.heroLead);
+    set('specLabelCap',     copy.specLabelCap);
+    set('specLabelUse',     copy.specLabelUse);
+    set('specLabelMin',     copy.specLabelMin);
+    set('specMin',          copy.specMin);
+
+    // Update active cup size values too
+    const activeKey = getActiveCupKey();
+    set('specCap', cupData[activeKey][lang].cap);
+    set('specUse', cupData[activeKey][lang].use);
+
+    // Editor intro
+    const badge = document.getElementById('editorIntroBadge');
+    if (badge) {
+      const svg = badge.querySelector('svg');
+      badge.innerHTML = (svg ? svg.outerHTML + ' ' : '') + copy.editorIntroBadge;
+    }
+    set('editorIntroTitle', copy.editorIntroTitle, true);
+    set('editorIntroBody',  copy.editorIntroBody);
+    set('editorIntroAlt',   copy.editorIntroAlt,   true);
+
+    set('hiwStep1Title', copy.hiwStep1Title); set('hiwStep1Body', copy.hiwStep1Body);
+    set('hiwStep2Title', copy.hiwStep2Title); set('hiwStep2Body', copy.hiwStep2Body);
+    set('hiwStep3Title', copy.hiwStep3Title); set('hiwStep3Body', copy.hiwStep3Body);
+
+    set('cupEmptyTitle', copy.cupEmptyTitle);
+    set('cupEmptySub',   copy.cupEmptySub);
+
+    set('finalCtaTitle', copy.finalCtaTitle);
+    set('finalCtaBody',  copy.finalCtaBody);
+    set('finalCtaBtn1',  copy.finalCtaBtn1);
+    set('finalCtaBtn2',  copy.finalCtaBtn2);
+
+    set('minOrderTitle', copy.minOrderTitle);
+    set('minOrderList',  copy.minOrderList,  true);
+    set('offerBadge',    copy.offerBadge);
+    set('offerBody',     copy.offerBody,     true);
+    set('minOrderNote',  copy.minOrderNote);
+
+    set('faqBadge',  copy.faqBadge);
+    set('faqTitle',  copy.faqTitle);
+    set('faqQ1', copy.faqQ1); set('faqA1', copy.faqA1);
+    set('faqQ2', copy.faqQ2); set('faqA2', copy.faqA2);
+    set('faqQ3', copy.faqQ3); set('faqA3', copy.faqA3);
+    set('faqQ4', copy.faqQ4); set('faqA4', copy.faqA4);
+
+    set('ctaTitle', copy.ctaTitle);
+    set('ctaSub',   copy.ctaSub);
+    set('ctaBtn1',  copy.ctaBtn1);
+  };
+</script>
+</body>
+</html>
